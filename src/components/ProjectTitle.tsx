@@ -17,7 +17,7 @@ export default function ProjectTitle({
           {year}
         </span>
       </div>
-      <p className="text-xl text-gray-700">{description}</p>
+      <p className="text-xl text-gray-600">{description}</p>
     </div>
   );
 }
