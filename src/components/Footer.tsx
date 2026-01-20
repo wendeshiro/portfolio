@@ -1,7 +1,10 @@
+import Image from "next/image";
+
 export default function Footer() {
   return (
-    <footer className="text-foreground flex w-full items-center justify-between bg-white px-[70px] py-4 text-base">
+    <footer className="text-foreground flex w-full items-center justify-between bg-white px-18 py-4 text-base">
       <div className="flex items-center gap-3">
+        <Image src="/icon.svg" alt="logo" width={22} height={22} />
         <span>Wende Li</span>
         <span>|</span>
         <span>&copy;2026</span>

@@ -16,7 +16,7 @@ export default function Navbar() {
 
   return (
     <nav className="bg-background/60 fixed top-0 right-0 left-0 z-50 backdrop-blur-sm">
-      <div className="mx-auto flex h-15 max-w-5xl items-center justify-center gap-8 px-4">
+      <div className="mx-auto flex h-16 max-w-5xl items-center justify-center gap-8 px-4">
         {navItems.map((item) => {
           const isActive =
             item.path === "/"
