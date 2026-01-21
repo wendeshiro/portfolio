@@ -29,7 +29,14 @@ export default function ParallaxImage({
       className={`relative w-full overflow-hidden ${className}`}
     >
       <motion.div style={{ y }} className="relative -top-[25%] h-[150%] w-full">
-        <Image src={src} alt={alt} fill className={imageClassName} {...props} />
+        <Image
+          src={src}
+          alt={alt}
+          fill
+          priority
+          className={imageClassName}
+          {...props}
+        />
       </motion.div>
     </div>
   );

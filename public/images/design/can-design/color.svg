@@ -1,0 +1,154 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg id="Layer_2" data-name="Layer 2" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 408.7 561.87">
+  <defs>
+    <style>
+      .cls-1 {
+        fill: #bcdcc5;
+      }
+
+      .cls-2 {
+        fill: #fa736d;
+      }
+
+      .cls-3 {
+        fill: #fca19d;
+      }
+
+      .cls-4 {
+        fill: #58a76f;
+      }
+
+      .cls-5 {
+        fill: #f9443c;
+      }
+
+      .cls-6 {
+        fill: #fdc2a3;
+      }
+
+      .cls-7 {
+        fill: #f1afbc;
+      }
+
+      .cls-8 {
+        fill: #fc9d33;
+      }
+
+      .cls-9 {
+        font-family: Inter-Regular, Inter;
+        font-size: 22px;
+        font-variation-settings: 'opsz' 14, 'wght' 400;
+      }
+
+      .cls-10 {
+        fill: #79b98c;
+      }
+
+      .cls-11 {
+        fill: #e87a90;
+      }
+
+      .cls-12 {
+        fill: #fee7cc;
+      }
+
+      .cls-13 {
+        fill: #9bcaa9;
+      }
+
+      .cls-14 {
+        fill: #fb9966;
+      }
+
+      .cls-15 {
+        fill: #fdd6c2;
+      }
+
+      .cls-16 {
+        fill: #f6cad3;
+      }
+
+      .cls-17 {
+        fill: #ed95a6;
+      }
+
+      .cls-18 {
+        fill: #fdd0ce;
+      }
+
+      .cls-19 {
+        fill: #fdce99;
+      }
+
+      .cls-20 {
+        fill: #f7150b;
+      }
+
+      .cls-21 {
+        fill: #deede2;
+      }
+
+      .cls-22 {
+        letter-spacing: -.11em;
+      }
+
+      .cls-23 {
+        letter-spacing: -.02em;
+      }
+
+      .cls-24 {
+        fill: #fae4e9;
+      }
+
+      .cls-25 {
+        fill: #fdb666;
+      }
+
+      .cls-26 {
+        fill: #fcad85;
+      }
+
+      .cls-27 {
+        fill: #feebe0;
+      }
+
+      .cls-28 {
+        fill: #fb8500;
+      }
+    </style>
+  </defs>
+  <g id="Color_Palette" data-name="Color Palette">
+    <g>
+      <circle class="cls-14" cx="158.2" cy="38.5" r="38.5"/>
+      <circle class="cls-26" cx="211.2" cy="38.5" r="38.5"/>
+      <circle class="cls-6" cx="264.2" cy="38.5" r="38.5"/>
+      <circle class="cls-15" cx="317.2" cy="38.5" r="38.5"/>
+      <circle class="cls-27" cx="370.2" cy="38.5" r="38.5"/>
+    </g>
+    <text class="cls-9" transform="translate(0 46.5)"><tspan x="0" y="0">#FB9966</tspan></text>
+    <circle class="cls-11" cx="158.2" cy="159.72" r="38.5"/>
+    <circle class="cls-17" cx="211.2" cy="159.72" r="38.5"/>
+    <circle class="cls-7" cx="264.2" cy="159.72" r="38.5"/>
+    <circle class="cls-16" cx="317.2" cy="159.72" r="38.5"/>
+    <circle class="cls-24" cx="370.2" cy="159.72" r="38.5"/>
+    <text class="cls-9" transform="translate(0 167.72)"><tspan x="0" y="0">#E8</tspan><tspan class="cls-22" x="40.77" y="0">7</tspan><tspan x="50.84" y="0">A90</tspan></text>
+    <circle class="cls-4" cx="158.2" cy="280.93" r="38.5"/>
+    <circle class="cls-10" cx="211.2" cy="280.93" r="38.5"/>
+    <circle class="cls-13" cx="264.2" cy="280.93" r="38.5"/>
+    <circle class="cls-1" cx="317.2" cy="280.93" r="38.5"/>
+    <circle class="cls-21" cx="370.2" cy="280.93" r="38.5"/>
+    <text class="cls-9" transform="translate(0 288.94)"><tspan x="0" y="0">#58A</tspan><tspan class="cls-23" x="55.77" y="0">7</tspan><tspan x="67.88" y="0">6F</tspan></text>
+    <circle class="cls-28" cx="158.2" cy="402.15" r="38.5"/>
+    <circle class="cls-8" cx="211.2" cy="402.15" r="38.5"/>
+    <circle class="cls-25" cx="264.2" cy="402.15" r="38.5"/>
+    <circle class="cls-19" cx="317.2" cy="402.15" r="38.5"/>
+    <circle class="cls-12" cx="370.2" cy="402.15" r="38.5"/>
+    <text class="cls-9" transform="translate(0 410.15)"><tspan x="0" y="0">#FB8500</tspan></text>
+    <circle class="cls-20" cx="158.2" cy="523.37" r="38.5"/>
+    <circle class="cls-5" cx="211.2" cy="523.37" r="38.5"/>
+    <circle class="cls-2" cx="264.2" cy="523.37" r="38.5"/>
+    <circle class="cls-3" cx="317.2" cy="523.37" r="38.5"/>
+    <circle class="cls-18" cx="370.2" cy="523.37" r="38.5"/>
+    <text class="cls-9" transform="translate(0 531.37)"><tspan x="0" y="0">#F7150B</tspan></text>
+  </g>
+</svg>
