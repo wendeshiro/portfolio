@@ -1,0 +1,90 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg id="Layer_2" data-name="Layer 2" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 586.39 450.61">
+  <defs>
+    <style>
+      .cls-1, .cls-2, .cls-3, .cls-4, .cls-5, .cls-6, .cls-7, .cls-8 {
+        font-size: 44px;
+      }
+
+      .cls-1, .cls-2, .cls-7, .cls-8 {
+        fill: #e51c4c;
+      }
+
+      .cls-1, .cls-5 {
+        font-family: LexendDeca-Medium, 'Lexend Deca';
+        font-variation-settings: 'wght' 500;
+        font-weight: 500;
+      }
+
+      .cls-2, .cls-3 {
+        font-family: LexendDeca-ExtraLight, 'Lexend Deca';
+        font-variation-settings: 'wght' 200;
+        font-weight: 200;
+      }
+
+      .cls-4, .cls-5, .cls-9 {
+        letter-spacing: .02em;
+      }
+
+      .cls-4, .cls-8 {
+        font-family: LexendDeca-Light, 'Lexend Deca';
+        font-variation-settings: 'wght' 300;
+        font-weight: 300;
+      }
+
+      .cls-10 {
+        letter-spacing: 0em;
+      }
+
+      .cls-6, .cls-7 {
+        font-family: LexendDeca-Regular, 'Lexend Deca';
+        font-variation-settings: 'wght' 400;
+      }
+
+      .cls-11 {
+        letter-spacing: 0em;
+      }
+
+      .cls-12 {
+        letter-spacing: -.01em;
+      }
+
+      .cls-13 {
+        letter-spacing: 0em;
+      }
+
+      .cls-14 {
+        letter-spacing: .02em;
+      }
+
+      .cls-15 {
+        letter-spacing: .01em;
+      }
+
+      .cls-16 {
+        letter-spacing: .01em;
+      }
+
+      .cls-17 {
+        letter-spacing: 0em;
+      }
+
+      .cls-18 {
+        letter-spacing: 0em;
+      }
+    </style>
+  </defs>
+  <g id="Color_Palette" data-name="Color Palette">
+    <g>
+      <text class="cls-7" transform="translate(275.67 166.63)"><tspan class="cls-17" x="0" y="0">O</tspan><tspan class="cls-11" x="34.85" y="0">r</tspan><tspan class="cls-9" x="52.4" y="0">cha</tspan><tspan class="cls-10" x="132.35" y="0">r</tspan><tspan class="cls-9" x="150.17" y="0">d B</tspan><tspan class="cls-11" x="222.73" y="0">r</tspan><tspan class="cls-18" x="240.28" y="0">e</tspan><tspan class="cls-9" x="266.42" y="0">w</tspan></text>
+      <text class="cls-6" transform="translate(0 166.63)"><tspan class="cls-13" x="0" y="0">R</tspan><tspan class="cls-15" x="30.49" y="0">e</tspan><tspan class="cls-16" x="56.85" y="0">g</tspan><tspan class="cls-9" x="85.84" y="0">u</tspan><tspan class="cls-18" x="113.26" y="0">l</tspan><tspan class="cls-9" x="124.65" y="0">ar</tspan></text>
+      <text class="cls-5" transform="translate(0 254.63)"><tspan x="0" y="0">Medium</tspan></text>
+      <text class="cls-4" transform="translate(0 342.63)"><tspan x="0" y="0">Light</tspan></text>
+      <text class="cls-3" transform="translate(0 430.63)"><tspan class="cls-9" x="0" y="0">Ext</tspan><tspan class="cls-11" x="66.62" y="0">r</tspan><tspan class="cls-9" x="81.62" y="0">aLight</tspan></text>
+      <text class="cls-1" transform="translate(275.74 254.63)"><tspan class="cls-17" x="0" y="0">O</tspan><tspan class="cls-11" x="35.33" y="0">r</tspan><tspan class="cls-9" x="53.68" y="0">cha</tspan><tspan class="cls-10" x="134.82" y="0">r</tspan><tspan class="cls-9" x="153.43" y="0">d B</tspan><tspan class="cls-11" x="227.21" y="0">r</tspan><tspan class="cls-18" x="245.56" y="0">e</tspan><tspan class="cls-9" x="271.7" y="0">w</tspan></text>
+      <text class="cls-8" transform="translate(275.64 342.63)"><tspan class="cls-17" x="0" y="0">O</tspan><tspan class="cls-11" x="34.98" y="0">r</tspan><tspan class="cls-9" x="51.22" y="0">cha</tspan><tspan class="cls-10" x="129.36" y="0">r</tspan><tspan class="cls-9" x="145.86" y="0">d B</tspan><tspan class="cls-11" x="217.4" y="0">r</tspan><tspan class="cls-18" x="233.64" y="0">e</tspan><tspan class="cls-9" x="258.72" y="0">w</tspan></text>
+      <text class="cls-2" transform="translate(275.61 430.63)"><tspan class="cls-17" x="0" y="0">O</tspan><tspan class="cls-11" x="35.07" y="0">r</tspan><tspan class="cls-9" x="50.07" y="0">cha</tspan><tspan class="cls-10" x="126.5" y="0">r</tspan><tspan class="cls-9" x="141.77" y="0">d B</tspan><tspan class="cls-11" x="212.34" y="0">r</tspan><tspan class="cls-18" x="227.34" y="0">e</tspan><tspan class="cls-9" x="251.46" y="0">w</tspan></text>
+    </g>
+    <text class="cls-6" transform="translate(150.26 37.4)"><tspan class="cls-13" x="0" y="0">L</tspan><tspan class="cls-14" x="26.27" y="0">e</tspan><tspan class="cls-12" x="52.71" y="0">x</tspan><tspan class="cls-9" x="76.91" y="0">end Deca</tspan></text>
+  </g>
+</svg>
