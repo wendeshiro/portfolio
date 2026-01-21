@@ -34,6 +34,7 @@ export default function ParallaxImage({
           alt={alt}
           fill
           priority
+          placeholder="blur"
           className={imageClassName}
           {...props}
         />

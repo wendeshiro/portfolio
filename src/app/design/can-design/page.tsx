@@ -3,6 +3,13 @@ import ProjectTitle from "@/components/ProjectTitle";
 import ParallaxImage from "@/components/ParallaxImage";
 import ProjectOverview from "@/components/ProjectOverview";
 import Image from "next/image";
+import HeroImg from "@/images/design/can-design/hero.webp";
+import LabelPeach from "@/images/design/can-design/label-peach.png";
+import LabelOrange from "@/images/design/can-design/label-orange.png";
+import LabelApple from "@/images/design/can-design/label-apple.png";
+import ColorImg from "@/images/design/can-design/color.svg";
+import TypographyImg from "@/images/design/can-design/typography.svg";
+import FinalMockupImg from "@/images/design/can-design/final-mockup.webp";
 
 export default function CanDesign() {
   return (
@@ -15,7 +22,7 @@ export default function CanDesign() {
         />
       </div>
       <ParallaxImage
-        src="/images/design/can-design/hero.webp"
+        src={HeroImg}
         alt="Orchard Brew Can Design hero"
         className="mt-6 mb-12 h-160"
       />
@@ -72,28 +79,17 @@ export default function CanDesign() {
             </p>
             <div className="flex w-3/5 flex-col gap-8">
               <div className="overflow-hidden rounded-xl shadow-2xl shadow-black/5">
-                <Image
-                  src="/images/design/can-design/label-peach.png"
-                  alt="peach label"
-                  width={1900}
-                  height={1347}
-                />
+                <Image src={LabelPeach} alt="peach label" placeholder="blur" />
               </div>
               <div className="overflow-hidden rounded-xl shadow-2xl shadow-black/5">
                 <Image
-                  src="/images/design/can-design/label-orange.png"
+                  src={LabelOrange}
                   alt="orange label"
-                  width={1900}
-                  height={1347}
+                  placeholder="blur"
                 />
               </div>
               <div className="overflow-hidden rounded-xl shadow-2xl shadow-black/5">
-                <Image
-                  src="/images/design/can-design/label-apple.png"
-                  alt="apple label"
-                  width={1900}
-                  height={1347}
-                />
+                <Image src={LabelApple} alt="apple label" placeholder="blur" />
               </div>
             </div>
           </div>
@@ -111,7 +107,7 @@ export default function CanDesign() {
                 flavors, creating an energetic and appetizing shelf presence.
               </p>
               <Image
-                src="/images/design/can-design/color.svg"
+                src={ColorImg}
                 alt="color palette"
                 width={350}
                 height={350}
@@ -125,7 +121,7 @@ export default function CanDesign() {
                 elements of the fruit imagery.
               </p>
               <Image
-                src="/images/design/can-design/typography.svg"
+                src={TypographyImg}
                 alt="typography"
                 width={400}
                 height={400}
@@ -136,10 +132,9 @@ export default function CanDesign() {
         <div className="flex flex-col items-center">
           <hr className="mt-20 mb-6 w-full border-t border-gray-300" />
           <Image
-            src="/images/design/can-design/final-mockup.webp"
+            src={FinalMockupImg}
             alt="final mockup"
-            width={2560}
-            height={1792}
+            placeholder="blur"
             className="h-[90vh] w-auto rounded-xl object-cover shadow-2xl shadow-black/5"
           />
         </div>
