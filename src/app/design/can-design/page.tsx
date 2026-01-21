@@ -24,7 +24,8 @@ export default function CanDesign() {
       <ParallaxImage
         src={HeroImg}
         alt="Orchard Brew Can Design hero"
-        className="mt-6 mb-12 h-160"
+        className="mt-6 mb-12 h-160 2xl:h-[85vh]"
+        unoptimized
       />
       <div className="mx-auto flex max-w-7xl flex-col px-4">
         <div>
@@ -136,6 +137,7 @@ export default function CanDesign() {
             alt="final mockup"
             placeholder="blur"
             className="h-[90vh] w-auto rounded-xl object-cover shadow-2xl shadow-black/5"
+            unoptimized
           />
         </div>
       </div>
