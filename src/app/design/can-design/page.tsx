@@ -13,27 +13,27 @@ import FinalMockupImg from "@/images/design/can-design/final-mockup.webp";
 
 export default function CanDesign() {
   return (
-    <div className="max-w-full py-36">
-      <div className="mx-auto flex max-w-7xl flex-col px-4">
+    <main className="max-w-full py-36">
+      <header className="mx-auto flex max-w-7xl flex-col px-4">
         <ProjectTitle
           title="Orchard Brew Can Design"
           year={2025}
           description="A refreshing visual identity for a contemporary fruit tea collection."
         />
-      </div>
+      </header>
       <ParallaxImage
         src={HeroImg}
         alt="Orchard Brew Can Design hero"
         className="mt-6 mb-12 h-160 2xl:h-[85vh]"
         unoptimized
       />
-      <div className="mx-auto flex max-w-7xl flex-col px-4">
-        <div>
-          <div className="mb-6 text-4xl">Overview</div>
+      <section className="mx-auto flex max-w-7xl flex-col px-4">
+        <section>
+          <h2 className="mb-6 text-4xl">Overview</h2>
           <ProjectOverview
             description={
               <>
-                <p className="text-2xl">
+                <p className="text-2xl leading-relaxed">
                   Orchard Brew is a contemporary{" "}
                   <span className="text-primary">fruit tea series</span>{" "}
                   designed to bridge the gap between traditional tea culture and
@@ -65,11 +65,11 @@ export default function CanDesign() {
               },
             ]}
           />
-        </div>
-        <div>
+        </section>
+        <section>
           <div>
             <hr className="mt-20 mb-6 border-t border-gray-300" />
-            <div className="mb-6 text-4xl">Labels</div>
+            <h2 className="mb-6 text-4xl">Labels</h2>
           </div>
           <div className="flex justify-between gap-18">
             <p className="w-2/5 text-lg">
@@ -94,11 +94,11 @@ export default function CanDesign() {
               </div>
             </div>
           </div>
-        </div>
-        <div>
+        </section>
+        <section>
           <div>
             <hr className="mt-20 mb-6 border-t border-gray-300" />
-            <div className="mb-6 text-4xl">Color Palette & Typography</div>
+            <h2 className="mb-6 text-4xl">Color Palette & Typography</h2>
           </div>
           <div className="flex justify-between gap-18">
             <div className="flex w-1/2 flex-col items-center">
@@ -129,8 +129,8 @@ export default function CanDesign() {
               />
             </div>
           </div>
-        </div>
-        <div className="flex flex-col items-center">
+        </section>
+        <section className="flex flex-col items-center">
           <hr className="mt-20 mb-6 w-full border-t border-gray-300" />
           <Image
             src={FinalMockupImg}
@@ -139,8 +139,8 @@ export default function CanDesign() {
             className="h-[90vh] w-auto rounded-xl object-cover shadow-2xl shadow-black/5"
             unoptimized
           />
-        </div>
-      </div>
-    </div>
+        </section>
+      </section>
+    </main>
   );
 }
