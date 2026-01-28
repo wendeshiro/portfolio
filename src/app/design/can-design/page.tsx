@@ -35,22 +35,20 @@ export default function CanDesign() {
               <>
                 <p className="text-2xl leading-relaxed">
                   Orchard Brew is a contemporary{" "}
-                  <span className="text-primary">fruit tea series</span>{" "}
-                  designed to bridge the gap between traditional tea culture and
-                  modern ready-to-drink convenience. The requirement was to
-                  develop a
-                  <span className="text-primary">
-                    {" "}
-                    cohesive visual identity
-                  </span>{" "}
+                  <span className="text-primary">fruit tea series</span> for
+                  on-the-go urban professionals, bringing together the authentic
+                  flavors of real tea and fruit in a modern, convenient format.
+                  The requirement was to develop a{" "}
+                  <span className="text-primary">cohesive visual identity</span>{" "}
                   for three distinct flavors—Peach Oolong, Orange Jasmine, and
                   Apple Black Tea—that feels both vibrant and natural.
                 </p>
                 <p className="text-base text-gray-600">
-                  By utilizing a minimalist layout and bold color blocking, the
-                  design provides a clear shelf presence, effectively
-                  communicating the brand’s commitment to fresh,
-                  botanical-inspired ingredients for health-conscious consumers.
+                  A minimalist layout was employed to ensure immediate flavor
+                  recognition in a crowded market. This approach creates a
+                  striking shelf presence, effectively communicating the brand’s
+                  commitment to fresh, botanical-inspired ingredients for
+                  health-conscious consumers.
                 </p>
               </>
             }
@@ -73,10 +71,9 @@ export default function CanDesign() {
           </div>
           <div className="flex justify-between gap-18">
             <p className="w-2/5 text-lg">
-              The challenge was to maintain a unified brand language across
-              three distinct flavor profiles while ensuring each design
-              effectively showcased its unique fruit and tea pairing through
-              strategic color hierarchy.
+              The design incorporates fruit and tea elements to evoke a sensory
+              connection to the ingredients, reflecting the natural purity of
+              the botanical components.
             </p>
             <div className="flex w-3/5 flex-col gap-8">
               <div className="overflow-hidden rounded-xl shadow-2xl shadow-black/5">
