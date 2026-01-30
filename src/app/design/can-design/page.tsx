@@ -29,7 +29,7 @@ export default function CanDesign() {
       />
       <section className="mx-auto flex max-w-7xl flex-col px-4">
         <section>
-          <h2 className="mb-6 text-4xl">Overview</h2>
+          <h2 className="mb-6 font-serif text-4xl">Overview</h2>
           <ProjectOverview
             description={
               <>
@@ -70,7 +70,7 @@ export default function CanDesign() {
         <section>
           <div>
             <hr className="mt-20 mb-6 border-t border-gray-300" />
-            <h2 className="mb-6 text-4xl">Labels</h2>
+            <h2 className="mb-6 font-serif text-4xl">Labels</h2>
           </div>
           <div className="flex justify-between gap-18">
             <p className="w-2/5 text-lg">
@@ -97,7 +97,9 @@ export default function CanDesign() {
         <section>
           <div>
             <hr className="mt-20 mb-6 border-t border-gray-300" />
-            <h2 className="mb-6 text-4xl">Color Palette & Typography</h2>
+            <h2 className="mb-6 font-serif text-4xl">
+              Color Palette & Typography
+            </h2>
           </div>
           <div className="flex justify-between gap-18">
             <div className="flex w-1/2 flex-col items-center">
