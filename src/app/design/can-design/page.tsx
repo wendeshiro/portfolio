@@ -2,6 +2,7 @@
 import ProjectTitle from "@/components/ProjectTitle";
 import ParallaxImage from "@/components/ParallaxImage";
 import ProjectOverview from "@/components/ProjectOverview";
+import SectionDivider from "@/components/SectionDivider";
 import Image from "next/image";
 import HeroImg from "@/images/design/can-design/hero.webp";
 import LabelPeach from "@/images/design/can-design/label-peach.png";
@@ -10,6 +11,7 @@ import LabelApple from "@/images/design/can-design/label-apple.png";
 import ColorImg from "@/images/design/can-design/color.svg";
 import TypographyImg from "@/images/design/can-design/typography.svg";
 import FinalMockupImg from "@/images/design/can-design/final-mockup.webp";
+import { motion } from "framer-motion";
 
 export default function CanDesign() {
   return (
@@ -28,50 +30,50 @@ export default function CanDesign() {
         unoptimized
       />
       <section className="mx-auto flex max-w-7xl flex-col px-4">
-        <section>
-          <h2 className="mb-6 font-serif text-4xl">Overview</h2>
-          <ProjectOverview
-            description={
-              <>
-                <p className="text-2xl leading-relaxed">
-                  Orchard Brew is a contemporary{" "}
-                  <span className="text-primary">fruit tea series</span> for
-                  on-the-go urban professionals, bringing together the authentic
-                  flavors of real tea and fruit in a modern, convenient format.
-                  The requirement was to develop a{" "}
-                  <span className="text-primary">cohesive visual identity</span>{" "}
-                  for three distinct flavors—Peach Oolong, Orange Jasmine, and
-                  Apple Black Tea—that feels both vibrant and natural.
-                </p>
-                <p className="text-base text-gray-600">
-                  A minimalist layout was employed to ensure immediate flavor
-                  recognition in a crowded market. This approach creates a
-                  striking shelf presence, effectively communicating the brand’s
-                  commitment to fresh, botanical-inspired ingredients for
-                  health-conscious consumers.
-                </p>
-                <p className="text-base text-gray-600">
-                  *This is a concept work created for educational purposes.
-                </p>
-              </>
-            }
-            details={[
-              {
-                label: "Deliverables",
-                content: "Static Mockup, Interactive 3D Mockup, Dieline, Proof",
-              },
-              {
-                label: "Tools & Skills",
-                content: "Illustrator / Photoshop / Blender / Three.js",
-              },
-            ]}
-          />
-        </section>
-        <section>
-          <div>
-            <hr className="mt-20 mb-6 border-t border-gray-300" />
-            <h2 className="mb-6 font-serif text-4xl">Labels</h2>
-          </div>
+        <ProjectOverview
+          description={
+            <>
+              <p className="text-2xl leading-relaxed">
+                Orchard Brew is a contemporary{" "}
+                <span className="text-primary">fruit tea series</span> for
+                on-the-go urban professionals, bringing together the authentic
+                flavors of real tea and fruit in a modern, convenient format.
+                The requirement was to develop a{" "}
+                <span className="text-primary">cohesive visual identity</span>{" "}
+                for three distinct flavors—Peach Oolong, Orange Jasmine, and
+                Apple Black Tea—that feels both vibrant and natural.
+              </p>
+              <p className="text-base text-gray-600">
+                A minimalist layout was employed to ensure immediate flavor
+                recognition in a crowded market. This approach creates a
+                striking shelf presence, effectively communicating the brand’s
+                commitment to fresh, botanical-inspired ingredients for
+                health-conscious consumers.
+              </p>
+              <p className="text-base text-gray-600">
+                *This is a concept work created for educational purposes.
+              </p>
+            </>
+          }
+          details={[
+            {
+              label: "Deliverables",
+              content: "Static Mockup, Interactive 3D Mockup, Dieline, Proof",
+            },
+            {
+              label: "Tools & Skills",
+              content: "Illustrator / Photoshop / Blender / Three.js",
+            },
+          ]}
+        />
+        <SectionDivider />
+        <motion.section
+          initial={{ opacity: 0, y: 50 }} // Initial state: hidden and slightly down
+          whileInView={{ opacity: 1, y: 0 }} // Animate to: visible and in place
+          transition={{ duration: 1, ease: "easeOut" }} // Animation settings
+          viewport={{ once: true, amount: 0.02 }} // Trigger animation when 2% in view, only once
+        >
+          <h2 className="mb-6 font-serif text-4xl">Labels</h2>
           <div className="flex justify-between gap-18">
             <p className="w-2/5 text-lg">
               The design incorporates fruit and tea elements to evoke a sensory
@@ -93,14 +95,17 @@ export default function CanDesign() {
               </div>
             </div>
           </div>
-        </section>
-        <section>
-          <div>
-            <hr className="mt-20 mb-6 border-t border-gray-300" />
-            <h2 className="mb-6 font-serif text-4xl">
-              Color Palette & Typography
-            </h2>
-          </div>
+        </motion.section>
+        <SectionDivider />
+        <motion.section
+          initial={{ opacity: 0, y: 50 }} // Initial state: hidden and slightly down
+          whileInView={{ opacity: 1, y: 0 }} // Animate to: visible and in place
+          transition={{ duration: 1, ease: "easeOut" }} // Animation settings
+          viewport={{ once: true, amount: 0.02 }} // Trigger animation when 2% in view, only once
+        >
+          <h2 className="mb-6 font-serif text-4xl">
+            Color Palette & Typography
+          </h2>
           <div className="flex justify-between gap-18">
             <div className="flex w-1/2 flex-col items-center">
               <p className="mb-10 text-lg">
@@ -130,9 +135,15 @@ export default function CanDesign() {
               />
             </div>
           </div>
-        </section>
-        <section className="flex flex-col items-center">
-          <hr className="mt-20 mb-6 w-full border-t border-gray-300" />
+        </motion.section>
+        <SectionDivider />
+        <motion.section
+          initial={{ opacity: 0, y: 50 }} // Initial state: hidden and slightly down
+          whileInView={{ opacity: 1, y: 0 }} // Animate to: visible and in place
+          transition={{ duration: 1, ease: "easeOut" }} // Animation settings
+          viewport={{ once: true, amount: 0.02 }} // Trigger animation when 2% in view, only once
+          className="flex flex-col items-center"
+        >
           <Image
             src={FinalMockupImg}
             alt="final mockup"
@@ -140,7 +151,7 @@ export default function CanDesign() {
             className="h-[90vh] w-auto rounded-xl object-cover shadow-2xl shadow-black/5"
             unoptimized
           />
-        </section>
+        </motion.section>
       </section>
     </main>
   );

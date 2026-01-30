@@ -1,8 +1,9 @@
-import React from "react";
+import type { ReactNode } from "react";
+import { motion } from "framer-motion";
 
 export interface ProjectDetail {
   label: string;
-  content: React.ReactNode;
+  content: ReactNode;
 }
 
 export interface ProjectLink {
@@ -11,7 +12,7 @@ export interface ProjectLink {
 }
 
 interface ProjectOverviewProps {
-  description?: React.ReactNode;
+  description?: ReactNode;
   details?: ProjectDetail[];
   links?: ProjectLink[];
 }
@@ -27,7 +28,13 @@ export default function ProjectOverview({
   }
 
   return (
-    <div>
+    <motion.section
+      initial={{ opacity: 0, y: 50 }} // Initial state: hidden and slightly down
+      whileInView={{ opacity: 1, y: 0 }} // Animate to: visible and in place
+      transition={{ duration: 1, ease: "easeOut" }} // Animation settings
+      viewport={{ once: true, amount: 0.3 }} // Trigger animation when 30% in view, only once
+    >
+      <h2 className="mb-6 font-serif text-4xl">Overview</h2>
       <div className="flex justify-between gap-20">
         <div className="flex w-3/5 flex-col gap-5">{description}</div>
 
@@ -55,6 +62,6 @@ export default function ProjectOverview({
           )}
         </div>
       </div>
-    </div>
+    </motion.section>
   );
 }
