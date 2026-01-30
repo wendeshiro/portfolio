@@ -24,18 +24,15 @@ export default function ParallaxImage({
   const y = useTransform(scrollYProgress, [0, 1], ["-20%", "20%"]);
 
   return (
-    <div
+    <motion.div
       ref={containerRef}
       className={`relative w-full overflow-hidden ${className}`}
+      initial={{ clipPath: "inset(0 0 100% 0)" }}
+      whileInView={{ clipPath: "inset(0% 0 0 0)" }}
+      viewport={{ once: true, amount: 0 }}
+      transition={{ duration: 1.2, ease: [0.3, 0, 0.15, 1] }}
     >
-      <motion.div
-        style={{ y }}
-        initial={{ scale: 1.2, filter: "blur(15px)", opacity: 0.5 }}
-        whileInView={{ scale: 1, filter: "blur(0px)", opacity: 1 }}
-        viewport={{ once: true, amount: 0.2 }}
-        transition={{ duration: 0.8, ease: "easeOut" }}
-        className="relative -top-[20%] h-[140%] w-full"
-      >
+      <motion.div style={{ y }} className="relative -top-[20%] h-[140%] w-full">
         <Image
           src={src}
           alt={alt}
@@ -46,6 +43,6 @@ export default function ParallaxImage({
           {...props}
         />
       </motion.div>
-    </div>
+    </motion.div>
   );
 }
