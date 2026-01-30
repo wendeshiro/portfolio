@@ -50,6 +50,9 @@ export default function CanDesign() {
                   commitment to fresh, botanical-inspired ingredients for
                   health-conscious consumers.
                 </p>
+                <p className="text-base text-gray-600">
+                  *This is a concept work created for educational purposes.
+                </p>
               </>
             }
             details={[
@@ -72,8 +75,7 @@ export default function CanDesign() {
           <div className="flex justify-between gap-18">
             <p className="w-2/5 text-lg">
               The design incorporates fruit and tea elements to evoke a sensory
-              connection to the ingredients, reflecting the natural purity of
-              the botanical components.
+              connection to the ingredients.
             </p>
             <div className="flex w-3/5 flex-col gap-8">
               <div className="overflow-hidden rounded-xl shadow-2xl shadow-black/5">
