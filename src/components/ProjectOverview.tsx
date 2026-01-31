@@ -34,13 +34,15 @@ export default function ProjectOverview({
       transition={{ duration: 1, ease: "easeOut" }} // Animation settings
       viewport={{ once: true, amount: 0.3 }} // Trigger animation when 30% in view, only once
     >
-      <h2 className="mb-6 font-serif text-4xl">Overview</h2>
-      <div className="flex justify-between gap-20">
-        <div className="flex w-3/5 flex-col gap-5">{description}</div>
+      <h2 className="mb-6 font-serif text-2xl font-medium md:text-4xl md:font-normal">
+        Overview
+      </h2>
+      <div className="flex flex-col gap-8 md:flex-row md:justify-between md:gap-20">
+        <div className="flex flex-col gap-5 md:w-3/5">{description}</div>
 
-        <div className="flex w-2/5 flex-col gap-4">
+        <div className="flex flex-col gap-4 md:w-2/5">
           {details.map((item, index) => (
-            <div key={index} className="text-lg">
+            <div key={index} className="text-base md:text-lg">
               <p className="text-gray-600">{item.label}</p>
               <div>{item.content}</div>
             </div>

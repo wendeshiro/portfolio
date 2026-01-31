@@ -15,8 +15,8 @@ import { motion } from "framer-motion";
 
 export default function CanDesign() {
   return (
-    <main className="max-w-full py-36">
-      <header className="mx-auto flex max-w-7xl flex-col px-4">
+    <main className="max-w-full py-16 md:py-36">
+      <header className="mx-auto flex max-w-7xl flex-col px-5">
         <ProjectTitle
           title="Orchard Brew Can Design"
           year={2025}
@@ -29,11 +29,11 @@ export default function CanDesign() {
         className="mt-6 mb-12 h-160 2xl:h-[85vh]"
         unoptimized
       />
-      <section className="mx-auto flex max-w-7xl flex-col px-4">
+      <section className="mx-auto flex max-w-7xl flex-col px-5">
         <ProjectOverview
           description={
             <>
-              <p className="text-2xl leading-relaxed">
+              <p className="text-xl leading-relaxed md:text-2xl">
                 Orchard Brew is a contemporary{" "}
                 <span className="text-primary">fruit tea series</span> for
                 on-the-go urban professionals, bringing together the authentic
@@ -43,14 +43,14 @@ export default function CanDesign() {
                 for three distinct flavors—Peach Oolong, Orange Jasmine, and
                 Apple Black Tea—that feels both vibrant and natural.
               </p>
-              <p className="text-base text-gray-600">
+              <p className="text-base text-gray-600 md:text-lg">
                 A minimalist layout was employed to ensure immediate flavor
                 recognition in a crowded market. This approach creates a
                 striking shelf presence, effectively communicating the brand’s
                 commitment to fresh, botanical-inspired ingredients for
                 health-conscious consumers.
               </p>
-              <p className="text-base text-gray-600">
+              <p className="text-base text-gray-600 md:text-lg">
                 *This is a concept work created for educational purposes.
               </p>
             </>
@@ -74,15 +74,17 @@ export default function CanDesign() {
           viewport={{ once: true, amount: 0.02 }} // Trigger animation when 2% in view, only once
           className="relative"
         >
-          <div className="flex justify-between gap-18">
-            <div className="sticky top-24 w-2/5 space-y-6 self-start">
-              <h2 className="font-serif text-4xl">Labels</h2>
-              <p className="text-lg">
+          <div className="flex flex-col md:flex-row md:justify-between md:gap-18">
+            <div className="top-24 space-y-6 self-start md:sticky md:w-2/5">
+              <h2 className="font-serif text-2xl font-medium md:text-4xl md:font-normal">
+                Labels
+              </h2>
+              <p className="text-base md:text-lg">
                 The design incorporates fruit and tea elements to evoke a
                 sensory connection to the ingredients.
               </p>
             </div>
-            <div className="mt-18 flex w-3/5 flex-col gap-8">
+            <div className="mt-6 flex flex-col gap-8 md:mt-18 md:w-3/5">
               <div className="overflow-hidden rounded-xl shadow-2xl shadow-black/5">
                 <Image src={LabelPeach} alt="peach label" placeholder="blur" />
               </div>
@@ -106,12 +108,12 @@ export default function CanDesign() {
           transition={{ duration: 1, ease: "easeOut" }} // Animation settings
           viewport={{ once: true, amount: 0.02 }} // Trigger animation when 2% in view, only once
         >
-          <h2 className="mb-6 font-serif text-4xl">
+          <h2 className="mb-6 font-serif text-2xl font-medium md:text-4xl md:font-normal">
             Color Palette & Typography
           </h2>
-          <div className="flex justify-between gap-18">
-            <div className="flex w-1/2 flex-col items-center">
-              <p className="mb-10 text-lg">
+          <div className="flex flex-col gap-18 md:flex-row md:justify-between">
+            <div className="flex flex-col items-center md:w-1/2">
+              <p className="mb-10 text-base md:text-lg">
                 A vibrant palette of peach pink, bright orange, and deep apple
                 red was chosen to evoke immediate sensory recognition of the
                 flavors, creating an energetic and appetizing shelf presence.
@@ -123,8 +125,8 @@ export default function CanDesign() {
                 height={350}
               />
             </div>
-            <div className="flex w-1/2 flex-col items-center">
-              <p className="mb-10 text-lg">
+            <div className="flex flex-col items-center md:w-1/2">
+              <p className="mb-10 text-base md:text-lg">
                 Lexend Deca was selected for its clean, geometric forms,
                 enhancing readability and reinforcing the brand’s modern,
                 approachable personality while balancing the bold visual
