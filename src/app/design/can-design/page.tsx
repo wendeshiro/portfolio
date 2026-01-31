@@ -72,14 +72,17 @@ export default function CanDesign() {
           whileInView={{ opacity: 1, y: 0 }} // Animate to: visible and in place
           transition={{ duration: 1, ease: "easeOut" }} // Animation settings
           viewport={{ once: true, amount: 0.02 }} // Trigger animation when 2% in view, only once
+          className="relative"
         >
-          <h2 className="mb-6 font-serif text-4xl">Labels</h2>
           <div className="flex justify-between gap-18">
-            <p className="w-2/5 text-lg">
-              The design incorporates fruit and tea elements to evoke a sensory
-              connection to the ingredients.
-            </p>
-            <div className="flex w-3/5 flex-col gap-8">
+            <div className="sticky top-24 w-2/5 space-y-6 self-start">
+              <h2 className="font-serif text-4xl">Labels</h2>
+              <p className="text-lg">
+                The design incorporates fruit and tea elements to evoke a
+                sensory connection to the ingredients.
+              </p>
+            </div>
+            <div className="mt-18 flex w-3/5 flex-col gap-8">
               <div className="overflow-hidden rounded-xl shadow-2xl shadow-black/5">
                 <Image src={LabelPeach} alt="peach label" placeholder="blur" />
               </div>
