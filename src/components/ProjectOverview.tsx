@@ -1,8 +1,9 @@
-import React from "react";
+import type { ReactNode } from "react";
+import { motion } from "framer-motion";
 
 export interface ProjectDetail {
   label: string;
-  content: React.ReactNode;
+  content: ReactNode;
 }
 
 export interface ProjectLink {
@@ -11,7 +12,7 @@ export interface ProjectLink {
 }
 
 interface ProjectOverviewProps {
-  description?: React.ReactNode;
+  description?: ReactNode;
   details?: ProjectDetail[];
   links?: ProjectLink[];
 }
@@ -27,13 +28,21 @@ export default function ProjectOverview({
   }
 
   return (
-    <div>
-      <div className="flex justify-between gap-20">
-        <div className="flex w-3/5 flex-col gap-5">{description}</div>
+    <motion.section
+      initial={{ opacity: 0, y: 50 }} // Initial state: hidden and slightly down
+      whileInView={{ opacity: 1, y: 0 }} // Animate to: visible and in place
+      transition={{ duration: 1, ease: "easeOut" }} // Animation settings
+      viewport={{ once: true, amount: 0.3 }} // Trigger animation when 30% in view, only once
+    >
+      <h2 className="mb-6 font-serif text-2xl font-medium md:text-4xl md:font-normal">
+        Overview
+      </h2>
+      <div className="flex flex-col gap-8 md:flex-row md:justify-between md:gap-20">
+        <div className="flex flex-col gap-5 md:w-3/5">{description}</div>
 
-        <div className="flex w-2/5 flex-col gap-4">
+        <div className="flex flex-col gap-4 md:w-2/5">
           {details.map((item, index) => (
-            <div key={index} className="text-lg">
+            <div key={index} className="text-base md:text-lg">
               <p className="text-gray-600">{item.label}</p>
               <div>{item.content}</div>
             </div>
@@ -55,6 +64,6 @@ export default function ProjectOverview({
           )}
         </div>
       </div>
-    </div>
+    </motion.section>
   );
 }

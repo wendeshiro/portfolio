@@ -2,9 +2,15 @@ import Image from "next/image";
 
 export default function Footer() {
   return (
-    <footer className="text-foreground flex w-full items-center justify-between bg-white px-18 py-4 text-sm">
-      <div className="flex items-center gap-2">
-        <Image src="/icon.svg" alt="logo" width={19} height={19} />
+    <footer className="text-foreground flex w-full items-center justify-center bg-white px-5 py-3 text-sm md:justify-between md:px-18 md:py-4">
+      <div className="flex items-center gap-3 md:gap-2">
+        <Image
+          className="hidden md:block"
+          src="/icon.svg"
+          alt="logo"
+          width={19}
+          height={19}
+        />
         <span>Wende Li</span>
         <span>|</span>
         <span>&copy;2026</span>
@@ -12,7 +18,7 @@ export default function Footer() {
         <span>wendellwdl05@gmail.com</span>
       </div>
 
-      <div className="flex items-center gap-3">
+      <div className="hidden items-center gap-3 md:flex">
         <a
           href="https://www.linkedin.com/in/wende05"
           target="_blank"

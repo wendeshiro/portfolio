@@ -1,11 +1,17 @@
 import type { Metadata } from "next";
-import { Inter } from "next/font/google";
+import { Inter, Noto_Serif } from "next/font/google";
 import "./globals.css";
 import Navbar from "@/components/Navbar";
 import Footer from "@/components/Footer";
+import SmoothScroll from "@/components/SmoothScroll";
 
 const inter = Inter({
   variable: "--font-inter",
+  subsets: ["latin"],
+});
+
+const noto = Noto_Serif({
+  variable: "--font-noto",
   subsets: ["latin"],
 });
 
@@ -22,11 +28,13 @@ export default function RootLayout({
   return (
     <html lang="en">
       <body
-        className={`${inter.variable} flex min-h-screen flex-col pt-16 antialiased`}
+        className={`${inter.variable} ${noto.variable} flex min-h-screen flex-col pt-14 antialiased`}
       >
-        <Navbar />
-        <main className="grow">{children}</main>
-        <Footer />
+        <SmoothScroll>
+          <Navbar />
+          <main className="grow">{children}</main>
+          <Footer />
+        </SmoothScroll>
       </body>
     </html>
   );
