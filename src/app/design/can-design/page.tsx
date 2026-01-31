@@ -123,6 +123,7 @@ export default function CanDesign() {
                 alt="color palette"
                 width={350}
                 height={350}
+                className="h-auto w-70 md:w-87.5"
               />
             </div>
             <div className="flex flex-col items-center md:w-1/2">
@@ -137,6 +138,7 @@ export default function CanDesign() {
                 alt="typography"
                 width={400}
                 height={400}
+                className="h-auto w-70 md:w-87.5"
               />
             </div>
           </div>
@@ -153,7 +155,7 @@ export default function CanDesign() {
             src={FinalMockupImg}
             alt="final mockup"
             placeholder="blur"
-            className="h-[90vh] w-auto rounded-xl object-cover shadow-2xl shadow-black/5"
+            className="h-[80vh] w-auto rounded-xl object-cover shadow-2xl shadow-black/5 md:h-[90vh]"
             unoptimized
           />
         </motion.section>
