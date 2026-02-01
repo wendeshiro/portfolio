@@ -1,7 +1,14 @@
 import { motion, useScroll, useTransform } from "framer-motion";
 import { useRef } from "react";
 
-export default function ProjectSubtitle() {
+type SectionDividerProps = {
+  /** Tailwind margin-top class, e.g. "mt-10"; defaults to "mt-20" */
+  marginTop?: string;
+};
+
+export default function ProjectSubtitle({
+  marginTop = "mt-20",
+}: SectionDividerProps) {
   const ref = useRef(null);
   const { scrollYProgress } = useScroll({
     target: ref,
@@ -14,7 +21,7 @@ export default function ProjectSubtitle() {
     <motion.hr
       ref={ref}
       style={{ scaleX, originX: 0 }} // Bind scroll value to scaleX
-      className="mt-20 mb-6 border-t border-gray-300"
+      className={`${marginTop} mb-6 border-t border-gray-300`}
     />
   );
 }
