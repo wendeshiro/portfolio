@@ -12,8 +12,46 @@ import ColorImg from "@/images/design/can-design/color.svg";
 import TypographyImg from "@/images/design/can-design/typography.svg";
 import FinalMockupImg from "@/images/design/can-design/final-mockup.webp";
 import { motion } from "framer-motion";
+import { useState, Suspense } from "react";
+import { Canvas } from "@react-three/fiber";
+import {
+  OrbitControls,
+  Environment,
+  Float,
+  Center,
+  useTexture,
+  // ContactShadows,
+} from "@react-three/drei";
+import FruitTeaCan from "@/components/FruitTeaCan";
+
+const FLAVORS = [
+  {
+    id: "peach",
+    name: "Peach Oolong",
+    texture: "/model-textures/label-for-blender-peach.png",
+    color: "bg-[#e87a90]",
+  },
+  {
+    id: "orange",
+    name: "Orange Jasmine",
+    texture: "/model-textures/label-for-blender-orange.png",
+    color: "bg-[#fb8500]",
+  },
+  {
+    id: "apple",
+    name: "Apple Black Tea",
+    texture: "/model-textures/label-for-blender-apple.png",
+    color: "bg-[#f9443c]",
+  },
+];
+
+FLAVORS.forEach((flavor) => {
+  useTexture.preload(flavor.texture);
+});
 
 export default function CanDesign() {
+  const [currentTexture, setCurrentTexture] = useState(FLAVORS[0].texture);
+
   return (
     <main className="max-w-full py-16 md:py-36">
       <header className="mx-auto flex max-w-7xl flex-col px-5">
@@ -62,11 +100,98 @@ export default function CanDesign() {
             },
             {
               label: "Tools & Skills",
-              content: "Illustrator / Photoshop / Blender / Three.js",
+              content:
+                "Illustrator / Photoshop / Blender / React Three Fiber (Three.js)",
             },
           ]}
         />
         <SectionDivider />
+
+        <section className="relative mt-5 h-[90vh] w-full overflow-hidden">
+          {/* 3D can section */}
+          <div className="relative h-full w-full">
+            {/*
+              position for x,y,z
+              fov for field of view (zoom in/out)
+            */}
+            <Canvas camera={{ position: [2, 1, 2], fov: 2.5 }}>
+              <Environment preset="city" />
+              <ambientLight intensity={0.6} />
+              <spotLight
+                position={[-3, -2, 2]}
+                angle={0.2}
+                penumbra={0.5}
+                intensity={7}
+              />
+
+              {/* Float
+            - speed for how fast it moves, higher is faster
+            - rotationIntensity for how much it rotates, higher is more
+            - floatIntensity for how much it moves up and down, higher is more
+            - floatingRange for the vertical movement range, [min, max]
+          */}
+              <Float
+                speed={0.7}
+                rotationIntensity={3}
+                floatIntensity={1.5}
+                floatingRange={[-0.005, 0.005]}
+              >
+                {/* Suspense to wait for texture loading */}
+                <Suspense fallback={null}>
+                  {/* only change textureUrl to switch designs, no re-mounting, so position stays
+                   */}
+                  {/* scale can size by scale prop */}
+                  <Center rotation={[-0.1, 0.0, 0.4]}>
+                    <FruitTeaCan textureUrl={currentTexture} scale={1} />
+                  </Center>
+                </Suspense>
+              </Float>
+
+              {/* bottom shadow */}
+              {/* <ContactShadows
+                position={[0, -0.1, 0]}
+                opacity={0.4}
+                scale={1}
+                blur={2}
+              /> */}
+
+              {/* Interactive controller: allows mouse drag to view */}
+              <OrbitControls makeDefault enableZoom={false} />
+            </Canvas>
+          </div>
+
+          {/* label control panel */}
+          <div className="absolute top-0 right-5 z-10 flex h-full w-53 flex-col justify-center">
+            <div className="space-y-2">
+              {FLAVORS.map((flavor) => (
+                <button
+                  key={flavor.id}
+                  onClick={() => setCurrentTexture(flavor.texture)}
+                  className={`flex w-full items-center rounded-2xl border-2 p-4 transition-all duration-600 ease-out ${
+                    currentTexture === flavor.texture
+                      ? "scale-105 border-gray-600"
+                      : "border-transparent hover:border-gray-300"
+                  } `}
+                >
+                  {/* color dot */}
+                  <div
+                    className={`h-5 w-5 rounded-full ${flavor.color} mr-4 shadow-sm`}
+                  ></div>
+
+                  {/* Text */}
+                  <div>
+                    <p
+                      className={`text-lg font-semibold transition-colors ${currentTexture === flavor.texture ? "text-black" : "text-gray-700"}`}
+                    >
+                      {flavor.name}
+                    </p>
+                  </div>
+                </button>
+              ))}
+            </div>
+          </div>
+        </section>
+        <SectionDivider marginTop="mt-5" />
         <motion.section
           initial={{ opacity: 0, y: 50 }} // Initial state: hidden and slightly down
           whileInView={{ opacity: 1, y: 0 }} // Animate to: visible and in place
@@ -123,6 +248,7 @@ export default function CanDesign() {
                 alt="color palette"
                 width={350}
                 height={350}
+                className="h-auto w-70 md:w-87.5"
               />
             </div>
             <div className="flex flex-col items-center md:w-1/2">
@@ -137,6 +263,7 @@ export default function CanDesign() {
                 alt="typography"
                 width={400}
                 height={400}
+                className="h-auto w-70 md:w-87.5"
               />
             </div>
           </div>
@@ -153,7 +280,7 @@ export default function CanDesign() {
             src={FinalMockupImg}
             alt="final mockup"
             placeholder="blur"
-            className="h-[90vh] w-auto rounded-xl object-cover shadow-2xl shadow-black/5"
+            className="h-[80vh] w-auto rounded-xl object-cover shadow-2xl shadow-black/5 md:h-[90vh]"
             unoptimized
           />
         </motion.section>
