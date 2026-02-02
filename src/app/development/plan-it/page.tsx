@@ -1,0 +1,298 @@
+"use client";
+import ProjectTitle from "@/components/ProjectTitle";
+import ParallaxImage from "@/components/ParallaxImage";
+import ProjectOverview from "@/components/ProjectOverview";
+import SectionDivider from "@/components/SectionDivider";
+import Image from "next/image";
+import HeroImg from "@/images/design/can-design/hero.webp";
+import Snippet01 from "@/images/development/plan-it/snippet-01.png";
+import Snippet02 from "@/images/development/plan-it/snippet-02.png";
+import Snippet03 from "@/images/development/plan-it/snippet-03.png";
+import Pdf from "@/images/development/plan-it/pdf.png";
+import DatePicker from "@/images/development/plan-it/date-picker.jpg";
+import Dropdown from "@/images/development/plan-it/dropdown.png";
+import FinalMockupImg from "@/images/design/can-design/final-mockup.webp";
+import { motion } from "framer-motion";
+
+export default function PlanIt() {
+  return (
+    <main className="max-w-full py-16 md:py-36">
+      <header className="mx-auto flex max-w-7xl flex-col px-5">
+        <ProjectTitle
+          title="Plan-it: Trip Planning Web App"
+          year={2025}
+          description="A desktop web app for organizing trips, tracking weather, and preparing with confidence."
+        />
+      </header>
+      <ParallaxImage
+        src={HeroImg}
+        alt="Plan-it Trip Planning Web App hero"
+        className="mt-6 mb-12 h-86 md:h-160 2xl:h-[85vh]"
+        unoptimized
+      />
+      <section className="mx-auto flex max-w-7xl flex-col px-5">
+        <ProjectOverview
+          description={
+            <>
+              <p className="text-xl leading-relaxed md:text-2xl">
+                Plan-it is a{" "}
+                <span className="text-primary">desktop web application</span>{" "}
+                created to help travelers organize trips in a clear and reliable
+                way. The project addresses the need for a single place where{" "}
+                <span className="text-primary">
+                  itineraries, weather information, and preparation tasks
+                </span>{" "}
+                can be viewed together, reducing confusion and missed details
+                during trip planning.
+              </p>
+              <p className="text-base text-gray-600 md:text-lg">
+                The main challenge was presenting essential information—such as
+                schedules, forecasts, and checklists—in a way that feels simple
+                and approachable. Built with React and integrated with external
+                APIs for city and weather data, along with PDF exports for
+                offline access, the application provides a structured and
+                dependable planning experience that supports confident travel
+                preparation.
+              </p>
+              <p className="text-base text-gray-600 md:text-lg">
+                *This is a concept project created for educational purposes.
+              </p>
+            </>
+          }
+          details={[
+            {
+              label: "Deliverables",
+              content: "Desktop Web Application",
+            },
+            {
+              label: "Tools & Skills",
+              content:
+                "React / JavaScript / Vite / External APIs / Third-Party Libraries",
+            },
+            {
+              label: "Main Responsibilities",
+              content:
+                "Website Development / Project Management / Sitemap Planning",
+            },
+          ]}
+          links={[
+            {
+              label: "Live App",
+              url: "https://comp-3170-plan-it.vercel.app/",
+            },
+            {
+              label: "GitHub Repo",
+              url: "https://github.com/wendeshiro/COMP-3170-Plan-it",
+            },
+          ]}
+        />
+        <SectionDivider />
+        <motion.section
+          initial={{ opacity: 0, y: 50 }} // Initial state: hidden and slightly down
+          whileInView={{ opacity: 1, y: 0 }} // Animate to: visible and in place
+          transition={{ duration: 1, ease: "easeOut" }} // Animation settings
+          viewport={{ once: true, amount: 0.02 }} // Trigger animation when 2% in view, only once
+          className="relative"
+        >
+          <div className="flex flex-col">
+            <h2 className="mb-7 font-serif text-2xl font-medium md:text-4xl md:font-normal">
+              State Management & Data Handling
+            </h2>
+            <div className="bg-primary/10 flex h-[80vh] items-center justify-center rounded-xl p-20">
+              <video
+                autoPlay
+                loop
+                muted
+                playsInline
+                preload="metadata"
+                poster="/videos/plan-it/plan-it-demo-placeholder.png"
+                className="h-auto w-auto rounded-xl shadow-xl"
+              >
+                <source
+                  src="/videos/plan-it/plan-it-demo.mp4"
+                  type="video/mp4"
+                />
+              </video>
+            </div>
+            <motion.div
+              initial={{ opacity: 0, y: 50 }} // Initial state: hidden and slightly down
+              whileInView={{ opacity: 1, y: 0 }} // Animate to: visible and in place
+              transition={{ duration: 1, ease: "easeOut" }} // Animation settings
+              viewport={{ once: true, amount: 0.02 }} // Trigger animation when 2% in view, only once
+              className="mt-10 flex justify-between gap-10"
+            >
+              <div className="top-24 space-y-3 self-start text-base md:sticky md:w-1/2 md:text-lg">
+                <p>
+                  Travel plans are stored in{" "}
+                  <span className="text-primary">localStorage</span> using
+                  .getItem() and .setItem() to persist data.
+                </p>
+                <p>
+                  <span className="text-primary">useState</span> manages the
+                  component’s state and updates the display whenever the data
+                  changes.
+                </p>
+                <p>
+                  Together, these technologies enable{" "}
+                  <span className="text-primary">
+                    Create, Read, Update, and Delete (CRUD)
+                  </span>{" "}
+                  operations on the travel plans.
+                </p>
+              </div>
+              <div className="flex flex-col gap-8 md:w-1/2">
+                <div className="overflow-hidden rounded-xl shadow-2xl shadow-black/30">
+                  <Image src={Snippet01} alt="snippet01" placeholder="blur" />
+                </div>
+                <div className="overflow-hidden rounded-xl shadow-2xl shadow-black/30">
+                  <Image src={Snippet02} alt="snippet02" placeholder="blur" />
+                </div>
+              </div>
+            </motion.div>
+          </div>
+        </motion.section>
+        <SectionDivider />
+        <motion.section
+          initial={{ opacity: 0, y: 50 }} // Initial state: hidden and slightly down
+          whileInView={{ opacity: 1, y: 0 }} // Animate to: visible and in place
+          transition={{ duration: 1, ease: "easeOut" }} // Animation settings
+          viewport={{ once: true, amount: 0.02 }} // Trigger animation when 2% in view, only once
+          className="relative"
+        >
+          <div className="flex flex-col">
+            <h2 className="mb-8 font-serif text-2xl font-medium md:text-4xl md:font-normal">
+              API Integration: Weather & Location
+            </h2>
+            <motion.div
+              initial={{ opacity: 0, y: 50 }} // Initial state: hidden and slightly down
+              whileInView={{ opacity: 1, y: 0 }} // Animate to: visible and in place
+              transition={{ duration: 1, ease: "easeOut" }} // Animation settings
+              viewport={{ once: true, amount: 0.02 }} // Trigger animation when 2% in view, only once
+              className="flex justify-between gap-16"
+            >
+              <div className="flex flex-col gap-8 md:w-1/2">
+                <div className="bg-primary/10 flex h-50 items-center justify-center rounded-xl p-8">
+                  <video
+                    autoPlay
+                    loop
+                    muted
+                    playsInline
+                    preload="metadata"
+                    poster="/videos/plan-it/plan-it-api-placeholder.png"
+                    className="h-auto w-auto rounded-xl shadow-xl"
+                  >
+                    <source
+                      src="/videos/plan-it/plan-it-api.mp4"
+                      type="video/mp4"
+                    />
+                  </video>
+                </div>
+                <div className="overflow-hidden rounded-xl shadow-2xl shadow-black/30">
+                  <Image src={Snippet03} alt="snippet03" placeholder="blur" />
+                </div>
+              </div>
+              <div className="top-24 space-y-3 self-start text-base md:sticky md:w-1/2 md:text-lg">
+                <p>
+                  The application integrates the{" "}
+                  <a
+                    href="https://open-meteo.com/"
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    className="text-primary hover:text-primary/70 group duration-300"
+                  >
+                    Open-Meteo{" "}
+                    <span className="inline-block transition-transform group-hover:translate-x-0.5 group-hover:-translate-y-0.5">
+                      ↗
+                    </span>
+                  </a>{" "}
+                  and{" "}
+                  <a
+                    href="https://www.bigdatacloud.com/"
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    className="text-primary hover:text-primary/70 group duration-300"
+                  >
+                    BigDataCloud{" "}
+                    <span className="inline-block transition-transform group-hover:translate-x-0.5 group-hover:-translate-y-0.5">
+                      ↗
+                    </span>
+                  </a>{" "}
+                  APIs, with fetched data stored in useState for dynamic UI
+                  updates.
+                </p>
+                <p>
+                  <span className="text-primary">useEffect</span> ensures that
+                  weather and location information is updated only when the
+                  location changes, avoiding unnecessary API requests.
+                </p>
+              </div>
+            </motion.div>
+          </div>
+        </motion.section>
+        <SectionDivider />
+        <motion.section
+          initial={{ opacity: 0, y: 50 }} // Initial state: hidden and slightly down
+          whileInView={{ opacity: 1, y: 0 }} // Animate to: visible and in place
+          transition={{ duration: 1, ease: "easeOut" }} // Animation settings
+          viewport={{ once: true, amount: 0.02 }} // Trigger animation when 2% in view, only once
+        >
+          <h2 className="mb-7 font-serif text-2xl font-medium md:text-4xl md:font-normal">
+            Third-Party Libraries Used
+          </h2>
+          <div className="flex flex-col gap-18 md:flex-row md:justify-between">
+            <div className="flex flex-col items-center md:w-1/3">
+              <p className="mb-5 text-lg md:text-xl">PDF Export via jsPDF</p>
+              <div className="bg-primary/10 flex h-90 w-full items-center justify-center rounded-xl p-8">
+                <Image
+                  src={Pdf}
+                  alt="PDF export via jsPDF"
+                  className="h-auto w-auto rounded-xl shadow-xl"
+                />
+              </div>
+            </div>
+            <div className="flex flex-col items-center md:w-1/3">
+              <p className="mb-5 text-lg md:text-xl">
+                Date Picker from react-date-range
+              </p>
+              <div className="bg-primary/10 flex h-90 w-full items-center justify-center rounded-xl p-8">
+                <Image
+                  src={DatePicker}
+                  alt="date picker"
+                  className="h-auto w-auto rounded-xl shadow-xl"
+                />
+              </div>
+            </div>
+            <div className="flex flex-col items-center md:w-1/3">
+              <p className="mb-5 text-lg md:text-xl">
+                Customized Bootstrap Dropdown
+              </p>
+              <div className="bg-primary/10 flex h-90 w-full items-center justify-center rounded-xl p-8">
+                <Image
+                  src={Dropdown}
+                  alt="customized bootstrap dropdown"
+                  className="h-auto w-auto rounded-xl shadow-xl"
+                />
+              </div>
+            </div>
+          </div>
+        </motion.section>
+        <SectionDivider />
+        <motion.section
+          initial={{ opacity: 0, y: 50 }} // Initial state: hidden and slightly down
+          whileInView={{ opacity: 1, y: 0 }} // Animate to: visible and in place
+          transition={{ duration: 1, ease: "easeOut" }} // Animation settings
+          viewport={{ once: true, amount: 0.02 }} // Trigger animation when 2% in view, only once
+          className="flex flex-col items-center"
+        >
+          <Image
+            src={FinalMockupImg}
+            alt="final mockup"
+            placeholder="blur"
+            className="h-[80vh] w-auto rounded-xl object-cover shadow-2xl shadow-black/5 md:h-[90vh]"
+            unoptimized
+          />
+        </motion.section>
+      </section>
+    </main>
+  );
+}

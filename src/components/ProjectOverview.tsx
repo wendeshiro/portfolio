@@ -49,15 +49,19 @@ export default function ProjectOverview({
           ))}
 
           {links.length > 0 && (
-            <div className="text-primary mt-2 flex flex-wrap gap-8 text-lg">
+            <div className="text-primary mt-2 flex flex-wrap gap-8 text-base md:text-lg">
               {links.map((link, index) => (
                 <a
                   key={index}
                   href={link.url}
                   target="_blank"
                   rel="noopener noreferrer"
+                  className="group"
                 >
-                  {link.label} →
+                  {link.label}{" "}
+                  <span className="inline-block transition-transform duration-300 group-hover:translate-x-0.5 group-hover:-translate-y-0.5">
+                    ↗
+                  </span>
                 </a>
               ))}
             </div>
