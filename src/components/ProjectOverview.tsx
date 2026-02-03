@@ -12,18 +12,25 @@ export interface ProjectLink {
 }
 
 interface ProjectOverviewProps {
-  description?: ReactNode;
+  primaryText?: ReactNode;
+  secondaryText?: ReactNode;
   details?: ProjectDetail[];
   links?: ProjectLink[];
 }
 
 export default function ProjectOverview({
-  description,
+  primaryText,
+  secondaryText,
   details = [],
   links = [],
 }: ProjectOverviewProps) {
   // If no content is provided, render nothing
-  if (!description && details.length === 0 && links.length === 0) {
+  if (
+    !primaryText &&
+    !secondaryText &&
+    details.length === 0 &&
+    links.length === 0
+  ) {
     return null;
   }
 
@@ -38,7 +45,14 @@ export default function ProjectOverview({
         Overview
       </h2>
       <div className="flex flex-col gap-8 md:flex-row md:justify-between md:gap-20">
-        <div className="flex flex-col gap-5 md:w-3/5">{description}</div>
+        <div className="flex flex-col gap-5 md:w-3/5">
+          <div className="text-xl leading-relaxed md:text-2xl">
+            {primaryText}
+          </div>
+          <div className="flex flex-col gap-3 text-base text-gray-600 md:text-lg">
+            {secondaryText}
+          </div>
+        </div>
 
         <div className="flex flex-col gap-4 md:w-2/5">
           {details.map((item, index) => (

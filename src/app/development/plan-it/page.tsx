@@ -32,20 +32,22 @@ export default function PlanIt() {
       />
       <section className="mx-auto flex max-w-7xl flex-col px-5">
         <ProjectOverview
-          description={
+          primaryText={
+            <p>
+              Plan-it is a{" "}
+              <span className="text-primary">desktop web application</span>{" "}
+              created to help travelers organize trips in a clear and reliable
+              way. The project addresses the need for a single place where{" "}
+              <span className="text-primary">
+                itineraries, weather information, and preparation tasks
+              </span>{" "}
+              can be viewed together, reducing confusion and missed details
+              during trip planning.
+            </p>
+          }
+          secondaryText={
             <>
-              <p className="text-xl leading-relaxed md:text-2xl">
-                Plan-it is a{" "}
-                <span className="text-primary">desktop web application</span>{" "}
-                created to help travelers organize trips in a clear and reliable
-                way. The project addresses the need for a single place where{" "}
-                <span className="text-primary">
-                  itineraries, weather information, and preparation tasks
-                </span>{" "}
-                can be viewed together, reducing confusion and missed details
-                during trip planning.
-              </p>
-              <p className="text-base text-gray-600 md:text-lg">
+              <p>
                 The main challenge was presenting essential information—such as
                 schedules, forecasts, and checklists—in a way that feels simple
                 and approachable. Built with React and integrated with external
@@ -54,7 +56,7 @@ export default function PlanIt() {
                 dependable planning experience that supports confident travel
                 preparation.
               </p>
-              <p className="text-base text-gray-600 md:text-lg">
+              <p>
                 *This is a concept project created for educational purposes.
               </p>
             </>
@@ -213,10 +215,10 @@ export default function PlanIt() {
                     href="https://open-meteo.com/"
                     target="_blank"
                     rel="noopener noreferrer"
-                    className="text-primary hover:text-primary/70 group duration-300"
+                    className="text-primary hover:text-primary/70 group"
                   >
                     Open-Meteo{" "}
-                    <span className="inline-block transition-transform group-hover:translate-x-0.5 group-hover:-translate-y-0.5">
+                    <span className="inline-block transition-transform duration-300 group-hover:translate-x-0.5 group-hover:-translate-y-0.5">
                       ↗
                     </span>
                   </a>{" "}
@@ -225,10 +227,10 @@ export default function PlanIt() {
                     href="https://www.bigdatacloud.com/"
                     target="_blank"
                     rel="noopener noreferrer"
-                    className="text-primary hover:text-primary/70 group duration-300"
+                    className="text-primary hover:text-primary/70 group"
                   >
                     BigDataCloud{" "}
-                    <span className="inline-block transition-transform group-hover:translate-x-0.5 group-hover:-translate-y-0.5">
+                    <span className="inline-block transition-transform duration-300 group-hover:translate-x-0.5 group-hover:-translate-y-0.5">
                       ↗
                     </span>
                   </a>{" "}
@@ -256,7 +258,9 @@ export default function PlanIt() {
           </h2>
           <div className="flex flex-col gap-18 md:flex-row md:justify-between">
             <div className="flex flex-col items-center md:w-1/3">
-              <p className="mb-5 text-lg md:text-xl">PDF Export via jsPDF</p>
+              <p className="mb-5 text-lg md:text-xl">
+                PDF Export via <span className="text-primary">jsPDF</span>
+              </p>
               <div className="bg-primary/10 flex h-90 w-full items-center justify-center rounded-xl p-8">
                 <Image
                   src={Pdf}
@@ -268,7 +272,8 @@ export default function PlanIt() {
             </div>
             <div className="flex flex-col items-center md:w-1/3">
               <p className="mb-5 text-lg md:text-xl">
-                Date Picker from react-date-range
+                Date Picker from{" "}
+                <span className="text-primary">react-date-range</span>
               </p>
               <div className="bg-primary/10 flex h-90 w-full items-center justify-center rounded-xl p-8">
                 <Image
@@ -281,7 +286,8 @@ export default function PlanIt() {
             </div>
             <div className="flex flex-col items-center md:w-1/3">
               <p className="mb-5 text-lg md:text-xl">
-                Customized Bootstrap Dropdown
+                Customized <span className="text-primary">Bootstrap</span>{" "}
+                Dropdown
               </p>
               <div className="bg-primary/10 flex h-90 w-full items-center justify-center rounded-xl p-8">
                 <Image
