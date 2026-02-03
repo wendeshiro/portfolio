@@ -94,7 +94,7 @@ export default function PlanIt() {
             <h2 className="mb-7 font-serif text-2xl font-medium md:text-4xl md:font-normal">
               State Management & Data Handling
             </h2>
-            <div className="bg-primary/10 flex h-[80vh] items-center justify-center rounded-xl p-20">
+            <div className="bg-primary/10 flex h-[35vh] items-center justify-center rounded-xl p-3 md:h-[80vh] md:p-20">
               <video
                 autoPlay
                 loop
@@ -108,6 +108,7 @@ export default function PlanIt() {
                   src="/videos/plan-it/plan-it-demo.mp4"
                   type="video/mp4"
                 />
+                222
               </video>
             </div>
             <motion.div
@@ -115,7 +116,7 @@ export default function PlanIt() {
               whileInView={{ opacity: 1, y: 0 }} // Animate to: visible and in place
               transition={{ duration: 1, ease: "easeOut" }} // Animation settings
               viewport={{ once: true, amount: 0.02 }} // Trigger animation when 2% in view, only once
-              className="mt-10 flex justify-between gap-10"
+              className="mt-10 flex flex-col gap-8 md:flex-row md:justify-between md:gap-10"
             >
               <div className="top-24 space-y-3 self-start text-base md:sticky md:w-1/2 md:text-lg">
                 <p>
@@ -174,10 +175,10 @@ export default function PlanIt() {
               whileInView={{ opacity: 1, y: 0 }} // Animate to: visible and in place
               transition={{ duration: 1, ease: "easeOut" }} // Animation settings
               viewport={{ once: true, amount: 0.02 }} // Trigger animation when 2% in view, only once
-              className="flex justify-between gap-16"
+              className="flex flex-col gap-8 md:flex-row md:justify-between md:gap-16"
             >
               <div className="flex flex-col gap-8 md:w-1/2">
-                <div className="bg-primary/10 flex h-50 items-center justify-center rounded-xl p-8">
+                <div className="bg-primary/10 flex h-30 items-center justify-center rounded-xl p-3 md:h-50 md:p-8">
                   <video
                     autoPlay
                     loop
@@ -202,7 +203,7 @@ export default function PlanIt() {
                   />
                 </div>
               </div>
-              <div className="top-24 space-y-3 self-start text-base md:sticky md:w-1/2 md:text-lg">
+              <div className="top-24 order-first space-y-3 self-start text-base md:sticky md:order-0 md:w-1/2 md:text-lg">
                 <p>
                   The application integrates the{" "}
                   <a
@@ -250,9 +251,9 @@ export default function PlanIt() {
           <h2 className="mb-7 font-serif text-2xl font-medium md:text-4xl md:font-normal">
             Third-Party Libraries Used
           </h2>
-          <div className="flex flex-col gap-18 md:flex-row md:justify-between">
+          <div className="flex flex-col gap-10 md:flex-row md:justify-between md:gap-18">
             <div className="flex flex-col items-center md:w-1/3">
-              <p className="mb-5 text-lg md:text-xl">
+              <p className="mb-3 text-lg md:mb-5 md:text-xl">
                 PDF Export via{" "}
                 <a
                   href="https://www.npmjs.com/package/jspdf"
@@ -266,7 +267,7 @@ export default function PlanIt() {
                   </span>
                 </a>
               </p>
-              <div className="bg-primary/10 flex h-90 w-full items-center justify-center rounded-xl p-8">
+              <div className="bg-primary/10 flex h-53 w-full items-center justify-center rounded-xl p-3 md:h-90 md:p-8">
                 <Image
                   src={Pdf}
                   alt="PDF export via jsPDF"
@@ -276,7 +277,7 @@ export default function PlanIt() {
               </div>
             </div>
             <div className="flex flex-col items-center md:w-1/3">
-              <p className="mb-5 text-lg md:text-xl">
+              <p className="mb-3 text-lg md:mb-5 md:text-xl">
                 Date Picker from{" "}
                 <a
                   href="https://www.npmjs.com/package/react-date-range"
@@ -290,7 +291,7 @@ export default function PlanIt() {
                   </span>
                 </a>
               </p>
-              <div className="bg-primary/10 flex h-90 w-full items-center justify-center rounded-xl p-8">
+              <div className="bg-primary/10 flex h-90 w-full items-center justify-center rounded-xl p-3 md:p-8">
                 <Image
                   src={DatePicker}
                   alt="date picker"
@@ -300,7 +301,7 @@ export default function PlanIt() {
               </div>
             </div>
             <div className="flex flex-col items-center md:w-1/3">
-              <p className="mb-5 text-lg md:text-xl">
+              <p className="mb-3 text-lg md:mb-5 md:text-xl">
                 Customized{" "}
                 <a
                   href="https://react-bootstrap.netlify.app/docs/components/dropdowns"
@@ -315,7 +316,7 @@ export default function PlanIt() {
                 </a>
                 Dropdown
               </p>
-              <div className="bg-primary/10 flex h-90 w-full items-center justify-center rounded-xl p-8">
+              <div className="bg-primary/10 flex h-80 w-full items-center justify-center rounded-xl p-3 md:h-90 md:p-8">
                 <Image
                   src={Dropdown}
                   alt="customized bootstrap dropdown"
