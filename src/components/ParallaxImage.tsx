@@ -1,19 +1,22 @@
 "use client";
 import { useRef } from "react";
-import Image, { ImageProps } from "next/image";
+import Image, { StaticImageData } from "next/image";
 import { motion, useScroll, useTransform } from "framer-motion";
 
-interface ParallaxImageProps extends Omit<ImageProps, "className"> {
-  className?: string; // Class for the container
-  imageClassName?: string; // Class for the image itself
+interface ParallaxImageProps {
+  src: StaticImageData | string;
+  alt?: string;
+  unoptimized?: boolean;
+  priority?: boolean;
+  placeholder?: "blur" | "empty";
 }
 
 export default function ParallaxImage({
   src,
   alt,
-  className = "h-160",
-  imageClassName = "object-cover",
-  ...props
+  unoptimized = true,
+  priority = true,
+  placeholder = "blur",
 }: ParallaxImageProps) {
   const containerRef = useRef<HTMLDivElement>(null);
   const { scrollYProgress } = useScroll({
@@ -26,7 +29,7 @@ export default function ParallaxImage({
   return (
     <motion.div
       ref={containerRef}
-      className={`relative w-full overflow-hidden ${className}`}
+      className={`relative mt-6 mb-12 h-86 w-full overflow-hidden md:h-160 2xl:h-[85vh]`}
       initial={{ clipPath: "inset(0 0 100% 0)" }}
       whileInView={{ clipPath: "inset(0% 0 0 0)" }}
       viewport={{ once: true, amount: 0 }}
@@ -35,12 +38,12 @@ export default function ParallaxImage({
       <motion.div style={{ y }} className="relative -top-[20%] h-[140%] w-full">
         <Image
           src={src}
-          alt={alt}
+          alt={alt || "Parallax Image"}
           fill
-          priority
-          placeholder="blur"
-          className={imageClassName}
-          {...props}
+          priority={priority}
+          placeholder={placeholder}
+          unoptimized={unoptimized}
+          className="object-cover"
         />
       </motion.div>
     </motion.div>

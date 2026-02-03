@@ -75,36 +75,31 @@ export default function CanDesign() {
           description="A refreshing visual identity for a contemporary fruit tea collection."
         />
       </header>
-      <ParallaxImage
-        src={HeroImg}
-        alt="Orchard Brew Can Design hero"
-        className="mt-6 mb-12 h-86 md:h-160 2xl:h-[85vh]"
-        unoptimized
-      />
+      <ParallaxImage src={HeroImg} alt="Orchard Brew Can Design hero" />
       <section className="mx-auto flex max-w-7xl flex-col px-5">
         <ProjectOverview
-          description={
+          primaryText={
+            <p>
+              Orchard Brew is a contemporary{" "}
+              <span className="text-primary">fruit tea series</span> for
+              on-the-go urban professionals, bringing together the authentic
+              flavors of real tea and fruit in a modern, convenient format. The
+              requirement was to develop a{" "}
+              <span className="text-primary">cohesive visual identity</span> for
+              three distinct flavors—Peach Oolong, Orange Jasmine, and Apple
+              Black Tea—that feels both vibrant and natural.
+            </p>
+          }
+          secondaryText={
             <>
-              <p className="text-xl leading-relaxed md:text-2xl">
-                Orchard Brew is a contemporary{" "}
-                <span className="text-primary">fruit tea series</span> for
-                on-the-go urban professionals, bringing together the authentic
-                flavors of real tea and fruit in a modern, convenient format.
-                The requirement was to develop a{" "}
-                <span className="text-primary">cohesive visual identity</span>{" "}
-                for three distinct flavors—Peach Oolong, Orange Jasmine, and
-                Apple Black Tea—that feels both vibrant and natural.
-              </p>
-              <p className="text-base text-gray-600 md:text-lg">
+              <p>
                 A minimalist layout was employed to ensure immediate flavor
                 recognition in a crowded market. This approach creates a
                 striking shelf presence, effectively communicating the brand’s
                 commitment to fresh, botanical-inspired ingredients for
                 health-conscious consumers.
               </p>
-              <p className="text-base text-gray-600 md:text-lg">
-                *This is a concept work created for educational purposes.
-              </p>
+              <p>*This is a concept work created for educational purposes.</p>
             </>
           }
           details={[
