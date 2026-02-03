@@ -125,9 +125,9 @@ export default function PlanIt() {
                   .getItem() and .setItem() to persist data.
                 </p>
                 <p>
-                  <span className="text-primary">useState</span> manages the
-                  component’s state and updates the display whenever the data
-                  changes.
+                  The <span className="text-primary">useState</span> hook
+                  manages the component’s state and updates the display whenever
+                  the data changes.
                 </p>
                 <p>
                   Together, these technologies enable{" "}
@@ -233,9 +233,9 @@ export default function PlanIt() {
                   updates.
                 </p>
                 <p>
-                  <span className="text-primary">useEffect</span> ensures that
-                  weather and location information is updated only when the
-                  location changes, avoiding unnecessary API requests.
+                  By using <span className="text-primary">useEffect</span>, the
+                  application updates weather and location information only when
+                  the location changes, avoiding unnecessary API requests.
                 </p>
               </div>
             </motion.div>
