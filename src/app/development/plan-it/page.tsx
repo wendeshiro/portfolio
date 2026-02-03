@@ -142,10 +142,20 @@ export default function PlanIt() {
               </div>
               <div className="flex flex-col gap-8 md:w-1/2">
                 <div className="overflow-hidden rounded-xl shadow-2xl shadow-black/30">
-                  <Image src={Snippet01} alt="snippet01" placeholder="blur" />
+                  <Image
+                    src={Snippet01}
+                    alt="snippet01"
+                    placeholder="blur"
+                    unoptimized
+                  />
                 </div>
                 <div className="overflow-hidden rounded-xl shadow-2xl shadow-black/30">
-                  <Image src={Snippet02} alt="snippet02" placeholder="blur" />
+                  <Image
+                    src={Snippet02}
+                    alt="snippet02"
+                    placeholder="blur"
+                    unoptimized
+                  />
                 </div>
               </div>
             </motion.div>
@@ -188,7 +198,12 @@ export default function PlanIt() {
                   </video>
                 </div>
                 <div className="overflow-hidden rounded-xl shadow-2xl shadow-black/30">
-                  <Image src={Snippet03} alt="snippet03" placeholder="blur" />
+                  <Image
+                    src={Snippet03}
+                    alt="snippet03"
+                    placeholder="blur"
+                    unoptimized
+                  />
                 </div>
               </div>
               <div className="top-24 space-y-3 self-start text-base md:sticky md:w-1/2 md:text-lg">
@@ -247,6 +262,7 @@ export default function PlanIt() {
                   src={Pdf}
                   alt="PDF export via jsPDF"
                   className="h-auto w-auto rounded-xl shadow-xl"
+                  placeholder="blur"
                 />
               </div>
             </div>
@@ -259,6 +275,7 @@ export default function PlanIt() {
                   src={DatePicker}
                   alt="date picker"
                   className="h-auto w-auto rounded-xl shadow-xl"
+                  placeholder="blur"
                 />
               </div>
             </div>
@@ -271,6 +288,7 @@ export default function PlanIt() {
                   src={Dropdown}
                   alt="customized bootstrap dropdown"
                   className="h-auto w-auto rounded-xl shadow-xl"
+                  placeholder="blur"
                 />
               </div>
             </div>
