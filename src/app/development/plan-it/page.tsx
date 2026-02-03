@@ -94,7 +94,7 @@ export default function PlanIt() {
             <h2 className="mb-7 font-serif text-2xl font-medium md:text-4xl md:font-normal">
               State Management & Data Handling
             </h2>
-            <div className="bg-primary/10 flex h-[35vh] items-center justify-center rounded-xl p-3 md:h-[80vh] md:p-20">
+            <div className="bg-primary/10 flex h-auto items-center justify-center overflow-hidden rounded-xl p-4 md:h-[80vh] md:p-20">
               <video
                 autoPlay
                 loop
@@ -102,13 +102,12 @@ export default function PlanIt() {
                 playsInline
                 preload="metadata"
                 poster="/videos/plan-it/plan-it-demo-placeholder.png"
-                className="h-auto w-auto rounded-xl shadow-xl"
+                className="w-full rounded-xl shadow-xl"
               >
                 <source
                   src="/videos/plan-it/plan-it-demo.mp4"
                   type="video/mp4"
                 />
-                222
               </video>
             </div>
             <motion.div
@@ -178,7 +177,7 @@ export default function PlanIt() {
               className="flex flex-col gap-8 md:flex-row md:justify-between md:gap-16"
             >
               <div className="flex flex-col gap-8 md:w-1/2">
-                <div className="bg-primary/10 flex h-30 items-center justify-center rounded-xl p-3 md:h-50 md:p-8">
+                <div className="bg-primary/10 flex h-auto items-center justify-center overflow-hidden rounded-xl p-4 md:h-50 md:p-8">
                   <video
                     autoPlay
                     loop
@@ -186,7 +185,7 @@ export default function PlanIt() {
                     playsInline
                     preload="metadata"
                     poster="/videos/plan-it/plan-it-api-placeholder.png"
-                    className="h-auto w-auto rounded-xl shadow-xl"
+                    className="w-full rounded-xl shadow-xl"
                   >
                     <source
                       src="/videos/plan-it/plan-it-api.mp4"
@@ -267,7 +266,7 @@ export default function PlanIt() {
                   </span>
                 </a>
               </p>
-              <div className="bg-primary/10 flex h-53 w-full items-center justify-center rounded-xl p-3 md:h-90 md:p-8">
+              <div className="bg-primary/10 flex h-53 w-full items-center justify-center overflow-hidden rounded-xl p-3 md:h-90 md:p-8">
                 <Image
                   src={Pdf}
                   alt="PDF export via jsPDF"
@@ -291,7 +290,7 @@ export default function PlanIt() {
                   </span>
                 </a>
               </p>
-              <div className="bg-primary/10 flex h-90 w-full items-center justify-center rounded-xl p-3 md:p-8">
+              <div className="bg-primary/10 flex h-90 w-full items-center justify-center overflow-hidden rounded-xl p-3 md:p-8">
                 <Image
                   src={DatePicker}
                   alt="date picker"
@@ -316,7 +315,7 @@ export default function PlanIt() {
                 </a>
                 Dropdown
               </p>
-              <div className="bg-primary/10 flex h-80 w-full items-center justify-center rounded-xl p-3 md:h-90 md:p-8">
+              <div className="bg-primary/10 flex h-80 w-full items-center justify-center overflow-hidden rounded-xl p-3 md:h-90 md:p-8">
                 <Image
                   src={Dropdown}
                   alt="customized bootstrap dropdown"
