@@ -75,12 +75,7 @@ export default function CanDesign() {
           description="A refreshing visual identity for a contemporary fruit tea collection."
         />
       </header>
-      <ParallaxImage
-        src={HeroImg}
-        alt="Orchard Brew Can Design hero"
-        className="mt-6 mb-12 h-86 md:h-160 2xl:h-[85vh]"
-        unoptimized
-      />
+      <ParallaxImage src={HeroImg} alt="Orchard Brew Can Design hero" />
       <section className="mx-auto flex max-w-7xl flex-col px-5">
         <ProjectOverview
           primaryText={
