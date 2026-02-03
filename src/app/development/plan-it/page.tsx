@@ -4,14 +4,13 @@ import ParallaxImage from "@/components/ParallaxImage";
 import ProjectOverview from "@/components/ProjectOverview";
 import SectionDivider from "@/components/SectionDivider";
 import Image from "next/image";
-import HeroImg from "@/images/design/can-design/hero.webp";
+import HeroImg from "@/images/development/plan-it/plan-it-hero.webp";
 import Snippet01 from "@/images/development/plan-it/snippet-01.png";
 import Snippet02 from "@/images/development/plan-it/snippet-02.png";
 import Snippet03 from "@/images/development/plan-it/snippet-03.png";
 import Pdf from "@/images/development/plan-it/pdf.png";
 import DatePicker from "@/images/development/plan-it/date-picker.jpg";
 import Dropdown from "@/images/development/plan-it/dropdown.png";
-import FinalMockupImg from "@/images/design/can-design/final-mockup.webp";
 import { motion } from "framer-motion";
 
 export default function PlanIt() {
@@ -259,7 +258,18 @@ export default function PlanIt() {
           <div className="flex flex-col gap-18 md:flex-row md:justify-between">
             <div className="flex flex-col items-center md:w-1/3">
               <p className="mb-5 text-lg md:text-xl">
-                PDF Export via <span className="text-primary">jsPDF</span>
+                PDF Export via{" "}
+                <a
+                  href="https://www.npmjs.com/package/jspdf"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="text-primary hover:text-primary/70 group"
+                >
+                  jsPDF
+                  <span className="inline-block transition-transform duration-300 group-hover:translate-x-0.5 group-hover:-translate-y-0.5">
+                    ↗
+                  </span>
+                </a>
               </p>
               <div className="bg-primary/10 flex h-90 w-full items-center justify-center rounded-xl p-8">
                 <Image
@@ -273,7 +283,17 @@ export default function PlanIt() {
             <div className="flex flex-col items-center md:w-1/3">
               <p className="mb-5 text-lg md:text-xl">
                 Date Picker from{" "}
-                <span className="text-primary">react-date-range</span>
+                <a
+                  href="https://www.npmjs.com/package/react-date-range"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="text-primary hover:text-primary/70 group"
+                >
+                  react-date-range
+                  <span className="inline-block transition-transform duration-300 group-hover:translate-x-0.5 group-hover:-translate-y-0.5">
+                    ↗
+                  </span>
+                </a>
               </p>
               <div className="bg-primary/10 flex h-90 w-full items-center justify-center rounded-xl p-8">
                 <Image
@@ -286,7 +306,18 @@ export default function PlanIt() {
             </div>
             <div className="flex flex-col items-center md:w-1/3">
               <p className="mb-5 text-lg md:text-xl">
-                Customized <span className="text-primary">Bootstrap</span>{" "}
+                Customized{" "}
+                <a
+                  href="https://react-bootstrap.netlify.app/docs/components/dropdowns"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="text-primary hover:text-primary/70 group"
+                >
+                  React Bootstrap
+                  <span className="inline-block transition-transform duration-300 group-hover:translate-x-0.5 group-hover:-translate-y-0.5">
+                    ↗
+                  </span>{" "}
+                </a>
                 Dropdown
               </p>
               <div className="bg-primary/10 flex h-90 w-full items-center justify-center rounded-xl p-8">
@@ -299,22 +330,6 @@ export default function PlanIt() {
               </div>
             </div>
           </div>
-        </motion.section>
-        <SectionDivider />
-        <motion.section
-          initial={{ opacity: 0, y: 50 }} // Initial state: hidden and slightly down
-          whileInView={{ opacity: 1, y: 0 }} // Animate to: visible and in place
-          transition={{ duration: 1, ease: "easeOut" }} // Animation settings
-          viewport={{ once: true, amount: 0.02 }} // Trigger animation when 2% in view, only once
-          className="flex flex-col items-center"
-        >
-          <Image
-            src={FinalMockupImg}
-            alt="final mockup"
-            placeholder="blur"
-            className="h-[80vh] w-auto rounded-xl object-cover shadow-2xl shadow-black/5 md:h-[90vh]"
-            unoptimized
-          />
         </motion.section>
       </section>
     </main>
