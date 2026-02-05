@@ -41,6 +41,7 @@ export default function ProjectOverview({
       whileInView={{ opacity: 1, y: 0 }} // Animate to: visible and in place
       transition={{ duration: 1, ease: "easeOut" }} // Animation settings
       viewport={{ once: true, amount: 0.3 }} // Trigger animation when 30% in view, only once
+      id="overview"
     >
       <h2 className="mb-6 font-serif text-2xl font-medium md:text-4xl md:font-normal">
         Overview

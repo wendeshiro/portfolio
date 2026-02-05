@@ -26,7 +26,10 @@ export default function Navbar() {
   const handleLinkClick = () => setIsOpen(false); // close menu on link click
 
   return (
-    <nav className="bg-background/60 fixed top-0 right-0 left-0 z-50 backdrop-blur-sm">
+    <motion.nav
+      layoutScroll
+      className="bg-background/60 fixed top-0 right-0 left-0 z-50 backdrop-blur-sm"
+    >
       <div className="mx-auto flex h-14 max-w-5xl items-center justify-between px-5 md:justify-center">
         <div className="md:hidden">
           <Link href="/">
@@ -128,7 +131,7 @@ export default function Navbar() {
           </motion.div>
         )}
       </AnimatePresence>
-    </nav>
+    </motion.nav>
   );
 }
 
@@ -144,16 +147,40 @@ function NavItem({
   const isActive =
     item.path === "/" ? pathname === "/" : pathname.startsWith(item.path);
 
-  let activeClass = "text-primary";
-  if (item.name === "DESIGN") activeClass = "text-secondary";
-  if (item.name === "MARKETING") activeClass = "text-tertiary";
+  // Determine brand color based on the item name
+  let activeTextClass = "text-primary";
+  let activeBgClass = "bg-primary/50";
+
+  if (item.name === "DESIGN") {
+    activeTextClass = "text-secondary";
+    activeBgClass = "bg-secondary/50";
+  } else if (item.name === "MARKETING") {
+    activeTextClass = "text-tertiary";
+    activeBgClass = "bg-tertiary/50";
+  }
 
   return (
     <Link
       href={item.path}
-      className={`font-medium tracking-widest transition-colors ${mobile ? "block py-2 text-base" : "text-sm"} ${isActive ? activeClass : "text-gray-600 hover:text-gray-700"} `}
+      className={`group relative font-medium tracking-widest transition-colors duration-300 ${
+        mobile ? "block py-2 text-base" : "text-sm"
+      } ${isActive ? activeTextClass : "hover:text-foreground text-gray-600"}`}
     >
       {item.name}
+
+      {/* Active State Animation (Sliding Underline) */}
+      {isActive && !mobile && (
+        <motion.span
+          layoutId="navbar-active"
+          className={`absolute right-0 -bottom-1 left-0 h-px ${activeBgClass}`}
+          transition={{ type: "spring", stiffness: 350, damping: 40 }}
+        />
+      )}
+
+      {/* Hover Underline (for non-active items) */}
+      {!isActive && !mobile && (
+        <span className="absolute -bottom-1 left-1/2 h-px w-0 -translate-x-1/2 bg-gray-500 transition-all duration-300 group-hover:w-full" />
+      )}
     </Link>
   );
 }

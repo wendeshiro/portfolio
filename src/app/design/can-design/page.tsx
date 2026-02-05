@@ -24,6 +24,7 @@ import {
   // ContactShadows,
 } from "@react-three/drei";
 import FruitTeaCan from "@/components/FruitTeaCan";
+import ScrollSpyNav from "@/components/ScrollSpyNav";
 
 const FLAVORS = [
   {
@@ -75,6 +76,16 @@ export default function CanDesign() {
           description="A refreshing visual identity for a contemporary fruit tea collection."
         />
       </header>
+      <ScrollSpyNav
+        sections={[
+          { id: "overview", label: "Overview" },
+          { id: "labels", label: "Labels" },
+          {
+            id: "color-palette-typography",
+            label: "Color Palette & Typography",
+          },
+        ]}
+      />
       <ParallaxImage src={HeroImg} alt="Orchard Brew Can Design hero" />
       <section className="mx-auto flex max-w-7xl flex-col px-5">
         <ProjectOverview
@@ -215,7 +226,10 @@ export default function CanDesign() {
         >
           <div className="flex flex-col md:flex-row md:justify-between md:gap-18">
             <div className="top-24 space-y-6 self-start md:sticky md:w-2/5">
-              <h2 className="font-serif text-2xl font-medium md:text-4xl md:font-normal">
+              <h2
+                id="labels"
+                className="font-serif text-2xl font-medium md:text-4xl md:font-normal"
+              >
                 Labels
               </h2>
               <p className="text-base md:text-lg">
@@ -247,7 +261,10 @@ export default function CanDesign() {
           transition={{ duration: 1, ease: "easeOut" }} // Animation settings
           viewport={{ once: true, amount: 0.02 }} // Trigger animation when 2% in view, only once
         >
-          <h2 className="mb-6 font-serif text-2xl font-medium md:text-4xl md:font-normal">
+          <h2
+            id="color-palette-typography"
+            className="mb-6 font-serif text-2xl font-medium md:text-4xl md:font-normal"
+          >
             Color Palette & Typography
           </h2>
           <div className="flex flex-col gap-18 md:flex-row md:justify-between">

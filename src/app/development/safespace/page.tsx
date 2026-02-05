@@ -3,6 +3,7 @@ import ProjectTitle from "@/components/ProjectTitle";
 import ParallaxImage from "@/components/ParallaxImage";
 import ProjectOverview from "@/components/ProjectOverview";
 import SectionDivider from "@/components/SectionDivider";
+import ScrollSpyNav from "@/components/ScrollSpyNav";
 import Image from "next/image";
 import HeroImg from "@/images/development/plan-it/plan-it-hero.webp";
 import Snippet01 from "@/images/development/plan-it/snippet-01.png";
@@ -12,27 +13,23 @@ import Pdf from "@/images/development/plan-it/pdf.png";
 import DatePicker from "@/images/development/plan-it/date-picker.jpg";
 import Dropdown from "@/images/development/plan-it/dropdown.png";
 import { motion } from "framer-motion";
-import ScrollSpyNav from "@/components/ScrollSpyNav";
 
-export default function PlanIt() {
+export default function SafeSpace() {
   return (
     <main className="max-w-full py-16 md:py-36">
       <header className="mx-auto flex max-w-7xl flex-col px-5">
         <ProjectTitle
-          title="Plan-it: Trip Planning Web App"
+          title="SafeSpace: AI-Powered Safety Reporting"
           year={2025}
-          description="A desktop web app for organizing trips, tracking weather, and preparing with confidence."
+          description="Empowering women and gender-diverse tradespeople through anonymous AI reporting."
         />
       </header>
       <ScrollSpyNav
         sections={[
           { id: "overview", label: "Overview" },
-          { id: "state-management", label: "State Management & Data Handling" },
-          {
-            id: "api-integration",
-            label: "API Integration: Weather & Location",
-          },
-          { id: "third-party-libraries", label: "Third-Party Libraries Used" },
+          { id: "discovery-phase", label: "Discovery Phase" },
+          { id: "design-process", label: "Design Process" },
+          { id: "development-process", label: "Development Process" },
         ]}
       />
       <ParallaxImage src={HeroImg} alt="Plan-it Trip Planning Web App hero" />
@@ -96,6 +93,7 @@ export default function PlanIt() {
             },
           ]}
         />
+
         <SectionDivider />
         <motion.section
           initial={{ opacity: 0, y: 50 }} // Initial state: hidden and slightly down
@@ -106,8 +104,8 @@ export default function PlanIt() {
         >
           <div className="flex flex-col">
             <h2
-              id="state-management"
-              className="mb-7 font-serif text-2xl font-medium md:text-4xl md:font-normal"
+              className="mb-7 scroll-mt-32 font-serif text-2xl font-medium md:text-4xl md:font-normal"
+              id="discovery-phase"
             >
               State Management & Data Handling
             </h2>
@@ -185,8 +183,8 @@ export default function PlanIt() {
         >
           <div className="flex flex-col">
             <h2
-              id="api-integration"
-              className="mb-8 font-serif text-2xl font-medium md:text-4xl md:font-normal"
+              className="mb-8 scroll-mt-32 font-serif text-2xl font-medium md:text-4xl md:font-normal"
+              id="design-process"
             >
               API Integration: Weather & Location
             </h2>
@@ -273,8 +271,8 @@ export default function PlanIt() {
           viewport={{ once: true, amount: 0.02 }} // Trigger animation when 2% in view, only once
         >
           <h2
-            id="third-party-libraries"
-            className="mb-7 font-serif text-2xl font-medium md:text-4xl md:font-normal"
+            className="mb-7 scroll-mt-32 font-serif text-2xl font-medium md:text-4xl md:font-normal"
+            id="development-process"
           >
             Third-Party Libraries Used
           </h2>
