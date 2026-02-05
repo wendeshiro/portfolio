@@ -3,6 +3,7 @@ import ProjectTitle from "@/components/ProjectTitle";
 import ParallaxImage from "@/components/ParallaxImage";
 import ProjectOverview from "@/components/ProjectOverview";
 import SectionDivider from "@/components/SectionDivider";
+import ScrollSpyNav from "@/components/ScrollSpyNav";
 import Image from "next/image";
 import HeroImg from "@/images/development/plan-it/plan-it-hero.webp";
 import Snippet01 from "@/images/development/plan-it/snippet-01.png";
@@ -23,6 +24,14 @@ export default function SafeSpace() {
           description="Empowering women and gender-diverse tradespeople through anonymous AI reporting."
         />
       </header>
+      <ScrollSpyNav
+        sections={[
+          { id: "overview", label: "Overview" },
+          { id: "discovery-phase", label: "Discovery Phase" },
+          { id: "design-process", label: "Design Process" },
+          { id: "development-process", label: "Development Process" },
+        ]}
+      />
       <ParallaxImage src={HeroImg} alt="Plan-it Trip Planning Web App hero" />
       <section className="mx-auto flex max-w-7xl flex-col px-5">
         <ProjectOverview
@@ -84,6 +93,7 @@ export default function SafeSpace() {
             },
           ]}
         />
+
         <SectionDivider />
         <motion.section
           initial={{ opacity: 0, y: 50 }} // Initial state: hidden and slightly down
@@ -93,7 +103,10 @@ export default function SafeSpace() {
           className="relative"
         >
           <div className="flex flex-col">
-            <h2 className="mb-7 font-serif text-2xl font-medium md:text-4xl md:font-normal">
+            <h2
+              className="mb-7 scroll-mt-32 font-serif text-2xl font-medium md:text-4xl md:font-normal"
+              id="discovery-phase"
+            >
               State Management & Data Handling
             </h2>
             <div className="bg-primary/10 flex h-auto items-center justify-center overflow-hidden rounded-xl p-4 md:h-[80vh] md:p-20">
@@ -169,7 +182,10 @@ export default function SafeSpace() {
           className="relative"
         >
           <div className="flex flex-col">
-            <h2 className="mb-8 font-serif text-2xl font-medium md:text-4xl md:font-normal">
+            <h2
+              className="mb-8 scroll-mt-32 font-serif text-2xl font-medium md:text-4xl md:font-normal"
+              id="design-process"
+            >
               API Integration: Weather & Location
             </h2>
             <motion.div
@@ -254,7 +270,10 @@ export default function SafeSpace() {
           transition={{ duration: 1, ease: "easeOut" }} // Animation settings
           viewport={{ once: true, amount: 0.02 }} // Trigger animation when 2% in view, only once
         >
-          <h2 className="mb-7 font-serif text-2xl font-medium md:text-4xl md:font-normal">
+          <h2
+            className="mb-7 scroll-mt-32 font-serif text-2xl font-medium md:text-4xl md:font-normal"
+            id="development-process"
+          >
             Third-Party Libraries Used
           </h2>
           <div className="flex flex-col gap-10 md:flex-row md:justify-between md:gap-18">

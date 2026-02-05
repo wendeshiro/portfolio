@@ -9,6 +9,7 @@ interface ParallaxImageProps {
   unoptimized?: boolean;
   priority?: boolean;
   placeholder?: "blur" | "empty";
+  mb?: string;
 }
 
 export default function ParallaxImage({
@@ -17,6 +18,7 @@ export default function ParallaxImage({
   unoptimized = true,
   priority = true,
   placeholder = "blur",
+  mb = "mb-12",
 }: ParallaxImageProps) {
   const containerRef = useRef<HTMLDivElement>(null);
   const { scrollYProgress } = useScroll({
@@ -29,7 +31,7 @@ export default function ParallaxImage({
   return (
     <motion.div
       ref={containerRef}
-      className={`relative mt-6 mb-12 h-86 w-full overflow-hidden md:h-160 2xl:h-[85vh]`}
+      className={`relative mt-6 ${mb} h-86 w-full overflow-hidden md:h-160 2xl:h-[85vh]`}
       initial={{ clipPath: "inset(0 0 100% 0)" }}
       whileInView={{ clipPath: "inset(0% 0 0 0)" }}
       viewport={{ once: true, amount: 0 }}

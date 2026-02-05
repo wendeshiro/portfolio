@@ -12,6 +12,7 @@ import Pdf from "@/images/development/plan-it/pdf.png";
 import DatePicker from "@/images/development/plan-it/date-picker.jpg";
 import Dropdown from "@/images/development/plan-it/dropdown.png";
 import { motion } from "framer-motion";
+import ScrollSpyNav from "@/components/ScrollSpyNav";
 
 export default function PlanIt() {
   return (
@@ -23,6 +24,17 @@ export default function PlanIt() {
           description="A desktop web app for organizing trips, tracking weather, and preparing with confidence."
         />
       </header>
+      <ScrollSpyNav
+        sections={[
+          { id: "overview", label: "Overview" },
+          { id: "state-management", label: "State Management & Data Handling" },
+          {
+            id: "api-integration",
+            label: "API Integration: Weather & Location",
+          },
+          { id: "third-party-libraries", label: "Third-Party Libraries Used" },
+        ]}
+      />
       <ParallaxImage src={HeroImg} alt="Plan-it Trip Planning Web App hero" />
       <section className="mx-auto flex max-w-7xl flex-col px-5">
         <ProjectOverview
@@ -93,7 +105,10 @@ export default function PlanIt() {
           className="relative"
         >
           <div className="flex flex-col">
-            <h2 className="mb-7 font-serif text-2xl font-medium md:text-4xl md:font-normal">
+            <h2
+              id="state-management"
+              className="mb-7 font-serif text-2xl font-medium md:text-4xl md:font-normal"
+            >
               State Management & Data Handling
             </h2>
             <div className="bg-primary/10 flex h-auto items-center justify-center overflow-hidden rounded-xl p-4 md:h-[80vh] md:p-20">
@@ -169,7 +184,10 @@ export default function PlanIt() {
           className="relative"
         >
           <div className="flex flex-col">
-            <h2 className="mb-8 font-serif text-2xl font-medium md:text-4xl md:font-normal">
+            <h2
+              id="api-integration"
+              className="mb-8 font-serif text-2xl font-medium md:text-4xl md:font-normal"
+            >
               API Integration: Weather & Location
             </h2>
             <motion.div
@@ -254,7 +272,10 @@ export default function PlanIt() {
           transition={{ duration: 1, ease: "easeOut" }} // Animation settings
           viewport={{ once: true, amount: 0.02 }} // Trigger animation when 2% in view, only once
         >
-          <h2 className="mb-7 font-serif text-2xl font-medium md:text-4xl md:font-normal">
+          <h2
+            id="third-party-libraries"
+            className="mb-7 font-serif text-2xl font-medium md:text-4xl md:font-normal"
+          >
             Third-Party Libraries Used
           </h2>
           <div className="flex flex-col gap-10 md:flex-row md:justify-between md:gap-18">
