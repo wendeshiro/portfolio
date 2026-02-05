@@ -79,6 +79,10 @@ export default function CanDesign() {
       <ScrollSpyNav
         sections={[
           { id: "overview", label: "Overview" },
+          {
+            id: "interactive-3d-can",
+            label: "Interactive 3D Can",
+          },
           { id: "labels", label: "Labels" },
           {
             id: "color-palette-typography",
@@ -160,7 +164,10 @@ export default function CanDesign() {
           </div>
 
           {/* 3D can section */}
-          <div className="relative h-full w-[80vw] md:w-full">
+          <div
+            id="interactive-3d-can"
+            className="relative h-full w-[80vw] md:w-full"
+          >
             {/*
               position for x,y,z
               fov for field of view (zoom in/out)
@@ -223,13 +230,11 @@ export default function CanDesign() {
           transition={{ duration: 1, ease: "easeOut" }} // Animation settings
           viewport={{ once: true, amount: 0.02 }} // Trigger animation when 2% in view, only once
           className="relative"
+          id="labels"
         >
           <div className="flex flex-col md:flex-row md:justify-between md:gap-18">
             <div className="top-24 space-y-6 self-start md:sticky md:w-2/5">
-              <h2
-                id="labels"
-                className="font-serif text-2xl font-medium md:text-4xl md:font-normal"
-              >
+              <h2 className="font-serif text-2xl font-medium md:text-4xl md:font-normal">
                 Labels
               </h2>
               <p className="text-base md:text-lg">
@@ -260,11 +265,9 @@ export default function CanDesign() {
           whileInView={{ opacity: 1, y: 0 }} // Animate to: visible and in place
           transition={{ duration: 1, ease: "easeOut" }} // Animation settings
           viewport={{ once: true, amount: 0.02 }} // Trigger animation when 2% in view, only once
+          id="color-palette-typography"
         >
-          <h2
-            id="color-palette-typography"
-            className="mb-6 font-serif text-2xl font-medium md:text-4xl md:font-normal"
-          >
+          <h2 className="mb-6 font-serif text-2xl font-medium md:text-4xl md:font-normal">
             Color Palette & Typography
           </h2>
           <div className="flex flex-col gap-18 md:flex-row md:justify-between">

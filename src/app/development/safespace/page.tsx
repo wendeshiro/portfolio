@@ -101,12 +101,10 @@ export default function SafeSpace() {
           transition={{ duration: 1, ease: "easeOut" }} // Animation settings
           viewport={{ once: true, amount: 0.02 }} // Trigger animation when 2% in view, only once
           className="relative"
+          id="discovery-phase"
         >
           <div className="flex flex-col">
-            <h2
-              className="mb-7 scroll-mt-32 font-serif text-2xl font-medium md:text-4xl md:font-normal"
-              id="discovery-phase"
-            >
+            <h2 className="mb-7 scroll-mt-32 font-serif text-2xl font-medium md:text-4xl md:font-normal">
               State Management & Data Handling
             </h2>
             <div className="bg-primary/10 flex h-auto items-center justify-center overflow-hidden rounded-xl p-4 md:h-[80vh] md:p-20">
@@ -180,12 +178,10 @@ export default function SafeSpace() {
           transition={{ duration: 1, ease: "easeOut" }} // Animation settings
           viewport={{ once: true, amount: 0.02 }} // Trigger animation when 2% in view, only once
           className="relative"
+          id="design-process"
         >
           <div className="flex flex-col">
-            <h2
-              className="mb-8 scroll-mt-32 font-serif text-2xl font-medium md:text-4xl md:font-normal"
-              id="design-process"
-            >
+            <h2 className="mb-8 scroll-mt-32 font-serif text-2xl font-medium md:text-4xl md:font-normal">
               API Integration: Weather & Location
             </h2>
             <motion.div
@@ -269,11 +265,9 @@ export default function SafeSpace() {
           whileInView={{ opacity: 1, y: 0 }} // Animate to: visible and in place
           transition={{ duration: 1, ease: "easeOut" }} // Animation settings
           viewport={{ once: true, amount: 0.02 }} // Trigger animation when 2% in view, only once
+          id="development-process"
         >
-          <h2
-            className="mb-7 scroll-mt-32 font-serif text-2xl font-medium md:text-4xl md:font-normal"
-            id="development-process"
-          >
+          <h2 className="mb-7 scroll-mt-32 font-serif text-2xl font-medium md:text-4xl md:font-normal">
             Third-Party Libraries Used
           </h2>
           <div className="flex flex-col gap-10 md:flex-row md:justify-between md:gap-18">
