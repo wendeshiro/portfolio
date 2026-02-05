@@ -144,16 +144,40 @@ function NavItem({
   const isActive =
     item.path === "/" ? pathname === "/" : pathname.startsWith(item.path);
 
-  let activeClass = "text-primary";
-  if (item.name === "DESIGN") activeClass = "text-secondary";
-  if (item.name === "MARKETING") activeClass = "text-tertiary";
+  // Determine brand color based on the item name
+  let activeTextClass = "text-primary";
+  let activeBgClass = "bg-primary";
+
+  if (item.name === "DESIGN") {
+    activeTextClass = "text-secondary";
+    activeBgClass = "bg-secondary";
+  } else if (item.name === "MARKETING") {
+    activeTextClass = "text-tertiary";
+    activeBgClass = "bg-tertiary";
+  }
 
   return (
     <Link
       href={item.path}
-      className={`font-medium tracking-widest transition-colors ${mobile ? "block py-2 text-base" : "text-sm"} ${isActive ? activeClass : "text-gray-600 hover:text-gray-700"} `}
+      className={`group relative font-medium tracking-widest transition-colors duration-300 ${
+        mobile ? "block py-2 text-base" : "text-sm"
+      } ${isActive ? activeTextClass : "hover:text-foreground text-gray-600"}`}
     >
       {item.name}
+
+      {/* Active State Animation (Sliding Underline) */}
+      {isActive && !mobile && (
+        <motion.span
+          layoutId="navbar-active"
+          className={`absolute right-0 -bottom-1 left-0 h-px ${activeBgClass}`}
+          transition={{ type: "spring", stiffness: 350, damping: 30 }}
+        />
+      )}
+
+      {/* Hover Underline (for non-active items) */}
+      {!isActive && (
+        <span className="absolute -bottom-1 left-1/2 h-px w-0 -translate-x-1/2 bg-current transition-all duration-300 group-hover:w-full" />
+      )}
     </Link>
   );
 }
