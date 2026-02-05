@@ -75,10 +75,12 @@ export default function PlanIt() {
             {
               label: "Live App",
               url: "https://comp-3170-plan-it.vercel.app/",
+              icon: "globe",
             },
             {
               label: "GitHub Repo",
               url: "https://github.com/wendeshiro/COMP-3170-Plan-it",
+              icon: "github",
             },
           ]}
         />
@@ -96,6 +98,7 @@ export default function PlanIt() {
             </h2>
             <div className="bg-primary/10 flex h-auto items-center justify-center overflow-hidden rounded-xl p-4 md:h-[80vh] md:p-20">
               <video
+                controls
                 autoPlay
                 loop
                 muted
@@ -209,9 +212,11 @@ export default function PlanIt() {
                     href="https://open-meteo.com/"
                     target="_blank"
                     rel="noopener noreferrer"
-                    className="text-primary hover:text-primary/70 group"
+                    className="hover:text-primary group transition-colors duration-300"
                   >
-                    Open-Meteo{" "}
+                    <span className="font-semibold underline decoration-dotted decoration-1 underline-offset-7">
+                      Open-Meteo
+                    </span>
                     <span className="inline-block transition-transform duration-300 group-hover:translate-x-0.5 group-hover:-translate-y-0.5">
                       ↗
                     </span>
@@ -221,9 +226,11 @@ export default function PlanIt() {
                     href="https://www.bigdatacloud.com/"
                     target="_blank"
                     rel="noopener noreferrer"
-                    className="text-primary hover:text-primary/70 group"
+                    className="hover:text-primary group transition-colors duration-300"
                   >
-                    BigDataCloud{" "}
+                    <span className="font-semibold underline decoration-dotted decoration-1 underline-offset-7">
+                      BigDataCloud
+                    </span>
                     <span className="inline-block transition-transform duration-300 group-hover:translate-x-0.5 group-hover:-translate-y-0.5">
                       ↗
                     </span>
@@ -258,9 +265,11 @@ export default function PlanIt() {
                   href="https://www.npmjs.com/package/jspdf"
                   target="_blank"
                   rel="noopener noreferrer"
-                  className="text-primary hover:text-primary/70 group"
+                  className="hover:text-primary group transition-colors duration-300"
                 >
-                  jsPDF
+                  <span className="font-medium underline decoration-dotted decoration-1 underline-offset-7">
+                    jsPDF
+                  </span>
                   <span className="inline-block transition-transform duration-300 group-hover:translate-x-0.5 group-hover:-translate-y-0.5">
                     ↗
                   </span>
@@ -282,9 +291,11 @@ export default function PlanIt() {
                   href="https://www.npmjs.com/package/react-date-range"
                   target="_blank"
                   rel="noopener noreferrer"
-                  className="text-primary hover:text-primary/70 group"
+                  className="hover:text-primary group transition-colors duration-300"
                 >
-                  react-date-range
+                  <span className="font-medium underline decoration-dotted decoration-1 underline-offset-7">
+                    react-date-range
+                  </span>
                   <span className="inline-block transition-transform duration-300 group-hover:translate-x-0.5 group-hover:-translate-y-0.5">
                     ↗
                   </span>
@@ -306,9 +317,11 @@ export default function PlanIt() {
                   href="https://react-bootstrap.netlify.app/docs/components/dropdowns"
                   target="_blank"
                   rel="noopener noreferrer"
-                  className="text-primary hover:text-primary/70 group"
+                  className="hover:text-primary group transition-colors duration-300"
                 >
-                  React Bootstrap
+                  <span className="font-medium underline decoration-dotted decoration-1 underline-offset-7">
+                    React Bootstrap
+                  </span>
                   <span className="inline-block transition-transform duration-300 group-hover:translate-x-0.5 group-hover:-translate-y-0.5">
                     ↗
                   </span>{" "}
