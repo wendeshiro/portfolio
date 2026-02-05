@@ -26,7 +26,10 @@ export default function Navbar() {
   const handleLinkClick = () => setIsOpen(false); // close menu on link click
 
   return (
-    <nav className="bg-background/60 fixed top-0 right-0 left-0 z-50 backdrop-blur-sm">
+    <motion.nav
+      layoutScroll
+      className="bg-background/60 fixed top-0 right-0 left-0 z-50 backdrop-blur-sm"
+    >
       <div className="mx-auto flex h-14 max-w-5xl items-center justify-between px-5 md:justify-center">
         <div className="md:hidden">
           <Link href="/">
@@ -128,7 +131,7 @@ export default function Navbar() {
           </motion.div>
         )}
       </AnimatePresence>
-    </nav>
+    </motion.nav>
   );
 }
 
@@ -170,12 +173,12 @@ function NavItem({
         <motion.span
           layoutId="navbar-active"
           className={`absolute right-0 -bottom-1 left-0 h-px ${activeBgClass}`}
-          transition={{ type: "spring", stiffness: 350, damping: 30 }}
+          transition={{ type: "spring", stiffness: 350, damping: 40 }}
         />
       )}
 
       {/* Hover Underline (for non-active items) */}
-      {!isActive && (
+      {!isActive && !mobile && (
         <span className="absolute -bottom-1 left-1/2 h-px w-0 -translate-x-1/2 bg-gray-500 transition-all duration-300 group-hover:w-full" />
       )}
     </Link>
