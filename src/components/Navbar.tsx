@@ -146,14 +146,14 @@ function NavItem({
 
   // Determine brand color based on the item name
   let activeTextClass = "text-primary";
-  let activeBgClass = "bg-primary";
+  let activeBgClass = "bg-primary/50";
 
   if (item.name === "DESIGN") {
     activeTextClass = "text-secondary";
-    activeBgClass = "bg-secondary";
+    activeBgClass = "bg-secondary/50";
   } else if (item.name === "MARKETING") {
     activeTextClass = "text-tertiary";
-    activeBgClass = "bg-tertiary";
+    activeBgClass = "bg-tertiary/50";
   }
 
   return (
@@ -176,7 +176,7 @@ function NavItem({
 
       {/* Hover Underline (for non-active items) */}
       {!isActive && (
-        <span className="absolute -bottom-1 left-1/2 h-px w-0 -translate-x-1/2 bg-current transition-all duration-300 group-hover:w-full" />
+        <span className="absolute -bottom-1 left-1/2 h-px w-0 -translate-x-1/2 bg-gray-500 transition-all duration-300 group-hover:w-full" />
       )}
     </Link>
   );
