@@ -103,12 +103,10 @@ export default function PlanIt() {
           transition={{ duration: 1, ease: "easeOut" }} // Animation settings
           viewport={{ once: true, amount: 0.02 }} // Trigger animation when 2% in view, only once
           className="relative"
+          id="state-management"
         >
           <div className="flex flex-col">
-            <h2
-              id="state-management"
-              className="mb-7 font-serif text-2xl font-medium md:text-4xl md:font-normal"
-            >
+            <h2 className="mb-7 font-serif text-2xl font-medium md:text-4xl md:font-normal">
               State Management & Data Handling
             </h2>
             <div className="bg-primary/10 flex h-auto items-center justify-center overflow-hidden rounded-xl p-4 md:h-[80vh] md:p-20">
@@ -182,12 +180,10 @@ export default function PlanIt() {
           transition={{ duration: 1, ease: "easeOut" }} // Animation settings
           viewport={{ once: true, amount: 0.02 }} // Trigger animation when 2% in view, only once
           className="relative"
+          id="api-integration"
         >
           <div className="flex flex-col">
-            <h2
-              id="api-integration"
-              className="mb-8 font-serif text-2xl font-medium md:text-4xl md:font-normal"
-            >
+            <h2 className="mb-8 font-serif text-2xl font-medium md:text-4xl md:font-normal">
               API Integration: Weather & Location
             </h2>
             <motion.div
@@ -271,11 +267,9 @@ export default function PlanIt() {
           whileInView={{ opacity: 1, y: 0 }} // Animate to: visible and in place
           transition={{ duration: 1, ease: "easeOut" }} // Animation settings
           viewport={{ once: true, amount: 0.02 }} // Trigger animation when 2% in view, only once
+          id="third-party-libraries"
         >
-          <h2
-            id="third-party-libraries"
-            className="mb-7 font-serif text-2xl font-medium md:text-4xl md:font-normal"
-          >
+          <h2 className="mb-7 font-serif text-2xl font-medium md:text-4xl md:font-normal">
             Third-Party Libraries Used
           </h2>
           <div className="flex flex-col gap-10 md:flex-row md:justify-between md:gap-18">
