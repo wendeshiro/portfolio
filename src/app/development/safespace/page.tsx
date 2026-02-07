@@ -1,4 +1,5 @@
 "use client";
+import { useEffect, useRef, useState } from "react";
 import ProjectTitle from "@/components/ProjectTitle";
 import ParallaxImage from "@/components/ParallaxImage";
 import ProjectOverview from "@/components/ProjectOverview";
@@ -15,13 +16,41 @@ import Dropdown from "@/images/development/plan-it/dropdown.png";
 import { motion } from "framer-motion";
 
 export default function SafeSpace() {
+  const [isResponsibilitiesOpen, setIsResponsibilitiesOpen] = useState(false);
+  const responsibilitiesRef = useRef<HTMLSpanElement | null>(null);
+
+  useEffect(() => {
+    function handlePointerDown(event: PointerEvent) {
+      const target = event.target as Node | null;
+      if (responsibilitiesRef.current && target) {
+        if (!responsibilitiesRef.current.contains(target)) {
+          setIsResponsibilitiesOpen(false);
+        }
+      }
+    }
+
+    function handleKeyDown(event: KeyboardEvent) {
+      if (event.key === "Escape") {
+        setIsResponsibilitiesOpen(false);
+      }
+    }
+
+    document.addEventListener("pointerdown", handlePointerDown);
+    document.addEventListener("keydown", handleKeyDown);
+
+    return () => {
+      document.removeEventListener("pointerdown", handlePointerDown);
+      document.removeEventListener("keydown", handleKeyDown);
+    };
+  }, []);
+
   return (
     <main className="max-w-full py-16 md:py-36">
       <header className="mx-auto flex max-w-7xl flex-col px-5">
         <ProjectTitle
-          title="SafeSpace: AI-Powered Safety Reporting"
+          title="SafeSpace: Building Safer Worksites with AI"
           year={2025}
-          description="Empowering women and gender-diverse tradespeople through anonymous AI reporting."
+          description="Enhancing workplace safety for women and gender-diverse tradespeople with AI-generated reports and actionable insights."
         />
       </header>
       <ScrollSpyNav
@@ -37,27 +66,29 @@ export default function SafeSpace() {
         <ProjectOverview
           primaryText={
             <p>
-              Plan-it is a{" "}
-              <span className="text-primary">desktop web application</span>{" "}
-              created to help travelers organize trips in a clear and reliable
-              way. The project addresses the need for a single place where{" "}
+              SafeSpace is an{" "}
+              <span className="text-primary">AI-powered safety platform</span>{" "}
+              for{" "}
               <span className="text-primary">
-                itineraries, weather information, and preparation tasks
+                women and gender-diverse tradespeople
               </span>{" "}
-              can be viewed together, reducing confusion and missed details
-              during trip planning.
+              that transforms recordings and AI-guided conversations into
+              structured reports and actionable insights, while enabling
+              anonymous sharing of site safety insights to support both workers
+              and management in{" "}
+              <span className="text-primary">improving workplace safety.</span>
             </p>
           }
           secondaryText={
             <>
               <p>
-                The main challenge was presenting essential information—such as
-                schedules, forecasts, and checklists—in a way that feels simple
-                and approachable. Built with React and integrated with external
-                APIs for city and weather data, along with PDF exports for
-                offline access, the application provides a structured and
-                dependable planning experience that supports confident travel
-                preparation.
+                Women and gender-diverse tradespeople often face challenging
+                work environments, intimidating reporting processes, and lack of
+                information about job site safety. SafeSpace addresses these
+                challenges by providing preventative insights, AI-assisted
+                support to reduce reporting stress, and a desktop web platform
+                that turns fragmented reports into actionable insights for
+                management.
               </p>
               <p>
                 *This is a concept project created for educational purposes.
@@ -67,17 +98,84 @@ export default function SafeSpace() {
           details={[
             {
               label: "Deliverables",
-              content: "Desktop Web Application",
+              content: "Mobile App, Web App, HiFi Prototype",
             },
             {
-              label: "Tools & Skills",
+              label: "Tech Stack",
               content:
-                "React / JavaScript / Vite / External APIs / Third-Party Libraries",
+                "React Native (Expo), TypeScript, AWS Lambda, LLM Integration, Git, GitHub, React, Next.js, JavaScript",
             },
             {
-              label: "Main Responsibilities",
+              label: "Design & UX Skills",
+              content: "UI/UX Design, User Research, Usability Testing, Figma",
+            },
+            {
+              label: (
+                <span
+                  ref={responsibilitiesRef}
+                  className="relative inline-flex items-center"
+                >
+                  <button
+                    type="button"
+                    className="hover:text-primary underline decoration-dotted decoration-1 underline-offset-6 transition-colors hover:cursor-pointer"
+                    aria-expanded={isResponsibilitiesOpen}
+                    aria-controls="responsibilities-popover"
+                    onClick={() =>
+                      setIsResponsibilitiesOpen(!isResponsibilitiesOpen)
+                    }
+                  >
+                    Main Responsibilities
+                  </button>
+                  {isResponsibilitiesOpen && (
+                    <span
+                      id="responsibilities-popover"
+                      role="dialog"
+                      aria-label="Main Responsibilities details"
+                      className="absolute top-full left-0 z-10 mt-2 w-108 rounded-lg border border-black/10 bg-white px-4 py-3 text-base text-gray-900 shadow-xl"
+                    >
+                      <button
+                        type="button"
+                        className="absolute top-2 right-3 text-2xl text-gray-500 transition-colors hover:text-gray-700"
+                        aria-label="Close details"
+                        onClick={() => setIsResponsibilitiesOpen(false)}
+                      >
+                        ×
+                      </button>
+                      <p className="mb-2 font-semibold">Key Contributions</p>
+                      <div className="space-y-2 leading-relaxed">
+                        <p>
+                          <span className="font-semibold">
+                            Mobile Development:
+                          </span>{" "}
+                          Developed core features, including audio recording,
+                          AI-powered report generation from recordings, and the
+                          &quot;Posts&quot; & &quot;My Reports and
+                          Recordings&quot; sections. Built most of the app’s
+                          reusable components and UI layouts.
+                        </p>
+                        <p>
+                          <span className="font-semibold">
+                            UI/UX Design & Research:
+                          </span>{" "}
+                          Contributed to competitive analysis, user research,
+                          and sitemap creation. Created Figma wireframes for the
+                          audio recording feature.
+                        </p>
+                        <p>
+                          <span className="font-semibold">
+                            Project Management:
+                          </span>{" "}
+                          Introduced Gantt charts to the team workflow, ensuring
+                          smooth cross-functional collaboration and maintaining
+                          alignment across all project phases.
+                        </p>
+                      </div>
+                    </span>
+                  )}
+                </span>
+              ),
               content:
-                "Website Development / Project Management / Sitemap Planning",
+                "Mobile and web development, UI/UX Design and Research, Project Management",
             },
           ]}
           links={[

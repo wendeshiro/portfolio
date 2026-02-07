@@ -75,12 +75,12 @@ export default function PlanIt() {
             {
               label: "Tools & Skills",
               content:
-                "React / JavaScript / Vite / External APIs / Third-Party Libraries",
+                "React, JavaScript, Vite, External APIs, Third-Party Libraries",
             },
             {
               label: "Main Responsibilities",
               content:
-                "Website Development / Project Management / Sitemap Planning",
+                "Website Development, Project Management, Sitemap Planning",
             },
           ]}
           links={[
