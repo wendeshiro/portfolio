@@ -117,7 +117,7 @@ export default function PlanIt() {
                 muted
                 playsInline
                 preload="metadata"
-                poster="/videos/plan-it/plan-it-demo-placeholder.png"
+                poster="/videos/plan-it/plan-it-demo-placeholder.webp"
                 className="w-full rounded-xl shadow-xl"
               >
                 <source

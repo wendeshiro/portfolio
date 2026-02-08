@@ -5,7 +5,10 @@ import ParallaxImage from "@/components/ParallaxImage";
 import ProjectOverview from "@/components/ProjectOverview";
 import SectionDivider from "@/components/SectionDivider";
 import ScrollSpyNav from "@/components/ScrollSpyNav";
+import LeftArrow from "@/components/icons/left-arrow";
+import RightArrow from "@/components/icons/right-arrow";
 import Image from "next/image";
+import type { StaticImageData } from "next/image";
 import HeroImg from "@/images/development/plan-it/plan-it-hero.webp";
 import Snippet01 from "@/images/development/plan-it/snippet-01.png";
 import Snippet02 from "@/images/development/plan-it/snippet-02.png";
@@ -13,11 +16,16 @@ import Snippet03 from "@/images/development/plan-it/snippet-03.png";
 import Pdf from "@/images/development/plan-it/pdf.png";
 import DatePicker from "@/images/development/plan-it/date-picker.jpg";
 import Dropdown from "@/images/development/plan-it/dropdown.png";
-import { motion } from "framer-motion";
+import { AnimatePresence, motion } from "framer-motion";
+import Map from "@/images/development/safespace/map.webp";
 
 export default function SafeSpace() {
   const [isResponsibilitiesOpen, setIsResponsibilitiesOpen] = useState(false);
   const responsibilitiesRef = useRef<HTMLSpanElement | null>(null);
+  const [activeFeatureIndex, setActiveFeatureIndex] = useState(0);
+  const [slideDirection, setSlideDirection] = useState<1 | -1>(1);
+  const activeSlideRef = useRef<HTMLDivElement | null>(null);
+  const lastVideoRef = useRef<HTMLVideoElement | null>(null);
 
   useEffect(() => {
     function handlePointerDown(event: PointerEvent) {
@@ -43,6 +51,89 @@ export default function SafeSpace() {
       document.removeEventListener("keydown", handleKeyDown);
     };
   }, []);
+
+  useEffect(() => {
+    const currentVideo =
+      activeSlideRef.current?.querySelector<HTMLVideoElement>("video") ?? null;
+    const previousVideo = lastVideoRef.current;
+
+    if (previousVideo && previousVideo !== currentVideo) {
+      previousVideo.pause();
+      previousVideo.currentTime = 0;
+    }
+
+    lastVideoRef.current = currentVideo;
+  }, [activeFeatureIndex]);
+
+  const features: Array<{
+    title: string;
+    description: string;
+    media:
+      | { type: "video"; src: string; poster: string }
+      | { type: "image"; src: StaticImageData; alt: string };
+  }> = [
+    {
+      title: "AI-Powered Reporting",
+      description: "From voice recordings to reports and actionable insights.",
+      media: {
+        type: "video",
+        src: "/videos/safespace/recording.mp4",
+        poster: "/videos/safespace/recording-placeholder.webp",
+      },
+    },
+    {
+      title: "Guided AI Conversations",
+      description:
+        "Respond to Safi’s questions and receive reports with actionable insights.",
+      media: {
+        type: "video",
+        src: "/videos/safespace/safi-figma.mp4",
+        poster: "/videos/safespace/safi-figma-placeholder.webp",
+      },
+    },
+    {
+      title: "Incident Map",
+      description: "Understand site safety through nearby public reports.",
+      media: {
+        type: "image",
+        src: Map,
+        alt: "Incident map showing nearby safety reports",
+      },
+    },
+    {
+      title: "Community Safety Feed",
+      description:
+        "Browse and explore detailed safety reports shared by the community.",
+      media: {
+        type: "video",
+        src: "/videos/safespace/post.mp4",
+        poster: "/videos/safespace/post-placeholder.webp",
+      },
+    },
+  ];
+
+  const activeFeature = features[activeFeatureIndex];
+  const featureLabel = String(activeFeatureIndex + 1).padStart(2, "0");
+
+  function handlePrevFeature() {
+    setSlideDirection(-1);
+    setActiveFeatureIndex((index) =>
+      index === 0 ? features.length - 1 : index - 1,
+    );
+  }
+
+  function handleNextFeature() {
+    setSlideDirection(1);
+    setActiveFeatureIndex((index) =>
+      index === features.length - 1 ? 0 : index + 1,
+    );
+  }
+
+  function handleFeatureSelect(index: number) {
+    if (index === activeFeatureIndex) return;
+    setSlideDirection(index > activeFeatureIndex ? 1 : -1);
+    setActiveFeatureIndex(index);
+  }
 
   return (
     <main className="max-w-full py-16 md:py-36">
@@ -107,7 +198,7 @@ export default function SafeSpace() {
             },
             {
               label: "Design & UX Skills",
-              content: "UI/UX Design, User Research, Usability Testing, Figma",
+              content: "UI/UX Design, User Research, Figma",
             },
             {
               label: (
@@ -155,6 +246,13 @@ export default function SafeSpace() {
                         </p>
                         <p>
                           <span className="font-semibold">
+                            Web Development:
+                          </span>{" "}
+                          Independently handled the entire development of the
+                          desktop web application.
+                        </p>
+                        <p>
+                          <span className="font-semibold">
                             UI/UX Design & Research:
                           </span>{" "}
                           Contributed to competitive analysis, user research,
@@ -169,6 +267,11 @@ export default function SafeSpace() {
                           smooth cross-functional collaboration and maintaining
                           alignment across all project phases.
                         </p>
+                        <p className="text-sm text-gray-700">
+                          *This project was completed by a cross-functional team
+                          of 8 (3 developers, 3 designers, 1 marketer, and 1
+                          project manager).
+                        </p>
                       </div>
                     </span>
                   )}
@@ -180,18 +283,110 @@ export default function SafeSpace() {
           ]}
           links={[
             {
-              label: "Live App",
-              url: "https://comp-3170-plan-it.vercel.app/",
-              icon: "globe",
+              label: "GitHub (Mobile App)",
+              url: "https://github.com/Crite-Spranberries/SafeSpace",
+              icon: "github",
             },
             {
-              label: "GitHub Repo",
-              url: "https://github.com/wendeshiro/COMP-3170-Plan-it",
+              label: "GitHub (Web App)",
+              url: "https://github.com/wendeshiro/SafeSpace-Web-Supplement",
               icon: "github",
             },
           ]}
         />
-
+        <motion.section
+          initial={{ opacity: 0, y: 50 }} // Initial state: hidden and slightly down
+          whileInView={{ opacity: 1, y: 0 }} // Animate to: visible and in place
+          transition={{ duration: 1, ease: "easeOut" }} // Animation settings
+          viewport={{ once: true, amount: 0.02 }} // Trigger animation when 2% in view, only once
+          className="bg-tertiary/8 relative mt-10 flex h-auto items-center justify-center overflow-hidden rounded-2xl px-6 pt-5 pb-10 md:h-[80vh] md:pt-10"
+        >
+          <button
+            type="button"
+            aria-label="Previous feature"
+            onClick={handlePrevFeature}
+            className="border-tertiary/30 text-tertiary/70 hover:bg-tertiary/10 absolute top-1/2 left-4 z-10 flex h-10 w-10 -translate-y-1/2 items-center justify-center rounded-full border text-2xl transition-colors hover:cursor-pointer md:left-8"
+          >
+            <LeftArrow
+              className="absolute top-1/2 left-2 h-5 w-5 -translate-y-1/2"
+              aria-hidden="true"
+            />
+          </button>
+          <AnimatePresence mode="wait" initial={false}>
+            <motion.div
+              key={activeFeatureIndex}
+              initial={{ opacity: 0, x: slideDirection * 24 }}
+              animate={{ opacity: 1, x: 0 }}
+              exit={{ opacity: 0, x: slideDirection * -24 }}
+              transition={{ duration: 0.4, ease: "easeOut" }}
+              ref={activeSlideRef}
+              className="flex flex-col items-center justify-center gap-4 md:flex-row md:gap-15 md:px-15"
+            >
+              <div className="bg-tertiary/25 overflow-hidden rounded-[30px] p-2.5 shadow-2xl md:p-3">
+                <div className="aspect-496/1080 max-w-50 overflow-hidden rounded-[20px] md:max-w-65 md:rounded-[18px] 2xl:max-w-70">
+                  {activeFeature.media.type === "video" ? (
+                    <video
+                      autoPlay
+                      loop
+                      muted
+                      playsInline
+                      preload="metadata"
+                      poster={activeFeature.media.poster}
+                      className="object-cover"
+                    >
+                      <source src={activeFeature.media.src} type="video/mp4" />
+                    </video>
+                  ) : (
+                    <Image
+                      src={activeFeature.media.src}
+                      alt={activeFeature.media.alt}
+                      placeholder="blur"
+                      unoptimized
+                      className="object-cover"
+                    />
+                  )}
+                </div>
+              </div>
+              <div className="order-first flex flex-col justify-center gap-2 md:order-0 md:w-130 md:gap-4">
+                <p className="text-tertiary/40 text-[45px] leading-none font-bold tracking-wide md:text-[66px]">
+                  {featureLabel}
+                </p>
+                <p className="text-2xl tracking-wide md:text-4xl">
+                  {activeFeature.title}
+                </p>
+                <p className="text-base tracking-wide md:text-2xl">
+                  {activeFeature.description}
+                </p>
+              </div>
+            </motion.div>
+          </AnimatePresence>
+          <button
+            type="button"
+            aria-label="Next feature"
+            onClick={handleNextFeature}
+            className="border-tertiary/30 text-tertiary/70 hover:bg-tertiary/10 absolute top-1/2 right-4 z-51 flex h-10 w-10 -translate-y-1/2 items-center justify-center rounded-full border text-2xl transition-colors hover:cursor-pointer md:right-8"
+          >
+            <RightArrow
+              className="absolute top-1/2 right-2 h-5 w-5 -translate-y-1/2"
+              aria-hidden="true"
+            />
+          </button>
+          <div className="absolute right-0 bottom-3.5 left-0 flex items-center justify-center gap-3 md:bottom-5">
+            {features.map((_, index) => (
+              <button
+                key={`feature-indicator-${index}`}
+                type="button"
+                aria-label={`Go to feature ${index + 1}`}
+                onClick={() => handleFeatureSelect(index)}
+                className={`h-1 rounded-full transition-all duration-300 hover:cursor-pointer ${
+                  index === activeFeatureIndex
+                    ? "bg-tertiary/60 w-14"
+                    : "bg-tertiary/25 w-8"
+                }`}
+              />
+            ))}
+          </div>
+        </motion.section>
         <SectionDivider />
         <motion.section
           initial={{ opacity: 0, y: 50 }} // Initial state: hidden and slightly down
@@ -203,7 +398,7 @@ export default function SafeSpace() {
         >
           <div className="flex flex-col">
             <h2 className="mb-7 scroll-mt-32 font-serif text-2xl font-medium md:text-4xl md:font-normal">
-              State Management & Data Handling
+              Discovery Phase
             </h2>
             <div className="bg-primary/10 flex h-auto items-center justify-center overflow-hidden rounded-xl p-4 md:h-[80vh] md:p-20">
               <video

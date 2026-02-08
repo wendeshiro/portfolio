@@ -65,7 +65,7 @@ export default function ProjectOverview({
           ))}
 
           {links.length > 0 && (
-            <div className="mt-3 flex flex-wrap gap-8 text-base md:text-lg">
+            <div className="mt-3 flex flex-wrap gap-x-8 gap-y-5 text-base md:text-lg">
               {links.map((link, index) => {
                 const renderIcon = (icon?: "globe" | "github" | ReactNode) => {
                   if (!icon) return null;
