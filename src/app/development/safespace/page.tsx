@@ -133,8 +133,9 @@ export default function SafeSpace() {
               <span className="text-primary">
                 women and gender-diverse tradespeople
               </span>{" "}
-              that transforms recordings and AI-guided conversations into
-              structured reports and actionable insights, while enabling
+              that transforms recordings and{" "}
+              <span className="whitespace-nowrap">AI-guided</span> conversations
+              into structured reports and actionable insights, while enabling
               anonymous sharing of site safety insights to support both workers
               and management in{" "}
               <span className="text-primary">improving workplace safety.</span>
@@ -426,11 +427,11 @@ export default function SafeSpace() {
               />
             </div>
           </div>
-          <div className="mb-4 md:mb-8">
-            <h3 className="mb-5 font-serif text-xl font-semibold md:mb-2 md:text-2xl">
+          <div className="mb-2 md:mb-17">
+            <h3 className="mb-2 font-serif text-xl font-semibold md:text-2xl">
               User Research & Insight
             </h3>
-            <div className="flex flex-col gap-5 text-base leading-relaxed md:flex-row md:gap-16 md:text-lg">
+            <div className="flex flex-col gap-5 text-base leading-relaxed md:gap-15 md:text-lg">
               <p className="md:w-1/2">
                 To better understand real-world challenges and safety concerns
                 experienced by women and gender-diverse tradespeople, a
@@ -447,63 +448,137 @@ export default function SafeSpace() {
                 patterns of workplace stress, reporting behaviors, and mobile
                 usage.
               </p>
-              <div className="space-y-5 md:w-1/2">
-                <div>
-                  <p className="text-gray-600">Pain Points</p>
-                  <ul className="space-y-2 text-base">
-                    <li>
-                      <span className="font-semibold">
-                        Fear of retaliation:{" "}
-                      </span>
-                      A majority of respondents worry that reporting incidents
-                      through official channels could lead to professional
-                      blacklisting or social isolation.
-                    </li>
-                    <li>
-                      <span className="font-semibold">Gender Bias: </span>
-                      Inappropriate behavior is common and underreported.
-                    </li>
-                    <li>
-                      <span className="font-semibold">
-                        Lack of site knowledge:{" "}
-                      </span>
-                      Respondents often enter new job sites with no prior
-                      knowledge of the site’s safety history or culture.
-                    </li>
-                    <li>
-                      <span className="font-semibold">
-                        Psychological Isolation:{" "}
-                      </span>
-                      Feelings of isolation in male-dominated workplaces.
-                    </li>
-                  </ul>
+
+              <div className="relative w-full">
+                <div className="overflow-x-auto pb-10 md:overflow-visible md:pb-0">
+                  <div className="flex w-max flex-row justify-start gap-9 pr-5 md:w-full md:justify-center md:gap-15">
+                    <div className="flex shrink-0 flex-col items-start gap-5">
+                      <p className="text-primary text-lg font-medium md:text-xl">
+                        Pain Point
+                      </p>
+                      <p className="text-lg opacity-0 md:text-xl">↓</p>
+                      <p className="text-primary text-lg font-medium md:text-xl">
+                        Action Point
+                      </p>
+                      <p className="text-lg opacity-0 md:text-xl">↓</p>
+                      <p className="text-primary text-lg font-medium md:text-xl">
+                        Potential Impact
+                      </p>
+                    </div>
+                    <div className="flex shrink-0 flex-col items-center gap-5">
+                      <InfoPopover
+                        ariaLabel="Challenges faced by women and gender-diverse tradespeople"
+                        popoverWidthClass="w-80 md:w-95"
+                        content={
+                          <>
+                            A majority of respondents worry that reporting
+                            incidents through official channels could lead to
+                            professional blacklisting or social isolation.
+                          </>
+                        }
+                      >
+                        <p className="text-lg md:text-xl">
+                          Fear of Retaliation
+                        </p>
+                      </InfoPopover>
+                      <p className="text-lg md:text-xl">↓</p>
+                      <InfoPopover
+                        ariaLabel="Challenges faced by women and gender-diverse tradespeople"
+                        popoverWidthClass="w-80 md:w-95"
+                        content={
+                          <>
+                            Enable confidential reporting with{" "}
+                            <span className="whitespace-nowrap">
+                              AI-generated
+                            </span>
+                            , objective reports that minimize personal exposure.
+                          </>
+                        }
+                      >
+                        <p className="text-lg md:text-xl">
+                          Anonymous Reporting
+                        </p>
+                      </InfoPopover>
+                      <p className="text-lg md:text-xl">↓</p>
+                      <p className="text-center text-lg md:text-xl">
+                        Safer Reporting Experience
+                      </p>
+                    </div>
+                    <div className="flex shrink-0 flex-col items-center gap-5">
+                      <InfoPopover
+                        ariaLabel="Challenges faced by women and gender-diverse tradespeople"
+                        popoverWidthClass="w-80 md:w-95"
+                        content={
+                          <>
+                            Respondents often enter new job sites with no prior
+                            knowledge of the site’s safety history or culture.
+                          </>
+                        }
+                      >
+                        <p className="text-lg md:text-xl">
+                          Lack of Site Knowledge
+                        </p>
+                      </InfoPopover>
+                      <p className="text-lg md:text-xl">↓</p>
+                      <InfoPopover
+                        ariaLabel="Challenges faced by women and gender-diverse tradespeople"
+                        popoverWidthClass="w-80 md:w-95"
+                        content={
+                          <>
+                            Provide a community-powered map with real-time
+                            transparency into site safety before arrival.
+                          </>
+                        }
+                      >
+                        <p className="text-lg md:text-xl">Incident Map</p>
+                      </InfoPopover>
+                      <p className="text-lg md:text-xl">↓</p>
+                      <p className="text-center text-lg md:text-xl">
+                        Proactive Risk Assessment
+                      </p>
+                    </div>
+                    <div className="flex shrink-0 flex-col items-center gap-5">
+                      <InfoPopover
+                        ariaLabel="Challenges faced by women and gender-diverse tradespeople"
+                        popoverWidthClass="w-65 md:w-95"
+                        content={
+                          <>
+                            Feelings of isolation in male-dominated workplaces.
+                          </>
+                        }
+                      >
+                        <p className="text-lg md:text-xl">
+                          Psychological Isolation
+                        </p>
+                      </InfoPopover>
+                      <p className="text-lg md:text-xl">↓</p>
+                      <InfoPopover
+                        ariaLabel="Challenges faced by women and gender-diverse tradespeople"
+                        popoverWidthClass="w-80 md:w-95"
+                        content={
+                          <>
+                            Allow public sharing of incident reports to surface
+                            workplace safety trends across sites.
+                          </>
+                        }
+                      >
+                        <p className="text-lg md:text-xl">Community Feed</p>
+                      </InfoPopover>
+                      <p className="text-lg md:text-xl">↓</p>
+                      <p className="text-center text-lg md:text-xl">
+                        Visibility of Safety Trends
+                      </p>
+                    </div>
+                  </div>
                 </div>
-                <div>
-                  <p className="text-gray-600">Action Points</p>
-                  <ul className="space-y-2 text-base">
-                    <li>
-                      <span className="font-semibold">
-                        Anonymous AI-Enhanced Reporting:{" "}
-                      </span>
-                      Enable confidential reporting with{" "}
-                      <span className="whitespace-nowrap">AI-generated</span>,
-                      objective reports that minimize personal exposure.
-                    </li>
-                    <li>
-                      <span className="font-semibold">Incident Map: </span>
-                      Provide a community-powered map with real-time
-                      transparency into site safety before arrival.
-                    </li>
-                    <li>
-                      <span className="font-semibold">Community Feed: </span>
-                      Allow public sharing of incident reports to surface
-                      workplace safety trends across sites.
-                    </li>
-                  </ul>
-                </div>
+                <div
+                  aria-hidden="true"
+                  className="pointer-events-none absolute top-0 right-0 h-full w-10 bg-linear-to-l from-white/95 to-transparent md:hidden"
+                />
               </div>
             </div>
           </div>
+
           <div className="mb-4 md:mb-8">
             <h3 className="mb-5 font-serif text-xl font-semibold md:mb-2 md:text-2xl">
               User Personas
