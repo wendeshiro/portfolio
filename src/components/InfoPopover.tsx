@@ -59,7 +59,7 @@ export default function InfoPopover({
     "hover:text-primary underline decoration-dotted decoration-1 underline-offset-6 transition-colors hover:cursor-pointer";
 
   const resolvedPopoverClassName = [
-    "absolute top-full left-0 z-52 mt-2 rounded-lg border border-black/10 bg-white px-5 py-4 text-base text-gray-900 shadow-xl",
+    "absolute top-full left-0 z-52 mt-2 rounded-lg border border-black/10 bg-white px-7.5 md:px-6 py-4 text-base text-gray-900 shadow-xl",
     popoverWidthClass,
     popoverClassName,
   ]

@@ -149,10 +149,16 @@ export default function SafeSpace() {
                   popoverWidthClass="w-80 md:w-95"
                   content={
                     <>
-                      Based on a YWCA Halifax report on gender-based harassment
-                      found that 91% of women and gender-diverse tradespeople
-                      that they interviewed reported being harassed throughout
-                      their career (YWCA Halifax, 2024).
+                      According to a{" "}
+                      <ExternalLink
+                        fontWeight="medium"
+                        href="https://www.ywcahalifax.com/wp-content/uploads/2024/03/YWCA-Halifax-SGBH-Key-Findings-Report-2024-with-recomendations.pdf"
+                      >
+                        YWCA Halifax report
+                      </ExternalLink>
+                      , 91% of women and gender-diverse tradespeople surveyed
+                      experienced harassment throughout their careers. (YWCA
+                      Halifax, 2024).
                     </>
                   }
                 >
