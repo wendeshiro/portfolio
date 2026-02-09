@@ -625,22 +625,47 @@ export default function SafeSpace() {
                 User Personas
               </span>
             </h3>
-            <div className="flex flex-row items-center justify-center md:gap-50">
-              <PhotoProvider>
+            <div className="flex flex-row items-center justify-center gap-12 md:gap-30">
+              <PhotoProvider
+                toolbarRender={({ onScale, scale }) => {
+                  return (
+                    <>
+                      <svg
+                        className="PhotoView-PhotoSlider__toolbarIcon mr-2 cursor-pointer text-white/80 duration-300 hover:text-white"
+                        width="36"
+                        height="36"
+                        viewBox="0 0 768 768"
+                        fill="currentColor"
+                        onClick={() => onScale(scale + 0.7)}
+                      >
+                        <path d="M384 640.5q105 0 180.75-75.75t75.75-180.75-75.75-180.75-180.75-75.75-180.75 75.75-75.75 180.75 75.75 180.75 180.75 75.75zM384 64.5q132 0 225.75 93.75t93.75 225.75-93.75 225.75-225.75 93.75-225.75-93.75-93.75-225.75 93.75-225.75 225.75-93.75zM415.5 223.5v129h129v63h-129v129h-63v-129h-129v-63h129v-129h63z" />
+                      </svg>
+                      <svg
+                        className="PhotoView-PhotoSlider__toolbarIcon mr-1 cursor-pointer text-white/80 duration-300 hover:text-white"
+                        width="36"
+                        height="36"
+                        viewBox="0 0 768 768"
+                        fill="currentColor"
+                        onClick={() => onScale(scale - 0.7)}
+                      >
+                        <path d="M384 640.5q105 0 180.75-75.75t75.75-180.75-75.75-180.75-180.75-75.75-180.75 75.75-75.75 180.75 75.75 180.75 180.75 75.75zM384 64.5q132 0 225.75 93.75t93.75 225.75-93.75 225.75-225.75 93.75-225.75-93.75-93.75-225.75 93.75-225.75 225.75-93.75zM223.5 352.5h321v63h-321v-63z" />
+                      </svg>
+                    </>
+                  );
+                }}
+              >
                 <PhotoView src={PersonaPri.src}>
                   <Image
                     src={PersonaPri}
                     alt="Primary User Persona"
-                    className="h-[70vh] w-auto cursor-pointer rounded-2xl shadow-xl"
+                    className="h-[30vh] w-auto cursor-pointer rounded-2xl shadow-xl md:h-[70vh]"
                   />
                 </PhotoView>
-              </PhotoProvider>
-              <PhotoProvider>
                 <PhotoView src={PersonaSec.src}>
                   <Image
                     src={PersonaSec}
                     alt="Secondary User Persona"
-                    className="h-[70vh] w-auto cursor-pointer rounded-2xl shadow-xl"
+                    className="h-[30vh] w-auto cursor-pointer rounded-2xl shadow-xl md:h-[70vh]"
                   />
                 </PhotoView>
               </PhotoProvider>
