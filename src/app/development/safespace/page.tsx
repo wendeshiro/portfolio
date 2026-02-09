@@ -366,7 +366,7 @@ export default function SafeSpace() {
           <h2 className="mb-3 font-serif text-2xl font-medium md:mb-6 md:text-4xl md:font-normal">
             Discovery Phase
           </h2>
-          <div className="mb-4 md:mb-8">
+          <section className="mb-4 md:mb-8">
             <h3 className="mb-5 font-serif text-xl font-semibold md:mb-2 md:text-2xl">
               Competitive Analysis
             </h3>
@@ -426,8 +426,14 @@ export default function SafeSpace() {
                 className="order-first md:order-0 md:w-1/2"
               />
             </div>
-          </div>
-          <div className="mb-2 md:mb-17">
+          </section>
+          <motion.section
+            initial={{ opacity: 0, y: 50 }} // Initial state: hidden and slightly down
+            whileInView={{ opacity: 1, y: 0 }} // Animate to: visible and in place
+            transition={{ duration: 1, ease: "easeOut" }} // Animation settings
+            viewport={{ once: true, amount: 0.02 }} // Trigger animation when 2% in view, only once
+            className="mb-2 md:mb-17"
+          >
             <h3 className="mb-2 font-serif text-xl font-semibold md:text-2xl">
               User Research & Insight
             </h3>
@@ -577,13 +583,19 @@ export default function SafeSpace() {
                 />
               </div>
             </div>
-          </div>
+          </motion.section>
 
-          <div className="mb-4 md:mb-8">
+          <motion.section
+            initial={{ opacity: 0, y: 50 }} // Initial state: hidden and slightly down
+            whileInView={{ opacity: 1, y: 0 }} // Animate to: visible and in place
+            transition={{ duration: 1, ease: "easeOut" }} // Animation settings
+            viewport={{ once: true, amount: 0.02 }} // Trigger animation when 2% in view, only once
+            className="mb-4 md:mb-8"
+          >
             <h3 className="mb-5 font-serif text-xl font-semibold md:mb-2 md:text-2xl">
               User Personas
             </h3>
-          </div>
+          </motion.section>
         </motion.section>
         <SectionDivider />
         <motion.section
