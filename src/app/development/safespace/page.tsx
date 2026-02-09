@@ -15,6 +15,10 @@ import Map from "@/images/development/safespace/map.webp";
 import ExternalLink from "@/components/ExternalLink";
 import CompetitiveMatrix from "@/images/development/safespace/competitive-matrix.png";
 import InfoPopover from "@/components/InfoPopover";
+import PersonaPri from "@/images/development/safespace/persona-primary.webp";
+import PersonaSec from "@/images/development/safespace/persona-secondary.webp";
+import { PhotoProvider, PhotoView } from "react-photo-view";
+import "react-photo-view/dist/react-photo-view.css";
 
 export default function SafeSpace() {
   const [activeFeatureIndex, setActiveFeatureIndex] = useState(0);
@@ -197,7 +201,7 @@ export default function SafeSpace() {
                   popoverWidthClass="w-90 md:w-108"
                   content={
                     <>
-                      <p className="mb-2 font-semibold">Key Contributions</p>
+                      <p className="mb-2 font-semibold">Main Contributions</p>
                       <div className="space-y-2 leading-relaxed">
                         <p>
                           <span className="font-semibold">
@@ -368,7 +372,13 @@ export default function SafeSpace() {
           </h2>
           <section className="mb-4 md:mb-8">
             <h3 className="mb-5 font-serif text-xl font-semibold md:mb-2 md:text-2xl">
-              Competitive Analysis
+              <span className="inline-flex items-center gap-2">
+                <span
+                  aria-hidden="true"
+                  className="bg-primary/70 inline-block h-[1em] w-0.5 rounded-full"
+                />
+                Competitive Analysis
+              </span>
             </h3>
             <div className="flex flex-col gap-5 md:flex-row md:gap-13">
               <div className="space-y-3 text-base leading-relaxed md:w-1/2 md:text-lg">
@@ -410,10 +420,14 @@ export default function SafeSpace() {
                   .
                 </p>
                 <p>
-                  Current solutions provide compliance, social connection, and
-                  mindfulness, but suffer from complex interfaces, poor mobile
-                  responsiveness, and lack personalized guidance, leaving users
-                  lost in dense resources.
+                  <span className="font-semibold">Current solutions</span>{" "}
+                  provide compliance, social connection, and mindfulness, but
+                  suffer from{" "}
+                  <span className="font-semibold">
+                    complex interfaces, poor mobile responsiveness, and lack
+                    personalized guidance
+                  </span>
+                  , leaving users lost in dense resources.
                 </p>
                 <p>
                   SafeSpace offers AI-driven reporting and a community incident
@@ -435,7 +449,13 @@ export default function SafeSpace() {
             className="mb-2 md:mb-17"
           >
             <h3 className="mb-2 font-serif text-xl font-semibold md:text-2xl">
-              User Research & Insight
+              <span className="inline-flex items-center gap-2">
+                <span
+                  aria-hidden="true"
+                  className="bg-primary/70 inline-block h-[1em] w-0.5 rounded-full"
+                />
+                User Research & Insight
+              </span>
             </h3>
             <div className="flex flex-col gap-5 text-base leading-relaxed md:gap-15 md:text-lg">
               <p className="md:w-1/2">
@@ -472,7 +492,7 @@ export default function SafeSpace() {
                       </p>
                       <span
                         aria-hidden="true"
-                        className="absolute top-1/2 right-0 w-px -translate-y-1/2 bg-black/10 h-60"
+                        className="absolute top-1/2 right-0 h-60 w-px -translate-y-1/2 bg-black/10"
                       />
                     </div>
                     <div className="flex shrink-0 flex-col items-center gap-5">
@@ -596,9 +616,35 @@ export default function SafeSpace() {
             viewport={{ once: true, amount: 0.02 }} // Trigger animation when 2% in view, only once
             className="mb-4 md:mb-8"
           >
-            <h3 className="mb-5 font-serif text-xl font-semibold md:mb-2 md:text-2xl">
-              User Personas
+            <h3 className="mb-5 font-serif text-xl font-semibold md:mb-8 md:text-2xl">
+              <span className="inline-flex items-center gap-2">
+                <span
+                  aria-hidden="true"
+                  className="bg-primary/70 inline-block h-[1em] w-0.5 rounded-full"
+                />
+                User Personas
+              </span>
             </h3>
+            <div className="flex flex-row items-center justify-center md:gap-50">
+              <PhotoProvider>
+                <PhotoView src={PersonaPri.src}>
+                  <Image
+                    src={PersonaPri}
+                    alt="Primary User Persona"
+                    className="h-[70vh] w-auto cursor-pointer rounded-2xl shadow-xl"
+                  />
+                </PhotoView>
+              </PhotoProvider>
+              <PhotoProvider>
+                <PhotoView src={PersonaSec.src}>
+                  <Image
+                    src={PersonaSec}
+                    alt="Secondary User Persona"
+                    className="h-[70vh] w-auto cursor-pointer rounded-2xl shadow-xl"
+                  />
+                </PhotoView>
+              </PhotoProvider>
+            </div>
           </motion.section>
         </motion.section>
         <SectionDivider />

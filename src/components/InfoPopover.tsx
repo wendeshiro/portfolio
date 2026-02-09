@@ -93,7 +93,7 @@ export default function InfoPopover({
         >
           <button
             type="button"
-            className="absolute top-2 right-3 text-3xl text-gray-500 transition-colors hover:text-gray-700 md:text-2xl"
+            className="absolute top-2 right-3 text-3xl text-gray-500 transition-colors hover:cursor-pointer hover:text-gray-700 md:text-2xl"
             aria-label="Close details"
             onClick={() => setIsOpen(false)}
           >
