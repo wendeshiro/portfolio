@@ -14,39 +14,13 @@ import { AnimatePresence, motion } from "framer-motion";
 import Map from "@/images/development/safespace/map.webp";
 import ExternalLink from "@/components/ExternalLink";
 import CompetitiveMatrix from "@/images/development/safespace/competitive-matrix.png";
+import InfoPopover from "@/components/InfoPopover";
 
 export default function SafeSpace() {
-  const [isResponsibilitiesOpen, setIsResponsibilitiesOpen] = useState(false);
-  const responsibilitiesRef = useRef<HTMLSpanElement | null>(null);
   const [activeFeatureIndex, setActiveFeatureIndex] = useState(0);
   const [slideDirection, setSlideDirection] = useState<1 | -1>(1);
   const activeSlideRef = useRef<HTMLDivElement | null>(null);
   const lastVideoRef = useRef<HTMLVideoElement | null>(null);
-
-  useEffect(() => {
-    function handlePointerDown(event: PointerEvent) {
-      const target = event.target as Node | null;
-      if (responsibilitiesRef.current && target) {
-        if (!responsibilitiesRef.current.contains(target)) {
-          setIsResponsibilitiesOpen(false);
-        }
-      }
-    }
-
-    function handleKeyDown(event: KeyboardEvent) {
-      if (event.key === "Escape") {
-        setIsResponsibilitiesOpen(false);
-      }
-    }
-
-    document.addEventListener("pointerdown", handlePointerDown);
-    document.addEventListener("keydown", handleKeyDown);
-
-    return () => {
-      document.removeEventListener("pointerdown", handlePointerDown);
-      document.removeEventListener("keydown", handleKeyDown);
-    };
-  }, []);
 
   useEffect(() => {
     const currentVideo =
@@ -169,13 +143,26 @@ export default function SafeSpace() {
           secondaryText={
             <>
               <p>
-                Women and gender-diverse tradespeople often face challenging
-                work environments, intimidating reporting processes, and lack of
-                information about job site safety. SafeSpace addresses these
-                challenges by providing preventative insights, AI-assisted
-                support to reduce reporting stress, and a desktop web platform
-                that turns fragmented reports into actionable insights for
-                management.
+                Women and gender-diverse tradespeople often{" "}
+                <InfoPopover
+                  ariaLabel="Challenges faced by women and gender-diverse tradespeople"
+                  popoverWidthClass="w-80 md:w-95"
+                  content={
+                    <>
+                      Based on a YWCA Halifax report on gender-based harassment
+                      found that 91% of women and gender-diverse tradespeople
+                      that they interviewed reported being harassed throughout
+                      their career (YWCA Halifax, 2024).
+                    </>
+                  }
+                >
+                  face challenging work environments
+                </InfoPopover>
+                , intimidating reporting processes, and lack of information
+                about job site safety. SafeSpace addresses these challenges by
+                providing preventative insights, AI-assisted support to reduce
+                reporting stress, and a desktop web platform that turns
+                fragmented reports into actionable insights for management.
               </p>
               <p>
                 *This is a concept project created for educational purposes.
@@ -198,36 +185,11 @@ export default function SafeSpace() {
             },
             {
               label: (
-                <span
-                  ref={responsibilitiesRef}
-                  className="relative inline-flex items-center"
-                >
-                  <button
-                    type="button"
-                    className="hover:text-primary underline decoration-dotted decoration-1 underline-offset-6 transition-colors hover:cursor-pointer"
-                    aria-expanded={isResponsibilitiesOpen}
-                    aria-controls="responsibilities-popover"
-                    onClick={() =>
-                      setIsResponsibilitiesOpen(!isResponsibilitiesOpen)
-                    }
-                  >
-                    Main Responsibilities
-                  </button>
-                  {isResponsibilitiesOpen && (
-                    <span
-                      id="responsibilities-popover"
-                      role="dialog"
-                      aria-label="Main Responsibilities details"
-                      className="absolute top-full left-0 z-10 mt-2 w-108 rounded-lg border border-black/10 bg-white px-4 py-3 text-base text-gray-900 shadow-xl"
-                    >
-                      <button
-                        type="button"
-                        className="absolute top-2 right-3 text-2xl text-gray-500 transition-colors hover:text-gray-700"
-                        aria-label="Close details"
-                        onClick={() => setIsResponsibilitiesOpen(false)}
-                      >
-                        ×
-                      </button>
+                <InfoPopover
+                  ariaLabel="Main Responsibilities details"
+                  popoverWidthClass="w-90 md:w-108"
+                  content={
+                    <>
                       <p className="mb-2 font-semibold">Key Contributions</p>
                       <div className="space-y-2 leading-relaxed">
                         <p>
@@ -269,9 +231,11 @@ export default function SafeSpace() {
                           project manager).
                         </p>
                       </div>
-                    </span>
-                  )}
-                </span>
+                    </>
+                  }
+                >
+                  Main Responsibilities
+                </InfoPopover>
               ),
               content:
                 "Mobile and web development, UI/UX Design and Research, Project Management",
