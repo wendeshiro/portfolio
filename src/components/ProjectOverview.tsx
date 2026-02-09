@@ -51,7 +51,7 @@ export default function ProjectOverview({
           <div className="text-xl leading-relaxed md:text-2xl">
             {primaryText}
           </div>
-          <div className="flex flex-col gap-3 text-base text-gray-700 md:text-lg">
+          <div className="flex flex-col gap-3 text-base text-gray-700 md:text-lg leading-relaxed">
             {secondaryText}
           </div>
         </div>

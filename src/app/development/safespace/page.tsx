@@ -13,6 +13,7 @@ import HeroImg from "@/images/development/plan-it/plan-it-hero.webp";
 import { AnimatePresence, motion } from "framer-motion";
 import Map from "@/images/development/safespace/map.webp";
 import ExternalLink from "@/components/ExternalLink";
+import CompetitiveMatrix from "@/images/development/safespace/competitive-matrix.png";
 
 export default function SafeSpace() {
   const [isResponsibilitiesOpen, setIsResponsibilitiesOpen] = useState(false);
@@ -391,67 +392,152 @@ export default function SafeSpace() {
           className="relative"
           id="discovery-phase"
         >
-          <h2 className="mb-6 font-serif text-2xl font-medium md:text-4xl md:font-normal">
+          <h2 className="mb-3 font-serif text-2xl font-medium md:mb-6 md:text-4xl md:font-normal">
             Discovery Phase
           </h2>
-          <div>
-            <h3 className="mb-2 font-serif text-xl font-semibold">
+          <div className="mb-4 md:mb-8">
+            <h3 className="mb-5 font-serif text-xl font-semibold md:mb-2 md:text-2xl">
               Competitive Analysis
             </h3>
-            <p className="text-base md:text-lg">
-              While SafeSpace has no single direct competitor, we analyzed
-              platforms across workplace safety, mental health, and support
-              communities, including{" "}
-              <ExternalLink href="https://www.ccohs.ca/" fontWeight="medium">
-                CCOHS
-              </ExternalLink>
-              ,{" "}
-              <ExternalLink
-                href="https://becklar.com/workforce-safety/"
-                fontWeight="medium"
-              >
-                WorkerSafety Pro
-              </ExternalLink>
-              ,{" "}
-              <ExternalLink
-                href="https://www.ourcommunia.com/"
-                fontWeight="medium"
-              >
-                Communia
-              </ExternalLink>
-              ,{" "}
-              <ExternalLink
-                href="https://www.headspace.com/"
-                fontWeight="medium"
-              >
-                Headspace
-              </ExternalLink>
-              , and{" "}
-              <ExternalLink href="https://womanact.ca/" fontWeight="medium">
-                WomanACT
-              </ExternalLink>
-              .
-            </p>
-            <p className="text-base md:text-lg">
-              Current solutions offer compliance documentation, social
-              connection, and mindfulness. However, they suffer from complex
-              information architecture, overwhelming interfaces, and poor mobile
-              responsiveness. Many lack personalized guidance, leaving users
-              feeling lost in dense resources.
-            </p>
-            <p className="text-base md:text-lg">
-              SafeSpace fills this gap by prioritizing the unique needs of women
-              and gender-diverse tradespeople. We offer an AI-driven reporting
-              system and an incident map to provide actionable site safety
-              insights—empowering users with anonymous reporting and
-              community-driven transparency.
-            </p>
+            <div className="flex flex-col gap-5 md:flex-row md:gap-13">
+              <div className="space-y-3 text-base leading-relaxed md:w-1/2 md:text-lg">
+                <p>
+                  While SafeSpace has no single direct competitor, an analysis
+                  was conducted across platforms in workplace safety, mental
+                  health, and support communities, including{" "}
+                  <ExternalLink
+                    href="https://www.ccohs.ca/"
+                    fontWeight="medium"
+                  >
+                    CCOHS
+                  </ExternalLink>
+                  ,{" "}
+                  <ExternalLink
+                    href="https://becklar.com/workforce-safety/"
+                    fontWeight="medium"
+                  >
+                    WorkerSafety Pro
+                  </ExternalLink>
+                  ,{" "}
+                  <ExternalLink
+                    href="https://www.ourcommunia.com/"
+                    fontWeight="medium"
+                  >
+                    Communia
+                  </ExternalLink>
+                  ,{" "}
+                  <ExternalLink
+                    href="https://www.headspace.com/"
+                    fontWeight="medium"
+                  >
+                    Headspace
+                  </ExternalLink>
+                  , and{" "}
+                  <ExternalLink href="https://womanact.ca/" fontWeight="medium">
+                    WomanACT
+                  </ExternalLink>
+                  .
+                </p>
+                <p>
+                  Current solutions provide compliance, social connection, and
+                  mindfulness, but suffer from complex interfaces, poor mobile
+                  responsiveness, and lack personalized guidance, leaving users
+                  lost in dense resources.
+                </p>
+                <p>
+                  SafeSpace offers AI-driven reporting and a community incident
+                  map for anonymous, actionable site safety insights.
+                </p>
+              </div>
+              <Image
+                src={CompetitiveMatrix}
+                alt="Competitive Matrix"
+                className="order-first md:order-0 md:w-1/2"
+              />
+            </div>
           </div>
-          <div>
-            <h3>User Research & Insight</h3>
+          <div className="mb-4 md:mb-8">
+            <h3 className="mb-5 font-serif text-xl font-semibold md:mb-2 md:text-2xl">
+              User Research & Insight
+            </h3>
+            <div className="flex flex-col gap-5 text-base leading-relaxed md:flex-row md:gap-16 md:text-lg">
+              <p className="md:w-1/2">
+                To better understand real-world challenges and safety concerns
+                experienced by women and gender-diverse tradespeople, a
+                <span className="whitespace-nowrap"> mixed-methods</span> study
+                was conducted using a{" "}
+                <span className="text-primary">
+                  Google Forms survey and{" "}
+                  <span className="whitespace-nowrap">in-depth</span> interviews
+                </span>
+                , which captured both{" "}
+                <span className="text-primary">
+                  quantitative and qualitative
+                </span>{" "}
+                patterns of workplace stress, reporting behaviors, and mobile
+                usage.
+              </p>
+              <div className="space-y-5 md:w-1/2">
+                <div>
+                  <p className="text-gray-600">Pain Points</p>
+                  <ul className="space-y-2 text-base">
+                    <li>
+                      <span className="font-semibold">
+                        Fear of retaliation:{" "}
+                      </span>
+                      A majority of respondents worry that reporting incidents
+                      through official channels could lead to professional
+                      blacklisting or social isolation.
+                    </li>
+                    <li>
+                      <span className="font-semibold">Gender Bias: </span>
+                      Inappropriate behavior is common and underreported.
+                    </li>
+                    <li>
+                      <span className="font-semibold">
+                        Lack of site knowledge:{" "}
+                      </span>
+                      Respondents often enter new job sites with no prior
+                      knowledge of the site’s safety history or culture.
+                    </li>
+                    <li>
+                      <span className="font-semibold">
+                        Psychological Isolation:{" "}
+                      </span>
+                      Feelings of isolation in male-dominated workplaces.
+                    </li>
+                  </ul>
+                </div>
+                <div>
+                  <p className="text-gray-600">Action Points</p>
+                  <ul className="space-y-2 text-base">
+                    <li>
+                      <span className="font-semibold">
+                        Anonymous AI-Enhanced Reporting:{" "}
+                      </span>
+                      Enable confidential reporting with{" "}
+                      <span className="whitespace-nowrap">AI-generated</span>,
+                      objective reports that minimize personal exposure.
+                    </li>
+                    <li>
+                      <span className="font-semibold">Incident Map: </span>
+                      Provide a community-powered map with real-time
+                      transparency into site safety before arrival.
+                    </li>
+                    <li>
+                      <span className="font-semibold">Community Feed: </span>
+                      Allow public sharing of incident reports to surface
+                      workplace safety trends across sites.
+                    </li>
+                  </ul>
+                </div>
+              </div>
+            </div>
           </div>
-          <div>
-            <h3>User Personas</h3>
+          <div className="mb-4 md:mb-8">
+            <h3 className="mb-5 font-serif text-xl font-semibold md:mb-2 md:text-2xl">
+              User Personas
+            </h3>
           </div>
         </motion.section>
         <SectionDivider />
