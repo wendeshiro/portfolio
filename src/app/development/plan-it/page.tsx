@@ -3,6 +3,7 @@ import ProjectTitle from "@/components/ProjectTitle";
 import ParallaxImage from "@/components/ParallaxImage";
 import ProjectOverview from "@/components/ProjectOverview";
 import SectionDivider from "@/components/SectionDivider";
+import ExternalLink from "@/components/ExternalLink";
 import Image from "next/image";
 import HeroImg from "@/images/development/plan-it/plan-it-hero.webp";
 import Snippet01 from "@/images/development/plan-it/snippet-01.png";
@@ -222,33 +223,13 @@ export default function PlanIt() {
               <div className="top-24 order-first space-y-3 self-start text-base md:sticky md:order-0 md:w-1/2 md:text-lg">
                 <p>
                   The application integrates the{" "}
-                  <a
-                    href="https://open-meteo.com/"
-                    target="_blank"
-                    rel="noopener noreferrer"
-                    className="hover:text-primary group transition-colors duration-300"
-                  >
-                    <span className="font-semibold underline decoration-dotted decoration-1 underline-offset-7">
-                      Open-Meteo
-                    </span>
-                    <span className="inline-block transition-transform duration-300 group-hover:translate-x-0.5 group-hover:-translate-y-0.5">
-                      ↗
-                    </span>
-                  </a>{" "}
+                  <ExternalLink href="https://open-meteo.com/">
+                    Open-Meteo
+                  </ExternalLink>{" "}
                   and{" "}
-                  <a
-                    href="https://www.bigdatacloud.com/"
-                    target="_blank"
-                    rel="noopener noreferrer"
-                    className="hover:text-primary group transition-colors duration-300"
-                  >
-                    <span className="font-semibold underline decoration-dotted decoration-1 underline-offset-7">
-                      BigDataCloud
-                    </span>
-                    <span className="inline-block transition-transform duration-300 group-hover:translate-x-0.5 group-hover:-translate-y-0.5">
-                      ↗
-                    </span>
-                  </a>{" "}
+                  <ExternalLink href="https://www.bigdatacloud.com/">
+                    BigDataCloud
+                  </ExternalLink>{" "}
                   APIs, with fetched data stored in useState for dynamic UI
                   updates.
                 </p>
@@ -276,19 +257,12 @@ export default function PlanIt() {
             <div className="flex flex-col items-center md:w-1/3">
               <p className="mb-3 text-lg md:mb-5 md:text-xl">
                 PDF Export via{" "}
-                <a
+                <ExternalLink
                   href="https://www.npmjs.com/package/jspdf"
-                  target="_blank"
-                  rel="noopener noreferrer"
-                  className="hover:text-primary group transition-colors duration-300"
+                  fontWeight="medium"
                 >
-                  <span className="font-medium underline decoration-dotted decoration-1 underline-offset-7">
-                    jsPDF
-                  </span>
-                  <span className="inline-block transition-transform duration-300 group-hover:translate-x-0.5 group-hover:-translate-y-0.5">
-                    ↗
-                  </span>
-                </a>
+                  jsPDF
+                </ExternalLink>
               </p>
               <div className="bg-primary/10 flex h-53 w-full items-center justify-center overflow-hidden rounded-xl p-3 md:h-90 md:p-8">
                 <Image
@@ -302,19 +276,12 @@ export default function PlanIt() {
             <div className="flex flex-col items-center md:w-1/3">
               <p className="mb-3 text-lg md:mb-5 md:text-xl">
                 Date Picker from{" "}
-                <a
+                <ExternalLink
                   href="https://www.npmjs.com/package/react-date-range"
-                  target="_blank"
-                  rel="noopener noreferrer"
-                  className="hover:text-primary group transition-colors duration-300"
+                  fontWeight="medium"
                 >
-                  <span className="font-medium underline decoration-dotted decoration-1 underline-offset-7">
-                    react-date-range
-                  </span>
-                  <span className="inline-block transition-transform duration-300 group-hover:translate-x-0.5 group-hover:-translate-y-0.5">
-                    ↗
-                  </span>
-                </a>
+                  react-date-range
+                </ExternalLink>
               </p>
               <div className="bg-primary/10 flex h-90 w-full items-center justify-center overflow-hidden rounded-xl p-3 md:p-8">
                 <Image
@@ -328,19 +295,12 @@ export default function PlanIt() {
             <div className="flex flex-col items-center md:w-1/3">
               <p className="mb-3 text-lg md:mb-5 md:text-xl">
                 Customized{" "}
-                <a
+                <ExternalLink
                   href="https://react-bootstrap.netlify.app/docs/components/dropdowns"
-                  target="_blank"
-                  rel="noopener noreferrer"
-                  className="hover:text-primary group transition-colors duration-300"
+                  fontWeight="medium"
                 >
-                  <span className="font-medium underline decoration-dotted decoration-1 underline-offset-7">
-                    React Bootstrap
-                  </span>
-                  <span className="inline-block transition-transform duration-300 group-hover:translate-x-0.5 group-hover:-translate-y-0.5">
-                    ↗
-                  </span>{" "}
-                </a>
+                  React Bootstrap
+                </ExternalLink>{" "}
                 Dropdown
               </p>
               <div className="bg-primary/10 flex h-80 w-full items-center justify-center overflow-hidden rounded-xl p-3 md:h-90 md:p-8">

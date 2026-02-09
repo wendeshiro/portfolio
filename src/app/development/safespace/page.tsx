@@ -10,14 +10,9 @@ import RightArrow from "@/components/icons/right-arrow";
 import Image from "next/image";
 import type { StaticImageData } from "next/image";
 import HeroImg from "@/images/development/plan-it/plan-it-hero.webp";
-import Snippet01 from "@/images/development/plan-it/snippet-01.png";
-import Snippet02 from "@/images/development/plan-it/snippet-02.png";
-import Snippet03 from "@/images/development/plan-it/snippet-03.png";
-import Pdf from "@/images/development/plan-it/pdf.png";
-import DatePicker from "@/images/development/plan-it/date-picker.jpg";
-import Dropdown from "@/images/development/plan-it/dropdown.png";
 import { AnimatePresence, motion } from "framer-motion";
 import Map from "@/images/development/safespace/map.webp";
+import ExternalLink from "@/components/ExternalLink";
 
 export default function SafeSpace() {
   const [isResponsibilitiesOpen, setIsResponsibilitiesOpen] = useState(false);
@@ -396,72 +391,67 @@ export default function SafeSpace() {
           className="relative"
           id="discovery-phase"
         >
-          <div className="flex flex-col">
-            <h2 className="mb-7 scroll-mt-32 font-serif text-2xl font-medium md:text-4xl md:font-normal">
-              Discovery Phase
-            </h2>
-            <div className="bg-primary/10 flex h-auto items-center justify-center overflow-hidden rounded-xl p-4 md:h-[80vh] md:p-20">
-              <video
-                controls
-                autoPlay
-                loop
-                muted
-                playsInline
-                preload="metadata"
-                poster="/videos/plan-it/plan-it-demo-placeholder.png"
-                className="w-full rounded-xl shadow-xl"
+          <h2 className="mb-6 font-serif text-2xl font-medium md:text-4xl md:font-normal">
+            Discovery Phase
+          </h2>
+          <div>
+            <h3 className="mb-2 font-serif text-xl font-semibold">
+              Competitive Analysis
+            </h3>
+            <p className="text-base md:text-lg">
+              While SafeSpace has no single direct competitor, we analyzed
+              platforms across workplace safety, mental health, and support
+              communities, including{" "}
+              <ExternalLink href="https://www.ccohs.ca/" fontWeight="medium">
+                CCOHS
+              </ExternalLink>
+              ,{" "}
+              <ExternalLink
+                href="https://becklar.com/workforce-safety/"
+                fontWeight="medium"
               >
-                <source
-                  src="/videos/plan-it/plan-it-demo.mp4"
-                  type="video/mp4"
-                />
-              </video>
-            </div>
-            <motion.div
-              initial={{ opacity: 0, y: 50 }} // Initial state: hidden and slightly down
-              whileInView={{ opacity: 1, y: 0 }} // Animate to: visible and in place
-              transition={{ duration: 1, ease: "easeOut" }} // Animation settings
-              viewport={{ once: true, amount: 0.02 }} // Trigger animation when 2% in view, only once
-              className="mt-10 flex flex-col gap-8 md:flex-row md:justify-between md:gap-10"
-            >
-              <div className="top-24 space-y-3 self-start text-base md:sticky md:w-1/2 md:text-lg">
-                <p>
-                  Travel plans are stored in{" "}
-                  <span className="text-primary">localStorage</span> using
-                  .getItem() and .setItem() to persist data.
-                </p>
-                <p>
-                  The <span className="text-primary">useState</span> hook
-                  manages the component’s state and updates the display whenever
-                  the data changes.
-                </p>
-                <p>
-                  Together, these technologies enable{" "}
-                  <span className="text-primary">
-                    Create, Read, Update, and Delete (CRUD)
-                  </span>{" "}
-                  operations on the travel plans.
-                </p>
-              </div>
-              <div className="flex flex-col gap-8 md:w-1/2">
-                <div className="overflow-hidden rounded-xl shadow-2xl shadow-black/30">
-                  <Image
-                    src={Snippet01}
-                    alt="snippet01"
-                    placeholder="blur"
-                    unoptimized
-                  />
-                </div>
-                <div className="overflow-hidden rounded-xl shadow-2xl shadow-black/30">
-                  <Image
-                    src={Snippet02}
-                    alt="snippet02"
-                    placeholder="blur"
-                    unoptimized
-                  />
-                </div>
-              </div>
-            </motion.div>
+                WorkerSafety Pro
+              </ExternalLink>
+              ,{" "}
+              <ExternalLink
+                href="https://www.ourcommunia.com/"
+                fontWeight="medium"
+              >
+                Communia
+              </ExternalLink>
+              ,{" "}
+              <ExternalLink
+                href="https://www.headspace.com/"
+                fontWeight="medium"
+              >
+                Headspace
+              </ExternalLink>
+              , and{" "}
+              <ExternalLink href="https://womanact.ca/" fontWeight="medium">
+                WomanACT
+              </ExternalLink>
+              .
+            </p>
+            <p className="text-base md:text-lg">
+              Current solutions offer compliance documentation, social
+              connection, and mindfulness. However, they suffer from complex
+              information architecture, overwhelming interfaces, and poor mobile
+              responsiveness. Many lack personalized guidance, leaving users
+              feeling lost in dense resources.
+            </p>
+            <p className="text-base md:text-lg">
+              SafeSpace fills this gap by prioritizing the unique needs of women
+              and gender-diverse tradespeople. We offer an AI-driven reporting
+              system and an incident map to provide actionable site safety
+              insights—empowering users with anonymous reporting and
+              community-driven transparency.
+            </p>
+          </div>
+          <div>
+            <h3>User Research & Insight</h3>
+          </div>
+          <div>
+            <h3>User Personas</h3>
           </div>
         </motion.section>
         <SectionDivider />
@@ -473,84 +463,9 @@ export default function SafeSpace() {
           className="relative"
           id="design-process"
         >
-          <div className="flex flex-col">
-            <h2 className="mb-8 scroll-mt-32 font-serif text-2xl font-medium md:text-4xl md:font-normal">
-              API Integration: Weather & Location
-            </h2>
-            <motion.div
-              initial={{ opacity: 0, y: 50 }} // Initial state: hidden and slightly down
-              whileInView={{ opacity: 1, y: 0 }} // Animate to: visible and in place
-              transition={{ duration: 1, ease: "easeOut" }} // Animation settings
-              viewport={{ once: true, amount: 0.02 }} // Trigger animation when 2% in view, only once
-              className="flex flex-col gap-8 md:flex-row md:justify-between md:gap-16"
-            >
-              <div className="flex flex-col gap-8 md:w-1/2">
-                <div className="bg-primary/10 flex h-auto items-center justify-center overflow-hidden rounded-xl p-4 md:h-50 md:p-8">
-                  <video
-                    autoPlay
-                    loop
-                    muted
-                    playsInline
-                    preload="metadata"
-                    poster="/videos/plan-it/plan-it-api-placeholder.png"
-                    className="w-full rounded-xl shadow-xl"
-                  >
-                    <source
-                      src="/videos/plan-it/plan-it-api.mp4"
-                      type="video/mp4"
-                    />
-                  </video>
-                </div>
-                <div className="overflow-hidden rounded-xl shadow-2xl shadow-black/30">
-                  <Image
-                    src={Snippet03}
-                    alt="snippet03"
-                    placeholder="blur"
-                    unoptimized
-                  />
-                </div>
-              </div>
-              <div className="top-24 order-first space-y-3 self-start text-base md:sticky md:order-0 md:w-1/2 md:text-lg">
-                <p>
-                  The application integrates the{" "}
-                  <a
-                    href="https://open-meteo.com/"
-                    target="_blank"
-                    rel="noopener noreferrer"
-                    className="hover:text-primary group transition-colors duration-300"
-                  >
-                    <span className="font-semibold underline decoration-dotted decoration-1 underline-offset-7">
-                      Open-Meteo
-                    </span>
-                    <span className="inline-block transition-transform duration-300 group-hover:translate-x-0.5 group-hover:-translate-y-0.5">
-                      ↗
-                    </span>
-                  </a>{" "}
-                  and{" "}
-                  <a
-                    href="https://www.bigdatacloud.com/"
-                    target="_blank"
-                    rel="noopener noreferrer"
-                    className="hover:text-primary group transition-colors duration-300"
-                  >
-                    <span className="font-semibold underline decoration-dotted decoration-1 underline-offset-7">
-                      BigDataCloud
-                    </span>
-                    <span className="inline-block transition-transform duration-300 group-hover:translate-x-0.5 group-hover:-translate-y-0.5">
-                      ↗
-                    </span>
-                  </a>{" "}
-                  APIs, with fetched data stored in useState for dynamic UI
-                  updates.
-                </p>
-                <p>
-                  By using <span className="text-primary">useEffect</span>, the
-                  application updates weather and location information only when
-                  the location changes, avoiding unnecessary API requests.
-                </p>
-              </div>
-            </motion.div>
-          </div>
+          <h2 className="mb-6 font-serif text-2xl font-medium md:text-4xl md:font-normal">
+            Design Process
+          </h2>
         </motion.section>
         <SectionDivider />
         <motion.section
@@ -560,90 +475,9 @@ export default function SafeSpace() {
           viewport={{ once: true, amount: 0.02 }} // Trigger animation when 2% in view, only once
           id="development-process"
         >
-          <h2 className="mb-7 scroll-mt-32 font-serif text-2xl font-medium md:text-4xl md:font-normal">
-            Third-Party Libraries Used
+          <h2 className="mb-6 font-serif text-2xl font-medium md:text-4xl md:font-normal">
+            Development Process
           </h2>
-          <div className="flex flex-col gap-10 md:flex-row md:justify-between md:gap-18">
-            <div className="flex flex-col items-center md:w-1/3">
-              <p className="mb-3 text-lg md:mb-5 md:text-xl">
-                PDF Export via{" "}
-                <a
-                  href="https://www.npmjs.com/package/jspdf"
-                  target="_blank"
-                  rel="noopener noreferrer"
-                  className="hover:text-primary group transition-colors duration-300"
-                >
-                  <span className="font-medium underline decoration-dotted decoration-1 underline-offset-7">
-                    jsPDF
-                  </span>
-                  <span className="inline-block transition-transform duration-300 group-hover:translate-x-0.5 group-hover:-translate-y-0.5">
-                    ↗
-                  </span>
-                </a>
-              </p>
-              <div className="bg-primary/10 flex h-53 w-full items-center justify-center overflow-hidden rounded-xl p-3 md:h-90 md:p-8">
-                <Image
-                  src={Pdf}
-                  alt="PDF export via jsPDF"
-                  className="h-auto w-auto rounded-xl shadow-xl"
-                  placeholder="blur"
-                />
-              </div>
-            </div>
-            <div className="flex flex-col items-center md:w-1/3">
-              <p className="mb-3 text-lg md:mb-5 md:text-xl">
-                Date Picker from{" "}
-                <a
-                  href="https://www.npmjs.com/package/react-date-range"
-                  target="_blank"
-                  rel="noopener noreferrer"
-                  className="hover:text-primary group transition-colors duration-300"
-                >
-                  <span className="font-medium underline decoration-dotted decoration-1 underline-offset-7">
-                    react-date-range
-                  </span>
-                  <span className="inline-block transition-transform duration-300 group-hover:translate-x-0.5 group-hover:-translate-y-0.5">
-                    ↗
-                  </span>
-                </a>
-              </p>
-              <div className="bg-primary/10 flex h-90 w-full items-center justify-center overflow-hidden rounded-xl p-3 md:p-8">
-                <Image
-                  src={DatePicker}
-                  alt="date picker"
-                  className="h-auto w-auto rounded-xl shadow-xl"
-                  placeholder="blur"
-                />
-              </div>
-            </div>
-            <div className="flex flex-col items-center md:w-1/3">
-              <p className="mb-3 text-lg md:mb-5 md:text-xl">
-                Customized{" "}
-                <a
-                  href="https://react-bootstrap.netlify.app/docs/components/dropdowns"
-                  target="_blank"
-                  rel="noopener noreferrer"
-                  className="hover:text-primary group transition-colors duration-300"
-                >
-                  <span className="font-medium underline decoration-dotted decoration-1 underline-offset-7">
-                    React Bootstrap
-                  </span>
-                  <span className="inline-block transition-transform duration-300 group-hover:translate-x-0.5 group-hover:-translate-y-0.5">
-                    ↗
-                  </span>{" "}
-                </a>
-                Dropdown
-              </p>
-              <div className="bg-primary/10 flex h-80 w-full items-center justify-center overflow-hidden rounded-xl p-3 md:h-90 md:p-8">
-                <Image
-                  src={Dropdown}
-                  alt="customized bootstrap dropdown"
-                  className="h-auto w-auto rounded-xl shadow-xl"
-                  placeholder="blur"
-                />
-              </div>
-            </div>
-          </div>
         </motion.section>
       </section>
     </main>
