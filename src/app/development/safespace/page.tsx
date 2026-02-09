@@ -458,7 +458,7 @@ export default function SafeSpace() {
               <div className="relative w-full">
                 <div className="overflow-x-auto pb-10 md:overflow-visible md:pb-0">
                   <div className="flex w-max flex-row justify-start gap-9 pr-5 md:w-full md:justify-center md:gap-15">
-                    <div className="flex shrink-0 flex-col items-start gap-5">
+                    <div className="relative flex shrink-0 flex-col items-start gap-5 pr-6 md:pr-10">
                       <p className="text-primary text-lg font-medium md:text-xl">
                         Pain Point
                       </p>
@@ -470,6 +470,10 @@ export default function SafeSpace() {
                       <p className="text-primary text-lg font-medium md:text-xl">
                         Potential Impact
                       </p>
+                      <span
+                        aria-hidden="true"
+                        className="absolute top-1/2 right-0 w-px -translate-y-1/2 bg-black/10 h-60"
+                      />
                     </div>
                     <div className="flex shrink-0 flex-col items-center gap-5">
                       <InfoPopover
