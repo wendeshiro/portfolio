@@ -17,6 +17,10 @@ import CompetitiveMatrix from "@/images/development/safespace/competitive-matrix
 import InfoPopover from "@/components/InfoPopover";
 import BarredHeading from "@/components/BarredHeading";
 import PhotoView from "@/components/PhotoView";
+import {
+  ReactCompareSlider,
+  ReactCompareSliderImage,
+} from "react-compare-slider";
 import PersonaPri from "@/images/development/safespace/persona-primary.webp";
 import PersonaSec from "@/images/development/safespace/persona-secondary.webp";
 import Sitemap from "@/images/development/safespace/sitemap.webp";
@@ -692,22 +696,43 @@ export default function SafeSpace() {
               confusion around the “posts” label, and a lack of clarity around
               the primary recording action.
             </p>
-            <PhotoView className="mb-8 md:mb-12">
-              <Image
-                src={Lofi}
-                alt="LoFi Wireframes"
-                title="Wireframes"
-                className="cursor-pointer rounded-2xl md:w-[80vw]"
-              ></Image>
-            </PhotoView>
-            <PhotoView>
-              <Image
-                src={Hifi}
-                alt="HiFi Wireframes"
-                title="High-Fidelity Design"
-                className="cursor-pointer rounded-2xl md:w-[80vw]"
-              ></Image>
-            </PhotoView>
+            {/* Mobile: stacked images */}
+            <div className="md:hidden">
+              <PhotoView className="mb-8">
+                <Image
+                  src={Lofi}
+                  alt="LoFi Wireframes"
+                  title="Wireframes"
+                  className="cursor-pointer rounded-2xl"
+                ></Image>
+              </PhotoView>
+              <PhotoView>
+                <Image
+                  src={Hifi}
+                  alt="HiFi Wireframes"
+                  title="High-Fidelity Design"
+                  className="cursor-pointer rounded-2xl"
+                ></Image>
+              </PhotoView>
+            </div>
+            {/* Desktop: compare slider */}
+            <div className="hidden md:block">
+              <ReactCompareSlider
+                className="rounded-2xl"
+                itemOne={
+                  <ReactCompareSliderImage
+                    src={Lofi.src}
+                    alt="LoFi Wireframes"
+                  />
+                }
+                itemTwo={
+                  <ReactCompareSliderImage
+                    src={Hifi.src}
+                    alt="HiFi Wireframes"
+                  />
+                }
+              />
+            </div>
           </motion.section>
         </motion.section>
         <SectionDivider />
