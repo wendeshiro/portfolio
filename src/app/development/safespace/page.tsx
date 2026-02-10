@@ -685,18 +685,19 @@ export default function SafeSpace() {
           >
             <BarredHeading text="From Wireframes to High-Fidelity Design & Usability Testing" />
             <p className="mt-2 mb-5 text-base leading-relaxed md:w-1/2 md:text-lg">
-              The design conveys trust, resilience, and inclusivity through
-              rounded shapes, soft gradients, and bold colors. A
-              purple–orange–yellow palette, paired with Satoshi and Playfair,
-              balances professionalism with warmth and aligns with SafeSpace’s
-              supportive values.
+              In-person usability testing was conducted after the mid-fidelity
+              prototype to assess the usability of core flows, including
+              incident reporting, browsing public posts, and viewing nearby
+              incidents. Key pain points included unclear homepage messaging,
+              confusion around the “posts” label, and a lack of clarity around
+              the primary recording action.
             </p>
             <PhotoView className="mb-8 md:mb-12">
               <Image
                 src={Lofi}
                 alt="LoFi Wireframes"
                 title="Wireframes"
-                className="cursor-pointer rounded-2xl md:w-[70vw]"
+                className="cursor-pointer rounded-2xl md:w-[80vw]"
               ></Image>
             </PhotoView>
             <PhotoView>
@@ -704,7 +705,7 @@ export default function SafeSpace() {
                 src={Hifi}
                 alt="HiFi Wireframes"
                 title="High-Fidelity Design"
-                className="cursor-pointer rounded-2xl md:w-[70vw]"
+                className="cursor-pointer rounded-2xl md:w-[80vw]"
               ></Image>
             </PhotoView>
           </motion.section>
