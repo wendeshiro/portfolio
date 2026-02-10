@@ -1,7 +1,8 @@
-import { Children, isValidElement } from "react";
+import { Children, isValidElement, useCallback } from "react";
 import type { ReactNode } from "react";
 import { PhotoProvider, PhotoView as PhotoViewItem } from "react-photo-view";
 import "react-photo-view/dist/react-photo-view.css";
+import { useLenis } from "lenis/react";
 import ZoomIn from "./icons/ZoomIn";
 
 type PhotoViewProps = {
@@ -42,6 +43,19 @@ function getPhotoTitle(child: ReactNode): string | undefined {
 
 export default function PhotoView({ children, className }: PhotoViewProps) {
   const items = Children.toArray(children);
+  const lenis = useLenis();
+
+  const handleVisibleChange = useCallback(
+    (visible: boolean) => {
+      if (!lenis) return;
+      if (visible) {
+        lenis.stop();
+      } else {
+        lenis.start();
+      }
+    },
+    [lenis],
+  );
 
   if (items.length === 0) {
     return null;
@@ -49,6 +63,7 @@ export default function PhotoView({ children, className }: PhotoViewProps) {
 
   return (
     <PhotoProvider
+      onVisibleChange={handleVisibleChange}
       toolbarRender={({ onScale, scale }) => (
         <>
           <svg
