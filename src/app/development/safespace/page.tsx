@@ -15,6 +15,7 @@ import Map from "@/images/development/safespace/map.webp";
 import ExternalLink from "@/components/ExternalLink";
 import CompetitiveMatrix from "@/images/development/safespace/competitive-matrix.png";
 import InfoPopover from "@/components/InfoPopover";
+import BarredHeading from "@/components/BarredHeading";
 import PhotoView from "@/components/PhotoView";
 import PersonaPri from "@/images/development/safespace/persona-primary.webp";
 import PersonaSec from "@/images/development/safespace/persona-secondary.webp";
@@ -375,16 +376,8 @@ export default function SafeSpace() {
             Discovery Phase
           </h2>
           <section className="mb-4 md:mb-8">
-            <h3 className="mb-5 font-serif text-xl font-semibold md:mb-2 md:text-2xl">
-              <span className="inline-flex items-stretch gap-2">
-                <span
-                  aria-hidden="true"
-                  className="bg-primary/70 my-1 inline-block w-0.5 rounded-full"
-                />
-                <span>Competitive Analysis</span>
-              </span>
-            </h3>
-            <div className="flex flex-col gap-5 md:flex-row md:gap-13">
+            <BarredHeading text="Competitive Analysis" />
+            <div className="mt-5 flex flex-col gap-5 md:mt-2 md:flex-row md:gap-13">
               <div className="space-y-3 text-base leading-relaxed md:w-1/2 md:text-lg">
                 <p>
                   While SafeSpace has no single direct competitor, an analysis
@@ -452,16 +445,8 @@ export default function SafeSpace() {
             viewport={{ once: true, amount: 0.02 }} // Trigger animation when 2% in view, only once
             className="mb-2 md:mb-17"
           >
-            <h3 className="mb-2 font-serif text-xl font-semibold md:text-2xl">
-              <span className="inline-flex items-stretch gap-2">
-                <span
-                  aria-hidden="true"
-                  className="bg-primary/70 my-1 inline-block w-0.5 rounded-full"
-                />
-                <span>User Research & Insight</span>
-              </span>
-            </h3>
-            <div className="flex flex-col gap-5 text-base leading-relaxed md:gap-15 md:text-lg">
+            <BarredHeading text="User Research & Insight" />
+            <div className="mt-2 flex flex-col gap-5 text-base leading-relaxed md:gap-15 md:text-lg">
               <p className="md:w-1/2">
                 To better understand real-world challenges and safety concerns
                 experienced by women and gender-diverse tradespeople, a
@@ -619,16 +604,8 @@ export default function SafeSpace() {
             viewport={{ once: true, amount: 0.02 }} // Trigger animation when 2% in view, only once
             className="mb-4 md:mb-8"
           >
-            <h3 className="mb-5 font-serif text-xl font-semibold md:mb-8 md:text-2xl">
-              <span className="inline-flex items-stretch gap-2">
-                <span
-                  aria-hidden="true"
-                  className="bg-primary/70 my-1 inline-block w-0.5 rounded-full"
-                />
-                <span>User Personas</span>
-              </span>
-            </h3>
-            <PhotoView className="flex items-center justify-center gap-12 md:gap-30">
+            <BarredHeading text="User Personas" />
+            <PhotoView className="mt-5 flex items-center justify-center gap-12 md:mt-8 md:gap-30">
               <Image
                 src={PersonaPri}
                 alt="Primary User Persona"
@@ -655,16 +632,8 @@ export default function SafeSpace() {
             Design Process
           </h2>
           <section className="mb-4 md:mb-8">
-            <h3 className="mb-2 font-serif text-xl font-semibold md:text-2xl">
-              <span className="inline-flex items-stretch gap-2">
-                <span
-                  aria-hidden="true"
-                  className="bg-primary/70 my-1 inline-block w-0.5 rounded-full"
-                />
-                <span>Sitemap & User Flow</span>
-              </span>
-            </h3>
-            <p className="mb-6 text-base md:text-lg">
+            <BarredHeading text="Sitemap & User Flow" />
+            <p className="mt-2 mb-6 text-base md:text-lg">
               Based on user research findings, the initial eight functional
               concepts generated during the discovery phase were streamlined
               into four core features.
@@ -691,16 +660,8 @@ export default function SafeSpace() {
             viewport={{ once: true, amount: 0.02 }} // Trigger animation when 2% in view, only once
             className="mb-4 md:mb-8"
           >
-            <h3 className="mb-2 font-serif text-xl font-semibold md:text-2xl">
-              <span className="inline-flex items-stretch gap-2">
-                <span
-                  aria-hidden="true"
-                  className="bg-primary/70 my-1 inline-block w-0.5 rounded-full"
-                />
-                <span>Design System</span>
-              </span>
-            </h3>
-            <p className="mb-5 text-base leading-relaxed md:w-1/2 md:text-lg">
+            <BarredHeading text="Design System" />
+            <p className="mt-2 mb-5 text-base leading-relaxed md:w-1/2 md:text-lg">
               The design conveys trust, resilience, and inclusivity through
               rounded shapes, soft gradients, and bold colors. A
               purple–orange–yellow palette, paired with Satoshi and Playfair,
@@ -722,18 +683,8 @@ export default function SafeSpace() {
             viewport={{ once: true, amount: 0.02 }} // Trigger animation when 2% in view, only once
             className="mb-4 md:mb-8"
           >
-            <h3 className="mb-2 font-serif text-xl font-semibold md:text-2xl">
-              <span className="inline-flex items-stretch gap-2">
-                <span
-                  aria-hidden="true"
-                  className="bg-primary/70 my-1 inline-block w-0.5 rounded-full"
-                />
-                <span>
-                  From Wireframes to High-Fidelity Design & Usability Testing
-                </span>
-              </span>
-            </h3>
-            <p className="mb-5 text-base leading-relaxed md:w-1/2 md:text-lg">
+            <BarredHeading text="From Wireframes to High-Fidelity Design & Usability Testing" />
+            <p className="mt-2 mb-5 text-base leading-relaxed md:w-1/2 md:text-lg">
               The design conveys trust, resilience, and inclusivity through
               rounded shapes, soft gradients, and bold colors. A
               purple–orange–yellow palette, paired with Satoshi and Playfair,
