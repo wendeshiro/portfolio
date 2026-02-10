@@ -5,8 +5,8 @@ import ParallaxImage from "@/components/ParallaxImage";
 import ProjectOverview from "@/components/ProjectOverview";
 import SectionDivider from "@/components/SectionDivider";
 import ScrollSpyNav from "@/components/ScrollSpyNav";
-import LeftArrow from "@/components/icons/left-arrow";
-import RightArrow from "@/components/icons/right-arrow";
+import LeftArrow from "@/components/icons/LeftArrow";
+import RightArrow from "@/components/icons/RightArrow";
 import Image from "next/image";
 import type { StaticImageData } from "next/image";
 import HeroImg from "@/images/development/plan-it/plan-it-hero.webp";
@@ -18,6 +18,8 @@ import InfoPopover from "@/components/InfoPopover";
 import PhotoView from "@/components/PhotoView";
 import PersonaPri from "@/images/development/safespace/persona-primary.webp";
 import PersonaSec from "@/images/development/safespace/persona-secondary.webp";
+import Sitemap from "@/images/development/safespace/sitemap.webp";
+import UserFlow from "@/images/development/safespace/user-flow.webp";
 
 export default function SafeSpace() {
   const [activeFeatureIndex, setActiveFeatureIndex] = useState(0);
@@ -477,7 +479,7 @@ export default function SafeSpace() {
               <div className="relative w-full">
                 <div className="overflow-x-auto pb-10 md:overflow-visible md:pb-0">
                   <div className="flex w-max flex-row justify-start gap-9 pr-5 md:w-full md:justify-center md:gap-15">
-                    <div className="relative flex shrink-0 flex-col items-start gap-5 pr-6 md:pr-10">
+                    <div className="relative flex shrink-0 flex-col items-end gap-5 pr-6 md:pr-10">
                       <p className="text-primary text-lg font-medium md:text-xl">
                         Pain Point
                       </p>
@@ -607,7 +609,6 @@ export default function SafeSpace() {
               </div>
             </div>
           </motion.section>
-
           <motion.section
             initial={{ opacity: 0, y: 50 }} // Initial state: hidden and slightly down
             whileInView={{ opacity: 1, y: 0 }} // Animate to: visible and in place
@@ -624,16 +625,16 @@ export default function SafeSpace() {
                 User Personas
               </span>
             </h3>
-            <PhotoView className="flex flex-row items-center justify-center gap-12 md:gap-30">
+            <PhotoView className="flex items-center justify-center gap-12 md:gap-30">
               <Image
                 src={PersonaPri}
                 alt="Primary User Persona"
-                className="h-[30vh] w-auto cursor-pointer rounded-2xl shadow-xl md:h-[70vh]"
+                className="h-[30vh] w-auto cursor-pointer rounded-2xl shadow-lg md:h-[70vh]"
               />
               <Image
                 src={PersonaSec}
                 alt="Secondary User Persona"
-                className="h-[30vh] w-auto cursor-pointer rounded-2xl shadow-xl md:h-[70vh]"
+                className="h-[30vh] w-auto cursor-pointer rounded-2xl shadow-lg md:h-[70vh]"
               />
             </PhotoView>
           </motion.section>
@@ -647,9 +648,39 @@ export default function SafeSpace() {
           className="relative"
           id="design-process"
         >
-          <h2 className="mb-6 font-serif text-2xl font-medium md:text-4xl md:font-normal">
+          <h2 className="mb-3 font-serif text-2xl font-medium md:mb-6 md:text-4xl md:font-normal">
             Design Process
           </h2>
+          <section className="mb-4 md:mb-8">
+            <h3 className="mb-2 font-serif text-xl font-semibold md:text-2xl">
+              <span className="inline-flex items-center gap-2">
+                <span
+                  aria-hidden="true"
+                  className="bg-primary/70 inline-block h-[1em] w-0.5 rounded-full"
+                />
+                Sitemap & Userflow
+              </span>
+            </h3>
+            <p className="mb-6 text-base md:text-lg">
+              Based on user research findings, the initial eight functional
+              concepts generated during the discovery phase were streamlined
+              into four core features.
+            </p>
+            <PhotoView className="flex flex-col items-center justify-center gap-8 md:gap-10">
+              <Image
+                src={Sitemap}
+                alt="Sitemap"
+                title="Sitemap"
+                className="cursor-pointer rounded-2xl shadow-lg md:w-[60vw]"
+              />
+              <Image
+                src={UserFlow}
+                alt="User Flow"
+                title="User Flow"
+                className="cursor-pointer rounded-2xl shadow-lg md:w-[60vw]"
+              />
+            </PhotoView>
+          </section>
         </motion.section>
         <SectionDivider />
         <motion.section
@@ -659,7 +690,7 @@ export default function SafeSpace() {
           viewport={{ once: true, amount: 0.02 }} // Trigger animation when 2% in view, only once
           id="development-process"
         >
-          <h2 className="mb-6 font-serif text-2xl font-medium md:text-4xl md:font-normal">
+          <h2 className="mb-3 font-serif text-2xl font-medium md:mb-6 md:text-4xl md:font-normal">
             Development Process
           </h2>
         </motion.section>

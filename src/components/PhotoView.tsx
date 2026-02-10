@@ -2,6 +2,7 @@ import { Children, isValidElement } from "react";
 import type { ReactNode } from "react";
 import { PhotoProvider, PhotoView as PhotoViewItem } from "react-photo-view";
 import "react-photo-view/dist/react-photo-view.css";
+import ZoomIn from "./icons/ZoomIn";
 
 type PhotoViewProps = {
   children: ReactNode;
@@ -25,6 +26,18 @@ function getPhotoSrc(child: ReactNode): string | undefined {
   }
 
   return undefined;
+}
+
+function getPhotoTitle(child: ReactNode): string | undefined {
+  if (!isValidElement<{ title?: unknown }>(child)) {
+    return undefined;
+  }
+
+  const { title } = child.props;
+
+  return typeof title === "string" && title.trim().length > 0
+    ? title
+    : undefined;
 }
 
 export default function PhotoView({ children, className }: PhotoViewProps) {
@@ -68,15 +81,26 @@ export default function PhotoView({ children, className }: PhotoViewProps) {
           }
 
           const src = getPhotoSrc(child);
+          const title = getPhotoTitle(child);
 
           if (!src) {
             return child;
           }
 
           return (
-            <PhotoViewItem key={`photo-view-${index}`} src={src}>
-              {child}
-            </PhotoViewItem>
+            <div
+              key={`photo-view-${index}`}
+              className="flex flex-col items-center"
+            >
+              {title ? (
+                <p className="mb-2 text-gray-700 md:text-lg">{title}</p>
+              ) : null}
+              <PhotoViewItem src={src}>{child}</PhotoViewItem>
+              <p className="mt-2 flex flex-col items-center justify-center text-center text-sm text-gray-500 md:mt-5 md:flex-row md:gap-1">
+                <ZoomIn />
+                Click image to expand
+              </p>
+            </div>
           );
         })}
       </div>

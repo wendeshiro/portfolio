@@ -23,7 +23,3 @@ body {
   color: var(--foreground);
   font-family: var(--font-sans), sans-serif;
 }
-
-.cursor-zoom-in-custom {
-  cursor: zoom-in !important;
-}
