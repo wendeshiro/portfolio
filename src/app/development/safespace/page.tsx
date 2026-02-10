@@ -20,6 +20,9 @@ import PersonaPri from "@/images/development/safespace/persona-primary.webp";
 import PersonaSec from "@/images/development/safespace/persona-secondary.webp";
 import Sitemap from "@/images/development/safespace/sitemap.webp";
 import UserFlow from "@/images/development/safespace/user-flow.webp";
+import DesignSystem from "@/images/development/safespace/design-system.webp";
+import Lofi from "@/images/development/safespace/lofi.webp";
+import Hifi from "@/images/development/safespace/hifi.webp";
 
 export default function SafeSpace() {
   const [activeFeatureIndex, setActiveFeatureIndex] = useState(0);
@@ -373,12 +376,12 @@ export default function SafeSpace() {
           </h2>
           <section className="mb-4 md:mb-8">
             <h3 className="mb-5 font-serif text-xl font-semibold md:mb-2 md:text-2xl">
-              <span className="inline-flex items-center gap-2">
+              <span className="inline-flex items-stretch gap-2">
                 <span
                   aria-hidden="true"
-                  className="bg-primary/70 inline-block h-[1em] w-0.5 rounded-full"
+                  className="bg-primary/70 my-1 inline-block w-0.5 rounded-full"
                 />
-                Competitive Analysis
+                <span>Competitive Analysis</span>
               </span>
             </h3>
             <div className="flex flex-col gap-5 md:flex-row md:gap-13">
@@ -450,12 +453,12 @@ export default function SafeSpace() {
             className="mb-2 md:mb-17"
           >
             <h3 className="mb-2 font-serif text-xl font-semibold md:text-2xl">
-              <span className="inline-flex items-center gap-2">
+              <span className="inline-flex items-stretch gap-2">
                 <span
                   aria-hidden="true"
-                  className="bg-primary/70 inline-block h-[1em] w-0.5 rounded-full"
+                  className="bg-primary/70 my-1 inline-block w-0.5 rounded-full"
                 />
-                User Research & Insight
+                <span>User Research & Insight</span>
               </span>
             </h3>
             <div className="flex flex-col gap-5 text-base leading-relaxed md:gap-15 md:text-lg">
@@ -617,24 +620,24 @@ export default function SafeSpace() {
             className="mb-4 md:mb-8"
           >
             <h3 className="mb-5 font-serif text-xl font-semibold md:mb-8 md:text-2xl">
-              <span className="inline-flex items-center gap-2">
+              <span className="inline-flex items-stretch gap-2">
                 <span
                   aria-hidden="true"
-                  className="bg-primary/70 inline-block h-[1em] w-0.5 rounded-full"
+                  className="bg-primary/70 my-1 inline-block w-0.5 rounded-full"
                 />
-                User Personas
+                <span>User Personas</span>
               </span>
             </h3>
             <PhotoView className="flex items-center justify-center gap-12 md:gap-30">
               <Image
                 src={PersonaPri}
                 alt="Primary User Persona"
-                className="h-[30vh] w-auto cursor-pointer rounded-2xl shadow-lg md:h-[70vh]"
+                className="h-[30vh] w-auto cursor-pointer rounded-2xl shadow-md md:h-[70vh]"
               />
               <Image
                 src={PersonaSec}
                 alt="Secondary User Persona"
-                className="h-[30vh] w-auto cursor-pointer rounded-2xl shadow-lg md:h-[70vh]"
+                className="h-[30vh] w-auto cursor-pointer rounded-2xl shadow-md md:h-[70vh]"
               />
             </PhotoView>
           </motion.section>
@@ -653,12 +656,12 @@ export default function SafeSpace() {
           </h2>
           <section className="mb-4 md:mb-8">
             <h3 className="mb-2 font-serif text-xl font-semibold md:text-2xl">
-              <span className="inline-flex items-center gap-2">
+              <span className="inline-flex items-stretch gap-2">
                 <span
                   aria-hidden="true"
-                  className="bg-primary/70 inline-block h-[1em] w-0.5 rounded-full"
+                  className="bg-primary/70 my-1 inline-block w-0.5 rounded-full"
                 />
-                Sitemap & Userflow
+                <span>Sitemap & User Flow</span>
               </span>
             </h3>
             <p className="mb-6 text-base md:text-lg">
@@ -666,7 +669,7 @@ export default function SafeSpace() {
               concepts generated during the discovery phase were streamlined
               into four core features.
             </p>
-            <PhotoView className="flex flex-col items-center justify-center gap-8 md:gap-10">
+            <PhotoView className="flex flex-col items-center justify-center gap-8 md:gap-12">
               <Image
                 src={Sitemap}
                 alt="Sitemap"
@@ -681,6 +684,79 @@ export default function SafeSpace() {
               />
             </PhotoView>
           </section>
+          <motion.section
+            initial={{ opacity: 0, y: 50 }} // Initial state: hidden and slightly down
+            whileInView={{ opacity: 1, y: 0 }} // Animate to: visible and in place
+            transition={{ duration: 1, ease: "easeOut" }} // Animation settings
+            viewport={{ once: true, amount: 0.02 }} // Trigger animation when 2% in view, only once
+            className="mb-4 md:mb-8"
+          >
+            <h3 className="mb-2 font-serif text-xl font-semibold md:text-2xl">
+              <span className="inline-flex items-stretch gap-2">
+                <span
+                  aria-hidden="true"
+                  className="bg-primary/70 my-1 inline-block w-0.5 rounded-full"
+                />
+                <span>Design System</span>
+              </span>
+            </h3>
+            <p className="mb-5 text-base leading-relaxed md:w-1/2 md:text-lg">
+              The design conveys trust, resilience, and inclusivity through
+              rounded shapes, soft gradients, and bold colors. A
+              purple–orange–yellow palette, paired with Satoshi and Playfair,
+              balances professionalism with warmth and aligns with SafeSpace’s
+              supportive values.
+            </p>
+            <PhotoView>
+              <Image
+                src={DesignSystem}
+                alt="Design System"
+                className="cursor-pointer rounded-2xl md:w-[70vw]"
+              ></Image>
+            </PhotoView>
+          </motion.section>
+          <motion.section
+            initial={{ opacity: 0, y: 50 }} // Initial state: hidden and slightly down
+            whileInView={{ opacity: 1, y: 0 }} // Animate to: visible and in place
+            transition={{ duration: 1, ease: "easeOut" }} // Animation settings
+            viewport={{ once: true, amount: 0.02 }} // Trigger animation when 2% in view, only once
+            className="mb-4 md:mb-8"
+          >
+            <h3 className="mb-2 font-serif text-xl font-semibold md:text-2xl">
+              <span className="inline-flex items-stretch gap-2">
+                <span
+                  aria-hidden="true"
+                  className="bg-primary/70 my-1 inline-block w-0.5 rounded-full"
+                />
+                <span>
+                  From Wireframes to High-Fidelity Design & Usability Testing
+                </span>
+              </span>
+            </h3>
+            <p className="mb-5 text-base leading-relaxed md:w-1/2 md:text-lg">
+              The design conveys trust, resilience, and inclusivity through
+              rounded shapes, soft gradients, and bold colors. A
+              purple–orange–yellow palette, paired with Satoshi and Playfair,
+              balances professionalism with warmth and aligns with SafeSpace’s
+              supportive values.
+            </p>
+            <PhotoView className="mb-8 md:mb-12">
+              <Image
+                src={Lofi}
+                alt="LoFi Wireframes"
+                title="Wireframes"
+                className="cursor-pointer rounded-2xl md:w-[70vw]"
+              ></Image>
+            </PhotoView>
+            <PhotoView>
+              <Image
+                src={Hifi}
+                alt="HiFi Wireframes"
+                title="High-Fidelity Design"
+                className="cursor-pointer rounded-2xl md:w-[70vw]"
+              ></Image>
+            </PhotoView>
+          </motion.section>
         </motion.section>
         <SectionDivider />
         <motion.section

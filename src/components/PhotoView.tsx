@@ -111,7 +111,7 @@ export default function PhotoView({ children, className }: PhotoViewProps) {
                 <p className="mb-2 text-gray-700 md:text-lg">{title}</p>
               ) : null}
               <PhotoViewItem src={src}>{child}</PhotoViewItem>
-              <p className="mt-2 flex flex-col items-center justify-center text-center text-sm text-gray-500 md:mt-5 md:flex-row md:gap-1">
+              <p className="mt-2 flex flex-col items-center justify-center text-center text-sm text-gray-500 md:mt-3 md:flex-row md:gap-1">
                 <ZoomIn />
                 Click image to expand
               </p>
