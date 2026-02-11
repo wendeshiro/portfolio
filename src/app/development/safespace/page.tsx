@@ -9,11 +9,11 @@ import LeftArrow from "@/components/icons/LeftArrow";
 import RightArrow from "@/components/icons/RightArrow";
 import Image from "next/image";
 import type { StaticImageData } from "next/image";
-import HeroImg from "@/images/development/plan-it/plan-it-hero.webp";
+import HeroImg from "@/images/development/safespace/safespace-hero.webp";
 import { AnimatePresence, motion } from "framer-motion";
 import Map from "@/images/development/safespace/map.webp";
 import ExternalLink from "@/components/ExternalLink";
-import CompetitiveMatrix from "@/images/development/safespace/competitive-matrix.png";
+import CompetitiveMatrix from "@/images/development/safespace/competitive-matrix.webp";
 import InfoPopover from "@/components/InfoPopover";
 import BarredHeading from "@/components/BarredHeading";
 import PhotoView from "@/components/PhotoView";
@@ -367,7 +367,9 @@ export default function SafeSpace() {
             ))}
           </div>
         </motion.section>
+
         <SectionDivider />
+
         <motion.section
           initial={{ opacity: 0, y: 50 }} // Initial state: hidden and slightly down
           whileInView={{ opacity: 1, y: 0 }} // Animate to: visible and in place
@@ -450,7 +452,7 @@ export default function SafeSpace() {
             className="mb-2 md:mb-17"
           >
             <BarredHeading text="User Research & Insight" />
-            <div className="mt-2 flex flex-col gap-5 text-base leading-relaxed md:gap-15 md:text-lg">
+            <div className="mt-2 flex flex-col gap-5 text-base leading-relaxed md:gap-12 md:text-lg">
               <p className="md:w-1/2">
                 To better understand real-world challenges and safety concerns
                 experienced by women and gender-diverse tradespeople, a
@@ -606,7 +608,6 @@ export default function SafeSpace() {
             whileInView={{ opacity: 1, y: 0 }} // Animate to: visible and in place
             transition={{ duration: 1, ease: "easeOut" }} // Animation settings
             viewport={{ once: true, amount: 0.02 }} // Trigger animation when 2% in view, only once
-            className="mb-4 md:mb-8"
           >
             <BarredHeading text="User Personas" />
             <PhotoView className="mt-5 flex items-center justify-center gap-12 md:mt-8 md:gap-30">
@@ -623,7 +624,9 @@ export default function SafeSpace() {
             </PhotoView>
           </motion.section>
         </motion.section>
+
         <SectionDivider />
+
         <motion.section
           initial={{ opacity: 0, y: 50 }} // Initial state: hidden and slightly down
           whileInView={{ opacity: 1, y: 0 }} // Animate to: visible and in place
@@ -685,7 +688,6 @@ export default function SafeSpace() {
             whileInView={{ opacity: 1, y: 0 }} // Animate to: visible and in place
             transition={{ duration: 1, ease: "easeOut" }} // Animation settings
             viewport={{ once: true, amount: 0.02 }} // Trigger animation when 2% in view, only once
-            className="mb-4 md:mb-8"
           >
             <BarredHeading text="From Wireframes to High-Fidelity Design & Usability Testing" />
             <p className="mt-2 mb-5 text-base leading-relaxed md:w-1/2 md:text-lg">
@@ -735,7 +737,9 @@ export default function SafeSpace() {
             </div>
           </motion.section>
         </motion.section>
+
         <SectionDivider />
+
         <motion.section
           initial={{ opacity: 0, y: 50 }} // Initial state: hidden and slightly down
           whileInView={{ opacity: 1, y: 0 }} // Animate to: visible and in place
