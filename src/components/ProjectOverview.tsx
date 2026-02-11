@@ -2,7 +2,7 @@ import type { ReactNode } from "react";
 import { motion } from "framer-motion";
 
 export interface ProjectDetail {
-  label: string;
+  label: ReactNode;
   content: ReactNode;
 }
 
@@ -51,7 +51,7 @@ export default function ProjectOverview({
           <div className="text-xl leading-relaxed md:text-2xl">
             {primaryText}
           </div>
-          <div className="flex flex-col gap-3 text-base text-gray-600 md:text-lg">
+          <div className="flex flex-col gap-3 text-base text-gray-700 md:text-lg leading-relaxed">
             {secondaryText}
           </div>
         </div>
@@ -59,13 +59,13 @@ export default function ProjectOverview({
         <div className="flex flex-col gap-4 md:w-2/5">
           {details.map((item, index) => (
             <div key={index} className="text-base md:text-lg">
-              <p className="text-gray-600">{item.label}</p>
+              <div className="text-gray-600">{item.label}</div>
               <div>{item.content}</div>
             </div>
           ))}
 
           {links.length > 0 && (
-            <div className="mt-3 flex flex-wrap gap-8 text-base md:text-lg">
+            <div className="mt-3 flex flex-wrap gap-x-8 gap-y-5 text-base md:text-lg">
               {links.map((link, index) => {
                 const renderIcon = (icon?: "globe" | "github" | ReactNode) => {
                   if (!icon) return null;

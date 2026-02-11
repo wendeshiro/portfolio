@@ -125,7 +125,7 @@ export default function CanDesign() {
             {
               label: "Tools & Skills",
               content:
-                "Illustrator / Photoshop / Blender / React Three Fiber (Three.js)",
+                "Illustrator, Photoshop, Blender, React Three Fiber (Three.js)",
             },
           ]}
         />

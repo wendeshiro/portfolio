@@ -1,6 +1,7 @@
 "use client";
 
 import { useEffect, useState } from "react";
+// import { useLenis } from "lenis/react";
 
 interface ScrollSpySection {
   id: string;
@@ -15,6 +16,8 @@ export default function ScrollSpyNav({ sections }: ScrollSpyNavProps) {
   // Track which section is active and whether the nav should be visible.
   const [activeId, setActiveId] = useState(sections[0]?.id ?? "");
   const [isVisible, setIsVisible] = useState(false);
+
+  // const lenis = useLenis();
 
   useEffect(() => {
     if (sections.length === 0) {
@@ -72,6 +75,18 @@ export default function ScrollSpyNav({ sections }: ScrollSpyNavProps) {
     };
   }, [sections]);
 
+  // Update URL without adding history
+  const handleLinkClick = (
+    // e: React.MouseEvent<HTMLAnchorElement>,
+    id: string,
+  ) => {
+    // e.preventDefault();
+
+    // lenis?.scrollTo(`#${id}`);
+
+    window.history.replaceState(null, "", `#${id}`);
+  };
+
   return (
     <nav
       aria-label="Page sections"
@@ -90,12 +105,13 @@ export default function ScrollSpyNav({ sections }: ScrollSpyNavProps) {
             <a
               key={section.id}
               href={`#${section.id}`}
+              onClick={() => handleLinkClick(section.id)}
               aria-current={isActive ? "location" : undefined}
               className="flex items-center gap-3"
             >
               <span
                 className={
-                  "max-w-0 translate-x-1 overflow-hidden text-sm text-ellipsis whitespace-nowrap opacity-0 duration-500 group-hover:max-w-50 group-hover:translate-x-0 group-hover:opacity-100 " +
+                  "max-w-0 translate-x-1 overflow-hidden text-sm text-ellipsis whitespace-nowrap opacity-0 duration-400 group-hover:max-w-50 group-hover:translate-x-0 group-hover:opacity-100 " +
                   (isActive ? "font-bold" : "text-gray-700")
                 }
               >
