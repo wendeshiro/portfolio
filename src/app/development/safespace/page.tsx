@@ -258,7 +258,7 @@ export default function SafeSpace() {
                 </InfoPopover>
               ),
               content:
-                "Mobile and web development, UI/UX Design and Research, Project Management",
+                "Mobile and Web Development, UI/UX Design and Research, Project Management",
             },
           ]}
           links={[
@@ -344,7 +344,7 @@ export default function SafeSpace() {
             type="button"
             aria-label="Next feature"
             onClick={handleNextFeature}
-            className="border-tertiary/30 text-tertiary/70 hover:bg-tertiary/10 absolute top-1/2 right-4 z-51 flex h-10 w-10 -translate-y-1/2 items-center justify-center rounded-full border text-2xl transition-colors hover:cursor-pointer md:right-8"
+            className="border-tertiary/30 text-tertiary/70 hover:bg-tertiary/10 absolute top-1/2 right-4 z-10 flex h-10 w-10 -translate-y-1/2 items-center justify-center rounded-full border text-2xl transition-colors hover:cursor-pointer md:right-8"
           >
             <RightArrow
               className="absolute top-1/2 right-2 h-5 w-5 -translate-y-1/2"
@@ -433,8 +433,9 @@ export default function SafeSpace() {
                   , leaving users lost in dense resources.
                 </p>
                 <p>
-                  SafeSpace offers AI-driven reporting and a community incident
-                  map for anonymous, actionable site safety insights.
+                  SafeSpace offers AI-powered anonymous reporting and a
+                  community-driven incident map for actionable site safety
+                  insights.
                 </p>
               </div>
               <Image
