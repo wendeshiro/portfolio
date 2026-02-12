@@ -2,11 +2,13 @@
 
 import { useEffect, useId, useRef, useState } from "react";
 import type { ReactNode } from "react";
+import { twMerge } from "tailwind-merge";
 
 type InfoPopoverProps = {
   children: ReactNode;
   content: ReactNode;
   popoverWidthClass: string;
+  popoverPositionClassName?: string;
   ariaLabel: string;
   id?: string;
   triggerClassName?: string;
@@ -18,6 +20,7 @@ export default function InfoPopover({
   children,
   content,
   popoverWidthClass,
+  popoverPositionClassName,
   ariaLabel,
   id,
   triggerClassName,
@@ -54,24 +57,22 @@ export default function InfoPopover({
     };
   }, []);
 
-  const resolvedTriggerClassName =
-    triggerClassName ??
-    "hover:text-primary underline decoration-dotted decoration-1 underline-offset-6 transition-colors hover:cursor-pointer";
+  const resolvedTriggerClassName = twMerge(
+    "hover:text-primary underline decoration-dotted decoration-1 underline-offset-6 transition-colors hover:cursor-pointer",
+    triggerClassName,
+  );
 
-  const resolvedPopoverClassName = [
-    "absolute top-full left-0 z-52 mt-2 rounded-lg border border-black/10 bg-white px-7.5 md:px-6 py-4 text-base text-gray-900 shadow-xl",
+  const resolvedPopoverClassName = twMerge(
+    "absolute top-full z-52 mt-2 rounded-lg border border-black/10 bg-white px-7.5 py-4 text-base text-gray-900 shadow-xl md:px-6",
+    popoverPositionClassName ?? "left-0",
     popoverWidthClass,
     popoverClassName,
-  ]
-    .filter(Boolean)
-    .join(" ");
+  );
 
-  const resolvedWrapperClassName = [
+  const resolvedWrapperClassName = twMerge(
     "relative inline-flex items-center",
     wrapperClassName,
-  ]
-    .filter(Boolean)
-    .join(" ");
+  );
 
   return (
     <span ref={wrapperRef} className={resolvedWrapperClassName}>

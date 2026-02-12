@@ -569,6 +569,7 @@ export default function SafeSpace() {
                       <InfoPopover
                         ariaLabel="Challenges faced by women and gender-diverse tradespeople"
                         popoverWidthClass="w-65 md:w-95"
+                        popoverPositionClassName="right-0"
                         content={
                           <>
                             Feelings of isolation in male-dominated workplaces.
@@ -583,6 +584,7 @@ export default function SafeSpace() {
                       <InfoPopover
                         ariaLabel="Challenges faced by women and gender-diverse tradespeople"
                         popoverWidthClass="w-80 md:w-95"
+                        popoverPositionClassName="-right-10"
                         content={
                           <>
                             Allow public sharing of incident reports to surface
