@@ -274,12 +274,14 @@ export default function SafeSpace() {
             },
           ]}
         />
+
+        {/* Features Carousel */}
         <motion.section
           initial={{ opacity: 0, y: 50 }} // Initial state: hidden and slightly down
           whileInView={{ opacity: 1, y: 0 }} // Animate to: visible and in place
           transition={{ duration: 1, ease: "easeOut" }} // Animation settings
           viewport={{ once: true, amount: 0.02 }} // Trigger animation when 2% in view, only once
-          className="bg-tertiary/8 relative mt-10 flex h-auto items-center justify-center overflow-hidden rounded-2xl px-6 pt-5 pb-10 md:h-[80vh] md:pt-10"
+          className="bg-tertiary/8 relative mt-10 flex h-auto items-center justify-center overflow-hidden rounded-2xl px-6 pt-5 pb-10 md:pt-8"
         >
           <button
             type="button"
