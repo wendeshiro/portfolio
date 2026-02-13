@@ -28,6 +28,7 @@ import UserFlow from "@/images/development/safespace/user-flow.webp";
 import DesignSystem from "@/images/development/safespace/design-system.webp";
 import Lofi from "@/images/development/safespace/lofi.webp";
 import Hifi from "@/images/development/safespace/hifi.webp";
+import Naming from "@/images/development/safespace/naming.webp";
 
 export default function SafeSpace() {
   const [activeFeatureIndex, setActiveFeatureIndex] = useState(0);
@@ -443,6 +444,7 @@ export default function SafeSpace() {
               <Image
                 src={CompetitiveMatrix}
                 alt="Competitive Matrix"
+                placeholder="blur"
                 className="order-first md:order-0 md:w-1/2"
               />
             </div>
@@ -619,11 +621,13 @@ export default function SafeSpace() {
               <Image
                 src={PersonaPri}
                 alt="Primary User Persona"
+                placeholder="blur"
                 className="h-[30vh] w-auto cursor-pointer rounded-2xl shadow-md md:h-[70vh]"
               />
               <Image
                 src={PersonaSec}
                 alt="Secondary User Persona"
+                placeholder="blur"
                 className="h-[30vh] w-auto cursor-pointer rounded-2xl shadow-md md:h-[70vh]"
               />
             </PhotoView>
@@ -645,7 +649,7 @@ export default function SafeSpace() {
           </h2>
           <section className="mb-4 md:mb-8">
             <BarredHeading text="Sitemap & User Flow" />
-            <p className="mt-2 mb-6 text-base md:text-lg">
+            <p className="mt-2 mb-5 text-base md:text-lg">
               Based on user research findings, the initial eight functional
               concepts generated during the discovery phase were streamlined
               into four core features.
@@ -655,12 +659,14 @@ export default function SafeSpace() {
                 src={Sitemap}
                 alt="Sitemap"
                 title="Sitemap"
+                placeholder="blur"
                 className="cursor-pointer rounded-2xl shadow-lg md:w-[60vw]"
               />
               <Image
                 src={UserFlow}
                 alt="User Flow"
                 title="User Flow"
+                placeholder="blur"
                 className="cursor-pointer rounded-2xl shadow-lg md:w-[60vw]"
               />
             </PhotoView>
@@ -674,8 +680,11 @@ export default function SafeSpace() {
           >
             <BarredHeading text="Design System" />
             <p className="mt-2 mb-5 text-base leading-relaxed md:w-1/2 md:text-lg">
-              The design conveys trust, resilience, and inclusivity through
-              rounded shapes, soft gradients, and bold colors. A
+              The design conveys{" "}
+              <span className="font-semibold">
+                trust, resilience, and inclusivity
+              </span>{" "}
+              through rounded shapes, soft gradients, and bold colors. A
               purple–orange–yellow palette, paired with Satoshi and Playfair,
               balances professionalism with warmth and aligns with SafeSpace’s
               supportive values.
@@ -684,10 +693,16 @@ export default function SafeSpace() {
               <Image
                 src={DesignSystem}
                 alt="Design System"
+                placeholder="blur"
                 className="cursor-pointer rounded-2xl md:w-[70vw]"
               ></Image>
             </PhotoView>
-            <div>
+            <motion.div
+              initial={{ opacity: 0, y: 50 }} // Initial state: hidden and slightly down
+              whileInView={{ opacity: 1, y: 0 }} // Animate to: visible and in place
+              transition={{ duration: 1, ease: "easeOut" }} // Animation settings
+              viewport={{ once: true, amount: 0.02 }} // Trigger animation when 2% in view, only once
+            >
               <p className="mt-2 mb-5 text-base leading-relaxed md:w-1/2 md:text-lg">
                 Safi, SafeSpace’s AI assistant, is represented as a gradient
                 blob with a subtle breathing animation, conveying softness,
@@ -709,7 +724,7 @@ export default function SafeSpace() {
                   </video>
                 </div>
               </div>
-            </div>
+            </motion.div>
           </motion.section>
           <motion.section
             initial={{ opacity: 0, y: 50 }} // Initial state: hidden and slightly down
@@ -733,6 +748,7 @@ export default function SafeSpace() {
                   src={Lofi}
                   alt="LoFi Wireframes"
                   title="Wireframes"
+                  placeholder="blur"
                   className="cursor-pointer rounded-2xl"
                 ></Image>
               </PhotoView>
@@ -741,6 +757,7 @@ export default function SafeSpace() {
                   src={Hifi}
                   alt="HiFi Wireframes"
                   title="High-Fidelity Design"
+                  placeholder="blur"
                   className="cursor-pointer rounded-2xl"
                 ></Image>
               </PhotoView>
@@ -778,6 +795,27 @@ export default function SafeSpace() {
           <h2 className="mb-3 font-serif text-2xl font-medium md:mb-6 md:text-4xl md:font-normal">
             Development Process
           </h2>
+          <section className="mb-4 md:mb-8">
+            <div className="flex flex-col md:flex-row md:gap-13">
+              <div className="top-20 self-start md:sticky md:w-1/2">
+                <BarredHeading text="Naming Conventions & Project Structure" />
+                <p className="mt-2 mb-5 text-base leading-relaxed md:text-lg">
+                  Clear naming conventions and a well-structured project setup
+                  were defined early in development to ensure clarity,
+                  consistency, and maintainability.{" "}
+                  <span className="text-primary">Git and GitHub</span> were used
+                  for version control and team collaboration.
+                </p>
+              </div>
+              <div className="overflow-hidden rounded-xl shadow-2xl shadow-black/5 md:w-1/2">
+                <Image
+                  src={Naming}
+                  alt="Naming Conventions and Project Structure"
+                  placeholder="blur"
+                />
+              </div>
+            </div>
+          </section>
         </motion.section>
       </section>
     </main>
