@@ -670,7 +670,7 @@ export default function SafeSpace() {
             whileInView={{ opacity: 1, y: 0 }} // Animate to: visible and in place
             transition={{ duration: 1, ease: "easeOut" }} // Animation settings
             viewport={{ once: true, amount: 0.02 }} // Trigger animation when 2% in view, only once
-            className="mb-4 md:mb-8"
+            className="mb-5 md:mb-8"
           >
             <BarredHeading text="Design System" />
             <p className="mt-2 mb-5 text-base leading-relaxed md:w-1/2 md:text-lg">
@@ -687,6 +687,29 @@ export default function SafeSpace() {
                 className="cursor-pointer rounded-2xl md:w-[70vw]"
               ></Image>
             </PhotoView>
+            <div>
+              <p className="mt-2 mb-5 text-base leading-relaxed md:w-1/2 md:text-lg">
+                Safi, SafeSpace’s AI assistant, is represented as a gradient
+                blob with a subtle breathing animation, conveying softness,
+                warmth, and a sense of safety, reinforcing its role as a
+                supportive and trustworthy presence.
+              </p>
+              <div className="flex flex-col items-center">
+                <div className="w-60 overflow-hidden rounded-2xl md:w-70">
+                  <video
+                    autoPlay
+                    loop
+                    muted
+                    playsInline
+                    preload="metadata"
+                    poster="/videos/safespace/safi-placeholder.webp"
+                    className="object-cover"
+                  >
+                    <source src="/videos/safespace/safi.mp4" type="video/mp4" />
+                  </video>
+                </div>
+              </div>
+            </div>
           </motion.section>
           <motion.section
             initial={{ opacity: 0, y: 50 }} // Initial state: hidden and slightly down
