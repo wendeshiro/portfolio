@@ -119,7 +119,7 @@ export default function PlanIt() {
                 playsInline
                 preload="metadata"
                 poster="/videos/plan-it/plan-it-demo-placeholder.webp"
-                className="w-full md:max-w-270 rounded-xl shadow-xl"
+                className="w-full rounded-xl shadow-xl md:max-w-270"
               >
                 <source
                   src="/videos/plan-it/plan-it-demo.mp4"
