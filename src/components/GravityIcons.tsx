@@ -1,6 +1,12 @@
 "use client";
 
-import { useEffect, useRef, useState } from "react";
+import {
+  useCallback,
+  useEffect,
+  useRef,
+  useState,
+  useSyncExternalStore,
+} from "react";
 import Matter from "matter-js";
 import Image from "next/image";
 
@@ -25,10 +31,6 @@ interface GravityIconsProps {
   iconSizeBelowMd?: number;
   /** Breakpoint used for md in px */
   mdBreakpoint?: number;
-  /** Enable device tilt to change gravity direction on mobile */
-  enableMobileTiltGravity?: boolean;
-  /** Sensitivity multiplier for tilt-based gravity */
-  mobileTiltSensitivity?: number;
   /**
    * Physics body restitution / bounciness. Range: 0.0 - 1.0.
    * Higher values => more elastic collisions
@@ -63,8 +65,6 @@ export default function GravityIcons({
   iconSizeMdUp,
   iconSizeBelowMd,
   mdBreakpoint = 768,
-  enableMobileTiltGravity = true,
-  mobileTiltSensitivity = 1,
   restitution = 0.8,
   friction = 0.2,
   gravityY = 0.5,
@@ -72,30 +72,21 @@ export default function GravityIcons({
 }: GravityIconsProps) {
   const containerRef = useRef<HTMLDivElement>(null);
   const engineRef = useRef<Matter.Engine | null>(null);
-  const runnerRef = useRef<Matter.Runner | null>(null);
   const bodiesRef = useRef<Matter.Body[]>([]);
-  const wallsRef = useRef<Matter.Body[]>([]);
   const rafRef = useRef<number>(0);
   const lastScrollYRef = useRef<number>(0);
   const lastScrollTimeRef = useRef<number>(0);
 
   const [bodyStates, setBodyStates] = useState<BodyState[]>([]);
-  const [isMdUp, setIsMdUp] = useState(() =>
-    typeof window !== "undefined"
-      ? window.matchMedia(`(min-width: ${mdBreakpoint}px)`).matches
-      : false,
+  const isMdUp = useSyncExternalStore(
+    (onStoreChange) => {
+      const mediaQuery = window.matchMedia(`(min-width: ${mdBreakpoint}px)`);
+      mediaQuery.addEventListener("change", onStoreChange);
+      return () => mediaQuery.removeEventListener("change", onStoreChange);
+    },
+    () => window.matchMedia(`(min-width: ${mdBreakpoint}px)`).matches,
+    () => false,
   );
-
-  useEffect(() => {
-    const mediaQuery = window.matchMedia(`(min-width: ${mdBreakpoint}px)`);
-
-    const handleMediaChange = (event: MediaQueryListEvent) => {
-      setIsMdUp(event.matches);
-    };
-
-    mediaQuery.addEventListener("change", handleMediaChange);
-    return () => mediaQuery.removeEventListener("change", handleMediaChange);
-  }, [mdBreakpoint]);
 
   const resolvedHeight = isMdUp
     ? (heightMdUp ?? height)
@@ -104,104 +95,8 @@ export default function GravityIcons({
     ? (iconSizeMdUp ?? iconSize)
     : (iconSizeBelowMd ?? iconSize);
 
-  useEffect(() => {
-    const isMobileLike =
-      typeof window !== "undefined" &&
-      window.matchMedia("(pointer: coarse)").matches;
-
-    if (!enableMobileTiltGravity || isMdUp || !isMobileLike) {
-      if (engineRef.current) {
-        engineRef.current.gravity.x = 0;
-        engineRef.current.gravity.y = gravityY;
-      }
-      return;
-    }
-
-    if (
-      typeof window === "undefined" ||
-      !("DeviceOrientationEvent" in window)
-    ) {
-      return;
-    }
-
-    let disposed = false;
-    let listenerAttached = false;
-
-    const handleOrientation = (event: DeviceOrientationEvent) => {
-      const engine = engineRef.current;
-      if (!engine) return;
-
-      const beta = event.beta;
-      const gamma = event.gamma;
-      if (beta == null || gamma == null) return;
-
-      const clampedBeta = Math.max(-180, Math.min(180, beta));
-      const clampedGamma = Math.max(-90, Math.min(90, gamma));
-
-      const rawX = clampedGamma / 45;
-      const rawY = 1 + clampedBeta / 90;
-      const length = Math.sqrt(rawX * rawX + rawY * rawY) || 1;
-
-      const targetX = (rawX / length) * gravityY * mobileTiltSensitivity;
-      const targetY = (rawY / length) * gravityY * mobileTiltSensitivity;
-
-      engine.gravity.x = engine.gravity.x * 0.8 + targetX * 0.2;
-      engine.gravity.y = engine.gravity.y * 0.8 + targetY * 0.2;
-    };
-
-    const addOrientationListener = () => {
-      if (disposed || listenerAttached) return;
-      window.addEventListener("deviceorientation", handleOrientation, true);
-      listenerAttached = true;
-    };
-
-    const maybeRequestPermissionAndListen = async () => {
-      const OrientationCtor =
-        DeviceOrientationEvent as typeof DeviceOrientationEvent & {
-          requestPermission?: () => Promise<"granted" | "denied">;
-        };
-
-      if (typeof OrientationCtor.requestPermission !== "function") {
-        addOrientationListener();
-        return;
-      }
-
-      try {
-        const permission = await OrientationCtor.requestPermission();
-        if (permission === "granted") {
-          addOrientationListener();
-        }
-      } catch {
-        // iOS often requires a user gesture; silently fall back to default gravity.
-      }
-    };
-
-    void maybeRequestPermissionAndListen();
-
-    return () => {
-      disposed = true;
-      if (listenerAttached) {
-        window.removeEventListener(
-          "deviceorientation",
-          handleOrientation,
-          true,
-        );
-      }
-      if (engineRef.current) {
-        engineRef.current.gravity.x = 0;
-        engineRef.current.gravity.y = gravityY;
-      }
-    };
-  }, [
-    isMdUp,
-    mdBreakpoint,
-    gravityY,
-    enableMobileTiltGravity,
-    mobileTiltSensitivity,
-  ]);
-
   // Apply force to all physics bodies based on scroll intensity
-  function applyScrollForce(delta: number) {
+  const applyScrollForce = useCallback((delta: number) => {
     const bodies = bodiesRef.current;
     const engine = engineRef.current;
     if (!engine || bodies.length === 0) return;
@@ -218,7 +113,7 @@ export default function GravityIcons({
       const forceX = (Math.random() - 0.5) * forceMagnitude * 1; // add some random horizontal force for more dynamic effect
       Matter.Body.applyForce(body, body.position, { x: forceX, y: forceY });
     }
-  }
+  }, []);
 
   // Primary: direct wheel event for immediate, unsmoothed force
   // (Lenis smooths velocity via lerp which drastically reduces reported speed)
@@ -229,7 +124,7 @@ export default function GravityIcons({
 
     window.addEventListener("wheel", handleWheel, { passive: true });
     return () => window.removeEventListener("wheel", handleWheel);
-  });
+  }, [applyScrollForce]);
 
   // Fallback: native scroll event (covers scrollbar drag, keyboard, touch)
   useEffect(() => {
@@ -253,7 +148,7 @@ export default function GravityIcons({
 
     window.addEventListener("scroll", handleScroll, { passive: true });
     return () => window.removeEventListener("scroll", handleScroll);
-  });
+  }, [applyScrollForce]);
 
   useEffect(() => {
     const container = containerRef.current;
@@ -308,8 +203,7 @@ export default function GravityIcons({
       wallOptions,
     );
 
-    wallsRef.current = [floor, ceiling, leftWall, rightWall];
-    Matter.Composite.add(engine.world, wallsRef.current);
+    Matter.Composite.add(engine.world, [floor, ceiling, leftWall, rightWall]);
 
     // Create icon bodies - scattered randomly across the top portion
     const radius = resolvedIconSize / 2;
@@ -364,7 +258,6 @@ export default function GravityIcons({
 
     // Start the engine runner
     const runner = Matter.Runner.create();
-    runnerRef.current = runner;
     Matter.Runner.run(runner, engine);
 
     // Sync DOM positions with physics bodies via rAF
@@ -454,9 +347,7 @@ export default function GravityIcons({
       Matter.Engine.clear(engine);
       Matter.Composite.clear(engine.world, false);
       engineRef.current = null;
-      runnerRef.current = null;
       bodiesRef.current = [];
-      wallsRef.current = [];
     };
   }, [
     icons,
@@ -481,7 +372,7 @@ export default function GravityIcons({
           return (
             <div
               key={`gravity-icon-${i}`}
-              className="pointer-events-none absolute"
+              className="absolute hover:cursor-pointer active:cursor-grabbing"
               style={{
                 width: resolvedIconSize,
                 height: resolvedIconSize,
@@ -496,7 +387,7 @@ export default function GravityIcons({
                 alt={icon.alt}
                 width={resolvedIconSize}
                 height={resolvedIconSize}
-                className="pointer-events-none object-contain select-none"
+                className="object-contain select-none"
                 draggable={false}
               />
             </div>

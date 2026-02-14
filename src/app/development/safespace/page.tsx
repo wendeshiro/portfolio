@@ -824,9 +824,9 @@ export default function SafeSpace() {
             viewport={{ once: true, amount: 0.02 }} // Trigger animation when 2% in view, only once
             className="mb-5 md:mb-8"
           >
+            <BarredHeading text="Tech Stack Selection" />
             <div className="flex flex-col md:flex-row md:gap-13">
               <div className="md:w-1/2">
-                <BarredHeading text="Tech Stack Selection" />
                 <div className="mt-2 mb-5 space-y-3 text-base leading-relaxed md:text-lg">
                   <p>
                     The mobile app leveraged{" "}
@@ -851,7 +851,7 @@ export default function SafeSpace() {
                   </p>
                 </div>
               </div>
-              <div className="border-tertiary/20 bg-tertiary/5 rounded-xl border md:w-1/2">
+              <div className="border-tertiary/20 bg-tertiary/5 rounded-xl border md:mt-3 md:w-1/2">
                 <GravityIcons
                   icons={[
                     {
@@ -899,6 +899,112 @@ export default function SafeSpace() {
                 />
               </div>
             </div>
+          </motion.section>
+          <motion.section
+            initial={{ opacity: 0, y: 50 }} // Initial state: hidden and slightly down
+            whileInView={{ opacity: 1, y: 0 }} // Animate to: visible and in place
+            transition={{ duration: 1, ease: "easeOut" }} // Animation settings
+            viewport={{ once: true, amount: 0.02 }} // Trigger animation when 2% in view, only once
+            className="mb-30 md:mb-40"
+          >
+            <BarredHeading text="AI Report Generation Pipeline" />
+            <div className="flex flex-col md:mt-6 md:flex-row md:gap-13">
+              <div className="md:w-auto">
+                <div className="bg-tertiary/8 relative h-100 w-full rounded-2xl md:mx-auto md:h-120 md:w-120">
+                  <div className="bg-tertiary/25 absolute top-8 left-1/2 -translate-x-1/2 overflow-hidden rounded-[30px] p-2.5 shadow-2xl md:p-3">
+                    <div className="aspect-496/1080 w-50 overflow-hidden rounded-[20px] md:w-60 md:rounded-[18px] 2xl:w-65">
+                      <video
+                        autoPlay
+                        loop
+                        muted
+                        playsInline
+                        preload="metadata"
+                        poster="/videos/safespace/recording-placeholder.webp"
+                        className="object-cover"
+                      >
+                        <source
+                          src="/videos/safespace/recording.mp4"
+                          type="video/mp4"
+                        />
+                      </video>
+                    </div>
+                  </div>
+                </div>
+              </div>
+              <div className="order-first md:order-0 md:w-2/3">
+                <p className="mt-2 mb-5 text-base leading-relaxed md:mt-0 md:text-lg">
+                  After recording, the client uploads audio to{" "}
+                  <ExternalLink href="https://developers.openai.com/api/docs/models/gpt-4o-mini-transcribe">
+                    OpenAI’s transcription API
+                  </ExternalLink>{" "}
+                  to generate text, which is then sent to an{" "}
+                  <span className="font-semibold">AWS Lambda</span> function
+                  where a centrally managed prompt processes the transcript to
+                  generate a structured report. During development, API keys
+                  were managed using{" "}
+                  <span className="font-semibold">
+                    environment variables (.env)
+                  </span>{" "}
+                  to avoid hardcoding sensitive credentials.
+                </p>
+              </div>
+            </div>
+          </motion.section>
+
+          <motion.section
+            initial={{ opacity: 0, y: 50 }} // Initial state: hidden and slightly down
+            whileInView={{ opacity: 1, y: 0 }} // Animate to: visible and in place
+            transition={{ duration: 1, ease: "easeOut" }} // Animation settings
+            viewport={{ once: true, amount: 0.02 }} // Trigger animation when 2% in view, only once
+            className="mb-30 md:mb-40"
+          >
+            <BarredHeading text="Guided AI Chatbot Workflow" />
+            <div className="flex flex-col md:mt-6 md:flex-row md:gap-13">
+              <div className="md:w-2/3">
+                <p className="mt-2 mb-5 text-base leading-relaxed md:mt-0 md:text-lg">
+                  The guided AI chatbot feature was implemented to collect
+                  incident details step by step through conversational prompts.
+                  The chatbot dynamically gathers user inputs and sends them to{" "}
+                  <ExternalLink href="https://www.ibm.com/products/watsonx">
+                    IBM watsonx
+                  </ExternalLink>{" "}
+                  for processing. Based on the responses, the model generates a
+                  structured incident report.
+                </p>
+              </div>
+              <div className="md:w-auto">
+                <div className="bg-tertiary/8 relative h-100 w-full rounded-2xl md:mx-auto md:h-120 md:w-120">
+                  <div className="bg-tertiary/25 absolute top-8 left-1/2 -translate-x-1/2 overflow-hidden rounded-[30px] p-2.5 shadow-2xl md:p-3">
+                    <div className="aspect-501/1080 w-50 overflow-hidden rounded-[20px] md:w-60 md:rounded-[18px] 2xl:w-65">
+                      <video
+                        autoPlay
+                        loop
+                        muted
+                        playsInline
+                        preload="metadata"
+                        poster="/videos/safespace/safi-app-placeholder.webp"
+                        className="object-cover"
+                      >
+                        <source
+                          src="/videos/safespace/safi-app.mp4"
+                          type="video/mp4"
+                        />
+                      </video>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </motion.section>
+
+          <motion.section
+            initial={{ opacity: 0, y: 50 }} // Initial state: hidden and slightly down
+            whileInView={{ opacity: 1, y: 0 }} // Animate to: visible and in place
+            transition={{ duration: 1, ease: "easeOut" }} // Animation settings
+            viewport={{ once: true, amount: 0.02 }} // Trigger animation when 2% in view, only once
+            className="mb-5 md:mb-8"
+          >
+            <BarredHeading text="Web Supplement" />
           </motion.section>
         </motion.section>
       </section>
