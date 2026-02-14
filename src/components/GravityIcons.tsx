@@ -13,8 +13,22 @@ interface GravityIconsProps {
   icons: GravityIcon[];
   /** Container height in px*/
   height?: number;
+  /** Container height for md and up in px */
+  heightMdUp?: number;
+  /** Container height below md in px */
+  heightBelowMd?: number;
   /** Icon size in px*/
   iconSize?: number;
+  /** Icon size for md and up in px */
+  iconSizeMdUp?: number;
+  /** Icon size below md in px */
+  iconSizeBelowMd?: number;
+  /** Breakpoint used for md in px */
+  mdBreakpoint?: number;
+  /** Enable device tilt to change gravity direction on mobile */
+  enableMobileTiltGravity?: boolean;
+  /** Sensitivity multiplier for tilt-based gravity */
+  mobileTiltSensitivity?: number;
   /**
    * Physics body restitution / bounciness. Range: 0.0 - 1.0.
    * Higher values => more elastic collisions
@@ -43,7 +57,14 @@ interface BodyState {
 export default function GravityIcons({
   icons,
   height = 400,
+  heightMdUp,
+  heightBelowMd,
   iconSize = 60,
+  iconSizeMdUp,
+  iconSizeBelowMd,
+  mdBreakpoint = 768,
+  enableMobileTiltGravity = true,
+  mobileTiltSensitivity = 1,
   restitution = 0.8,
   friction = 0.2,
   gravityY = 0.5,
@@ -59,6 +80,125 @@ export default function GravityIcons({
   const lastScrollTimeRef = useRef<number>(0);
 
   const [bodyStates, setBodyStates] = useState<BodyState[]>([]);
+  const [isMdUp, setIsMdUp] = useState(() =>
+    typeof window !== "undefined"
+      ? window.matchMedia(`(min-width: ${mdBreakpoint}px)`).matches
+      : false,
+  );
+
+  useEffect(() => {
+    const mediaQuery = window.matchMedia(`(min-width: ${mdBreakpoint}px)`);
+
+    const handleMediaChange = (event: MediaQueryListEvent) => {
+      setIsMdUp(event.matches);
+    };
+
+    mediaQuery.addEventListener("change", handleMediaChange);
+    return () => mediaQuery.removeEventListener("change", handleMediaChange);
+  }, [mdBreakpoint]);
+
+  const resolvedHeight = isMdUp
+    ? (heightMdUp ?? height)
+    : (heightBelowMd ?? height);
+  const resolvedIconSize = isMdUp
+    ? (iconSizeMdUp ?? iconSize)
+    : (iconSizeBelowMd ?? iconSize);
+
+  useEffect(() => {
+    const isMobileLike =
+      typeof window !== "undefined" &&
+      window.matchMedia("(pointer: coarse)").matches;
+
+    if (!enableMobileTiltGravity || isMdUp || !isMobileLike) {
+      if (engineRef.current) {
+        engineRef.current.gravity.x = 0;
+        engineRef.current.gravity.y = gravityY;
+      }
+      return;
+    }
+
+    if (
+      typeof window === "undefined" ||
+      !("DeviceOrientationEvent" in window)
+    ) {
+      return;
+    }
+
+    let disposed = false;
+    let listenerAttached = false;
+
+    const handleOrientation = (event: DeviceOrientationEvent) => {
+      const engine = engineRef.current;
+      if (!engine) return;
+
+      const beta = event.beta;
+      const gamma = event.gamma;
+      if (beta == null || gamma == null) return;
+
+      const clampedBeta = Math.max(-180, Math.min(180, beta));
+      const clampedGamma = Math.max(-90, Math.min(90, gamma));
+
+      const rawX = clampedGamma / 45;
+      const rawY = 1 + clampedBeta / 90;
+      const length = Math.sqrt(rawX * rawX + rawY * rawY) || 1;
+
+      const targetX = (rawX / length) * gravityY * mobileTiltSensitivity;
+      const targetY = (rawY / length) * gravityY * mobileTiltSensitivity;
+
+      engine.gravity.x = engine.gravity.x * 0.8 + targetX * 0.2;
+      engine.gravity.y = engine.gravity.y * 0.8 + targetY * 0.2;
+    };
+
+    const addOrientationListener = () => {
+      if (disposed || listenerAttached) return;
+      window.addEventListener("deviceorientation", handleOrientation, true);
+      listenerAttached = true;
+    };
+
+    const maybeRequestPermissionAndListen = async () => {
+      const OrientationCtor =
+        DeviceOrientationEvent as typeof DeviceOrientationEvent & {
+          requestPermission?: () => Promise<"granted" | "denied">;
+        };
+
+      if (typeof OrientationCtor.requestPermission !== "function") {
+        addOrientationListener();
+        return;
+      }
+
+      try {
+        const permission = await OrientationCtor.requestPermission();
+        if (permission === "granted") {
+          addOrientationListener();
+        }
+      } catch {
+        // iOS often requires a user gesture; silently fall back to default gravity.
+      }
+    };
+
+    void maybeRequestPermissionAndListen();
+
+    return () => {
+      disposed = true;
+      if (listenerAttached) {
+        window.removeEventListener(
+          "deviceorientation",
+          handleOrientation,
+          true,
+        );
+      }
+      if (engineRef.current) {
+        engineRef.current.gravity.x = 0;
+        engineRef.current.gravity.y = gravityY;
+      }
+    };
+  }, [
+    isMdUp,
+    mdBreakpoint,
+    gravityY,
+    enableMobileTiltGravity,
+    mobileTiltSensitivity,
+  ]);
 
   // Apply force to all physics bodies based on scroll intensity
   function applyScrollForce(delta: number) {
@@ -120,7 +260,7 @@ export default function GravityIcons({
     if (!container) return;
 
     const width = container.offsetWidth;
-    const h = height;
+    const h = resolvedHeight;
 
     // Create engine with sleeping enabled so we can wake bodies on scroll
     const engine = Matter.Engine.create({
@@ -172,9 +312,9 @@ export default function GravityIcons({
     Matter.Composite.add(engine.world, wallsRef.current);
 
     // Create icon bodies - scattered randomly across the top portion
-    const radius = iconSize / 2;
+    const radius = resolvedIconSize / 2;
     const bodies = icons.map((_, i) => {
-      const x = radius + Math.random() * (width - iconSize);
+      const x = radius + Math.random() * (width - resolvedIconSize);
       const y = radius + Math.random() * (h * 0.4); // start in upper 40%
 
       return Matter.Bodies.circle(x, y, radius, {
@@ -206,7 +346,7 @@ export default function GravityIcons({
         }
 
         // Bounds recovery: if a body somehow escapes, teleport it back
-        const margin = iconSize;
+        const margin = resolvedIconSize;
         if (
           body.position.x < -margin ||
           body.position.x > width + margin ||
@@ -318,13 +458,20 @@ export default function GravityIcons({
       bodiesRef.current = [];
       wallsRef.current = [];
     };
-  }, [icons, height, iconSize, restitution, friction, gravityY]);
+  }, [
+    icons,
+    resolvedHeight,
+    resolvedIconSize,
+    restitution,
+    friction,
+    gravityY,
+  ]);
 
   return (
     <div
       ref={containerRef}
       className={`relative overflow-hidden ${className}`}
-      style={{ height, touchAction: "pan-y" }}
+      style={{ height: resolvedHeight, touchAction: "pan-y" }}
     >
       {bodyStates.length > 0 &&
         icons.map((icon, i) => {
@@ -336,10 +483,10 @@ export default function GravityIcons({
               key={`gravity-icon-${i}`}
               className="pointer-events-none absolute"
               style={{
-                width: iconSize,
-                height: iconSize,
-                left: state.x - iconSize / 2,
-                top: state.y - iconSize / 2,
+                width: resolvedIconSize,
+                height: resolvedIconSize,
+                left: state.x - resolvedIconSize / 2,
+                top: state.y - resolvedIconSize / 2,
                 transform: `rotate(${state.angle}rad)`,
                 willChange: "left, top, transform",
               }}
@@ -347,8 +494,8 @@ export default function GravityIcons({
               <Image
                 src={icon.src}
                 alt={icon.alt}
-                width={iconSize}
-                height={iconSize}
+                width={resolvedIconSize}
+                height={resolvedIconSize}
                 className="pointer-events-none object-contain select-none"
                 draggable={false}
               />

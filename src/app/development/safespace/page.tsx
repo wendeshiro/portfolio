@@ -891,8 +891,10 @@ export default function SafeSpace() {
                       alt: "Nextjs",
                     },
                   ]}
-                  height={450}
-                  iconSize={80}
+                  heightMdUp={450}
+                  heightBelowMd={350}
+                  iconSizeMdUp={80}
+                  iconSizeBelowMd={55}
                   className="rounded-xl"
                 />
               </div>
