@@ -110,7 +110,7 @@ export default function PlanIt() {
             <h2 className="mb-7 font-serif text-2xl font-medium md:text-4xl md:font-normal">
               State Management & Data Handling
             </h2>
-            <div className="bg-primary/10 flex h-auto items-center justify-center overflow-hidden rounded-xl p-4 md:h-[80vh] md:p-20">
+            <div className="bg-primary/10 flex h-auto items-center justify-center overflow-hidden rounded-xl p-4 md:h-auto md:px-20 md:py-8">
               <video
                 controls
                 autoPlay
@@ -119,7 +119,7 @@ export default function PlanIt() {
                 playsInline
                 preload="metadata"
                 poster="/videos/plan-it/plan-it-demo-placeholder.webp"
-                className="w-full rounded-xl shadow-xl"
+                className="w-full md:max-w-270 rounded-xl shadow-xl"
               >
                 <source
                   src="/videos/plan-it/plan-it-demo.mp4"
