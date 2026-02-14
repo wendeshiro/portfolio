@@ -29,6 +29,7 @@ import DesignSystem from "@/images/development/safespace/design-system.webp";
 import Lofi from "@/images/development/safespace/lofi.webp";
 import Hifi from "@/images/development/safespace/hifi.webp";
 import Naming from "@/images/development/safespace/naming.webp";
+import GravityIcons from "@/components/GravityIcons";
 
 export default function SafeSpace() {
   const [activeFeatureIndex, setActiveFeatureIndex] = useState(0);
@@ -384,7 +385,7 @@ export default function SafeSpace() {
           <h2 className="mb-3 font-serif text-2xl font-medium md:mb-6 md:text-4xl md:font-normal">
             Discovery Phase
           </h2>
-          <section className="mb-4 md:mb-8">
+          <section className="mb-5 md:mb-8">
             <BarredHeading text="Competitive Analysis" />
             <div className="mt-5 flex flex-col gap-5 md:mt-2 md:flex-row md:gap-13">
               <div className="space-y-3 text-base leading-relaxed md:w-1/2 md:text-lg">
@@ -454,7 +455,7 @@ export default function SafeSpace() {
             whileInView={{ opacity: 1, y: 0 }} // Animate to: visible and in place
             transition={{ duration: 1, ease: "easeOut" }} // Animation settings
             viewport={{ once: true, amount: 0.02 }} // Trigger animation when 2% in view, only once
-            className="mb-2 md:mb-17"
+            className="mb-5 md:mb-17"
           >
             <BarredHeading text="User Research & Insight" />
             <div className="mt-2 flex flex-col gap-5 text-base leading-relaxed md:gap-12 md:text-lg">
@@ -647,7 +648,7 @@ export default function SafeSpace() {
           <h2 className="mb-3 font-serif text-2xl font-medium md:mb-6 md:text-4xl md:font-normal">
             Design Process
           </h2>
-          <section className="mb-4 md:mb-8">
+          <section className="mb-5 md:mb-8">
             <BarredHeading text="Sitemap & User Flow" />
             <p className="mt-2 mb-5 text-base md:text-lg">
               Based on user research findings, the initial eight functional
@@ -795,9 +796,9 @@ export default function SafeSpace() {
           <h2 className="mb-3 font-serif text-2xl font-medium md:mb-6 md:text-4xl md:font-normal">
             Development Process
           </h2>
-          <section className="mb-4 md:mb-8">
+          <section className="mb-5 md:mb-10">
             <div className="flex flex-col md:flex-row md:gap-13">
-              <div className="top-20 self-start md:sticky md:w-1/2">
+              <div className="md:w-1/2">
                 <BarredHeading text="Naming Conventions & Project Structure" />
                 <p className="mt-2 mb-5 text-base leading-relaxed md:text-lg">
                   Clear naming conventions and a well-structured project setup
@@ -807,7 +808,7 @@ export default function SafeSpace() {
                   for version control and team collaboration.
                 </p>
               </div>
-              <div className="overflow-hidden rounded-xl shadow-2xl shadow-black/5 md:w-1/2">
+              <div className="overflow-hidden rounded-xl md:w-1/2">
                 <Image
                   src={Naming}
                   alt="Naming Conventions and Project Structure"
@@ -816,6 +817,87 @@ export default function SafeSpace() {
               </div>
             </div>
           </section>
+          <motion.section
+            initial={{ opacity: 0, y: 50 }} // Initial state: hidden and slightly down
+            whileInView={{ opacity: 1, y: 0 }} // Animate to: visible and in place
+            transition={{ duration: 1, ease: "easeOut" }} // Animation settings
+            viewport={{ once: true, amount: 0.02 }} // Trigger animation when 2% in view, only once
+            className="mb-5 md:mb-8"
+          >
+            <div className="flex flex-col md:flex-row md:gap-13">
+              <div className="md:w-1/2">
+                <BarredHeading text="Tech Stack Selection" />
+                <div className="mt-2 mb-5 space-y-3 text-base leading-relaxed md:text-lg">
+                  <p>
+                    The mobile app leveraged{" "}
+                    <span className="text-primary">React Native and Expo</span>{" "}
+                    to build a unified codebase for both iOS and Android
+                    environments, with{" "}
+                    <span className="text-primary">TypeScript</span> enhancing
+                    type safety and robustness.{" "}
+                    <span className="text-primary">AWS Lambda</span> handled
+                    AI-powered report generation in a serverless environment,
+                    centralizing prompt logic and protecting API credentials.{" "}
+                    <span className="text-primary">OpenAI and IBM watsonx</span>{" "}
+                    powered transcription, report generation, and interactive
+                    chat features to improve automation and user experience.
+                  </p>
+                  <p>
+                    A lightweight web supplement was built using{" "}
+                    <span className="text-primary">
+                      React, Next.js, and JavaScript
+                    </span>
+                    .
+                  </p>
+                </div>
+              </div>
+              <div className="border-tertiary/20 bg-tertiary/5 rounded-xl border md:w-1/2">
+                <GravityIcons
+                  icons={[
+                    {
+                      src: "/images/development/safespace/react-native.svg",
+                      alt: "React Native",
+                    },
+                    {
+                      src: "/images/development/safespace/typescript.svg",
+                      alt: "TypeScript",
+                    },
+                    {
+                      src: "/images/development/safespace/expo.svg",
+                      alt: "Expo",
+                    },
+                    {
+                      src: "/images/development/safespace/aws.svg",
+                      alt: "AWS",
+                    },
+                    {
+                      src: "/images/development/safespace/lambda.svg",
+                      alt: "AWS Lambda",
+                    },
+                    {
+                      src: "/images/development/safespace/openai.svg",
+                      alt: "OpenAI",
+                    },
+                    {
+                      src: "/images/development/safespace/ibm.svg",
+                      alt: "IBM watsonx",
+                    },
+                    {
+                      src: "/images/development/safespace/js.svg",
+                      alt: "JavaScript",
+                    },
+                    {
+                      src: "/images/development/safespace/nextjs.svg",
+                      alt: "Nextjs",
+                    },
+                  ]}
+                  height={450}
+                  iconSize={80}
+                  className="rounded-xl"
+                />
+              </div>
+            </div>
+          </motion.section>
         </motion.section>
       </section>
     </main>
