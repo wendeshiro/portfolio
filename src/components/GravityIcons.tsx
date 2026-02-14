@@ -1,6 +1,12 @@
 "use client";
 
-import { useEffect, useRef, useState, useSyncExternalStore } from "react";
+import {
+  useCallback,
+  useEffect,
+  useRef,
+  useState,
+  useSyncExternalStore,
+} from "react";
 import Matter from "matter-js";
 import Image from "next/image";
 
@@ -66,9 +72,7 @@ export default function GravityIcons({
 }: GravityIconsProps) {
   const containerRef = useRef<HTMLDivElement>(null);
   const engineRef = useRef<Matter.Engine | null>(null);
-  const runnerRef = useRef<Matter.Runner | null>(null);
   const bodiesRef = useRef<Matter.Body[]>([]);
-  const wallsRef = useRef<Matter.Body[]>([]);
   const rafRef = useRef<number>(0);
   const lastScrollYRef = useRef<number>(0);
   const lastScrollTimeRef = useRef<number>(0);
@@ -92,7 +96,7 @@ export default function GravityIcons({
     : (iconSizeBelowMd ?? iconSize);
 
   // Apply force to all physics bodies based on scroll intensity
-  function applyScrollForce(delta: number) {
+  const applyScrollForce = useCallback((delta: number) => {
     const bodies = bodiesRef.current;
     const engine = engineRef.current;
     if (!engine || bodies.length === 0) return;
@@ -109,7 +113,7 @@ export default function GravityIcons({
       const forceX = (Math.random() - 0.5) * forceMagnitude * 1; // add some random horizontal force for more dynamic effect
       Matter.Body.applyForce(body, body.position, { x: forceX, y: forceY });
     }
-  }
+  }, []);
 
   // Primary: direct wheel event for immediate, unsmoothed force
   // (Lenis smooths velocity via lerp which drastically reduces reported speed)
@@ -120,7 +124,7 @@ export default function GravityIcons({
 
     window.addEventListener("wheel", handleWheel, { passive: true });
     return () => window.removeEventListener("wheel", handleWheel);
-  });
+  }, [applyScrollForce]);
 
   // Fallback: native scroll event (covers scrollbar drag, keyboard, touch)
   useEffect(() => {
@@ -144,7 +148,7 @@ export default function GravityIcons({
 
     window.addEventListener("scroll", handleScroll, { passive: true });
     return () => window.removeEventListener("scroll", handleScroll);
-  });
+  }, [applyScrollForce]);
 
   useEffect(() => {
     const container = containerRef.current;
@@ -199,8 +203,7 @@ export default function GravityIcons({
       wallOptions,
     );
 
-    wallsRef.current = [floor, ceiling, leftWall, rightWall];
-    Matter.Composite.add(engine.world, wallsRef.current);
+    Matter.Composite.add(engine.world, [floor, ceiling, leftWall, rightWall]);
 
     // Create icon bodies - scattered randomly across the top portion
     const radius = resolvedIconSize / 2;
@@ -255,7 +258,6 @@ export default function GravityIcons({
 
     // Start the engine runner
     const runner = Matter.Runner.create();
-    runnerRef.current = runner;
     Matter.Runner.run(runner, engine);
 
     // Sync DOM positions with physics bodies via rAF
@@ -345,9 +347,7 @@ export default function GravityIcons({
       Matter.Engine.clear(engine);
       Matter.Composite.clear(engine.world, false);
       engineRef.current = null;
-      runnerRef.current = null;
       bodiesRef.current = [];
-      wallsRef.current = [];
     };
   }, [
     icons,
@@ -361,7 +361,7 @@ export default function GravityIcons({
   return (
     <div
       ref={containerRef}
-      className={`relative overflow-hidden ${className} `}
+      className={`relative overflow-hidden ${className}`}
       style={{ height: resolvedHeight, touchAction: "pan-y" }}
     >
       {bodyStates.length > 0 &&
