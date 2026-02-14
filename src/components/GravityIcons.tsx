@@ -361,7 +361,7 @@ export default function GravityIcons({
   return (
     <div
       ref={containerRef}
-      className={`relative overflow-hidden ${className}`}
+      className={`relative overflow-hidden ${className} `}
       style={{ height: resolvedHeight, touchAction: "pan-y" }}
     >
       {bodyStates.length > 0 &&
@@ -372,7 +372,7 @@ export default function GravityIcons({
           return (
             <div
               key={`gravity-icon-${i}`}
-              className="pointer-events-none absolute"
+              className="absolute hover:cursor-pointer active:cursor-grabbing"
               style={{
                 width: resolvedIconSize,
                 height: resolvedIconSize,
@@ -387,7 +387,7 @@ export default function GravityIcons({
                 alt={icon.alt}
                 width={resolvedIconSize}
                 height={resolvedIconSize}
-                className="pointer-events-none object-contain select-none"
+                className="object-contain select-none"
                 draggable={false}
               />
             </div>
