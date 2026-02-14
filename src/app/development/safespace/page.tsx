@@ -912,7 +912,7 @@ export default function SafeSpace() {
               <div className="md:w-auto">
                 <div className="bg-tertiary/8 relative h-100 w-full rounded-2xl md:mx-auto md:h-120 md:w-120">
                   <div className="bg-tertiary/25 absolute top-8 left-1/2 -translate-x-1/2 overflow-hidden rounded-[30px] p-2.5 shadow-2xl md:p-3">
-                    <div className="aspect-496/1080 w-50 overflow-hidden rounded-[20px] md:w-60 md:rounded-[18px] 2xl:w-65">
+                    <div className="aspect-496/1080 w-50 overflow-hidden rounded-[20px] md:w-60 md:rounded-[18px]">
                       <video
                         autoPlay
                         loop
@@ -975,7 +975,7 @@ export default function SafeSpace() {
               <div className="md:w-auto">
                 <div className="bg-tertiary/8 relative h-100 w-full rounded-2xl md:mx-auto md:h-120 md:w-120">
                   <div className="bg-tertiary/25 absolute top-8 left-1/2 -translate-x-1/2 overflow-hidden rounded-[30px] p-2.5 shadow-2xl md:p-3">
-                    <div className="aspect-501/1080 w-50 overflow-hidden rounded-[20px] md:w-60 md:rounded-[18px] 2xl:w-65">
+                    <div className="aspect-501/1080 w-50 overflow-hidden rounded-[20px] md:w-60 md:rounded-[18px]">
                       <video
                         autoPlay
                         loop
