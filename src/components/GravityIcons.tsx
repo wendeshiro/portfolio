@@ -1,6 +1,6 @@
 "use client";
 
-import { useEffect, useRef, useState } from "react";
+import { useEffect, useRef, useState, useSyncExternalStore } from "react";
 import Matter from "matter-js";
 import Image from "next/image";
 
@@ -74,22 +74,15 @@ export default function GravityIcons({
   const lastScrollTimeRef = useRef<number>(0);
 
   const [bodyStates, setBodyStates] = useState<BodyState[]>([]);
-  const [isMdUp, setIsMdUp] = useState(() =>
-    typeof window !== "undefined"
-      ? window.matchMedia(`(min-width: ${mdBreakpoint}px)`).matches
-      : false,
+  const isMdUp = useSyncExternalStore(
+    (onStoreChange) => {
+      const mediaQuery = window.matchMedia(`(min-width: ${mdBreakpoint}px)`);
+      mediaQuery.addEventListener("change", onStoreChange);
+      return () => mediaQuery.removeEventListener("change", onStoreChange);
+    },
+    () => window.matchMedia(`(min-width: ${mdBreakpoint}px)`).matches,
+    () => false,
   );
-
-  useEffect(() => {
-    const mediaQuery = window.matchMedia(`(min-width: ${mdBreakpoint}px)`);
-
-    const handleMediaChange = (event: MediaQueryListEvent) => {
-      setIsMdUp(event.matches);
-    };
-
-    mediaQuery.addEventListener("change", handleMediaChange);
-    return () => mediaQuery.removeEventListener("change", handleMediaChange);
-  }, [mdBreakpoint]);
 
   const resolvedHeight = isMdUp
     ? (heightMdUp ?? height)

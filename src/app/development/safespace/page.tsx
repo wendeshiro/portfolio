@@ -824,9 +824,9 @@ export default function SafeSpace() {
             viewport={{ once: true, amount: 0.02 }} // Trigger animation when 2% in view, only once
             className="mb-5 md:mb-8"
           >
+            <BarredHeading text="Tech Stack Selection" />
             <div className="flex flex-col md:flex-row md:gap-13">
               <div className="md:w-1/2">
-                <BarredHeading text="Tech Stack Selection" />
                 <div className="mt-2 mb-5 space-y-3 text-base leading-relaxed md:text-lg">
                   <p>
                     The mobile app leveraged{" "}
@@ -851,7 +851,7 @@ export default function SafeSpace() {
                   </p>
                 </div>
               </div>
-              <div className="border-tertiary/20 bg-tertiary/5 rounded-xl border md:w-1/2">
+              <div className="border-tertiary/20 bg-tertiary/5 rounded-xl border md:mt-3 md:w-1/2">
                 <GravityIcons
                   icons={[
                     {
