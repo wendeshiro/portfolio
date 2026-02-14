@@ -102,8 +102,8 @@ export default function GravityIcons({
     if (!engine || bodies.length === 0) return;
     if (Math.abs(delta) < 1) return;
 
-    const clampedDelta = Math.min(Math.abs(delta), 300);
-    const forceMagnitude = clampedDelta * 0.0004; // higher => more force per scroll unit
+    const clampedDelta = Math.min(Math.abs(delta), 100); // higher => more force at high scroll speeds, but prevents extreme outliers from causing chaos
+    const forceMagnitude = clampedDelta * 0.0002; // higher => more force per scroll unit
 
     // Scrolling down (positive delta) → push icons upward (negative Y)
     const forceY = -Math.sign(delta) * forceMagnitude;
