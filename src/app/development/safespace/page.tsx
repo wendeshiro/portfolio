@@ -185,7 +185,7 @@ export default function SafeSpace() {
                 >
                   face challenging work environments
                 </InfoPopover>
-                , intimidating reporting processes, and lack of information
+                , intimidating reporting processes, and a lack of information
                 about job site safety. SafeSpace addresses these challenges by
                 providing preventative insights, AI-assisted support to reduce
                 reporting stress, and a desktop web platform that turns
@@ -446,8 +446,8 @@ export default function SafeSpace() {
                   provide compliance, social connection, and mindfulness, but
                   suffer from{" "}
                   <span className="font-semibold">
-                    complex interfaces, poor mobile responsiveness, and lack
-                    personalized guidance
+                    complex interfaces, poor mobile responsiveness, and a lack
+                    of personalized guidance
                   </span>
                   , leaving users lost in dense resources.
                 </p>

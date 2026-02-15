@@ -113,7 +113,7 @@ export default function PhotoView({ children, className }: PhotoViewProps) {
               <PhotoViewItem src={src}>{child}</PhotoViewItem>
               <p className="mt-2 flex flex-col items-center justify-center text-center text-sm text-gray-500 md:mt-3 md:flex-row md:gap-1">
                 <ZoomIn />
-                Click image to expand
+                Click the image to expand
               </p>
             </div>
           );
