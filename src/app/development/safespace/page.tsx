@@ -30,6 +30,7 @@ import Lofi from "@/images/development/safespace/lofi.webp";
 import Hifi from "@/images/development/safespace/hifi.webp";
 import Naming from "@/images/development/safespace/naming.webp";
 import GravityIcons from "@/components/GravityIcons";
+import Mkt from "@/images/development/safespace/mkt.webp";
 
 export default function SafeSpace() {
   const [activeFeatureIndex, setActiveFeatureIndex] = useState(0);
@@ -135,6 +136,7 @@ export default function SafeSpace() {
           { id: "discovery-phase", label: "Discovery Phase" },
           { id: "design-process", label: "Design Process" },
           { id: "development-process", label: "Development Process" },
+          { id: "marketing-collateral", label: "Marketing Collateral" },
         ]}
       />
       <ParallaxImage
@@ -1015,7 +1017,6 @@ export default function SafeSpace() {
             whileInView={{ opacity: 1, y: 0 }} // Animate to: visible and in place
             transition={{ duration: 1, ease: "easeOut" }} // Animation settings
             viewport={{ once: true, amount: 0.02 }} // Trigger animation when 2% in view, only once
-            className="mb-5 md:mb-8"
           >
             <BarredHeading text="Web Supplement" />
             <div className="mt-2 mb-5 space-y-2 text-base leading-relaxed md:w-2/3 md:text-lg">
@@ -1044,6 +1045,27 @@ export default function SafeSpace() {
               </video>
             </div>
           </motion.section>
+        </motion.section>
+
+        <SectionDivider />
+        <motion.section
+          initial={{ opacity: 0, y: 50 }} // Initial state: hidden and slightly down
+          whileInView={{ opacity: 1, y: 0 }} // Animate to: visible and in place
+          transition={{ duration: 1, ease: "easeOut" }} // Animation settings
+          viewport={{ once: true, amount: 0.02 }} // Trigger animation when 2% in view, only once
+          id="marketing-collateral"
+        >
+          <h2 className="mb-3 font-serif text-2xl font-medium md:mb-6 md:text-4xl md:font-normal">
+            Marketing Collateral
+          </h2>
+          <PhotoView>
+            <Image
+              src={Mkt}
+              alt="Marketing Collateral"
+              placeholder="blur"
+              className="cursor-pointer rounded-2xl"
+            ></Image>
+          </PhotoView>
         </motion.section>
       </section>
     </main>

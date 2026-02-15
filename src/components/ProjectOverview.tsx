@@ -46,7 +46,7 @@ export default function ProjectOverview({
       <h2 className="mb-6 font-serif text-2xl font-medium md:text-4xl md:font-normal">
         Overview
       </h2>
-      <div className="flex flex-col gap-8 md:flex-row md:justify-between md:gap-20">
+      <div className="flex flex-col gap-5 md:flex-row md:justify-between md:gap-20">
         <div className="flex flex-col gap-5 md:w-3/5">
           <div className="text-xl leading-relaxed md:text-2xl">
             {primaryText}
@@ -65,7 +65,7 @@ export default function ProjectOverview({
           ))}
 
           {links.length > 0 && (
-            <div className="mt-3 flex flex-wrap gap-x-4 gap-y-5 text-sm md:gap-x-8 md:text-lg">
+            <div className="mt-3 flex flex-wrap gap-x-4 gap-y-6 md:gap-y-4 text-sm md:gap-x-8 md:text-lg">
               {links.map((link, index) => {
                 const renderIcon = (
                   icon?: "globe" | "github" | "figma" | ReactNode,
