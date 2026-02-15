@@ -29,7 +29,7 @@ export default function Home() {
         </p>
       </section>
       <section className="bg-primary/10 relative right-1/2 left-1/2 -mx-[50vw] mt-16 h-screen w-screen">
-        <div className="mx-auto flex h-full max-w-7xl flex-col px-6 pt-12 pb-8 md:px-8 md:pt-16">
+        <div className="mx-auto flex h-full max-w-7xl flex-col px-6 pt-12 pb-8 md:pt-16">
           <div className="grid gap-13 md:grid-cols-2">
             <ProjectCard
               title="SafeSpace"
@@ -61,11 +61,101 @@ export default function Home() {
 
           <div className="mt-auto h-35">
             <div className="flex w-max animate-[marquee_100s_linear_infinite] whitespace-nowrap">
-              <p className="text-primary/35 mr-10 shrink-0 text-[clamp(64px,10vw,140px)] leading-none font-bold tracking-[0.12em] uppercase">
+              <p className="text-primary/35 mr-10 shrink-0 text-[clamp(64px,10vw,170px)] leading-none font-bold tracking-[0.12em] uppercase">
                 DEVELOPMENT DEVELOPMENT DEVELOPMENT DEVELOPMENT DEVELOPMENT
               </p>
-              <p className="text-primary/35 shrink-0 text-[clamp(64px,10vw,140px)] leading-none font-bold tracking-[0.12em] uppercase">
+              <p className="text-primary/35 shrink-0 text-[clamp(64px,10vw,170px)] leading-none font-bold tracking-[0.12em] uppercase">
                 DEVELOPMENT DEVELOPMENT DEVELOPMENT DEVELOPMENT DEVELOPMENT
+              </p>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <section className="bg-secondary/10 relative right-1/2 left-1/2 -mx-[50vw] mt-16 h-screen w-screen">
+        <div className="mx-auto flex h-full max-w-7xl flex-col px-6 pt-12 pb-8 md:pt-16">
+          <div className="grid gap-13 md:grid-cols-2">
+            <ProjectCard
+              title="SafeSpace"
+              subtitle="React Native / LLM / Expo / AWS Lambda / React / Next.js"
+              description="SafeSpace is an AI-powered safety platform for gender-diverse tradespeople, transforming voice recordings and guided chats into actionable site reports and community insights."
+              imageSrc={SafeSpace}
+              href="/development/safespace"
+            />
+            <ProjectCard
+              title="Plan-it"
+              subtitle="React Native / LLM / Expo / AWS Lambda / React / Next.js"
+              description="SafeSpace is an AI-powered safety platform for gender-diverse tradespeople, transforming voice recordings and guided chats into actionable site reports and community insights."
+              imageSrc={Planit}
+              href="/development/plan-it"
+            />
+          </div>
+
+          <div className="mt-5 flex items-center justify-between">
+            <p className="text-secondary/50 text-2xl font-semibold md:text-3xl">
+              Graphic • UI/UX • Video • Motion
+            </p>
+            <a
+              href="/design"
+              className="border-secondary text-secondary hover:bg-secondary rounded-2xl border px-7 py-2.5 text-base transition-colors hover:text-white"
+            >
+              All Design Work →
+            </a>
+          </div>
+
+          <div className="mt-auto h-35">
+            <div className="flex w-max animate-[marquee_100s_linear_infinite] whitespace-nowrap">
+              <p className="text-secondary/40 mr-10 shrink-0 text-[clamp(64px,10vw,170px)] leading-none font-bold tracking-[0.12em] uppercase">
+                DESIGN DESIGN DESIGN DESIGN DESIGN DESIGN DESIGN DESIGN DESIGN
+              </p>
+              <p className="text-secondary/40 shrink-0 text-[clamp(64px,10vw,170px)] leading-none font-bold tracking-[0.12em] uppercase">
+                DESIGN DESIGN DESIGN DESIGN DESIGN DESIGN DESIGN DESIGN DESIGN
+              </p>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <section className="bg-tertiary/10 relative right-1/2 left-1/2 -mx-[50vw] mt-16 h-screen w-screen">
+        <div className="mx-auto flex h-full max-w-7xl flex-col px-6 pt-12 pb-8 md:pt-16">
+          <div className="grid gap-13 md:grid-cols-2">
+            <ProjectCard
+              title="SafeSpace"
+              subtitle="React Native / LLM / Expo / AWS Lambda / React / Next.js"
+              description="SafeSpace is an AI-powered safety platform for gender-diverse tradespeople, transforming voice recordings and guided chats into actionable site reports and community insights."
+              imageSrc={SafeSpace}
+              href="/development/safespace"
+            />
+            <ProjectCard
+              title="Plan-it"
+              subtitle="React Native / LLM / Expo / AWS Lambda / React / Next.js"
+              description="SafeSpace is an AI-powered safety platform for gender-diverse tradespeople, transforming voice recordings and guided chats into actionable site reports and community insights."
+              imageSrc={Planit}
+              href="/development/plan-it"
+            />
+          </div>
+
+          <div className="mt-5 flex items-center justify-between">
+            <p className="text-tertiary/50 text-2xl font-semibold md:text-3xl">
+              E-commerce • Market Research • Data Analytics • Paid Media
+            </p>
+            <a
+              href="/design"
+              className="border-tertiary text-tertiary hover:bg-tertiary rounded-2xl border px-7 py-2.5 text-base transition-colors hover:text-white"
+            >
+              All Marketing Cases →
+            </a>
+          </div>
+
+          <div className="mt-auto h-35">
+            <div className="flex w-max animate-[marquee_100s_linear_infinite] whitespace-nowrap">
+              <p className="text-tertiary/40 mr-10 shrink-0 text-[clamp(64px,10vw,170px)] leading-none font-bold tracking-[0.12em] uppercase">
+                MARKETING MARKETING MARKETING MARKETING MARKETING MARKETING
+                MARKETING
+              </p>
+              <p className="text-tertiary/40 shrink-0 text-[clamp(64px,10vw,170px)] leading-none font-bold tracking-[0.12em] uppercase">
+                MARKETING MARKETING MARKETING MARKETING MARKETING MARKETING
+                MARKETING
               </p>
             </div>
           </div>
