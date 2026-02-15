@@ -1008,6 +1008,31 @@ export default function SafeSpace() {
             className="mb-5 md:mb-8"
           >
             <BarredHeading text="Web Supplement" />
+            <div className="mt-2 mb-5 space-y-2 text-base leading-relaxed md:w-2/3 md:text-lg">
+              <p>
+                A lightweight web supplement was developed to consolidate
+                fragmented incident reports into actionable insights for
+                management. Map visualization was implemented using React
+                Leaflet to display report locations.
+              </p>
+              <p className="text-sm text-gray-600 md:text-base">
+                *Due to time constraints, the interface was delivered as a
+                functional mockup with a limited feature scope.
+              </p>
+            </div>
+            <div className="bg-tertiary/8 flex h-auto items-center justify-center overflow-hidden rounded-2xl p-4 md:h-auto md:px-20 md:py-8">
+              <video
+                autoPlay
+                loop
+                muted
+                playsInline
+                preload="metadata"
+                poster="/videos/safespace/websup-placeholder.webp"
+                className="w-full rounded-xl shadow-xl md:max-w-270"
+              >
+                <source src="/videos/safespace/websup.mp4" type="video/mp4" />
+              </video>
+            </div>
           </motion.section>
         </motion.section>
       </section>
