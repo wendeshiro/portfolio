@@ -137,7 +137,10 @@ export default function SafeSpace() {
           { id: "development-process", label: "Development Process" },
         ]}
       />
-      <ParallaxImage src={HeroImg} alt="Plan-it Trip Planning Web App hero" />
+      <ParallaxImage
+        src={HeroImg}
+        alt="SafeSpace AI-powered safety platform hero"
+      />
       <section className="mx-auto flex max-w-7xl flex-col px-5">
         <ProjectOverview
           primaryText={
@@ -477,8 +480,8 @@ export default function SafeSpace() {
               </p>
 
               <div className="relative w-full">
-                <div className="overflow-x-auto pb-10 md:overflow-visible md:pb-0">
-                  <div className="flex w-max flex-row justify-start gap-9 pr-5 md:w-full md:justify-center md:gap-15">
+                <div className="overflow-x-auto pb-10 md:pb-0 xl:overflow-visible">
+                  <div className="flex w-max flex-row justify-start gap-9 pr-5 md:justify-center md:gap-15 xl:w-full">
                     <div className="relative flex shrink-0 flex-col items-end gap-5 pr-6 md:pr-10">
                       <p className="text-primary text-lg font-medium md:text-xl">
                         Pain Point
@@ -606,7 +609,7 @@ export default function SafeSpace() {
                 </div>
                 <div
                   aria-hidden="true"
-                  className="pointer-events-none absolute top-0 right-0 h-full w-10 bg-linear-to-l from-white/95 to-transparent md:hidden"
+                  className="pointer-events-none absolute top-0 right-0 h-full w-10 bg-linear-to-l from-white/95 to-transparent xl:hidden"
                 />
               </div>
             </div>
