@@ -63,7 +63,7 @@ export default function InfoPopover({
   );
 
   const resolvedPopoverClassName = twMerge(
-    "absolute top-full z-52 mt-2 rounded-lg border border-black/10 bg-white px-7.5 py-4 text-base text-gray-900 shadow-xl md:px-6",
+    "absolute top-full z-11 mt-2 rounded-lg border border-black/10 bg-white px-7.5 py-4 text-base text-gray-900 shadow-xl md:px-6",
     popoverPositionClassName ?? "left-0",
     popoverWidthClass,
     popoverClassName,
