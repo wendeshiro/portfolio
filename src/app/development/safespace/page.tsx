@@ -913,7 +913,7 @@ export default function SafeSpace() {
             <BarredHeading text="AI Report Generation Pipeline" />
             <div className="flex flex-col md:mt-6 md:flex-row md:gap-13">
               <div className="md:w-auto">
-                <div className="bg-tertiary/8 relative h-100 w-full rounded-2xl md:mx-auto md:h-120 md:w-120">
+                <div className="bg-tertiary/8 relative mx-auto h-100 w-full max-w-90 rounded-2xl md:h-120 md:w-120 md:max-w-none">
                   <div className="bg-tertiary/25 absolute top-8 left-1/2 -translate-x-1/2 overflow-hidden rounded-[30px] p-2.5 shadow-2xl md:p-3">
                     <div className="aspect-496/1080 w-50 overflow-hidden rounded-[20px] md:w-60 md:rounded-[18px]">
                       <video
@@ -976,7 +976,7 @@ export default function SafeSpace() {
                 </p>
               </div>
               <div className="md:w-auto">
-                <div className="bg-tertiary/8 relative h-100 w-full rounded-2xl md:mx-auto md:h-120 md:w-120">
+                <div className="bg-tertiary/8 relative mx-auto h-100 w-full max-w-90 rounded-2xl md:h-120 md:w-120 md:max-w-none">
                   <div className="bg-tertiary/25 absolute top-8 left-1/2 -translate-x-1/2 overflow-hidden rounded-[30px] p-2.5 shadow-2xl md:p-3">
                     <div className="aspect-501/1080 w-50 overflow-hidden rounded-[20px] md:w-60 md:rounded-[18px]">
                       <video
