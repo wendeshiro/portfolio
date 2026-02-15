@@ -4,15 +4,21 @@ import ProjectCard from "@/components/ProjectCard";
 import SafeSpace from "@/images/home/safespace.webp";
 import Planit from "@/images/home/planit.webp";
 import { motion, useScroll, useTransform } from "framer-motion";
-import { useRef } from "react";
+import { useCallback, useRef } from "react";
+import { useLenis } from "lenis/react";
 
 export default function Home() {
+  const lenis = useLenis();
   const devRef = useRef<HTMLElement>(null);
   const designRef = useRef<HTMLElement>(null);
   const marketingRef = useRef<HTMLElement>(null);
+  const snapLockRef = useRef(false);
+  const lastSnappedRef = useRef<"dev" | "design" | "marketing" | null>(null);
 
   const SECTION_COLOR_START = 0.5;
   const SECTION_COLOR_END = 0.2;
+  const SECTION_SNAP_AMOUNT = 0.7;
+  const SECTION_SNAP_OFFSET = 0;
 
   // - Start 0.9 means the section's start is at 90% of the viewport)
   const { scrollYProgress: devProgress } = useScroll({
@@ -28,6 +34,82 @@ export default function Home() {
   const { scrollYProgress: marketingProgress } = useScroll({
     target: marketingRef,
     offset: [`start ${SECTION_COLOR_START}`, `start ${SECTION_COLOR_END}`],
+  });
+
+  const snapToSection = useCallback(
+    (target: HTMLElement | null) => {
+      if (!lenis || !target || snapLockRef.current) return;
+
+      snapLockRef.current = true;
+      lenis.scrollTo(target, {
+        offset: SECTION_SNAP_OFFSET,
+        duration: 0.6, // Longer duration creates a more pronounced easing effect.
+      });
+
+      window.setTimeout(() => {
+        snapLockRef.current = false;
+      }, 900);
+    },
+    [lenis, SECTION_SNAP_OFFSET],
+  );
+
+  useLenis(() => {
+    const sections = [
+      { id: "dev" as const, element: devRef.current },
+      { id: "design" as const, element: designRef.current },
+      { id: "marketing" as const, element: marketingRef.current },
+    ].filter(
+      (
+        section,
+      ): section is {
+        id: "dev" | "design" | "marketing";
+        element: HTMLElement;
+      } => Boolean(section.element),
+    );
+
+    if (sections.length === 0 || snapLockRef.current) return;
+
+    const viewportHeight = window.innerHeight;
+    let best: {
+      id: "dev" | "design" | "marketing";
+      element: HTMLElement;
+      ratio: number;
+      top: number;
+    } | null = null;
+
+    for (const section of sections) {
+      const rect = section.element.getBoundingClientRect();
+      const visibleHeight = Math.max(
+        0,
+        Math.min(rect.bottom, viewportHeight) - Math.max(rect.top, 0),
+      );
+      const ratio = rect.height > 0 ? visibleHeight / rect.height : 0;
+
+      if (!best || ratio > best.ratio) {
+        best = {
+          id: section.id,
+          element: section.element,
+          ratio,
+          top: rect.top,
+        };
+      }
+    }
+
+    if (!best) return;
+
+    if (best.ratio < SECTION_SNAP_AMOUNT * 0.5) {
+      lastSnappedRef.current = null;
+      return;
+    }
+
+    if (best.ratio >= SECTION_SNAP_AMOUNT) {
+      const almostAligned =
+        Math.abs(best.top - Math.abs(SECTION_SNAP_OFFSET)) < 8;
+      if (lastSnappedRef.current === best.id || almostAligned) return;
+
+      lastSnappedRef.current = best.id;
+      snapToSection(best.element);
+    }
   });
 
   function clampProgress(progress: number) {
@@ -47,7 +129,6 @@ export default function Home() {
     return `rgba(${r}, ${g}, ${b}, ${alpha})`;
   }
 
-  // Use useTransform to combine all progress values and determine the background color
   const backgroundColor = useTransform(
     [devProgress, designProgress, marketingProgress],
     (values) => {
@@ -61,7 +142,6 @@ export default function Home() {
       const secondary = { r: 0, g: 195, b: 163 };
       const tertiary = { r: 123, g: 95, b: 255 };
 
-      // Decide color based on the section with the highest progress
       if (marketing > 0) {
         return mixRgb(secondary, tertiary, marketing, 0.1);
       } else if (design > 0) {
@@ -104,13 +184,9 @@ export default function Home() {
           </p>
         </section>
 
-        <section
-          ref={devRef}
-          id="dev"
-          className="relative right-1/2 left-1/2 -mx-[50vw] mt-16 h-screen w-screen"
-        >
-          <div className="mx-auto flex h-full max-w-7xl flex-col px-6 pt-12 pb-8 md:pt-16">
-            <div className="grid gap-13 md:grid-cols-2">
+        <section ref={devRef} id="dev" className="relative">
+          <div className="mx-auto flex h-full max-w-7xl flex-col px-10 pt-12 md:pt-20">
+            <div className="grid gap-15 md:grid-cols-2">
               <ProjectCard
                 title="SafeSpace"
                 subtitle="React Native / LLM / Expo / AWS Lambda / React / Next.js"
@@ -127,38 +203,36 @@ export default function Home() {
               />
             </div>
 
-            <div className="mt-5 flex items-center justify-between">
-              <p className="text-primary/40 text-2xl font-semibold md:text-3xl">
+            <div className="mt-5 mb-5 flex items-center justify-between">
+              <p className="text-primary/40 font-semibold md:text-2xl">
                 Web • Mobile • LLM • API
               </p>
               <a
                 href="/development"
-                className="border-primary text-primary hover:bg-primary rounded-2xl border px-7 py-2.5 text-base transition-colors hover:text-white"
+                className="border-primary text-primary hover:bg-primary rounded-2xl border px-7 py-2.5 text-base transition-colors duration-300 hover:text-white"
               >
                 All Development Projects →
               </a>
             </div>
 
-            <div className="mt-auto h-35">
+            <div className="mt-auto">
               <div className="flex w-max animate-[marquee_100s_linear_infinite] whitespace-nowrap">
                 <p className="text-primary/35 mr-10 shrink-0 text-[clamp(64px,10vw,170px)] leading-none font-bold tracking-[0.12em] uppercase">
                   DEVELOPMENT DEVELOPMENT DEVELOPMENT DEVELOPMENT DEVELOPMENT
+                  DEVELOPMENT DEVELOPMENT
                 </p>
                 <p className="text-primary/35 shrink-0 text-[clamp(64px,10vw,170px)] leading-none font-bold tracking-[0.12em] uppercase">
                   DEVELOPMENT DEVELOPMENT DEVELOPMENT DEVELOPMENT DEVELOPMENT
+                  DEVELOPMENT DEVELOPMENT
                 </p>
               </div>
             </div>
           </div>
         </section>
 
-        <section
-          ref={designRef}
-          id="design"
-          className="relative right-1/2 left-1/2 -mx-[50vw] mt-16 h-screen w-screen"
-        >
-          <div className="mx-auto flex h-full max-w-7xl flex-col px-6 pt-12 pb-8 md:pt-16">
-            <div className="grid gap-13 md:grid-cols-2">
+        <section ref={designRef} id="design" className="relative">
+          <div className="mx-auto flex h-full max-w-7xl flex-col px-10 pt-12 pb-8 md:pt-20">
+            <div className="grid gap-15 md:grid-cols-2">
               <ProjectCard
                 title="SafeSpace"
                 subtitle="React Native / LLM / Expo / AWS Lambda / React / Next.js"
@@ -175,19 +249,19 @@ export default function Home() {
               />
             </div>
 
-            <div className="mt-5 flex items-center justify-between">
-              <p className="text-secondary/50 text-2xl font-semibold md:text-3xl">
+            <div className="mt-5 mb-5 flex items-center justify-between">
+              <p className="text-secondary/50 font-semibold md:text-2xl">
                 Graphic • UI/UX • Video • Motion
               </p>
               <a
                 href="/design"
-                className="border-secondary text-secondary hover:bg-secondary rounded-2xl border px-7 py-2.5 text-base transition-colors hover:text-white"
+                className="border-secondary text-secondary hover:bg-secondary rounded-2xl border px-7 py-2.5 text-base transition-colors duration-300 hover:text-white"
               >
                 All Design Work →
               </a>
             </div>
 
-            <div className="mt-auto h-35">
+            <div className="mt-auto">
               <div className="flex w-max animate-[marquee_100s_linear_infinite] whitespace-nowrap">
                 <p className="text-secondary/40 mr-10 shrink-0 text-[clamp(64px,10vw,170px)] leading-none font-bold tracking-[0.12em] uppercase">
                   DESIGN DESIGN DESIGN DESIGN DESIGN DESIGN DESIGN DESIGN DESIGN
@@ -200,13 +274,9 @@ export default function Home() {
           </div>
         </section>
 
-        <section
-          ref={marketingRef}
-          id="marketing"
-          className="relative right-1/2 left-1/2 -mx-[50vw] mt-16 h-screen w-screen"
-        >
-          <div className="mx-auto flex h-full max-w-7xl flex-col px-6 pt-12 pb-8 md:pt-16">
-            <div className="grid gap-13 md:grid-cols-2">
+        <section ref={marketingRef} id="marketing" className="relative mb-10">
+          <div className="mx-auto flex h-full max-w-7xl flex-col px-10 pt-12 pb-8 md:pt-20">
+            <div className="grid gap-15 md:grid-cols-2">
               <ProjectCard
                 title="SafeSpace"
                 subtitle="React Native / LLM / Expo / AWS Lambda / React / Next.js"
@@ -223,19 +293,19 @@ export default function Home() {
               />
             </div>
 
-            <div className="mt-5 flex items-center justify-between">
-              <p className="text-tertiary/50 text-2xl font-semibold md:text-3xl">
+            <div className="mt-5 mb-5 flex items-center justify-between">
+              <p className="text-tertiary/50 font-semibold md:text-2xl">
                 E-commerce • Market Research • Data Analytics • Paid Media
               </p>
               <a
                 href="/marketing"
-                className="border-tertiary text-tertiary hover:bg-tertiary rounded-2xl border px-7 py-2.5 text-base transition-colors hover:text-white"
+                className="border-tertiary text-tertiary hover:bg-tertiary rounded-2xl border px-7 py-2.5 text-base transition-colors duration-300 hover:text-white"
               >
                 All Marketing Cases →
               </a>
             </div>
 
-            <div className="mt-auto h-35">
+            <div className="mt-auto">
               <div className="flex w-max animate-[marquee_100s_linear_infinite] whitespace-nowrap">
                 <p className="text-tertiary/40 mr-10 shrink-0 text-[clamp(64px,10vw,170px)] leading-none font-bold tracking-[0.12em] uppercase">
                   MARKETING MARKETING MARKETING MARKETING MARKETING MARKETING

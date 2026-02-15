@@ -34,7 +34,7 @@ export default function SmoothScroll({
       root
       autoRaf={false}
       options={{
-        lerp: 0.1, // Intensity of the smoothing effect. Lower values (0.05 - 0.1) provide a more weighted, fluid feel.
+        lerp: 0.1, // Higher values respond faster with less perceived scroll effort.
         duration: 1, // The time taken to reach the scroll target. Higher values (1.0 - 2.0) create a more pronounced easing effect.
         smoothWheel: true, // Enable smooth scrolling with the mouse wheel.
         anchors: { offset: -60 }, // Offset anchor jumps so section titles sit below the navbar.
