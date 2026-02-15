@@ -274,8 +274,18 @@ export default function SafeSpace() {
             },
             {
               label: "GitHub (Web App)",
-              url: "https://github.com/wendeshiro/SafeSpace-Web-Supplement",
+              url: "https://github.com/wendeshiro/safespace-web-supplement",
               icon: "github",
+            },
+            {
+              label: "Figma Prototype",
+              url: "https://www.figma.com/proto/EqqOEnmWkVCDcvIIvlfu4S/SafeSpace-Prototype?node-id=1897-7435&t=TYLPDdn2dk9ked0w-1&scaling=scale-down&content-scaling=fixed&page-id=1510%3A2777&starting-point-node-id=1897%3A7435",
+              icon: "figma",
+            },
+            {
+              label: "Project Website",
+              url: "https://safe-space.figma.site/",
+              icon: "globe",
             },
           ]}
         />
