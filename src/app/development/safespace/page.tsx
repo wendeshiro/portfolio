@@ -30,6 +30,7 @@ import Lofi from "@/images/development/safespace/lofi.webp";
 import Hifi from "@/images/development/safespace/hifi.webp";
 import Naming from "@/images/development/safespace/naming.webp";
 import GravityIcons from "@/components/GravityIcons";
+import Mkt from "@/images/development/safespace/mkt.webp";
 
 export default function SafeSpace() {
   const [activeFeatureIndex, setActiveFeatureIndex] = useState(0);
@@ -135,9 +136,13 @@ export default function SafeSpace() {
           { id: "discovery-phase", label: "Discovery Phase" },
           { id: "design-process", label: "Design Process" },
           { id: "development-process", label: "Development Process" },
+          { id: "marketing-collateral", label: "Marketing Collateral" },
         ]}
       />
-      <ParallaxImage src={HeroImg} alt="Plan-it Trip Planning Web App hero" />
+      <ParallaxImage
+        src={HeroImg}
+        alt="SafeSpace AI-powered safety platform hero"
+      />
       <section className="mx-auto flex max-w-7xl flex-col px-5">
         <ProjectOverview
           primaryText={
@@ -180,7 +185,7 @@ export default function SafeSpace() {
                 >
                   face challenging work environments
                 </InfoPopover>
-                , intimidating reporting processes, and lack of information
+                , intimidating reporting processes, and a lack of information
                 about job site safety. SafeSpace addresses these challenges by
                 providing preventative insights, AI-assisted support to reduce
                 reporting stress, and a desktop web platform that turns
@@ -271,8 +276,18 @@ export default function SafeSpace() {
             },
             {
               label: "GitHub (Web App)",
-              url: "https://github.com/wendeshiro/SafeSpace-Web-Supplement",
+              url: "https://github.com/wendeshiro/safespace-web-supplement",
               icon: "github",
+            },
+            {
+              label: "Figma Prototype",
+              url: "https://www.figma.com/proto/EqqOEnmWkVCDcvIIvlfu4S/SafeSpace-Prototype?node-id=1897-7435&t=TYLPDdn2dk9ked0w-1&scaling=scale-down&content-scaling=fixed&page-id=1510%3A2777&starting-point-node-id=1897%3A7435",
+              icon: "figma",
+            },
+            {
+              label: "Project Website",
+              url: "https://safe-space.figma.site/",
+              icon: "globe",
             },
           ]}
         />
@@ -283,7 +298,7 @@ export default function SafeSpace() {
           whileInView={{ opacity: 1, y: 0 }} // Animate to: visible and in place
           transition={{ duration: 1, ease: "easeOut" }} // Animation settings
           viewport={{ once: true, amount: 0.02 }} // Trigger animation when 2% in view, only once
-          className="bg-tertiary/8 relative mt-10 flex h-auto items-center justify-center overflow-hidden rounded-2xl px-6 pt-5 pb-10 md:pt-8"
+          className="bg-tertiary/8 relative mt-10 flex h-auto min-h-[70vh] items-center justify-center overflow-hidden rounded-2xl px-6 pt-5 pb-10 md:pt-8"
         >
           <button
             type="button"
@@ -431,8 +446,8 @@ export default function SafeSpace() {
                   provide compliance, social connection, and mindfulness, but
                   suffer from{" "}
                   <span className="font-semibold">
-                    complex interfaces, poor mobile responsiveness, and lack
-                    personalized guidance
+                    complex interfaces, poor mobile responsiveness, and a lack
+                    of personalized guidance
                   </span>
                   , leaving users lost in dense resources.
                 </p>
@@ -477,8 +492,8 @@ export default function SafeSpace() {
               </p>
 
               <div className="relative w-full">
-                <div className="overflow-x-auto pb-10 md:overflow-visible md:pb-0">
-                  <div className="flex w-max flex-row justify-start gap-9 pr-5 md:w-full md:justify-center md:gap-15">
+                <div className="overflow-x-auto pb-10 md:pb-0 xl:overflow-visible">
+                  <div className="flex w-max flex-row justify-start gap-9 pr-5 md:justify-center md:gap-15 xl:w-full">
                     <div className="relative flex shrink-0 flex-col items-end gap-5 pr-6 md:pr-10">
                       <p className="text-primary text-lg font-medium md:text-xl">
                         Pain Point
@@ -606,7 +621,7 @@ export default function SafeSpace() {
                 </div>
                 <div
                   aria-hidden="true"
-                  className="pointer-events-none absolute top-0 right-0 h-full w-10 bg-linear-to-l from-white/95 to-transparent md:hidden"
+                  className="pointer-events-none absolute top-0 right-0 h-full w-10 bg-linear-to-l from-white/95 to-transparent xl:hidden"
                 />
               </div>
             </div>
@@ -910,7 +925,7 @@ export default function SafeSpace() {
             <BarredHeading text="AI Report Generation Pipeline" />
             <div className="flex flex-col md:mt-6 md:flex-row md:gap-13">
               <div className="md:w-auto">
-                <div className="bg-tertiary/8 relative h-100 w-full rounded-2xl md:mx-auto md:h-120 md:w-120">
+                <div className="bg-tertiary/8 relative mx-auto h-100 w-full max-w-90 rounded-2xl md:h-120 md:w-120 md:max-w-none">
                   <div className="bg-tertiary/25 absolute top-8 left-1/2 -translate-x-1/2 overflow-hidden rounded-[30px] p-2.5 shadow-2xl md:p-3">
                     <div className="aspect-496/1080 w-50 overflow-hidden rounded-[20px] md:w-60 md:rounded-[18px]">
                       <video
@@ -973,7 +988,7 @@ export default function SafeSpace() {
                 </p>
               </div>
               <div className="md:w-auto">
-                <div className="bg-tertiary/8 relative h-100 w-full rounded-2xl md:mx-auto md:h-120 md:w-120">
+                <div className="bg-tertiary/8 relative mx-auto h-100 w-full max-w-90 rounded-2xl md:h-120 md:w-120 md:max-w-none">
                   <div className="bg-tertiary/25 absolute top-8 left-1/2 -translate-x-1/2 overflow-hidden rounded-[30px] p-2.5 shadow-2xl md:p-3">
                     <div className="aspect-501/1080 w-50 overflow-hidden rounded-[20px] md:w-60 md:rounded-[18px]">
                       <video
@@ -1002,10 +1017,55 @@ export default function SafeSpace() {
             whileInView={{ opacity: 1, y: 0 }} // Animate to: visible and in place
             transition={{ duration: 1, ease: "easeOut" }} // Animation settings
             viewport={{ once: true, amount: 0.02 }} // Trigger animation when 2% in view, only once
-            className="mb-5 md:mb-8"
           >
             <BarredHeading text="Web Supplement" />
+            <div className="mt-2 mb-5 space-y-2 text-base leading-relaxed md:w-2/3 md:text-lg">
+              <p>
+                A lightweight web supplement was developed to consolidate
+                fragmented incident reports into actionable insights for
+                management. Map visualization was implemented using React
+                Leaflet to display report locations.
+              </p>
+              <p className="text-sm text-gray-600 md:text-base">
+                *Due to time constraints, the interface was delivered as a
+                functional mockup with a limited feature scope.
+              </p>
+            </div>
+            <div className="bg-tertiary/8 flex h-auto items-center justify-center overflow-hidden rounded-2xl p-4 md:h-auto md:px-20 md:py-8">
+              <video
+                autoPlay
+                loop
+                muted
+                playsInline
+                preload="metadata"
+                poster="/videos/safespace/websup-placeholder.webp"
+                className="w-full rounded-xl shadow-xl md:max-w-270"
+              >
+                <source src="/videos/safespace/websup.mp4" type="video/mp4" />
+              </video>
+            </div>
           </motion.section>
+        </motion.section>
+
+        <SectionDivider />
+        <motion.section
+          initial={{ opacity: 0, y: 50 }} // Initial state: hidden and slightly down
+          whileInView={{ opacity: 1, y: 0 }} // Animate to: visible and in place
+          transition={{ duration: 1, ease: "easeOut" }} // Animation settings
+          viewport={{ once: true, amount: 0.02 }} // Trigger animation when 2% in view, only once
+          id="marketing-collateral"
+        >
+          <h2 className="mb-3 font-serif text-2xl font-medium md:mb-6 md:text-4xl md:font-normal">
+            Marketing Collateral
+          </h2>
+          <PhotoView>
+            <Image
+              src={Mkt}
+              alt="Marketing Collateral"
+              placeholder="blur"
+              className="cursor-pointer rounded-2xl"
+            ></Image>
+          </PhotoView>
         </motion.section>
       </section>
     </main>
