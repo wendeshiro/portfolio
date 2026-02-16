@@ -234,9 +234,9 @@ export default function Home() {
           viewport={{ once: true, amount: 0.3 }} // Trigger animation when 2% in view, only once
           ref={devRef}
           id="dev"
-          className="relative mt-20 sm:mt-0"
+          className="relative mt-20 sm:mt-2"
         >
-          <div className="mx-auto flex h-full max-w-7xl flex-col px-5 pt-10 sm:px-8 md:px-10 md:pt-22">
+          <div className="mx-auto flex h-full max-w-7xl flex-col px-5 pt-20 sm:px-8 md:px-10 md:pt-22">
             <div className="grid gap-8 sm:gap-10 md:grid-cols-2 md:gap-15 2xl:gap-20">
               <ProjectCard
                 title="SafeSpace"
@@ -266,7 +266,7 @@ export default function Home() {
               </a>
             </div>
 
-            <div className="absolute -top-3 left-1/2 z-10 w-screen -translate-x-1/2 overflow-x-clip md:relative md:top-auto md:left-1/2 md:z-auto md:mt-auto md:-translate-x-1/2">
+            <div className="absolute top-6 left-1/2 z-10 w-screen -translate-x-1/2 overflow-x-clip md:relative md:top-auto md:left-1/2 md:z-auto md:mt-auto md:-translate-x-1/2">
               <div
                 className="flex w-max animate-[marquee_200s_linear_infinite] whitespace-nowrap select-none"
                 onCopy={(e) => e.preventDefault()}
