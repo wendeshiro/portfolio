@@ -6,7 +6,7 @@ import Planit from "@/images/home/planit.webp";
 import Can from "@/images/home/can.webp";
 import PowerBank from "@/images/home/power-bank.webp";
 import { motion, useScroll, useTransform } from "framer-motion";
-import { useCallback, useRef } from "react";
+import { useCallback, useEffect, useRef } from "react";
 import { useLenis } from "lenis/react";
 
 export default function Home() {
@@ -16,6 +16,11 @@ export default function Home() {
   const marketingRef = useRef<HTMLElement>(null);
   const snapLockRef = useRef(false);
   const lastSnappedRef = useRef<"dev" | "design" | "marketing" | null>(null);
+  const mountTimeRef = useRef(0);
+
+  useEffect(() => {
+    mountTimeRef.current = Date.now();
+  }, []);
 
   const SECTION_COLOR_START = 0.5;
   const SECTION_COLOR_END = 0.2;
@@ -60,6 +65,9 @@ export default function Home() {
   }, [snapToSection]);
 
   useLenis(() => {
+    // Grace period after mount to prevent snap from interfering with scroll restoration.
+    if (Date.now() - mountTimeRef.current < 1500) return;
+
     if (window.innerWidth < MOBILE_SNAP_BREAKPOINT) {
       lastSnappedRef.current = null;
       return;

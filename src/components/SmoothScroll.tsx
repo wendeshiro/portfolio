@@ -5,6 +5,9 @@ import { useEffect, useLayoutEffect, useRef } from "react";
 import gsap from "gsap";
 import { usePathname } from "next/navigation";
 
+// Persist scroll positions across navigations so back/forward restores them.
+const scrollPositions = new Map<string, number>();
+
 export default function SmoothScroll({
   children,
 }: {
@@ -13,6 +16,17 @@ export default function SmoothScroll({
   const lenisRef = useRef<LenisRef>(null);
   const pathname = usePathname();
   const previousPathnameRef = useRef<string | null>(null);
+  const isPopstateRef = useRef(false);
+
+  useEffect(() => {
+    // Track back/forward navigation via popstate so we can skip scroll-to-top.
+    function handlePopstate() {
+      isPopstateRef.current = true;
+    }
+
+    window.addEventListener("popstate", handlePopstate);
+    return () => window.removeEventListener("popstate", handlePopstate);
+  }, []);
 
   useEffect(() => {
     /*
@@ -36,10 +50,30 @@ export default function SmoothScroll({
     const isInitialRender = previousPathname === null;
     const hasPathChanged = previousPathname !== pathname;
 
+    // Save scroll position of the page we're leaving.
+    if (!isInitialRender && hasPathChanged && previousPathname) {
+      scrollPositions.set(
+        previousPathname,
+        lenisRef.current?.lenis?.scroll ?? window.scrollY,
+      );
+    }
+
     previousPathnameRef.current = pathname;
 
     if (isInitialRender || !hasPathChanged) return;
     if (window.location.hash) return;
+
+    // On back/forward navigation, restore saved scroll position.
+    if (isPopstateRef.current) {
+      isPopstateRef.current = false;
+      const savedPosition = scrollPositions.get(pathname) ?? 0;
+
+      // Use requestAnimationFrame to ensure the DOM has rendered before restoring.
+      requestAnimationFrame(() => {
+        lenisRef.current?.lenis?.scrollTo(savedPosition, { immediate: true });
+      });
+      return;
+    }
 
     lenisRef.current?.lenis?.scrollTo(0, { immediate: true });
     window.scrollTo({ top: 0, left: 0, behavior: "auto" });
