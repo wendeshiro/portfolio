@@ -61,7 +61,7 @@ export default function ProjectCard({
             <p className="text-xl font-bold text-black sm:text-2xl md:text-3xl">
               {title}
             </p>
-            <p className="mt-2 text-sm text-gray-700 sm:mt-3 sm:text-base">
+            <p className="mt-2 truncate text-sm text-gray-700 sm:mt-3 sm:text-base">
               {subtitle}
             </p>
             <p className="mt-1.5 text-base text-gray-800 sm:mt-2 sm:text-lg">
@@ -92,7 +92,7 @@ export default function ProjectCard({
             <p className="text-xl font-bold text-black sm:text-2xl md:text-3xl">
               {title}
             </p>
-            <p className="mt-2 text-sm text-gray-700 sm:mt-3 sm:text-base">
+            <p className="mt-2 truncate text-sm text-gray-700 sm:mt-3 sm:text-base">
               {subtitle}
             </p>
             <p className="mt-1.5 text-base text-gray-800 sm:mt-2 sm:text-lg">
