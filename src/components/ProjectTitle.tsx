@@ -14,9 +14,8 @@ export default function ProjectTitle({
   return (
     <motion.div
       initial={{ opacity: 0, y: 50 }} // Initial state: hidden and slightly down
-      whileInView={{ opacity: 1, y: 0 }} // Animate to: visible and in place
+      animate={{ opacity: 1, y: 0 }} // Animate to: visible and in place
       transition={{ duration: 0.5, ease: "easeOut" }} // Animation settings
-      viewport={{ once: true, amount: 0.2 }} // Trigger animation when 20% in view, only once
       className="flex flex-col gap-3"
     >
       <div className="relative w-fit">

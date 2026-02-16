@@ -33,8 +33,7 @@ export default function ParallaxImage({
       ref={containerRef}
       className={`relative mt-6 ${mb} h-86 w-full overflow-hidden md:h-160 2xl:h-[85vh]`}
       initial={{ clipPath: "inset(0 0 100% 0)" }}
-      whileInView={{ clipPath: "inset(0% 0 0 0)" }}
-      viewport={{ once: true, amount: 0 }}
+      animate={{ clipPath: "inset(0% 0 0 0)" }}
       transition={{ duration: 1.2, ease: [0.3, 0, 0.15, 1] }}
     >
       <motion.div style={{ y }} className="relative -top-[20%] h-[140%] w-full">
