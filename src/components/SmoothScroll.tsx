@@ -3,6 +3,7 @@
 import { ReactLenis, type LenisRef } from "lenis/react";
 import { useEffect, useRef } from "react";
 import gsap from "gsap";
+import { usePathname } from "next/navigation";
 
 export default function SmoothScroll({
   children,
@@ -10,6 +11,7 @@ export default function SmoothScroll({
   children: React.ReactNode;
 }) {
   const lenisRef = useRef<LenisRef>(null);
+  const pathname = usePathname();
 
   useEffect(() => {
     /*
@@ -27,6 +29,17 @@ export default function SmoothScroll({
       gsap.ticker.remove(update);
     };
   }, []);
+
+  useEffect(() => {
+    const frameId = window.requestAnimationFrame(() => {
+      lenisRef.current?.lenis?.scrollTo(0, { immediate: true });
+      window.scrollTo({ top: 0, left: 0, behavior: "auto" });
+    });
+
+    return () => {
+      window.cancelAnimationFrame(frameId);
+    };
+  }, [pathname]);
 
   return (
     <ReactLenis
