@@ -10,6 +10,7 @@ interface ParallaxImageProps {
   priority?: boolean;
   placeholder?: "blur" | "empty";
   mb?: string;
+  onAnimationComplete?: () => void;
 }
 
 export default function ParallaxImage({
@@ -19,6 +20,7 @@ export default function ParallaxImage({
   priority = true,
   placeholder = "blur",
   mb = "mb-12",
+  onAnimationComplete,
 }: ParallaxImageProps) {
   const containerRef = useRef<HTMLDivElement>(null);
   const { scrollYProgress } = useScroll({
@@ -32,9 +34,17 @@ export default function ParallaxImage({
     <motion.div
       ref={containerRef}
       className={`relative mt-6 ${mb} h-86 w-full overflow-hidden md:h-160 2xl:h-[85vh]`}
+      style={{ willChange: "clip-path" }}
       initial={{ clipPath: "inset(0 0 100% 0)" }}
       animate={{ clipPath: "inset(0% 0 0 0)" }}
       transition={{ duration: 1.2, ease: [0.3, 0, 0.15, 1] }}
+      onAnimationComplete={() => {
+        // Remove will-change after animation completes to free GPU memory.
+        if (containerRef.current) {
+          containerRef.current.style.willChange = "auto";
+        }
+        onAnimationComplete?.();
+      }}
     >
       <motion.div style={{ y }} className="relative -top-[20%] h-[140%] w-full">
         <Image
