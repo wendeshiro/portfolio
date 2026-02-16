@@ -73,10 +73,16 @@ export default function ProjectCard({
         </div>
       )}
 
-      <div className="px-8 pt-4 pb-6">
-        <p className="text-3xl font-bold text-black">{title}</p>
-        <p className="mt-3 text-base text-gray-700">{subtitle}</p>
-        <p className="mt-2 text-lg text-black">{description}</p>
+      <div className="px-5 pt-3 pb-4 sm:px-8 sm:pt-4 sm:pb-6">
+        <p className="text-xl font-bold text-black sm:text-2xl md:text-3xl">
+          {title}
+        </p>
+        <p className="mt-2 text-sm text-gray-700 sm:mt-3 sm:text-base">
+          {subtitle}
+        </p>
+        <p className="mt-1.5 text-base text-black sm:mt-2 sm:text-lg">
+          {description}
+        </p>
       </div>
     </div>
   );

@@ -19,6 +19,7 @@ export default function Home() {
   const SECTION_COLOR_END = 0.2;
   const SECTION_SNAP_AMOUNT = 0.5; // The scroll progress ratio at which a section is considered "snapped" into view. smaller values make it easier to trigger snapping, while larger values require more of the section to be visible before snapping occurs.
   const SECTION_SNAP_OFFSET = 0;
+  const MOBILE_SNAP_BREAKPOINT = 640;
 
   const { scrollYProgress: devProgress } = useScroll({
     target: devRef,
@@ -57,6 +58,11 @@ export default function Home() {
   }, [snapToSection]);
 
   useLenis(() => {
+    if (window.innerWidth < MOBILE_SNAP_BREAKPOINT) {
+      lastSnappedRef.current = null;
+      return;
+    }
+
     const sections = [
       { id: "dev" as const, element: devRef.current },
       { id: "design" as const, element: designRef.current },
@@ -162,8 +168,8 @@ export default function Home() {
     <>
       <motion.div style={{ backgroundColor }} className="fixed inset-0 -z-10" />
       <main className="relative mx-auto">
-        <section className="relative flex h-[calc(100vh-8rem)] flex-col items-center justify-center">
-          <div className="leading-[1.2] font-light tracking-wider md:text-[81px] 2xl:text-[86px]">
+        <section className="relative flex h-[calc(100vh-5rem)] flex-col items-center justify-center px-6 sm:px-10 md:h-[calc(100vh-8rem)] md:px-0">
+          <div className="text-[30px] font-light tracking-wider sm:text-[52px] md:text-[81px] md:leading-[1.2] 2xl:text-[86px]">
             <p>Hi, I&apos;m Wende, </p>
             <p>A full-stack</p>
             <p>
@@ -178,7 +184,7 @@ export default function Home() {
               experience of 5+ years.
             </p>
           </div>
-          <p className="tracking-wide md:mt-4 md:text-[24px] 2xl:mt-6 2xl:text-[25.5px]">
+          <p className="mt-5 text-[14px] leading-relaxed tracking-wide sm:text-[17px] md:mt-4 md:text-[24px] 2xl:mt-6 2xl:text-[25.5px]">
             I build products with{" "}
             <span className="text-primary">design thinking</span> and a{" "}
             <span className="text-primary">marketing-driven mindset</span>,
@@ -190,7 +196,7 @@ export default function Home() {
             type="button"
             aria-label="Scroll to development section"
             onClick={handleHeroScrollHintClick}
-            className="text-primary/50 absolute bottom-0.5 left-1/2 flex -translate-x-1/2 cursor-pointer flex-col items-center"
+            className="text-primary/50 absolute bottom-12 left-1/2 flex -translate-x-1/2 cursor-pointer flex-col items-center md:bottom-0.5"
           >
             {[0, 1, 2].map((index) => (
               <motion.span
@@ -220,8 +226,8 @@ export default function Home() {
           id="dev"
           className="relative"
         >
-          <div className="mx-auto flex h-full max-w-7xl flex-col px-10 pt-12 md:pt-22">
-            <div className="grid gap-15 md:grid-cols-2">
+          <div className="mx-auto flex h-full max-w-7xl flex-col px-5 pt-10 sm:px-8 md:px-10 md:pt-22">
+            <div className="grid gap-8 sm:gap-10 md:grid-cols-2 md:gap-15">
               <ProjectCard
                 title="SafeSpace"
                 subtitle="React Native / LLM / Expo / AWS Lambda / React / Next.js"
@@ -238,13 +244,13 @@ export default function Home() {
               />
             </div>
 
-            <div className="mt-5 mb-5 flex items-center justify-between">
-              <p className="text-primary/50 font-semibold md:text-2xl">
+            <div className="mt-4 mb-4 flex flex-col gap-3 sm:flex-row sm:items-center sm:justify-between md:mt-5 md:mb-5">
+              <p className="text-primary/50 text-sm font-semibold sm:text-base md:text-2xl">
                 Web • Mobile • LLM • API
               </p>
               <a
                 href="/development"
-                className="border-primary text-primary hover:bg-primary rounded-2xl border px-7 py-2.5 text-base transition-colors duration-300 hover:text-white"
+                className="border-primary text-primary hover:bg-primary w-fit rounded-2xl border px-5 py-2 text-sm transition-colors duration-300 hover:text-white sm:px-7 sm:py-2.5 sm:text-base"
               >
                 All Development Projects →
               </a>
@@ -277,8 +283,8 @@ export default function Home() {
           id="design"
           className="relative"
         >
-          <div className="mx-auto flex h-full max-w-7xl flex-col px-10 pt-12 pb-8 md:pt-22">
-            <div className="grid gap-15 md:grid-cols-2">
+          <div className="mx-auto flex h-full max-w-7xl flex-col px-5 pt-10 pb-6 sm:px-8 md:px-10 md:pt-22 md:pb-8">
+            <div className="grid gap-8 sm:gap-10 md:grid-cols-2 md:gap-15">
               <ProjectCard
                 title="SafeSpace"
                 subtitle="React Native / LLM / Expo / AWS Lambda / React / Next.js"
@@ -295,13 +301,13 @@ export default function Home() {
               />
             </div>
 
-            <div className="mt-5 mb-5 flex items-center justify-between">
-              <p className="text-secondary/60 font-semibold md:text-2xl">
+            <div className="mt-4 mb-4 flex flex-col gap-3 sm:flex-row sm:items-center sm:justify-between md:mt-5 md:mb-5">
+              <p className="text-secondary/60 text-sm font-semibold sm:text-base md:text-2xl">
                 Graphic • UI/UX • Video • Motion
               </p>
               <a
                 href="/design"
-                className="border-secondary text-secondary hover:bg-secondary rounded-2xl border px-7 py-2.5 text-base transition-colors duration-300 hover:text-white"
+                className="border-secondary text-secondary hover:bg-secondary w-fit rounded-2xl border px-5 py-2 text-sm transition-colors duration-300 hover:text-white sm:px-7 sm:py-2.5 sm:text-base"
               >
                 All Design Work →
               </a>
@@ -332,8 +338,8 @@ export default function Home() {
           id="marketing"
           className="relative mb-10"
         >
-          <div className="mx-auto flex h-full max-w-7xl flex-col px-10 pt-12 pb-8 md:pt-22">
-            <div className="grid gap-15 md:grid-cols-2">
+          <div className="mx-auto flex h-full max-w-7xl flex-col px-5 pt-10 pb-6 sm:px-8 md:px-10 md:pt-22 md:pb-8">
+            <div className="grid gap-8 sm:gap-10 md:grid-cols-2 md:gap-15">
               <ProjectCard
                 title="SafeSpace"
                 subtitle="React Native / LLM / Expo / AWS Lambda / React / Next.js"
@@ -350,13 +356,13 @@ export default function Home() {
               />
             </div>
 
-            <div className="mt-5 mb-5 flex items-center justify-between">
-              <p className="text-tertiary/50 font-semibold md:text-2xl">
+            <div className="mt-4 mb-4 flex flex-col gap-3 sm:flex-row sm:items-center sm:justify-between md:mt-5 md:mb-5">
+              <p className="text-tertiary/50 text-sm font-semibold sm:text-base md:text-2xl">
                 E-commerce • Market Research • Data Analytics • Paid Media
               </p>
               <a
                 href="/marketing"
-                className="border-tertiary text-tertiary hover:bg-tertiary rounded-2xl border px-7 py-2.5 text-base transition-colors duration-300 hover:text-white"
+                className="border-tertiary text-tertiary hover:bg-tertiary w-fit rounded-2xl border px-5 py-2 text-sm transition-colors duration-300 hover:text-white sm:px-7 sm:py-2.5 sm:text-base"
               >
                 All Marketing Cases →
               </a>
