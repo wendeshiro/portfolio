@@ -178,7 +178,7 @@ export default function Home() {
               experience of 5+ years.
             </p>
           </div>
-          <p className="mt-7 text-[24px] tracking-wide">
+          <p className="mt-6 text-[24px] tracking-wide">
             I build products with{" "}
             <span className="text-primary">design thinking</span> and a{" "}
             <span className="text-primary">marketing-driven mindset</span>,
@@ -211,7 +211,15 @@ export default function Home() {
           </button>
         </section>
 
-        <section ref={devRef} id="dev" className="relative">
+        <motion.section
+          initial={{ opacity: 0, y: 15 }} // Initial state: hidden and slightly down
+          whileInView={{ opacity: 1, y: 0 }} // Animate to: visible and in place
+          transition={{ duration: 1, ease: "easeOut" }} // Animation settings
+          viewport={{ once: true, amount: 0.3 }} // Trigger animation when 2% in view, only once
+          ref={devRef}
+          id="dev"
+          className="relative"
+        >
           <div className="mx-auto flex h-full max-w-7xl flex-col px-10 pt-12 md:pt-22">
             <div className="grid gap-15 md:grid-cols-2">
               <ProjectCard
@@ -258,9 +266,17 @@ export default function Home() {
               </div>
             </div>
           </div>
-        </section>
+        </motion.section>
 
-        <section ref={designRef} id="design" className="relative">
+        <motion.section
+          initial={{ opacity: 0, y: 15 }} // Initial state: hidden and slightly down
+          whileInView={{ opacity: 1, y: 0 }} // Animate to: visible and in place
+          transition={{ duration: 1, ease: "easeOut" }} // Animation settings
+          viewport={{ once: true, amount: 0.3 }} // Trigger animation when 2% in view, only once
+          ref={designRef}
+          id="design"
+          className="relative"
+        >
           <div className="mx-auto flex h-full max-w-7xl flex-col px-10 pt-12 pb-8 md:pt-22">
             <div className="grid gap-15 md:grid-cols-2">
               <ProjectCard
@@ -305,9 +321,17 @@ export default function Home() {
               </div>
             </div>
           </div>
-        </section>
+        </motion.section>
 
-        <section ref={marketingRef} id="marketing" className="relative mb-10">
+        <motion.section
+          initial={{ opacity: 0, y: 15 }} // Initial state: hidden and slightly down
+          whileInView={{ opacity: 1, y: 0 }} // Animate to: visible and in place
+          transition={{ duration: 1, ease: "easeOut" }} // Animation settings
+          viewport={{ once: true, amount: 0.3 }} // Trigger animation when 2% in view, only once
+          ref={marketingRef}
+          id="marketing"
+          className="relative mb-10"
+        >
           <div className="mx-auto flex h-full max-w-7xl flex-col px-10 pt-12 pb-8 md:pt-22">
             <div className="grid gap-15 md:grid-cols-2">
               <ProjectCard
@@ -354,7 +378,7 @@ export default function Home() {
               </div>
             </div>
           </div>
-        </section>
+        </motion.section>
       </main>
     </>
   );
