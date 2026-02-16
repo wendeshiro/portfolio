@@ -76,7 +76,7 @@ export default function ProjectCard({
         </div>
       )}
 
-      <div className="px-4 pt-3 pb-4 sm:px-7 sm:pt-5 sm:pb-6">
+      <div className="px-4 pt-3 pb-4 sm:px-7 sm:pt-5 sm:pb-6 2xl:px-6 2xl:pb-7">
         <p className="text-xl font-bold text-black sm:text-2xl md:text-3xl">
           {title}
         </p>

@@ -227,7 +227,7 @@ export default function Home() {
           className="relative"
         >
           <div className="mx-auto flex h-full max-w-7xl flex-col px-5 pt-10 sm:px-8 md:px-10 md:pt-22">
-            <div className="grid gap-8 sm:gap-10 md:grid-cols-2 md:gap-15">
+            <div className="grid gap-8 sm:gap-10 md:grid-cols-2 md:gap-15 2xl:gap-20">
               <ProjectCard
                 title="SafeSpace"
                 subtitle="React Native (Expo) / TypeScript / AWS Lambda / LLM"
@@ -283,8 +283,8 @@ export default function Home() {
           id="design"
           className="relative"
         >
-          <div className="mx-auto flex h-full max-w-7xl flex-col px-5 pt-10 pb-6 sm:px-8 md:px-10 md:pt-22 md:pb-8">
-            <div className="grid gap-8 sm:gap-10 md:grid-cols-2 md:gap-15">
+          <div className="mx-auto flex h-full max-w-7xl flex-col px-5 pt-10 sm:px-8 md:px-10 md:pt-22">
+            <div className="grid gap-8 sm:gap-10 md:grid-cols-2 md:gap-15 2xl:gap-20">
               <ProjectCard
                 title="Orchard Brew Can Design"
                 subtitle="React Native / LLM / Expo / AWS Lambda / React / Next.js"
@@ -301,8 +301,8 @@ export default function Home() {
               />
             </div>
 
-            <div className="mt-4 mb-4 flex flex-col gap-3 sm:flex-row sm:items-center sm:justify-between md:mt-5 md:mb-5">
-              <p className="text-secondary/60 text-sm font-semibold sm:text-base md:text-2xl">
+            <div className="mt-4 mb-4 flex flex-col gap-3 self-center sm:flex-row sm:items-center sm:justify-between sm:self-auto md:mt-5 md:mb-5">
+              <p className="text-secondary/50 self-center text-sm font-semibold sm:self-auto sm:text-base md:text-2xl">
                 Graphic • UI/UX • Video • Motion
               </p>
               <a
@@ -338,8 +338,8 @@ export default function Home() {
           id="marketing"
           className="relative mb-10"
         >
-          <div className="mx-auto flex h-full max-w-7xl flex-col px-5 pt-10 pb-6 sm:px-8 md:px-10 md:pt-22 md:pb-8">
-            <div className="grid gap-8 sm:gap-10 md:grid-cols-2 md:gap-15">
+          <div className="mx-auto flex h-full max-w-7xl flex-col px-5 pt-10 sm:px-8 md:px-10 md:pt-22">
+            <div className="grid gap-8 sm:gap-10 md:grid-cols-2 md:gap-15 2xl:gap-20">
               <ProjectCard
                 title="SafeSpace"
                 subtitle="React Native / LLM / Expo / AWS Lambda / React / Next.js"
@@ -356,8 +356,8 @@ export default function Home() {
               />
             </div>
 
-            <div className="mt-4 mb-4 flex flex-col gap-3 sm:flex-row sm:items-center sm:justify-between md:mt-5 md:mb-5">
-              <p className="text-tertiary/50 text-sm font-semibold sm:text-base md:text-2xl">
+            <div className="mt-4 mb-4 flex flex-col gap-3 self-center sm:flex-row sm:items-center sm:justify-between sm:self-auto md:mt-5 md:mb-5">
+              <p className="text-tertiary/50 self-center text-sm font-semibold sm:self-auto sm:text-base md:text-2xl">
                 E-commerce • Market Research • Data Analytics • Paid Media
               </p>
               <a
