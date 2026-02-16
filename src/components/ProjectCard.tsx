@@ -23,7 +23,10 @@ export default function ProjectCard({
   imageContent,
   className,
 }: ProjectCardProps) {
-  const containerClassName = ["overflow-hidden rounded-3xl bg-white", className]
+  const containerClassName = [
+    "overflow-hidden sm:rounded-3xl rounded-2xl bg-white",
+    className,
+  ]
     .filter(Boolean)
     .join(" ");
 
@@ -35,7 +38,7 @@ export default function ProjectCard({
           aria-label={typeof title === "string" ? title : "Project link"}
           className="group block"
         >
-          <div className="relative aspect-2/1 w-full overflow-hidden rounded-3xl bg-gray-200">
+          <div className="relative aspect-2/1 w-full overflow-hidden rounded-2xl bg-gray-200 sm:rounded-3xl">
             {imageContent ? (
               <div className="absolute inset-0 transition-transform duration-500 ease-out group-hover:scale-110">
                 {imageContent}
@@ -73,14 +76,14 @@ export default function ProjectCard({
         </div>
       )}
 
-      <div className="px-5 pt-3 pb-4 sm:px-8 sm:pt-4 sm:pb-6">
+      <div className="px-4 pt-3 pb-4 sm:px-7 sm:pt-5 sm:pb-6">
         <p className="text-xl font-bold text-black sm:text-2xl md:text-3xl">
           {title}
         </p>
         <p className="mt-2 text-sm text-gray-700 sm:mt-3 sm:text-base">
           {subtitle}
         </p>
-        <p className="mt-1.5 text-base text-black sm:mt-2 sm:text-lg">
+        <p className="mt-1.5 text-base text-gray-800 sm:mt-2 sm:text-lg">
           {description}
         </p>
       </div>

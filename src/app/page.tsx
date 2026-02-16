@@ -196,7 +196,7 @@ export default function Home() {
             type="button"
             aria-label="Scroll to development section"
             onClick={handleHeroScrollHintClick}
-            className="text-primary/50 absolute bottom-12 left-1/2 flex -translate-x-1/2 cursor-pointer flex-col items-center md:bottom-0.5"
+            className="text-primary/50 absolute bottom-12 left-1/2 flex -translate-x-1/2 cursor-pointer flex-col items-center md:bottom-3"
           >
             {[0, 1, 2].map((index) => (
               <motion.span
@@ -230,22 +230,22 @@ export default function Home() {
             <div className="grid gap-8 sm:gap-10 md:grid-cols-2 md:gap-15">
               <ProjectCard
                 title="SafeSpace"
-                subtitle="React Native / LLM / Expo / AWS Lambda / React / Next.js"
-                description="SafeSpace is an AI-powered safety platform for gender-diverse tradespeople, transforming voice recordings and guided chats into actionable site reports and community insights."
+                subtitle="React Native (Expo) / TypeScript / AWS Lambda / LLM"
+                description="Enhancing workplace safety for women and gender-diverse tradespeople with AI-generated reports and actionable insights."
                 imageSrc={SafeSpace}
                 href="/development/safespace"
               />
               <ProjectCard
                 title="Plan-it"
-                subtitle="React Native / LLM / Expo / AWS Lambda / React / Next.js"
-                description="SafeSpace is an AI-powered safety platform for gender-diverse tradespeople, transforming voice recordings and guided chats into actionable site reports and community insights."
+                subtitle="React / JavaScript / Vite / External APIs / Third-Party Libraries"
+                description="A desktop web app for organizing trips, tracking weather, and preparing with confidence."
                 imageSrc={Planit}
                 href="/development/plan-it"
               />
             </div>
 
-            <div className="mt-4 mb-4 flex flex-col gap-3 sm:flex-row sm:items-center sm:justify-between md:mt-5 md:mb-5">
-              <p className="text-primary/50 text-sm font-semibold sm:text-base md:text-2xl">
+            <div className="mt-4 mb-4 flex flex-col gap-3 self-center sm:flex-row sm:items-center sm:justify-between sm:self-auto md:mt-5 md:mb-5">
+              <p className="text-primary/50 self-center text-sm font-semibold sm:self-auto sm:text-base md:text-2xl">
                 Web • Mobile • LLM • API
               </p>
               <a
@@ -261,11 +261,11 @@ export default function Home() {
                 className="flex w-max animate-[marquee_200s_linear_infinite] whitespace-nowrap select-none"
                 onCopy={(e) => e.preventDefault()}
               >
-                <p className="text-primary/35 mr-10 shrink-0 text-[clamp(64px,10vw,170px)] leading-none font-bold tracking-[0.12em] uppercase">
+                <p className="text-primary/35 mr-10 shrink-0 text-[clamp(36px,10vw,170px)] leading-none font-bold tracking-[0.12em] uppercase">
                   DEVELOPMENT DEVELOPMENT DEVELOPMENT DEVELOPMENT DEVELOPMENT
                   DEVELOPMENT DEVELOPMENT
                 </p>
-                <p className="text-primary/35 shrink-0 text-[clamp(64px,10vw,170px)] leading-none font-bold tracking-[0.12em] uppercase">
+                <p className="text-primary/35 shrink-0 text-[clamp(36px,10vw,170px)] leading-none font-bold tracking-[0.12em] uppercase">
                   DEVELOPMENT DEVELOPMENT DEVELOPMENT DEVELOPMENT DEVELOPMENT
                   DEVELOPMENT DEVELOPMENT
                 </p>
@@ -286,9 +286,9 @@ export default function Home() {
           <div className="mx-auto flex h-full max-w-7xl flex-col px-5 pt-10 pb-6 sm:px-8 md:px-10 md:pt-22 md:pb-8">
             <div className="grid gap-8 sm:gap-10 md:grid-cols-2 md:gap-15">
               <ProjectCard
-                title="SafeSpace"
+                title="Orchard Brew Can Design"
                 subtitle="React Native / LLM / Expo / AWS Lambda / React / Next.js"
-                description="SafeSpace is an AI-powered safety platform for gender-diverse tradespeople, transforming voice recordings and guided chats into actionable site reports and community insights."
+                description="A refreshing visual identity for a contemporary fruit tea collection."
                 imageSrc={SafeSpace}
                 href="/development/safespace"
               />
@@ -318,10 +318,10 @@ export default function Home() {
                 className="flex w-max animate-[marquee_200s_linear_infinite] whitespace-nowrap select-none"
                 onCopy={(e) => e.preventDefault()}
               >
-                <p className="text-secondary/40 mr-10 shrink-0 text-[clamp(64px,10vw,170px)] leading-none font-bold tracking-[0.12em] uppercase">
+                <p className="text-secondary/40 mr-10 shrink-0 text-[clamp(36px,10vw,170px)] leading-none font-bold tracking-[0.12em] uppercase">
                   DESIGN DESIGN DESIGN DESIGN DESIGN DESIGN DESIGN DESIGN DESIGN
                 </p>
-                <p className="text-secondary/40 shrink-0 text-[clamp(64px,10vw,170px)] leading-none font-bold tracking-[0.12em] uppercase">
+                <p className="text-secondary/40 shrink-0 text-[clamp(36px,10vw,170px)] leading-none font-bold tracking-[0.12em] uppercase">
                   DESIGN DESIGN DESIGN DESIGN DESIGN DESIGN DESIGN DESIGN DESIGN
                 </p>
               </div>
@@ -373,11 +373,11 @@ export default function Home() {
                 className="flex w-max animate-[marquee_200s_linear_infinite] whitespace-nowrap select-none"
                 onCopy={(e) => e.preventDefault()}
               >
-                <p className="text-tertiary/40 mr-10 shrink-0 text-[clamp(64px,10vw,170px)] leading-none font-bold tracking-[0.12em] uppercase">
+                <p className="text-tertiary/40 mr-10 shrink-0 text-[clamp(36px,10vw,170px)] leading-none font-bold tracking-[0.12em] uppercase">
                   MARKETING MARKETING MARKETING MARKETING MARKETING MARKETING
                   MARKETING
                 </p>
-                <p className="text-tertiary/40 shrink-0 text-[clamp(64px,10vw,170px)] leading-none font-bold tracking-[0.12em] uppercase">
+                <p className="text-tertiary/40 shrink-0 text-[clamp(36px,10vw,170px)] leading-none font-bold tracking-[0.12em] uppercase">
                   MARKETING MARKETING MARKETING MARKETING MARKETING MARKETING
                   MARKETING
                 </p>
