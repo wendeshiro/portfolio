@@ -191,10 +191,11 @@ export default function Home() {
             </p>
             <p>
               <span className="text-tertiary font-medium">Marketing</span>{" "}
-              experience of 5+ years.
+              experience of 5<span className="mr-[0.1em]">+</span>
+              years.
             </p>
           </div>
-          <p className="mt-5 text-[14px] leading-relaxed tracking-wide sm:text-[17px] md:mt-4 md:text-[24px] 2xl:mt-6 2xl:text-[25.5px]">
+          <p className="mt-5 text-[14px] leading-[1.8] tracking-wide sm:text-[17px] md:mt-4 md:text-[23.7px] 2xl:mt-6 2xl:text-[25.2px]">
             I build products with{" "}
             <span className="text-primary">design thinking</span> and a{" "}
             <span className="text-primary">marketing-driven mindset</span>,
@@ -367,7 +368,7 @@ export default function Home() {
             </div>
 
             <div className="mt-4 mb-4 flex flex-col gap-3 self-center sm:flex-row sm:items-center sm:justify-between sm:self-auto md:mt-5 md:mb-3">
-              <p className="text-tertiary/50 self-center text-sm font-semibold sm:self-auto sm:text-base md:text-2xl">
+              <p className="text-tertiary/50 self-center text-center text-sm font-semibold sm:self-auto sm:text-base md:text-2xl">
                 E-commerce • Market Research • Data Analytics • Paid Media
               </p>
               <a
