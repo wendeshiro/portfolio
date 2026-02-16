@@ -1,7 +1,7 @@
 "use client";
 
 import { ReactLenis, type LenisRef } from "lenis/react";
-import { useEffect, useRef } from "react";
+import { useEffect, useLayoutEffect, useRef } from "react";
 import gsap from "gsap";
 import { usePathname } from "next/navigation";
 
@@ -12,6 +12,7 @@ export default function SmoothScroll({
 }) {
   const lenisRef = useRef<LenisRef>(null);
   const pathname = usePathname();
+  const previousPathnameRef = useRef<string | null>(null);
 
   useEffect(() => {
     /*
@@ -30,15 +31,18 @@ export default function SmoothScroll({
     };
   }, []);
 
-  useEffect(() => {
-    const frameId = window.requestAnimationFrame(() => {
-      lenisRef.current?.lenis?.scrollTo(0, { immediate: true });
-      window.scrollTo({ top: 0, left: 0, behavior: "auto" });
-    });
+  useLayoutEffect(() => {
+    const previousPathname = previousPathnameRef.current;
+    const isInitialRender = previousPathname === null;
+    const hasPathChanged = previousPathname !== pathname;
 
-    return () => {
-      window.cancelAnimationFrame(frameId);
-    };
+    previousPathnameRef.current = pathname;
+
+    if (isInitialRender || !hasPathChanged) return;
+    if (window.location.hash) return;
+
+    lenisRef.current?.lenis?.scrollTo(0, { immediate: true });
+    window.scrollTo({ top: 0, left: 0, behavior: "auto" });
   }, [pathname]);
 
   return (
