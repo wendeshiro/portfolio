@@ -2,6 +2,13 @@ import type { ReactNode } from "react";
 import Image, { type StaticImageData } from "next/image";
 import Link from "next/link";
 
+const SHARED_CLASSES = {
+  contentWrapper: "px-4 pt-3 pb-4 sm:px-7 sm:pt-5 sm:pb-6 2xl:px-6 2xl:pb-7",
+  title: "text-xl font-bold text-black sm:text-2xl md:text-3xl",
+  subtitle: "mt-2 truncate text-sm text-gray-700 sm:mt-3 sm:text-base",
+  description: "mt-1.5 text-sm text-gray-800 sm:mt-2 sm:text-lg",
+};
+
 interface ProjectCardProps {
   title: ReactNode;
   subtitle: ReactNode;
@@ -57,16 +64,10 @@ export default function ProjectCard({
             ) : null}
           </div>
 
-          <div className="px-4 pt-3 pb-4 sm:px-7 sm:pt-5 sm:pb-6 2xl:px-6 2xl:pb-7">
-            <p className="text-xl font-bold text-black sm:text-2xl md:text-3xl">
-              {title}
-            </p>
-            <p className="mt-2 truncate text-sm text-gray-700 sm:mt-3 sm:text-base">
-              {subtitle}
-            </p>
-            <p className="mt-1.5 text-base text-gray-800 sm:mt-2 sm:text-lg">
-              {description}
-            </p>
+          <div className={SHARED_CLASSES.contentWrapper}>
+            <p className={SHARED_CLASSES.title}>{title}</p>
+            <p className={SHARED_CLASSES.subtitle}>{subtitle}</p>
+            <p className={SHARED_CLASSES.description}>{description}</p>
           </div>
         </Link>
       ) : (
@@ -88,16 +89,10 @@ export default function ProjectCard({
             ) : null}
           </div>
 
-          <div className="px-4 pt-3 pb-4 sm:px-7 sm:pt-5 sm:pb-6 2xl:px-6 2xl:pb-7">
-            <p className="text-xl font-bold text-black sm:text-2xl md:text-3xl">
-              {title}
-            </p>
-            <p className="mt-2 truncate text-sm text-gray-700 sm:mt-3 sm:text-base">
-              {subtitle}
-            </p>
-            <p className="mt-1.5 text-base text-gray-800 sm:mt-2 sm:text-lg">
-              {description}
-            </p>
+          <div className={SHARED_CLASSES.contentWrapper}>
+            <p className={SHARED_CLASSES.title}>{title}</p>
+            <p className={SHARED_CLASSES.subtitle}>{subtitle}</p>
+            <p className={SHARED_CLASSES.description}>{description}</p>
           </div>
         </>
       )}
