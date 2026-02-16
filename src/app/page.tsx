@@ -204,7 +204,7 @@ export default function Home() {
             </div>
 
             <div className="mt-5 mb-5 flex items-center justify-between">
-              <p className="text-primary/40 font-semibold md:text-2xl">
+              <p className="text-primary/50 font-semibold md:text-2xl">
                 Web • Mobile • LLM • API
               </p>
               <a
@@ -216,7 +216,10 @@ export default function Home() {
             </div>
 
             <div className="mt-auto">
-              <div className="flex w-max animate-[marquee_100s_linear_infinite] whitespace-nowrap">
+              <div
+                className="flex w-max animate-[marquee_100s_linear_infinite] whitespace-nowrap select-none"
+                onCopy={(e) => e.preventDefault()}
+              >
                 <p className="text-primary/35 mr-10 shrink-0 text-[clamp(64px,10vw,170px)] leading-none font-bold tracking-[0.12em] uppercase">
                   DEVELOPMENT DEVELOPMENT DEVELOPMENT DEVELOPMENT DEVELOPMENT
                   DEVELOPMENT DEVELOPMENT
@@ -250,7 +253,7 @@ export default function Home() {
             </div>
 
             <div className="mt-5 mb-5 flex items-center justify-between">
-              <p className="text-secondary/50 font-semibold md:text-2xl">
+              <p className="text-secondary/70 font-semibold md:text-2xl">
                 Graphic • UI/UX • Video • Motion
               </p>
               <a
@@ -262,7 +265,10 @@ export default function Home() {
             </div>
 
             <div className="mt-auto">
-              <div className="flex w-max animate-[marquee_100s_linear_infinite] whitespace-nowrap">
+              <div
+                className="flex w-max animate-[marquee_100s_linear_infinite] whitespace-nowrap select-none"
+                onCopy={(e) => e.preventDefault()}
+              >
                 <p className="text-secondary/40 mr-10 shrink-0 text-[clamp(64px,10vw,170px)] leading-none font-bold tracking-[0.12em] uppercase">
                   DESIGN DESIGN DESIGN DESIGN DESIGN DESIGN DESIGN DESIGN DESIGN
                 </p>
@@ -306,7 +312,10 @@ export default function Home() {
             </div>
 
             <div className="mt-auto">
-              <div className="flex w-max animate-[marquee_100s_linear_infinite] whitespace-nowrap">
+              <div
+                className="flex w-max animate-[marquee_100s_linear_infinite] whitespace-nowrap select-none"
+                onCopy={(e) => e.preventDefault()}
+              >
                 <p className="text-tertiary/40 mr-10 shrink-0 text-[clamp(64px,10vw,170px)] leading-none font-bold tracking-[0.12em] uppercase">
                   MARKETING MARKETING MARKETING MARKETING MARKETING MARKETING
                   MARKETING
