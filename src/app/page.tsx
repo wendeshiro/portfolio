@@ -52,6 +52,10 @@ export default function Home() {
     [lenis, SECTION_SNAP_OFFSET],
   );
 
+  const handleHeroScrollHintClick = useCallback(() => {
+    snapToSection(devRef.current);
+  }, [snapToSection]);
+
   useLenis(() => {
     const sections = [
       { id: "dev" as const, element: devRef.current },
@@ -158,8 +162,8 @@ export default function Home() {
     <>
       <motion.div style={{ backgroundColor }} className="fixed inset-0 -z-10" />
       <main className="relative mx-auto">
-        <section className="flex h-[calc(100vh-7rem)] flex-col items-center justify-center">
-          <div className="text-[81px] leading-[1.2] tracking-wider">
+        <section className="relative flex h-[calc(100vh-8rem)] flex-col items-center justify-center">
+          <div className="text-[81px] leading-[1.2] font-light tracking-wider">
             <p>Hi, I&apos;m Wende, </p>
             <p>A full-stack</p>
             <p>
@@ -181,10 +185,34 @@ export default function Home() {
             bridging the gap between{" "}
             <span className="text-primary">code and commerce</span>.
           </p>
+
+          <button
+            type="button"
+            aria-label="Scroll to development section"
+            onClick={handleHeroScrollHintClick}
+            className="text-primary/50 absolute bottom-1 left-1/2 flex -translate-x-1/2 cursor-pointer flex-col items-center"
+          >
+            {[0, 1, 2].map((index) => (
+              <motion.span
+                key={index}
+                className="block"
+                animate={{ y: [0, 9, 0], opacity: [0.25, 1, 0.25] }} // Animate up and down with fading effect. y higher creates a more pronounced movement.
+                transition={{
+                  duration: 2.8,
+                  ease: "easeInOut",
+                  repeat: Infinity,
+                  delay: index * 0.2, // higher delay creates a more staggered effect between the three arrows.
+                  repeatDelay: 0.2,
+                }}
+              >
+                <span className="block h-4 w-4 rotate-45 border-r-2 border-b-2" />
+              </motion.span>
+            ))}
+          </button>
         </section>
 
         <section ref={devRef} id="dev" className="relative">
-          <div className="mx-auto flex h-full max-w-7xl flex-col px-10 pt-12 md:pt-20">
+          <div className="mx-auto flex h-full max-w-7xl flex-col px-10 pt-12 md:pt-22">
             <div className="grid gap-15 md:grid-cols-2">
               <ProjectCard
                 title="SafeSpace"
@@ -216,7 +244,7 @@ export default function Home() {
 
             <div className="mt-auto">
               <div
-                className="flex w-max animate-[marquee_100s_linear_infinite] whitespace-nowrap select-none"
+                className="flex w-max animate-[marquee_200s_linear_infinite] whitespace-nowrap select-none"
                 onCopy={(e) => e.preventDefault()}
               >
                 <p className="text-primary/35 mr-10 shrink-0 text-[clamp(64px,10vw,170px)] leading-none font-bold tracking-[0.12em] uppercase">
@@ -233,7 +261,7 @@ export default function Home() {
         </section>
 
         <section ref={designRef} id="design" className="relative">
-          <div className="mx-auto flex h-full max-w-7xl flex-col px-10 pt-12 pb-8 md:pt-20">
+          <div className="mx-auto flex h-full max-w-7xl flex-col px-10 pt-12 pb-8 md:pt-22">
             <div className="grid gap-15 md:grid-cols-2">
               <ProjectCard
                 title="SafeSpace"
@@ -265,7 +293,7 @@ export default function Home() {
 
             <div className="mt-auto">
               <div
-                className="flex w-max animate-[marquee_100s_linear_infinite] whitespace-nowrap select-none"
+                className="flex w-max animate-[marquee_200s_linear_infinite] whitespace-nowrap select-none"
                 onCopy={(e) => e.preventDefault()}
               >
                 <p className="text-secondary/40 mr-10 shrink-0 text-[clamp(64px,10vw,170px)] leading-none font-bold tracking-[0.12em] uppercase">
@@ -280,7 +308,7 @@ export default function Home() {
         </section>
 
         <section ref={marketingRef} id="marketing" className="relative mb-10">
-          <div className="mx-auto flex h-full max-w-7xl flex-col px-10 pt-12 pb-8 md:pt-20">
+          <div className="mx-auto flex h-full max-w-7xl flex-col px-10 pt-12 pb-8 md:pt-22">
             <div className="grid gap-15 md:grid-cols-2">
               <ProjectCard
                 title="SafeSpace"
@@ -312,7 +340,7 @@ export default function Home() {
 
             <div className="mt-auto">
               <div
-                className="flex w-max animate-[marquee_100s_linear_infinite] whitespace-nowrap select-none"
+                className="flex w-max animate-[marquee_200s_linear_infinite] whitespace-nowrap select-none"
                 onCopy={(e) => e.preventDefault()}
               >
                 <p className="text-tertiary/40 mr-10 shrink-0 text-[clamp(64px,10vw,170px)] leading-none font-bold tracking-[0.12em] uppercase">
