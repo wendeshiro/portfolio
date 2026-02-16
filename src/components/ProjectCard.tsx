@@ -56,37 +56,51 @@ export default function ProjectCard({
               />
             ) : null}
           </div>
+
+          <div className="px-4 pt-3 pb-4 sm:px-7 sm:pt-5 sm:pb-6 2xl:px-6 2xl:pb-7">
+            <p className="text-xl font-bold text-black sm:text-2xl md:text-3xl">
+              {title}
+            </p>
+            <p className="mt-2 text-sm text-gray-700 sm:mt-3 sm:text-base">
+              {subtitle}
+            </p>
+            <p className="mt-1.5 text-base text-gray-800 sm:mt-2 sm:text-lg">
+              {description}
+            </p>
+          </div>
         </Link>
       ) : (
-        <div className="relative aspect-2/1 w-full overflow-hidden rounded-3xl bg-gray-200">
-          {imageContent ? (
-            <div className="absolute inset-0">{imageContent}</div>
-          ) : imageSrc ? (
-            <Image
-              src={imageSrc}
-              alt={
-                imageAlt ??
-                (typeof title === "string" ? title : "Project image")
-              }
-              fill
-              sizes="(max-width: 768px) 100vw, (max-width: 1200px) 80vw, 640px"
-              className="object-cover"
-            />
-          ) : null}
-        </div>
-      )}
+        <>
+          <div className="relative aspect-2/1 w-full overflow-hidden rounded-3xl bg-gray-200">
+            {imageContent ? (
+              <div className="absolute inset-0">{imageContent}</div>
+            ) : imageSrc ? (
+              <Image
+                src={imageSrc}
+                alt={
+                  imageAlt ??
+                  (typeof title === "string" ? title : "Project image")
+                }
+                fill
+                sizes="(max-width: 768px) 100vw, (max-width: 1200px) 80vw, 640px"
+                className="object-cover"
+              />
+            ) : null}
+          </div>
 
-      <div className="px-4 pt-3 pb-4 sm:px-7 sm:pt-5 sm:pb-6 2xl:px-6 2xl:pb-7">
-        <p className="text-xl font-bold text-black sm:text-2xl md:text-3xl">
-          {title}
-        </p>
-        <p className="mt-2 text-sm text-gray-700 sm:mt-3 sm:text-base">
-          {subtitle}
-        </p>
-        <p className="mt-1.5 text-base text-gray-800 sm:mt-2 sm:text-lg">
-          {description}
-        </p>
-      </div>
+          <div className="px-4 pt-3 pb-4 sm:px-7 sm:pt-5 sm:pb-6 2xl:px-6 2xl:pb-7">
+            <p className="text-xl font-bold text-black sm:text-2xl md:text-3xl">
+              {title}
+            </p>
+            <p className="mt-2 text-sm text-gray-700 sm:mt-3 sm:text-base">
+              {subtitle}
+            </p>
+            <p className="mt-1.5 text-base text-gray-800 sm:mt-2 sm:text-lg">
+              {description}
+            </p>
+          </div>
+        </>
+      )}
     </div>
   );
 }
