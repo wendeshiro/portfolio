@@ -12,7 +12,7 @@ import ColorImg from "@/images/design/can-design/color.svg";
 import TypographyImg from "@/images/design/can-design/typography.svg";
 import FinalMockupImg from "@/images/design/can-design/final-mockup.webp";
 import { motion } from "framer-motion";
-import { useState, Suspense, useEffect } from "react";
+import { useState, Suspense, useEffect, useCallback } from "react";
 import { Canvas } from "@react-three/fiber";
 import {
   OrbitControls,
@@ -25,6 +25,7 @@ import {
 } from "@react-three/drei";
 import FruitTeaCan from "@/components/FruitTeaCan";
 import ScrollSpyNav from "@/components/ScrollSpyNav";
+import BackButton from "@/components/BackButton";
 
 const FLAVORS = [
   {
@@ -47,14 +48,40 @@ const FLAVORS = [
   },
 ];
 
-FLAVORS.forEach((flavor) => {
-  useTexture.preload(flavor.texture);
-});
-
 export default function CanDesign() {
   const [currentTexture, setCurrentTexture] = useState(FLAVORS[0].texture);
-
   const [isMobile, setIsMobile] = useState<boolean>(false);
+  const [canvasReady, setCanvasReady] = useState(false);
+  const [assetsLoaded, setAssetsLoaded] = useState(false);
+
+  // Show loader until Canvas is mounted AND first assets finish loading
+  const showCanvasLoader = !canvasReady || !assetsLoaded;
+
+  // Defer texture preloading and 3D canvas until after the hero animation
+  // completes, preventing main-thread contention that causes clipPath stutter.
+  const handleHeroAnimationComplete = useCallback(() => {
+    FLAVORS.forEach((flavor) => {
+      useTexture.preload(flavor.texture);
+    });
+    setCanvasReady(true);
+
+    // Give textures time to decode, then hide loader
+    window.setTimeout(() => {
+      setAssetsLoaded(true);
+    }, 800);
+  }, []);
+
+  useEffect(() => {
+    const fallbackTimer = window.setTimeout(() => {
+      setCanvasReady(true);
+      // Also hide loader after fallback triggers
+      window.setTimeout(() => {
+        setAssetsLoaded(true);
+      }, 1000);
+    }, 1800);
+
+    return () => window.clearTimeout(fallbackTimer);
+  }, []);
 
   useEffect(() => {
     const handleResize = () => {
@@ -68,7 +95,8 @@ export default function CanDesign() {
   }, []);
 
   return (
-    <main className="max-w-full py-16 md:py-36">
+    <main className="relative max-w-full py-16 md:py-36">
+      <BackButton />
       <header className="mx-auto flex max-w-7xl flex-col px-5">
         <ProjectTitle
           title="Orchard Brew Can Design"
@@ -90,7 +118,11 @@ export default function CanDesign() {
           },
         ]}
       />
-      <ParallaxImage src={HeroImg} alt="Orchard Brew Can Design hero" />
+      <ParallaxImage
+        src={HeroImg}
+        alt="Orchard Brew Can Design hero"
+        onAnimationComplete={handleHeroAnimationComplete}
+      />
       <section className="mx-auto flex max-w-7xl flex-col px-5">
         <ProjectOverview
           primaryText={
@@ -168,59 +200,67 @@ export default function CanDesign() {
             id="interactive-3d-can"
             className="relative h-full w-[80vw] md:w-full"
           >
-            {/*
-              position for x,y,z
-              fov for field of view (zoom in/out)
-            */}
-            <Canvas camera={{ position: [2, 1, 2], fov: isMobile ? 3.5 : 2.5 }}>
-              <Environment preset="city" />
-              <ambientLight intensity={0.6} />
-              <spotLight
-                position={[-3, -2, 2]}
-                angle={0.2}
-                penumbra={0.5}
-                intensity={7}
-              />
+            {canvasReady ? (
+              <Canvas
+                camera={{ position: [2, 1, 2], fov: isMobile ? 3.5 : 2.5 }}
+              >
+                <Environment preset="city" />
+                <ambientLight intensity={0.6} />
+                <spotLight
+                  position={[-3, -2, 2]}
+                  angle={0.2}
+                  penumbra={0.5}
+                  intensity={7}
+                />
 
-              {/* Float
+                {/* Float
             - speed for how fast it moves, higher is faster
             - rotationIntensity for how much it rotates, higher is more
             - floatIntensity for how much it moves up and down, higher is more
             - floatingRange for the vertical movement range, [min, max]
           */}
-              <Suspense
-                fallback={
-                  <Html center>
-                    <div>Loading...</div>
-                  </Html>
-                }
-              >
-                <Float
-                  speed={0.7}
-                  rotationIntensity={3}
-                  floatIntensity={1.5}
-                  floatingRange={[-0.005, 0.005]}
+                <Suspense
+                  fallback={
+                    <Html center>
+                      <div>Loading 3D Model...</div>
+                    </Html>
+                  }
                 >
-                  {/* only change textureUrl to switch designs, no re-mounting, so position stays
-                   */}
-                  {/* scale can size by scale prop */}
-                  <Center rotation={[-0.1, 0.0, 0.4]}>
-                    <FruitTeaCan textureUrl={currentTexture} scale={1} />
-                  </Center>
-                </Float>
-              </Suspense>
+                  <Float
+                    speed={0.7}
+                    rotationIntensity={3}
+                    floatIntensity={1.5}
+                    floatingRange={[-0.005, 0.005]}
+                  >
+                    {/* only change textureUrl to switch designs, no re-mounting, so position stays
+                     */}
+                    {/* scale can size by scale prop */}
+                    <Center rotation={[-0.1, 0.0, 0.4]}>
+                      <FruitTeaCan textureUrl={currentTexture} scale={1} />
+                    </Center>
+                  </Float>
+                </Suspense>
 
-              {/* bottom shadow */}
-              {/* <ContactShadows
+                {/* bottom shadow */}
+                {/* <ContactShadows
                 position={[0, -0.1, 0]}
                 opacity={0.4}
                 scale={1}
                 blur={2}
               /> */}
 
-              {/* Interactive controller: allows mouse drag to view */}
-              <OrbitControls makeDefault enableZoom={false} />
-            </Canvas>
+                {/* Interactive controller: allows mouse drag to view */}
+                <OrbitControls makeDefault enableZoom={false} />
+              </Canvas>
+            ) : null}
+
+            {showCanvasLoader && (
+              <div className="absolute inset-0 z-20 flex items-center justify-center bg-white/70 backdrop-blur-[1px]">
+                <div className="rounded-full border border-gray-200 bg-white/90 px-4 py-2 text-sm font-medium text-gray-700 shadow-sm">
+                  Loading 3D Model...
+                </div>
+              </div>
+            )}
           </div>
         </section>
         <SectionDivider marginTop="md:mt-5" />

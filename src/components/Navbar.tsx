@@ -2,7 +2,12 @@
 
 import Link from "next/link";
 import { usePathname } from "next/navigation";
-import { motion, AnimatePresence } from "framer-motion";
+import {
+  motion,
+  AnimatePresence,
+  useScroll,
+  useMotionValueEvent,
+} from "framer-motion";
 import { useState } from "react";
 import Image from "next/image";
 
@@ -21,13 +26,39 @@ const navItems: NavItem[] = [
 
 export default function Navbar() {
   const pathname = usePathname();
+  const { scrollY } = useScroll();
+  const [isHiddenByScroll, setIsHiddenByScroll] = useState(false);
 
   const [isOpen, setIsOpen] = useState(false); // menu open/close
   const handleLinkClick = () => setIsOpen(false); // close menu on link click
 
+  const isHomePage = pathname === "/";
+  const shouldHideNav = isHomePage && !isOpen && isHiddenByScroll;
+
+  useMotionValueEvent(scrollY, "change", (latest) => {
+    if (!isHomePage || isOpen) return;
+
+    const previous = scrollY.getPrevious() ?? latest;
+    const direction = latest - previous;
+    const hideStartThreshold = window.innerHeight * 0.3;
+
+    if (latest <= hideStartThreshold) {
+      setIsHiddenByScroll(false);
+      return;
+    }
+
+    if (direction > 0) {
+      setIsHiddenByScroll(true);
+    } else if (direction < 0) {
+      setIsHiddenByScroll(false);
+    }
+  });
+
   return (
     <motion.nav
       layoutScroll
+      animate={shouldHideNav ? { y: -56, opacity: 0.08 } : { y: 0, opacity: 1 }}
+      transition={{ duration: 0.28, ease: "easeOut" }}
       className="bg-background/60 fixed top-0 right-0 left-0 z-50 backdrop-blur-sm"
     >
       <div className="mx-auto flex h-14 max-w-5xl items-center justify-between px-5 md:justify-center">
