@@ -17,10 +17,9 @@ export default function Home() {
 
   const SECTION_COLOR_START = 0.5;
   const SECTION_COLOR_END = 0.2;
-  const SECTION_SNAP_AMOUNT = 0.7;
+  const SECTION_SNAP_AMOUNT = 0.5; // The scroll progress ratio at which a section is considered "snapped" into view.
   const SECTION_SNAP_OFFSET = 0;
 
-  // - Start 0.9 means the section's start is at 90% of the viewport)
   const { scrollYProgress: devProgress } = useScroll({
     target: devRef,
     offset: [`start ${SECTION_COLOR_START}`, `start ${SECTION_COLOR_END}`],
@@ -43,7 +42,7 @@ export default function Home() {
       snapLockRef.current = true;
       lenis.scrollTo(target, {
         offset: SECTION_SNAP_OFFSET,
-        duration: 0.6, // Longer duration creates a more pronounced easing effect.
+        duration: 1.2, // Longer duration creates a more pronounced easing effect.
       });
 
       window.setTimeout(() => {
@@ -253,7 +252,7 @@ export default function Home() {
             </div>
 
             <div className="mt-5 mb-5 flex items-center justify-between">
-              <p className="text-secondary/70 font-semibold md:text-2xl">
+              <p className="text-secondary/60 font-semibold md:text-2xl">
                 Graphic • UI/UX • Video • Motion
               </p>
               <a
