@@ -14,10 +14,12 @@ import DatePicker from "@/images/development/plan-it/date-picker.jpg";
 import Dropdown from "@/images/development/plan-it/dropdown.png";
 import { motion } from "framer-motion";
 import ScrollSpyNav from "@/components/ScrollSpyNav";
+import BackButton from "@/components/BackButton";
 
 export default function PlanIt() {
   return (
-    <main className="max-w-full py-16 md:py-36">
+    <main className="relative max-w-full py-16 md:py-36">
+      <BackButton />
       <header className="mx-auto flex max-w-7xl flex-col px-5">
         <ProjectTitle
           title="Plan-it: Trip Planning Web App"

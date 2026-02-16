@@ -31,6 +31,7 @@ import Hifi from "@/images/development/safespace/hifi.webp";
 import Naming from "@/images/development/safespace/naming.webp";
 import GravityIcons from "@/components/GravityIcons";
 import Mkt from "@/images/development/safespace/mkt.webp";
+import BackButton from "@/components/BackButton";
 
 export default function SafeSpace() {
   const [activeFeatureIndex, setActiveFeatureIndex] = useState(0);
@@ -122,7 +123,8 @@ export default function SafeSpace() {
   }
 
   return (
-    <main className="max-w-full py-16 md:py-36">
+    <main className="relative max-w-full py-16 md:py-36">
+      <BackButton />
       <header className="mx-auto flex max-w-7xl flex-col px-5">
         <ProjectTitle
           title="SafeSpace: Building Safer Worksites with AI"

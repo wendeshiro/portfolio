@@ -25,6 +25,7 @@ import {
 } from "@react-three/drei";
 import FruitTeaCan from "@/components/FruitTeaCan";
 import ScrollSpyNav from "@/components/ScrollSpyNav";
+import BackButton from "@/components/BackButton";
 
 const FLAVORS = [
   {
@@ -68,7 +69,8 @@ export default function CanDesign() {
   }, []);
 
   return (
-    <main className="max-w-full py-16 md:py-36">
+    <main className="relative max-w-full py-16 md:py-36">
+      <BackButton />
       <header className="mx-auto flex max-w-7xl flex-col px-5">
         <ProjectTitle
           title="Orchard Brew Can Design"
