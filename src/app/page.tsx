@@ -17,7 +17,7 @@ export default function Home() {
 
   const SECTION_COLOR_START = 0.5;
   const SECTION_COLOR_END = 0.2;
-  const SECTION_SNAP_AMOUNT = 0.5; // The scroll progress ratio at which a section is considered "snapped" into view.
+  const SECTION_SNAP_AMOUNT = 0.5; // The scroll progress ratio at which a section is considered "snapped" into view. smaller values make it easier to trigger snapping, while larger values require more of the section to be visible before snapping occurs.
   const SECTION_SNAP_OFFSET = 0;
 
   const { scrollYProgress: devProgress } = useScroll({
@@ -42,12 +42,12 @@ export default function Home() {
       snapLockRef.current = true;
       lenis.scrollTo(target, {
         offset: SECTION_SNAP_OFFSET,
-        duration: 1.2, // Longer duration creates a more pronounced easing effect.
+        duration: 1, // Longer duration creates a more pronounced easing effect.
       });
 
       window.setTimeout(() => {
         snapLockRef.current = false;
-      }, 900);
+      }, 1100); // Duration + small buffer to ensure the lock is released after scrolling completes.
     },
     [lenis, SECTION_SNAP_OFFSET],
   );
