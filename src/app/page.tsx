@@ -3,6 +3,7 @@
 import ProjectCard from "@/components/ProjectCard";
 import SafeSpace from "@/images/home/safespace.webp";
 import Planit from "@/images/home/planit.webp";
+import Can from "@/images/home/can.webp";
 import { motion, useScroll, useTransform } from "framer-motion";
 import { useCallback, useRef } from "react";
 import { useLenis } from "lenis/react";
@@ -287,10 +288,10 @@ export default function Home() {
             <div className="grid gap-8 sm:gap-10 md:grid-cols-2 md:gap-15 2xl:gap-20">
               <ProjectCard
                 title="Orchard Brew Can Design"
-                subtitle="React Native / LLM / Expo / AWS Lambda / React / Next.js"
+                subtitle="Illustrator / Photoshop / Blender / React Three Fiber (Three.js)"
                 description="A refreshing visual identity for a contemporary fruit tea collection."
-                imageSrc={SafeSpace}
-                href="/development/safespace"
+                imageSrc={Can}
+                href="/design/can-design"
               />
               <ProjectCard
                 title="Plan-it"
@@ -302,12 +303,12 @@ export default function Home() {
             </div>
 
             <div className="mt-4 mb-4 flex flex-col gap-3 self-center sm:flex-row sm:items-center sm:justify-between sm:self-auto md:mt-5 md:mb-5">
-              <p className="text-secondary/50 self-center text-sm font-semibold sm:self-auto sm:text-base md:text-2xl">
+              <p className="text-secondary/60 self-center text-sm font-semibold sm:self-auto sm:text-base md:text-2xl">
                 Graphic • UI/UX • Video • Motion
               </p>
               <a
                 href="/design"
-                className="border-secondary text-secondary hover:bg-secondary w-fit rounded-2xl border px-5 py-2 text-sm transition-colors duration-300 hover:text-white sm:px-7 sm:py-2.5 sm:text-base"
+                className="border-secondary text-secondary-dark hover:bg-secondary w-fit rounded-2xl border px-5 py-2 text-sm transition-colors duration-300 hover:text-white sm:px-7 sm:py-2.5 sm:text-base"
               >
                 All Design Work →
               </a>

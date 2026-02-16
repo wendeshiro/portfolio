@@ -5,6 +5,7 @@
   --foreground: #000000;
   --primary: #178afe;
   --secondary: #00c3a3;
+  --secondary-dark: #008e76;
   --tertiary: #7b5fff;
 }
 
@@ -15,6 +16,7 @@
   --font-serif: var(--font-noto);
   --color-primary: var(--primary);
   --color-secondary: var(--secondary);
+  --color-secondary-dark: var(--secondary-dark);
   --color-tertiary: var(--tertiary);
 }
 
