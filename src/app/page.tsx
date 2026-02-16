@@ -195,7 +195,7 @@ export default function Home() {
               years.
             </p>
           </div>
-          <p className="mt-5 text-[14px] leading-[1.8] tracking-wide sm:text-[17px] md:mt-4 md:text-[23.7px] 2xl:mt-6 2xl:text-[25.2px]">
+          <p className="mt-5 text-[15.5px] leading-[1.8] tracking-wide sm:text-[17px] md:mt-4 md:text-[23.7px] 2xl:mt-6 2xl:text-[25.2px]">
             I build products with{" "}
             <span className="text-primary">design thinking</span> and a{" "}
             <span className="text-primary">marketing-driven mindset</span>,
@@ -238,17 +238,17 @@ export default function Home() {
           className="relative mt-20 sm:mt-2"
         >
           <div className="mx-auto flex h-full max-w-7xl flex-col px-5 pt-20 sm:px-8 md:px-10 md:pt-22">
-            <div className="grid gap-8 sm:gap-10 md:grid-cols-2 md:gap-15 2xl:gap-20">
+            <div className="grid gap-8 sm:gap-10 md:grid-cols-2 md:gap-15">
               <ProjectCard
                 title="SafeSpace"
-                subtitle="React Native (Expo) / TypeScript / AWS Lambda / LLM"
+                subtitle="React Native / TypeScript / AWS Lambda / LLM"
                 description="Enhancing workplace safety for women and gender-diverse tradespeople with AI-generated reports and actionable insights."
                 imageSrc={SafeSpace}
                 href="/development/safespace"
               />
               <ProjectCard
                 title="Plan-it"
-                subtitle="React / JavaScript / Vite / External APIs / Third-Party Libraries"
+                subtitle="React / JavaScript / External APIs"
                 description="A desktop web app for organizing trips, tracking weather, and preparing with confidence."
                 imageSrc={Planit}
                 href="/development/plan-it"
@@ -295,7 +295,7 @@ export default function Home() {
           className="relative mt-10 sm:mt-0"
         >
           <div className="mx-auto flex h-full max-w-7xl flex-col px-5 pt-10 sm:px-8 md:mt-15 md:px-10 md:pt-22">
-            <div className="grid gap-8 sm:gap-10 md:grid-cols-2 md:gap-15 2xl:gap-20">
+            <div className="grid gap-8 sm:gap-10 md:grid-cols-2 md:gap-15">
               <ProjectCard
                 title="Orchard Brew Can Design"
                 subtitle="Illustrator / Photoshop / Blender / React Three Fiber (Three.js)"
@@ -350,7 +350,7 @@ export default function Home() {
           className="relative mt-10 mb-10 sm:mt-0"
         >
           <div className="mx-auto flex h-full max-w-7xl flex-col px-5 pt-10 sm:px-8 md:mt-15 md:px-10 md:pt-22">
-            <div className="grid gap-8 sm:gap-10 md:grid-cols-2 md:gap-15 2xl:gap-20">
+            <div className="grid gap-8 sm:gap-10 md:grid-cols-2 md:gap-15">
               <ProjectCard
                 title="SafeSpace"
                 subtitle="React Native / LLM / Expo / AWS Lambda / React / Next.js"
