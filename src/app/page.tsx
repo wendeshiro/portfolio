@@ -4,6 +4,7 @@ import ProjectCard from "@/components/ProjectCard";
 import SafeSpace from "@/images/home/safespace.webp";
 import Planit from "@/images/home/planit.webp";
 import Can from "@/images/home/can.webp";
+import PowerBank from "@/images/home/power-bank.webp";
 import { motion, useScroll, useTransform } from "framer-motion";
 import { useCallback, useRef } from "react";
 import { useLenis } from "lenis/react";
@@ -294,11 +295,11 @@ export default function Home() {
                 href="/design/can-design"
               />
               <ProjectCard
-                title="Plan-it"
-                subtitle="React Native / LLM / Expo / AWS Lambda / React / Next.js"
-                description="SafeSpace is an AI-powered safety platform for gender-diverse tradespeople, transforming voice recordings and guided chats into actionable site reports and community insights."
-                imageSrc={Planit}
-                href="/development/plan-it"
+                title="Power Bank Commercial"
+                subtitle="After Effects / Video Editing / Motion Graphics / Filming / Storyboarding"
+                description="A fast-paced promotional video for a multifunctional power bank."
+                imageSrc={PowerBank}
+                href="/design/power-bank"
               />
             </div>
 

@@ -24,7 +24,7 @@ export default function ProjectCard({
   className,
 }: ProjectCardProps) {
   const containerClassName = [
-    "overflow-hidden sm:rounded-3xl rounded-2xl bg-white",
+    "overflow-hidden sm:rounded-3xl rounded-2xl bg-white shadow-sm transition-shadow hover:shadow-lg",
     className,
   ]
     .filter(Boolean)
