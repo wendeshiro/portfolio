@@ -149,8 +149,8 @@ export default function Home() {
       // Define colors
       const white = { r: 252, g: 253, b: 253 };
       const primary = { r: 23, g: 138, b: 254 };
-      const secondary = { r: 0, g: 195, b: 163 };
-      const tertiary = { r: 123, g: 95, b: 255 };
+      const secondary = { r: 121, g: 252, b: 230 };
+      const tertiary = { r: 183, g: 168, b: 250 };
 
       if (marketing > 0) {
         return mixRgb(secondary, tertiary, marketing, 0.1);
@@ -197,7 +197,7 @@ export default function Home() {
             type="button"
             aria-label="Scroll to development section"
             onClick={handleHeroScrollHintClick}
-            className="text-primary/50 absolute bottom-12 left-1/2 flex -translate-x-1/2 cursor-pointer flex-col items-center md:bottom-3"
+            className="text-primary/50 absolute bottom-12 left-1/2 flex -translate-x-1/2 cursor-pointer flex-col items-center md:bottom-2"
           >
             {[0, 1, 2].map((index) => (
               <motion.span
@@ -245,13 +245,13 @@ export default function Home() {
               />
             </div>
 
-            <div className="mt-4 mb-4 flex flex-col gap-3 self-center sm:flex-row sm:items-center sm:justify-between sm:self-auto md:mt-5 md:mb-5">
+            <div className="mt-4 mb-4 flex flex-col gap-3 self-center sm:flex-row sm:items-center sm:justify-between sm:self-auto md:mt-5 md:mb-3">
               <p className="text-primary/50 self-center text-sm font-semibold sm:self-auto sm:text-base md:text-2xl">
                 Web • Mobile • LLM • API
               </p>
               <a
                 href="/development"
-                className="border-primary text-primary hover:bg-primary w-fit rounded-2xl border px-5 py-2 text-sm transition-colors duration-300 hover:text-white sm:px-7 sm:py-2.5 sm:text-base"
+                className="border-primary text-primary hover:bg-primary w-fit self-center rounded-2xl border px-5 py-2 text-sm transition-colors duration-300 hover:text-white sm:px-7 sm:py-2.5 sm:text-base"
               >
                 All Development Projects →
               </a>
@@ -284,7 +284,7 @@ export default function Home() {
           id="design"
           className="relative"
         >
-          <div className="mx-auto flex h-full max-w-7xl flex-col px-5 pt-10 sm:px-8 md:px-10 md:pt-22">
+          <div className="mx-auto flex h-full max-w-7xl flex-col px-5 pt-10 sm:px-8 md:mt-15 md:px-10 md:pt-22">
             <div className="grid gap-8 sm:gap-10 md:grid-cols-2 md:gap-15 2xl:gap-20">
               <ProjectCard
                 title="Orchard Brew Can Design"
@@ -302,13 +302,13 @@ export default function Home() {
               />
             </div>
 
-            <div className="mt-4 mb-4 flex flex-col gap-3 self-center sm:flex-row sm:items-center sm:justify-between sm:self-auto md:mt-5 md:mb-5">
+            <div className="mt-4 mb-4 flex flex-col gap-3 self-center sm:flex-row sm:items-center sm:justify-between sm:self-auto md:mt-5 md:mb-3">
               <p className="text-secondary/60 self-center text-sm font-semibold sm:self-auto sm:text-base md:text-2xl">
                 Graphic • UI/UX • Video • Motion
               </p>
               <a
                 href="/design"
-                className="border-secondary text-secondary-dark hover:bg-secondary w-fit rounded-2xl border px-5 py-2 text-sm transition-colors duration-300 hover:text-white sm:px-7 sm:py-2.5 sm:text-base"
+                className="border-secondary text-secondary-dark hover:bg-secondary w-fit self-center rounded-2xl border px-5 py-2 text-sm transition-colors duration-300 hover:text-white sm:px-7 sm:py-2.5 sm:text-base"
               >
                 All Design Work →
               </a>
@@ -319,10 +319,10 @@ export default function Home() {
                 className="flex w-max animate-[marquee_200s_linear_infinite] whitespace-nowrap select-none"
                 onCopy={(e) => e.preventDefault()}
               >
-                <p className="text-secondary/40 mr-10 shrink-0 text-[clamp(36px,10vw,170px)] leading-none font-bold tracking-[0.12em] uppercase">
+                <p className="text-secondary/30 mr-10 shrink-0 text-[clamp(36px,10vw,170px)] leading-none font-bold tracking-[0.12em] uppercase">
                   DESIGN DESIGN DESIGN DESIGN DESIGN DESIGN DESIGN DESIGN DESIGN
                 </p>
-                <p className="text-secondary/40 shrink-0 text-[clamp(36px,10vw,170px)] leading-none font-bold tracking-[0.12em] uppercase">
+                <p className="text-secondary/30 shrink-0 text-[clamp(36px,10vw,170px)] leading-none font-bold tracking-[0.12em] uppercase">
                   DESIGN DESIGN DESIGN DESIGN DESIGN DESIGN DESIGN DESIGN DESIGN
                 </p>
               </div>
@@ -339,7 +339,7 @@ export default function Home() {
           id="marketing"
           className="relative mb-10"
         >
-          <div className="mx-auto flex h-full max-w-7xl flex-col px-5 pt-10 sm:px-8 md:px-10 md:pt-22">
+          <div className="mx-auto flex h-full max-w-7xl flex-col px-5 pt-10 sm:px-8 md:mt-15 md:px-10 md:pt-22">
             <div className="grid gap-8 sm:gap-10 md:grid-cols-2 md:gap-15 2xl:gap-20">
               <ProjectCard
                 title="SafeSpace"
@@ -357,13 +357,13 @@ export default function Home() {
               />
             </div>
 
-            <div className="mt-4 mb-4 flex flex-col gap-3 self-center sm:flex-row sm:items-center sm:justify-between sm:self-auto md:mt-5 md:mb-5">
+            <div className="mt-4 mb-4 flex flex-col gap-3 self-center sm:flex-row sm:items-center sm:justify-between sm:self-auto md:mt-5 md:mb-3">
               <p className="text-tertiary/50 self-center text-sm font-semibold sm:self-auto sm:text-base md:text-2xl">
                 E-commerce • Market Research • Data Analytics • Paid Media
               </p>
               <a
                 href="/marketing"
-                className="border-tertiary text-tertiary hover:bg-tertiary w-fit rounded-2xl border px-5 py-2 text-sm transition-colors duration-300 hover:text-white sm:px-7 sm:py-2.5 sm:text-base"
+                className="border-tertiary text-tertiary hover:bg-tertiary w-fit self-center rounded-2xl border px-5 py-2 text-sm transition-colors duration-300 hover:text-white sm:px-7 sm:py-2.5 sm:text-base"
               >
                 All Marketing Cases →
               </a>
@@ -374,11 +374,11 @@ export default function Home() {
                 className="flex w-max animate-[marquee_200s_linear_infinite] whitespace-nowrap select-none"
                 onCopy={(e) => e.preventDefault()}
               >
-                <p className="text-tertiary/40 mr-10 shrink-0 text-[clamp(36px,10vw,170px)] leading-none font-bold tracking-[0.12em] uppercase">
+                <p className="text-tertiary/30 mr-10 shrink-0 text-[clamp(36px,10vw,170px)] leading-none font-bold tracking-[0.12em] uppercase">
                   MARKETING MARKETING MARKETING MARKETING MARKETING MARKETING
                   MARKETING
                 </p>
-                <p className="text-tertiary/40 shrink-0 text-[clamp(36px,10vw,170px)] leading-none font-bold tracking-[0.12em] uppercase">
+                <p className="text-tertiary/30 shrink-0 text-[clamp(36px,10vw,170px)] leading-none font-bold tracking-[0.12em] uppercase">
                   MARKETING MARKETING MARKETING MARKETING MARKETING MARKETING
                   MARKETING
                 </p>
