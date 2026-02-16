@@ -163,7 +163,7 @@ export default function Home() {
       <motion.div style={{ backgroundColor }} className="fixed inset-0 -z-10" />
       <main className="relative mx-auto">
         <section className="relative flex h-[calc(100vh-8rem)] flex-col items-center justify-center">
-          <div className="text-[81px] leading-[1.2] font-light tracking-wider">
+          <div className="leading-[1.2] font-light tracking-wider md:text-[81px] 2xl:text-[86px]">
             <p>Hi, I&apos;m Wende, </p>
             <p>A full-stack</p>
             <p>
@@ -178,7 +178,7 @@ export default function Home() {
               experience of 5+ years.
             </p>
           </div>
-          <p className="mt-6 text-[24px] tracking-wide">
+          <p className="tracking-wide md:mt-4 md:text-[24px] 2xl:mt-6 2xl:text-[25.5px]">
             I build products with{" "}
             <span className="text-primary">design thinking</span> and a{" "}
             <span className="text-primary">marketing-driven mindset</span>,
@@ -190,7 +190,7 @@ export default function Home() {
             type="button"
             aria-label="Scroll to development section"
             onClick={handleHeroScrollHintClick}
-            className="text-primary/50 absolute bottom-1 left-1/2 flex -translate-x-1/2 cursor-pointer flex-col items-center"
+            className="text-primary/50 absolute bottom-0.5 left-1/2 flex -translate-x-1/2 cursor-pointer flex-col items-center"
           >
             {[0, 1, 2].map((index) => (
               <motion.span
