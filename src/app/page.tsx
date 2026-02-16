@@ -250,7 +250,7 @@ export default function Home() {
               </a>
             </div>
 
-            <div className="mt-auto">
+            <div className="relative left-1/2 mt-auto w-screen -translate-x-1/2 overflow-x-clip">
               <div
                 className="flex w-max animate-[marquee_200s_linear_infinite] whitespace-nowrap select-none"
                 onCopy={(e) => e.preventDefault()}
@@ -307,7 +307,7 @@ export default function Home() {
               </a>
             </div>
 
-            <div className="mt-auto">
+            <div className="relative left-1/2 mt-auto w-screen -translate-x-1/2 overflow-x-clip">
               <div
                 className="flex w-max animate-[marquee_200s_linear_infinite] whitespace-nowrap select-none"
                 onCopy={(e) => e.preventDefault()}
@@ -362,7 +362,7 @@ export default function Home() {
               </a>
             </div>
 
-            <div className="mt-auto">
+            <div className="relative left-1/2 mt-auto w-screen -translate-x-1/2 overflow-x-clip">
               <div
                 className="flex w-max animate-[marquee_200s_linear_infinite] whitespace-nowrap select-none"
                 onCopy={(e) => e.preventDefault()}
