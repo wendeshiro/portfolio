@@ -260,7 +260,7 @@ export default function Home() {
               </p>
               <a
                 href="/development"
-                className="border-primary text-primary hover:bg-primary w-fit self-center rounded-2xl border px-5 py-2 text-sm transition-colors duration-300 hover:text-white sm:px-7 sm:py-2.5 sm:text-base"
+                className="border-primary text-primary hover:bg-primary/10 w-fit self-center rounded-2xl border px-5 py-2 text-sm transition-colors duration-300 sm:px-7 sm:py-2.5 sm:text-base"
               >
                 All Development Projects →
               </a>
@@ -317,7 +317,7 @@ export default function Home() {
               </p>
               <a
                 href="/design"
-                className="border-secondary text-secondary-dark hover:bg-secondary w-fit self-center rounded-2xl border px-5 py-2 text-sm transition-colors duration-300 hover:text-white sm:px-7 sm:py-2.5 sm:text-base"
+                className="border-secondary-dark text-secondary-dark hover:bg-secondary/15 w-fit self-center rounded-2xl border px-5 py-2 text-sm transition-colors duration-300 sm:px-7 sm:py-2.5 sm:text-base"
               >
                 All Design Work →
               </a>
@@ -372,7 +372,7 @@ export default function Home() {
               </p>
               <a
                 href="/marketing"
-                className="border-tertiary text-tertiary hover:bg-tertiary w-fit self-center rounded-2xl border px-5 py-2 text-sm transition-colors duration-300 hover:text-white sm:px-7 sm:py-2.5 sm:text-base"
+                className="border-tertiary text-tertiary hover:bg-tertiary/10 w-fit self-center rounded-2xl border px-5 py-2 text-sm transition-colors duration-300 sm:px-7 sm:py-2.5 sm:text-base"
               >
                 All Marketing Cases →
               </a>
@@ -383,11 +383,11 @@ export default function Home() {
                 className="flex w-max animate-[marquee_200s_linear_infinite] whitespace-nowrap select-none"
                 onCopy={(e) => e.preventDefault()}
               >
-                <p className="text-tertiary/30 mr-10 shrink-0 text-[clamp(36px,10vw,170px)] leading-none font-bold tracking-[0.12em] uppercase">
+                <p className="text-tertiary/35 mr-10 shrink-0 text-[clamp(36px,10vw,170px)] leading-none font-bold tracking-[0.12em] uppercase">
                   MARKETING MARKETING MARKETING MARKETING MARKETING MARKETING
                   MARKETING
                 </p>
-                <p className="text-tertiary/30 shrink-0 text-[clamp(36px,10vw,170px)] leading-none font-bold tracking-[0.12em] uppercase">
+                <p className="text-tertiary/35 shrink-0 text-[clamp(36px,10vw,170px)] leading-none font-bold tracking-[0.12em] uppercase">
                   MARKETING MARKETING MARKETING MARKETING MARKETING MARKETING
                   MARKETING
                 </p>
