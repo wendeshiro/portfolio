@@ -11,14 +11,15 @@ import Storyboard01 from "@/images/design/power-bank/storyboard-01.webp";
 import Storyboard02 from "@/images/design/power-bank/storyboard-02.webp";
 import PhotoView from "@/components/PhotoView";
 
-export default function PowerBank() {
+export default function ECommerce() {
   return (
     <main className="relative max-w-full py-16 md:py-36">
       <BackButton />
       <header className="mx-auto flex max-w-7xl flex-col px-5">
         <ProjectTitle
-          title="Power Bank Commercial"
-          year={2025}
+          title="E-commerce Marketing"
+          year={"2018 - 2023"}
+          yearPositionClass="xl:-right-28"
           description="A fast-paced promotional video for a multifunctional power bank."
         />
       </header>

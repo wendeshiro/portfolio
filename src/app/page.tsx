@@ -352,11 +352,11 @@ export default function Home() {
           <div className="mx-auto flex h-full max-w-7xl flex-col px-5 pt-10 sm:px-8 md:mt-15 md:px-10 md:pt-22">
             <div className="grid gap-8 sm:gap-10 md:grid-cols-2 md:gap-15">
               <ProjectCard
-                title="SafeSpace"
-                subtitle="React Native / LLM / Expo / AWS Lambda / React / Next.js"
-                description="SafeSpace is an AI-powered safety platform for gender-diverse tradespeople, transforming voice recordings and guided chats into actionable site reports and community insights."
+                title="E-commerce Marketing"
+                subtitle="Data & Financial Analysis / Market Research / Amazon PPC / SEO"
+                description="Managed e-commerce marketing across the Amazon US and JP marketplaces, generating an average monthly revenue exceeding $350,000."
                 imageSrc={SafeSpace}
-                href="/development/safespace"
+                href="/marketing/ecommerce"
               />
               <ProjectCard
                 title="Plan-it"
