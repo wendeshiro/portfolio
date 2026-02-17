@@ -2,6 +2,7 @@
 
 import { useEffect, useState } from "react";
 import { useRouter } from "next/navigation";
+import { hasInternalHistory } from "@/lib/navigationHistory";
 
 type BackButtonProps = {
   className?: string;
@@ -40,12 +41,7 @@ export default function BackButton({ className = "" }: BackButtonProps) {
   function handleBack() {
     if (typeof window === "undefined") return;
 
-    const referrer = document.referrer;
-    const origin = window.location.origin;
-
-    const isInternalReferrer = referrer && referrer.startsWith(origin);
-
-    if (isInternalReferrer) {
+    if (hasInternalHistory()) {
       router.back();
     } else {
       router.push("/");
