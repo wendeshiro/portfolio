@@ -4,9 +4,9 @@ import Link from "next/link";
 
 const SHARED_CLASSES = {
   contentWrapper: "px-4 pt-3 pb-4 sm:px-7 sm:pt-4 sm:pb-6 2xl:px-6 2xl:pb-7",
-  title: "text-xl font-bold text-black md:text-3xl",
-  subtitle: "mt-2 truncate text-sm text-gray-700 md:mt-3 md:text-base",
-  description: "mt-1.5 text-sm text-gray-800 md:mt-2 md:text-lg",
+  title: "text-xl font-semibold text-black md:text-3xl",
+  subtitle: "mt-1 truncate text-sm text-gray-700 md:text-base",
+  description: "mt-1.5 text-sm text-gray-800 md:text-lg",
 };
 
 interface ProjectCardProps {

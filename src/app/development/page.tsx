@@ -1,6 +1,7 @@
 import ProjectCard from "@/components/ProjectCard";
 import SafeSpace from "@/images/home/safespace.webp";
 import Planit from "@/images/home/planit.webp";
+import Portfolio from "@/images/home/portfolio.webp";
 
 export default function Development() {
   return (
@@ -27,11 +28,11 @@ export default function Development() {
           href="/development/plan-it"
         />
         <ProjectCard
-          title="Plan-it"
-          subtitle="React / JavaScript / External APIs"
-          description="A desktop web app for organizing trips, tracking weather, and preparing with confidence."
-          imageSrc={Planit}
-          href="/development/plan-it"
+          title="Portfolio Website"
+          subtitle="Next.js / TypeScript / Framer Motion"
+          description="A responsive portfolio website built with Next.js and Tailwind CSS, focusing on clarity and scalable structure."
+          imageSrc={Portfolio}
+          href="/development/portfolio-website"
         />
       </section>
     </main>
