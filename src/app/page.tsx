@@ -362,7 +362,7 @@ export default function Home() {
               />
               <ProjectCard
                 title="SaaS Lead Gen Landing Page"
-                subtitle="Data & Financial Analysis / Market Research / Amazon PPC / SEO"
+                subtitle="Keyword Research / SEO Copywriting / Landing Page Design"
                 description="A conversion-focused SaaS webinar landing page optimized through keyword research and strategic persuasion elements."
                 imageSrc={SaaS}
                 href="/marketing/saas-lead-gen"
