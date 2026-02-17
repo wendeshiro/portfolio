@@ -4,14 +4,14 @@ import Planit from "@/images/home/planit.webp";
 
 export default function Development() {
   return (
-    <main className="relative flex flex-col items-center pt-10 pb-30">
-      <section className="mb-18">
-        <p className="text-primary/20 text-9xl tracking-[-0.2em] uppercase select-none">
+    <main className="relative flex flex-col items-center pt-8 pb-16 md:pt-10 md:pb-30">
+      <section className="mb-10 md:mb-18">
+        <p className="text-primary/20 text-6xl tracking-[-0.2em] uppercase select-none md:text-9xl">
           code <span className="mr-[0.2em] ml-[0.2em]">&</span> bu
           <span className="mr-[0.1em] ml-[0.1em]">i</span>ld
         </p>
       </section>
-      <section className="grid max-w-7xl grid-cols-3 gap-10 px-10">
+      <section className="grid gap-8 px-5 md:max-w-screen-2xl md:grid-cols-3 md:gap-10 md:px-20">
         <ProjectCard
           title="SafeSpace"
           subtitle="React Native / TypeScript / AWS Lambda / LLM"
