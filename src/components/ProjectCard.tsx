@@ -33,14 +33,14 @@ export default function ProjectCard({
   const hasLink = Boolean(href);
 
   const containerClassName = [
-    "overflow-hidden sm:rounded-3xl rounded-2xl bg-white shadow-sm transition-shadow hover:shadow-lg",
+    "overflow-hidden rounded-3xl bg-white shadow-sm transition-shadow hover:shadow-lg",
     className,
   ]
     .filter(Boolean)
     .join(" ");
 
   const mediaWrapperClassName = hasLink
-    ? "relative aspect-2/1 w-full overflow-hidden rounded-2xl bg-gray-200 sm:rounded-3xl"
+    ? "relative aspect-2/1 w-full overflow-hidden rounded-3xl bg-gray-200"
     : "relative aspect-2/1 w-full overflow-hidden rounded-3xl bg-gray-200";
 
   const mediaContentClassName = hasLink
