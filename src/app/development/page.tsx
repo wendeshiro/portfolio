@@ -7,9 +7,9 @@ export default function Development() {
   return (
     <main className="relative flex flex-col items-center pt-8 pb-16 md:pt-10 md:pb-30">
       <section className="mb-10 md:mb-18">
-        <p className="text-primary/20 text-6xl tracking-[-0.2em] uppercase select-none md:text-9xl">
-          code <span className="mr-[0.2em] ml-[0.2em]">&</span> bu
-          <span className="mr-[0.1em] ml-[0.1em]">i</span>ld
+        <p className="text-primary/20 text-6xl tracking-[-0.18em] uppercase select-none md:text-9xl">
+          bu<span className="mr-[0.1em] ml-[0.1em]">i</span>ld
+          <span className="mr-[0.2em] ml-[0.2em]">&</span>Iterate
         </p>
       </section>
       <section className="grid gap-8 px-5 md:max-w-screen-2xl md:grid-cols-3 md:gap-10 md:px-20">
