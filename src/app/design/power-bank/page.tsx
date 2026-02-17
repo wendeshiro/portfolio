@@ -49,7 +49,7 @@ export default function PlanIt() {
             {
               label: "Tools & Skills",
               content:
-                "After Effects, Photoshop, Storyboarding, Filming, Video Editing, Motion Graphics Design",
+                "After Effects, Photoshop, Illustrator, Storyboarding, Filming, Video Editing, Motion Graphics Design",
             },
           ]}
         />
