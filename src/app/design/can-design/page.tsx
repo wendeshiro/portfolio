@@ -4,7 +4,7 @@ import ParallaxImage from "@/components/ParallaxImage";
 import ProjectOverview from "@/components/ProjectOverview";
 import SectionDivider from "@/components/SectionDivider";
 import Image from "next/image";
-import HeroImg from "@/images/design/can-design/hero.webp";
+import HeroImg from "@/images/design/can-design/can-hero.webp";
 import LabelPeach from "@/images/design/can-design/label-peach.png";
 import LabelOrange from "@/images/design/can-design/label-orange.png";
 import LabelApple from "@/images/design/can-design/label-apple.png";
