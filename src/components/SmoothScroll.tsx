@@ -4,6 +4,10 @@ import { ReactLenis, type LenisRef } from "lenis/react";
 import { useEffect, useLayoutEffect, useRef } from "react";
 import gsap from "gsap";
 import { usePathname } from "next/navigation";
+import {
+  incrementInternalHistory,
+  decrementInternalHistory,
+} from "@/lib/navigationHistory";
 
 // Persist scroll positions across navigations so back/forward restores them.
 const scrollPositions = new Map<string, number>();
@@ -66,6 +70,7 @@ export default function SmoothScroll({
     // On back/forward navigation, restore saved scroll position.
     if (isPopstateRef.current) {
       isPopstateRef.current = false;
+      decrementInternalHistory();
       const savedPosition = scrollPositions.get(pathname) ?? 0;
 
       // Use requestAnimationFrame to ensure the DOM has rendered before restoring.
@@ -74,6 +79,9 @@ export default function SmoothScroll({
       });
       return;
     }
+
+    // Forward (push) navigation – track depth for BackButton.
+    incrementInternalHistory();
 
     lenisRef.current?.lenis?.scrollTo(0, { immediate: true });
     window.scrollTo({ top: 0, left: 0, behavior: "auto" });

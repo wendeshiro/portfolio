@@ -11,7 +11,7 @@ import Storyboard01 from "@/images/design/power-bank/storyboard-01.webp";
 import Storyboard02 from "@/images/design/power-bank/storyboard-02.webp";
 import PhotoView from "@/components/PhotoView";
 
-export default function PlanIt() {
+export default function PowerBank() {
   return (
     <main className="relative max-w-full py-16 md:py-36">
       <BackButton />
@@ -49,7 +49,7 @@ export default function PlanIt() {
             {
               label: "Tools & Skills",
               content:
-                "After Effects, Photoshop, Storyboarding, Filming, Video Editing, Motion Graphics Design",
+                "After Effects, Photoshop, Illustrator, Storyboarding, Filming, Video Editing, Motion Graphics Design",
             },
           ]}
         />

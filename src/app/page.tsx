@@ -8,6 +8,8 @@ import PowerBank from "@/images/home/power-bank.webp";
 import { motion, useScroll, useTransform } from "framer-motion";
 import { useCallback, useEffect, useRef } from "react";
 import { useLenis } from "lenis/react";
+import ECommerce from "@/images/home/ecommerce.webp";
+import SaaS from "@/images/home/saas.webp";
 
 export default function Home() {
   const lenis = useLenis();
@@ -299,7 +301,7 @@ export default function Home() {
               <ProjectCard
                 title="Orchard Brew Can Design"
                 subtitle="Illustrator / Photoshop / Blender / React Three Fiber (Three.js)"
-                description="A refreshing visual identity for a contemporary fruit tea collection."
+                description="A refreshing visual identity for a contemporary fruit tea collection with interactive 3D product displays."
                 imageSrc={Can}
                 href="/design/can-design"
               />
@@ -352,18 +354,18 @@ export default function Home() {
           <div className="mx-auto flex h-full max-w-7xl flex-col px-5 pt-10 sm:px-8 md:mt-15 md:px-10 md:pt-22">
             <div className="grid gap-8 sm:gap-10 md:grid-cols-2 md:gap-15">
               <ProjectCard
-                title="SafeSpace"
-                subtitle="React Native / LLM / Expo / AWS Lambda / React / Next.js"
-                description="SafeSpace is an AI-powered safety platform for gender-diverse tradespeople, transforming voice recordings and guided chats into actionable site reports and community insights."
-                imageSrc={SafeSpace}
-                href="/development/safespace"
+                title="E-commerce Growth Marketing"
+                subtitle="Data & Financial Analysis / Market Research / Amazon PPC / SEO"
+                description="Managed e-commerce marketing across the Amazon US and JP marketplaces, driving over USD $350K in average monthly revenue."
+                imageSrc={ECommerce}
+                href="/marketing/ecommerce"
               />
               <ProjectCard
-                title="Plan-it"
-                subtitle="React Native / LLM / Expo / AWS Lambda / React / Next.js"
-                description="SafeSpace is an AI-powered safety platform for gender-diverse tradespeople, transforming voice recordings and guided chats into actionable site reports and community insights."
-                imageSrc={Planit}
-                href="/development/plan-it"
+                title="SaaS Lead Gen Landing Page"
+                subtitle="Data & Financial Analysis / Market Research / Amazon PPC / SEO"
+                description="A conversion-focused SaaS webinar landing page optimized through keyword research and strategic persuasion elements."
+                imageSrc={SaaS}
+                href="/marketing/saas-lead-gen"
               />
             </div>
 

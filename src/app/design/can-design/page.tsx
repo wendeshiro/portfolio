@@ -4,7 +4,7 @@ import ParallaxImage from "@/components/ParallaxImage";
 import ProjectOverview from "@/components/ProjectOverview";
 import SectionDivider from "@/components/SectionDivider";
 import Image from "next/image";
-import HeroImg from "@/images/design/can-design/hero.webp";
+import HeroImg from "@/images/design/can-design/can-hero.webp";
 import LabelPeach from "@/images/design/can-design/label-peach.png";
 import LabelOrange from "@/images/design/can-design/label-orange.png";
 import LabelApple from "@/images/design/can-design/label-apple.png";
@@ -101,7 +101,7 @@ export default function CanDesign() {
         <ProjectTitle
           title="Orchard Brew Can Design"
           year={2025}
-          description="A refreshing visual identity for a contemporary fruit tea collection."
+          description="A refreshing visual identity for a contemporary fruit tea collection with interactive 3D product displays."
         />
       </header>
       <ScrollSpyNav

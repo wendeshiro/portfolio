@@ -30,6 +30,8 @@ export default function ProjectCard({
   imageContent,
   className,
 }: ProjectCardProps) {
+  const hasLink = Boolean(href);
+
   const containerClassName = [
     "overflow-hidden sm:rounded-3xl rounded-2xl bg-white shadow-sm transition-shadow hover:shadow-lg",
     className,
@@ -37,65 +39,56 @@ export default function ProjectCard({
     .filter(Boolean)
     .join(" ");
 
-  return (
-    <div className={containerClassName}>
-      {href ? (
+  const mediaWrapperClassName = hasLink
+    ? "relative aspect-2/1 w-full overflow-hidden rounded-2xl bg-gray-200 sm:rounded-3xl"
+    : "relative aspect-2/1 w-full overflow-hidden rounded-3xl bg-gray-200";
+
+  const mediaContentClassName = hasLink
+    ? "absolute inset-0 transition-transform duration-500 ease-out group-hover:scale-110"
+    : "absolute inset-0";
+
+  const imageClassName = hasLink
+    ? "object-cover transition-transform duration-500 ease-out group-hover:scale-110"
+    : "object-cover";
+
+  const cardBody = (
+    <>
+      <div className={mediaWrapperClassName}>
+        {imageContent ? (
+          <div className={mediaContentClassName}>{imageContent}</div>
+        ) : imageSrc ? (
+          <Image
+            src={imageSrc}
+            alt={
+              imageAlt ?? (typeof title === "string" ? title : "Project image")
+            }
+            fill
+            className={imageClassName}
+          />
+        ) : null}
+      </div>
+
+      <div className={SHARED_CLASSES.contentWrapper}>
+        <p className={SHARED_CLASSES.title}>{title}</p>
+        <p className={SHARED_CLASSES.subtitle}>{subtitle}</p>
+        <p className={SHARED_CLASSES.description}>{description}</p>
+      </div>
+    </>
+  );
+
+  if (href) {
+    return (
+      <div className={containerClassName}>
         <Link
           href={href}
           aria-label={typeof title === "string" ? title : "Project link"}
           className="group block"
         >
-          <div className="relative aspect-2/1 w-full overflow-hidden rounded-2xl bg-gray-200 sm:rounded-3xl">
-            {imageContent ? (
-              <div className="absolute inset-0 transition-transform duration-500 ease-out group-hover:scale-110">
-                {imageContent}
-              </div>
-            ) : imageSrc ? (
-              <Image
-                src={imageSrc}
-                alt={
-                  imageAlt ??
-                  (typeof title === "string" ? title : "Project image")
-                }
-                fill
-                sizes="(max-width: 768px) 100vw, (max-width: 1200px) 80vw, 640px"
-                className="object-cover transition-transform duration-500 ease-out group-hover:scale-110"
-              />
-            ) : null}
-          </div>
-
-          <div className={SHARED_CLASSES.contentWrapper}>
-            <p className={SHARED_CLASSES.title}>{title}</p>
-            <p className={SHARED_CLASSES.subtitle}>{subtitle}</p>
-            <p className={SHARED_CLASSES.description}>{description}</p>
-          </div>
+          {cardBody}
         </Link>
-      ) : (
-        <>
-          <div className="relative aspect-2/1 w-full overflow-hidden rounded-3xl bg-gray-200">
-            {imageContent ? (
-              <div className="absolute inset-0">{imageContent}</div>
-            ) : imageSrc ? (
-              <Image
-                src={imageSrc}
-                alt={
-                  imageAlt ??
-                  (typeof title === "string" ? title : "Project image")
-                }
-                fill
-                sizes="(max-width: 768px) 100vw, (max-width: 1200px) 80vw, 640px"
-                className="object-cover"
-              />
-            ) : null}
-          </div>
+      </div>
+    );
+  }
 
-          <div className={SHARED_CLASSES.contentWrapper}>
-            <p className={SHARED_CLASSES.title}>{title}</p>
-            <p className={SHARED_CLASSES.subtitle}>{subtitle}</p>
-            <p className={SHARED_CLASSES.description}>{description}</p>
-          </div>
-        </>
-      )}
-    </div>
-  );
+  return <div className={containerClassName}>{cardBody}</div>;
 }

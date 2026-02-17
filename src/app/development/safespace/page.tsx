@@ -459,12 +459,13 @@ export default function SafeSpace() {
                   insights.
                 </p>
               </div>
-              <Image
-                src={CompetitiveMatrix}
-                alt="Competitive Matrix"
-                placeholder="blur"
-                className="order-first md:order-0 md:w-1/2"
-              />
+              <div className="order-first md:order-0 md:w-1/2">
+                <Image
+                  src={CompetitiveMatrix}
+                  alt="Competitive Matrix"
+                  placeholder="blur"
+                />
+              </div>
             </div>
           </section>
           <motion.section
