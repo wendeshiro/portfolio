@@ -8,6 +8,7 @@ import PowerBank from "@/images/home/power-bank.webp";
 import { motion, useScroll, useTransform } from "framer-motion";
 import { useCallback, useEffect, useRef } from "react";
 import { useLenis } from "lenis/react";
+import ECommerce from "@/images/home/ecommerce.webp";
 
 export default function Home() {
   const lenis = useLenis();
@@ -299,7 +300,7 @@ export default function Home() {
               <ProjectCard
                 title="Orchard Brew Can Design"
                 subtitle="Illustrator / Photoshop / Blender / React Three Fiber (Three.js)"
-                description="A refreshing visual identity for a contemporary fruit tea collection."
+                description="A refreshing visual identity for a contemporary fruit tea collection with interactive 3D product displays."
                 imageSrc={Can}
                 href="/design/can-design"
               />
@@ -352,10 +353,10 @@ export default function Home() {
           <div className="mx-auto flex h-full max-w-7xl flex-col px-5 pt-10 sm:px-8 md:mt-15 md:px-10 md:pt-22">
             <div className="grid gap-8 sm:gap-10 md:grid-cols-2 md:gap-15">
               <ProjectCard
-                title="E-commerce Marketing"
+                title="E-commerce Growth Marketing"
                 subtitle="Data & Financial Analysis / Market Research / Amazon PPC / SEO"
-                description="Managed e-commerce marketing across the Amazon US and JP marketplaces, generating an average monthly revenue exceeding $350,000."
-                imageSrc={SafeSpace}
+                description="Managed e-commerce marketing across the Amazon US and JP marketplaces, driving over USD $350K in average monthly revenue."
+                imageSrc={ECommerce}
                 href="/marketing/ecommerce"
               />
               <ProjectCard

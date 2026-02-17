@@ -101,7 +101,7 @@ export default function CanDesign() {
         <ProjectTitle
           title="Orchard Brew Can Design"
           year={2025}
-          description="A refreshing visual identity for a contemporary fruit tea collection."
+          description="A refreshing visual identity for a contemporary fruit tea collection with interactive 3D product displays."
         />
       </header>
       <ScrollSpyNav
