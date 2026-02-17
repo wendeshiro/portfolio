@@ -3,10 +3,10 @@ import Image, { type StaticImageData } from "next/image";
 import Link from "next/link";
 
 const SHARED_CLASSES = {
-  contentWrapper: "px-4 pt-3 pb-4 sm:px-7 sm:pt-5 sm:pb-6 2xl:px-6 2xl:pb-7",
-  title: "text-xl font-bold text-black sm:text-2xl md:text-3xl",
-  subtitle: "mt-2 truncate text-sm text-gray-700 sm:mt-3 sm:text-base",
-  description: "mt-1.5 text-sm text-gray-800 sm:mt-2 sm:text-lg",
+  contentWrapper: "px-4 pt-3 pb-4 sm:px-7 sm:pt-4 sm:pb-6 2xl:px-6 2xl:pb-7",
+  title: "text-xl font-bold text-black md:text-3xl",
+  subtitle: "mt-2 truncate text-sm text-gray-700 md:mt-3 md:text-base",
+  description: "mt-1.5 text-sm text-gray-800 md:mt-2 md:text-lg",
 };
 
 interface ProjectCardProps {
