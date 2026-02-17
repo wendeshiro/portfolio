@@ -9,6 +9,7 @@ import { motion, useScroll, useTransform } from "framer-motion";
 import { useCallback, useEffect, useRef } from "react";
 import { useLenis } from "lenis/react";
 import ECommerce from "@/images/home/ecommerce.webp";
+import SaaS from "@/images/home/saas.webp";
 
 export default function Home() {
   const lenis = useLenis();
@@ -360,11 +361,11 @@ export default function Home() {
                 href="/marketing/ecommerce"
               />
               <ProjectCard
-                title="Plan-it"
-                subtitle="React Native / LLM / Expo / AWS Lambda / React / Next.js"
-                description="SafeSpace is an AI-powered safety platform for gender-diverse tradespeople, transforming voice recordings and guided chats into actionable site reports and community insights."
-                imageSrc={Planit}
-                href="/development/plan-it"
+                title="SaaS Lead Gen Landing Page"
+                subtitle="Data & Financial Analysis / Market Research / Amazon PPC / SEO"
+                description="A conversion-focused SaaS webinar landing page optimized through keyword research and strategic persuasion elements."
+                imageSrc={SaaS}
+                href="/marketing/saas-lead-gen"
               />
             </div>
 
