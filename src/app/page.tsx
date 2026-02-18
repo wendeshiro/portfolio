@@ -1,7 +1,12 @@
 "use client";
 
 import ProjectCard from "@/components/ProjectCard";
-import { homeSectionMotionProps } from "@/lib/homePageAnimations";
+import {
+  homeCardSectionMotionProps,
+  homeHeroTextContainerVariants,
+  homeHeroTextLetterVariants,
+  homeHeroTextMotionProps,
+} from "@/lib/homePageAnimations";
 import SafeSpace from "@/images/home/safespace.webp";
 import Planit from "@/images/home/planit.webp";
 import Can from "@/images/home/can.webp";
@@ -11,6 +16,63 @@ import { useCallback, useEffect, useRef } from "react";
 import { useLenis } from "lenis/react";
 import ECommerce from "@/images/home/ecommerce.webp";
 import SaaS from "@/images/home/saas.webp";
+
+type HeroLineSegment = {
+  text: string;
+  className?: string;
+  phase: 1 | 2 | 3 | 4;
+  startOffset?: number;
+};
+
+const heroHeadingLines: HeroLineSegment[][] = [
+  [
+    { text: "Hi, ", phase: 1 },
+    { text: "I'm Wende, ", phase: 1, startOffset: 0.12 },
+  ],
+  [{ text: "A full-stack", phase: 2, startOffset: 0.2 }],
+  [
+    {
+      text: "Developer",
+      className: "text-primary font-medium",
+      phase: 2,
+      startOffset: 0.2,
+    },
+    { text: " with a", phase: 3 },
+  ],
+  [
+    { text: "Design", className: "text-secondary font-medium", phase: 3 },
+    { text: " background", phase: 3 },
+    { text: " and", phase: 4, startOffset: 0.3 },
+  ],
+  [
+    {
+      text: "Marketing",
+      className: "text-tertiary font-medium",
+      phase: 4,
+      startOffset: 0.3,
+    },
+    { text: " experience of ", phase: 4, startOffset: 0.3 },
+    { text: "5+", className: "mr-[0.15em]", phase: 4, startOffset: 0.7 },
+    { text: "years.", phase: 4, startOffset: 0.7 },
+  ],
+];
+
+const HERO_PHASE_START_DELAY: Record<1 | 2 | 3 | 4, number> = {
+  1: 0,
+  2: 1,
+  3: 2.2,
+  4: 3,
+};
+
+const HERO_LETTER_STAGGER = 0.04; // The delay between each letter's animation within the same segment.
+
+function getHeroCharDelay(segment: HeroLineSegment, charIndex: number) {
+  return (
+    HERO_PHASE_START_DELAY[segment.phase] +
+    (segment.startOffset ?? 0) +
+    charIndex * HERO_LETTER_STAGGER
+  );
+}
 
 export default function Home() {
   const lenis = useLenis();
@@ -182,22 +244,33 @@ export default function Home() {
       <motion.div style={{ backgroundColor }} className="fixed inset-0 -z-10" />
       <main className="relative mx-auto">
         <section className="relative flex h-[calc(100vh-5rem)] flex-col items-center justify-center px-6 sm:px-10 md:h-[calc(100vh-8rem)] md:px-0">
-          <div className="text-[30px] font-light tracking-wider sm:text-[52px] md:text-[81px] md:leading-[1.2] 2xl:text-[86px]">
-            <p>Hi, I&apos;m Wende, </p>
-            <p>A full-stack</p>
-            <p>
-              <span className="text-primary font-medium">Developer</span> with a
-            </p>
-            <p>
-              <span className="text-secondary font-medium">Design</span>{" "}
-              background and
-            </p>
-            <p>
-              <span className="text-tertiary font-medium">Marketing</span>{" "}
-              experience of 5<span className="mr-[0.1em]">+</span>
-              years.
-            </p>
-          </div>
+          <motion.div
+            {...homeHeroTextMotionProps}
+            variants={homeHeroTextContainerVariants}
+            className="text-[30px] font-light tracking-wider sm:text-[52px] md:text-[81px] md:leading-[1.2] 2xl:text-[86px]"
+          >
+            {heroHeadingLines.map((line, lineIndex) => (
+              <p key={`line-${lineIndex}`}>
+                {line.map((segment, segmentIndex) => (
+                  <span
+                    key={`segment-${lineIndex}-${segmentIndex}`}
+                    className={segment.className}
+                  >
+                    {Array.from(segment.text).map((char, charIndex) => (
+                      <motion.span
+                        key={`char-${lineIndex}-${segmentIndex}-${charIndex}`}
+                        custom={getHeroCharDelay(segment, charIndex)}
+                        variants={homeHeroTextLetterVariants}
+                        className="inline-block will-change-[filter,opacity]"
+                      >
+                        {char === " " ? "\u00A0" : char}
+                      </motion.span>
+                    ))}
+                  </span>
+                ))}
+              </p>
+            ))}
+          </motion.div>
           <p className="mt-5 text-[15.5px] leading-[1.8] tracking-wide sm:text-[17px] md:mt-4 md:text-[23.7px] 2xl:mt-6 2xl:text-[25.2px]">
             I build products with{" "}
             <span className="text-primary">design thinking</span> and a{" "}
@@ -232,7 +305,7 @@ export default function Home() {
         </section>
 
         <motion.section
-          {...homeSectionMotionProps}
+          {...homeCardSectionMotionProps}
           ref={devRef}
           id="dev"
           className="relative mt-20 sm:mt-2"
@@ -286,7 +359,7 @@ export default function Home() {
         </motion.section>
 
         <motion.section
-          {...homeSectionMotionProps}
+          {...homeCardSectionMotionProps}
           ref={designRef}
           id="design"
           className="relative mt-10 sm:mt-0"
@@ -338,7 +411,7 @@ export default function Home() {
         </motion.section>
 
         <motion.section
-          {...homeSectionMotionProps}
+          {...homeCardSectionMotionProps}
           ref={marketingRef}
           id="marketing"
           className="relative mt-10 mb-10 sm:mt-0"
