@@ -1,23 +1,32 @@
+"use client";
+
 import type { ReactNode } from "react";
 import Image, { type StaticImageData } from "next/image";
 import Link from "next/link";
+import { motion, type Variants } from "framer-motion";
 
 const SHARED_CLASSES = {
-  contentWrapper: "px-4 pt-3 pb-4 sm:px-7 sm:pt-5 sm:pb-6 2xl:px-6 2xl:pb-7",
-  title: "text-xl font-bold text-black sm:text-2xl md:text-3xl",
-  subtitle: "mt-2 truncate text-sm text-gray-700 sm:mt-3 sm:text-base",
-  description: "mt-1.5 text-sm text-gray-800 sm:mt-2 sm:text-lg",
+  contentWrapper: "px-4 pt-3 pb-4 sm:px-7 sm:pt-4 sm:pb-6 2xl:px-6 2xl:pb-7",
+  titleBase: "text-xl font-semibold text-black",
+  titleDefault: "md:text-3xl",
+  titleCategory: "md:text-2xl",
+  subtitle: "mt-1 truncate text-sm text-gray-700 md:text-base",
+  descriptionBase: "mt-1.5 text-sm text-gray-800",
+  descriptionDefault: "md:text-lg",
+  descriptionCategory: "md:text-base",
 };
 
 interface ProjectCardProps {
   title: ReactNode;
   subtitle: ReactNode;
   description: ReactNode;
-  href?: string;
+  href: string;
   imageSrc?: string | StaticImageData;
   imageAlt?: string;
-  imageContent?: ReactNode;
   className?: string;
+  isCategoryCard?: boolean;
+  variants?: Variants;
+  custom?: number;
 }
 
 export default function ProjectCard({
@@ -27,68 +36,67 @@ export default function ProjectCard({
   imageSrc,
   imageAlt,
   href,
-  imageContent,
   className,
+  isCategoryCard = false,
+  variants,
+  custom,
 }: ProjectCardProps) {
-  const hasLink = Boolean(href);
-
+  const useParentVariants = Boolean(variants);
   const containerClassName = [
-    "overflow-hidden sm:rounded-3xl rounded-2xl bg-white shadow-sm transition-shadow hover:shadow-lg",
+    "overflow-hidden rounded-3xl bg-white shadow-sm transition-shadow hover:shadow-lg",
     className,
   ]
     .filter(Boolean)
     .join(" ");
+  const titleClassName = [
+    SHARED_CLASSES.titleBase,
+    isCategoryCard ? SHARED_CLASSES.titleCategory : SHARED_CLASSES.titleDefault,
+  ].join(" ");
+  const descriptionClassName = [
+    SHARED_CLASSES.descriptionBase,
+    isCategoryCard
+      ? SHARED_CLASSES.descriptionCategory
+      : SHARED_CLASSES.descriptionDefault,
+  ].join(" ");
 
-  const mediaWrapperClassName = hasLink
-    ? "relative aspect-2/1 w-full overflow-hidden rounded-2xl bg-gray-200 sm:rounded-3xl"
-    : "relative aspect-2/1 w-full overflow-hidden rounded-3xl bg-gray-200";
+  return (
+    <motion.div
+      variants={variants}
+      custom={custom}
+      initial={useParentVariants ? undefined : { opacity: 0, y: 50 }}
+      animate={useParentVariants ? undefined : { opacity: 1, y: 0 }}
+      transition={
+        useParentVariants
+          ? undefined
+          : { duration: 0.5, ease: "easeOut" }
+      }
+      className={containerClassName}
+    >
+      <Link
+        href={href}
+        aria-label={typeof title === "string" ? title : "Project link"}
+        className="group block"
+      >
+        <div className="relative aspect-2/1 w-full overflow-hidden rounded-3xl bg-gray-200">
+          {imageSrc ? (
+            <Image
+              src={imageSrc}
+              alt={
+                imageAlt ??
+                (typeof title === "string" ? title : "Project image")
+              }
+              fill
+              className="object-cover transition-transform duration-500 ease-out group-hover:scale-110"
+            />
+          ) : null}
+        </div>
 
-  const mediaContentClassName = hasLink
-    ? "absolute inset-0 transition-transform duration-500 ease-out group-hover:scale-110"
-    : "absolute inset-0";
-
-  const imageClassName = hasLink
-    ? "object-cover transition-transform duration-500 ease-out group-hover:scale-110"
-    : "object-cover";
-
-  const cardBody = (
-    <>
-      <div className={mediaWrapperClassName}>
-        {imageContent ? (
-          <div className={mediaContentClassName}>{imageContent}</div>
-        ) : imageSrc ? (
-          <Image
-            src={imageSrc}
-            alt={
-              imageAlt ?? (typeof title === "string" ? title : "Project image")
-            }
-            fill
-            className={imageClassName}
-          />
-        ) : null}
-      </div>
-
-      <div className={SHARED_CLASSES.contentWrapper}>
-        <p className={SHARED_CLASSES.title}>{title}</p>
-        <p className={SHARED_CLASSES.subtitle}>{subtitle}</p>
-        <p className={SHARED_CLASSES.description}>{description}</p>
-      </div>
-    </>
+        <div className={SHARED_CLASSES.contentWrapper}>
+          <p className={titleClassName}>{title}</p>
+          <p className={SHARED_CLASSES.subtitle}>{subtitle}</p>
+          <p className={descriptionClassName}>{description}</p>
+        </div>
+      </Link>
+    </motion.div>
   );
-
-  if (href) {
-    return (
-      <div className={containerClassName}>
-        <Link
-          href={href}
-          aria-label={typeof title === "string" ? title : "Project link"}
-          className="group block"
-        >
-          {cardBody}
-        </Link>
-      </div>
-    );
-  }
-
-  return <div className={containerClassName}>{cardBody}</div>;
 }

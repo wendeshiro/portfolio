@@ -1,18 +1,181 @@
 "use client";
 
 import ProjectCard from "@/components/ProjectCard";
+import {
+  HOME_HERO_LETTER_DURATION,
+  homeCardSectionMotionProps,
+  homeHeroTextLetterVariants,
+  homeHeroTextMotionProps,
+} from "@/lib/homePageAnimations";
+import { categoryTitleMotionProps } from "@/lib/categoryPageAnimations";
+import {
+  HOME_SEC_HERO_LETTER_DURATION,
+  createHomeSecHeroCharDelayMap,
+  homeSecHeroTextLetterVariants,
+  homeSecHeroTextMotionProps,
+} from "@/lib/homeSecHeroTextAnimations";
+import {
+  hasShownHomeScrollHint,
+  markHomeHeroTextPlayed,
+  markHomeScrollHintShown,
+  shouldPlayHomeHeroText,
+} from "@/lib/homeVisitState";
 import SafeSpace from "@/images/home/safespace.webp";
 import Planit from "@/images/home/planit.webp";
 import Can from "@/images/home/can.webp";
 import PowerBank from "@/images/home/power-bank.webp";
 import { motion, useScroll, useTransform } from "framer-motion";
-import { useCallback, useEffect, useRef } from "react";
+import { useCallback, useEffect, useRef, useState } from "react";
 import { useLenis } from "lenis/react";
 import ECommerce from "@/images/home/ecommerce.webp";
 import SaaS from "@/images/home/saas.webp";
 
+type HeroLineSegment = {
+  text: string;
+  className?: string;
+  phase: 1 | 2 | 3 | 4;
+  startOffset?: number;
+};
+
+type HomeSecHeroTextSegment = {
+  text: string;
+  className?: string;
+  priority?: boolean;
+};
+
+const heroHeadingLines: HeroLineSegment[][] = [
+  [
+    { text: "Hi, ", phase: 1 },
+    { text: "I'm Wende, ", phase: 1, startOffset: 0.12 },
+  ],
+  [{ text: "A full-stack", phase: 2, startOffset: 0.2 }],
+  [
+    {
+      text: "Developer",
+      className: "text-primary font-medium",
+      phase: 2,
+      startOffset: 0.2,
+    },
+    { text: " with a", phase: 3, startOffset: 0.3 },
+  ],
+  [
+    {
+      text: "Design",
+      className: "text-secondary font-medium",
+      phase: 3,
+      startOffset: 0.3,
+    },
+    { text: " background", phase: 3, startOffset: 0.3 },
+    { text: " and", phase: 4, startOffset: 0.3 },
+  ],
+  [
+    {
+      text: "Marketing",
+      className: "text-tertiary font-medium",
+      phase: 4,
+      startOffset: 0.3,
+    },
+    { text: " experience of ", phase: 4, startOffset: 0.3 },
+    { text: "5+", className: "mr-[0.15em]", phase: 4, startOffset: 0.7 },
+    { text: "years.", phase: 4, startOffset: 0.7 },
+  ],
+];
+
+const HERO_PHASE_START_DELAY: Record<1 | 2 | 3 | 4, number> = {
+  1: 0,
+  2: 1,
+  3: 2,
+  4: 3,
+};
+
+const HERO_LETTER_STAGGER = 0.04; // The delay between each letter's animation within the same segment.
+const SECONDARY_HERO_DELAY_AFTER_MAIN = 0;
+
+function getHeroCharDelay(segment: HeroLineSegment, charIndex: number) {
+  return (
+    HERO_PHASE_START_DELAY[segment.phase] +
+    (segment.startOffset ?? 0) +
+    charIndex * HERO_LETTER_STAGGER
+  );
+}
+
+const homeSecHeroTextSegments: HomeSecHeroTextSegment[] = [
+  { text: "I build products with " },
+  { text: "design thinking", className: "text-primary", priority: true },
+  { text: " and a " },
+  {
+    text: "marketing-driven mindset",
+    className: "text-primary",
+    priority: true,
+  },
+  { text: ", bridging the gap between " },
+  { text: "code and commerce", className: "text-primary", priority: true },
+  { text: "." },
+];
+
+const homeSecHeroSegmentStartIndices = homeSecHeroTextSegments.reduce<number[]>(
+  (indices, segment, index) => {
+    if (index === 0) {
+      indices.push(0);
+      return indices;
+    }
+
+    const previousStart = indices[index - 1] ?? 0;
+    const previousLength = Array.from(
+      homeSecHeroTextSegments[index - 1]?.text ?? "",
+    ).length;
+    indices.push(previousStart + previousLength);
+    return indices;
+  },
+  [],
+);
+
+const homeSecHeroFullText = homeSecHeroTextSegments
+  .map((segment) => segment.text)
+  .join("");
+const homeSecHeroPriorityIndices = homeSecHeroTextSegments.flatMap(
+  (segment, segmentIndex) => {
+    if (!segment.priority) return [];
+
+    const startIndex = homeSecHeroSegmentStartIndices[segmentIndex] ?? 0;
+    return Array.from(segment.text)
+      .map((char, charIndex) =>
+        char.trim().length > 0 ? startIndex + charIndex : -1,
+      )
+      .filter((index) => index >= 0);
+  },
+);
+const mainHeroMaxCharDelay = Math.max(
+  ...heroHeadingLines.flatMap((line) =>
+    line.flatMap((segment) =>
+      Array.from(segment.text).map((_, charIndex) =>
+        getHeroCharDelay(segment, charIndex),
+      ),
+    ),
+  ),
+);
+const homeSecHeroStartOffset =
+  mainHeroMaxCharDelay +
+  HOME_HERO_LETTER_DURATION +
+  SECONDARY_HERO_DELAY_AFTER_MAIN;
+const homeSecHeroCharDelayMap = createHomeSecHeroCharDelayMap(
+  homeSecHeroFullText,
+  {
+    startOffset: homeSecHeroStartOffset,
+    priorityIndices: homeSecHeroPriorityIndices,
+  },
+);
+const homeSecHeroMaxCharDelay = Math.max(...homeSecHeroCharDelayMap);
+const homeSecHeroEndDelay =
+  homeSecHeroMaxCharDelay + HOME_SEC_HERO_LETTER_DURATION;
+
 export default function Home() {
   const lenis = useLenis();
+  const [playHeroTextAnimation] = useState(shouldPlayHomeHeroText);
+  const [showHeroScrollHint, setShowHeroScrollHint] = useState(
+    hasShownHomeScrollHint,
+  );
+  const scrollHintAlreadyShown = hasShownHomeScrollHint();
   const devRef = useRef<HTMLElement>(null);
   const designRef = useRef<HTMLElement>(null);
   const marketingRef = useRef<HTMLElement>(null);
@@ -23,6 +186,28 @@ export default function Home() {
   useEffect(() => {
     mountTimeRef.current = Date.now();
   }, []);
+
+  useEffect(() => {
+    if (playHeroTextAnimation) {
+      markHomeHeroTextPlayed();
+    }
+  }, [playHeroTextAnimation]);
+
+  useEffect(() => {
+    if (hasShownHomeScrollHint()) return;
+
+    const timeoutId = window.setTimeout(
+      () => {
+        markHomeScrollHintShown();
+        setShowHeroScrollHint(true);
+      },
+      playHeroTextAnimation ? homeSecHeroEndDelay * 1000 : 0,
+    );
+
+    return () => {
+      window.clearTimeout(timeoutId);
+    };
+  }, [playHeroTextAnimation]);
 
   const SECTION_COLOR_START = 0.5;
   const SECTION_COLOR_END = 0.2;
@@ -175,66 +360,137 @@ export default function Home() {
       return `rgb(${white.r}, ${white.g}, ${white.b})`;
     },
   );
+  const heroTextContainerMotionProps = playHeroTextAnimation
+    ? {}
+    : categoryTitleMotionProps;
 
   return (
     <>
       <motion.div style={{ backgroundColor }} className="fixed inset-0 -z-10" />
       <main className="relative mx-auto">
-        <section className="relative flex h-[calc(100vh-5rem)] flex-col items-center justify-center px-6 sm:px-10 md:h-[calc(100vh-8rem)] md:px-0">
-          <div className="text-[30px] font-light tracking-wider sm:text-[52px] md:text-[81px] md:leading-[1.2] 2xl:text-[86px]">
-            <p>Hi, I&apos;m Wende, </p>
-            <p>A full-stack</p>
-            <p>
-              <span className="text-primary font-medium">Developer</span> with a
-            </p>
-            <p>
-              <span className="text-secondary font-medium">Design</span>{" "}
-              background and
-            </p>
-            <p>
-              <span className="text-tertiary font-medium">Marketing</span>{" "}
-              experience of 5<span className="mr-[0.1em]">+</span>
-              years.
-            </p>
-          </div>
-          <p className="mt-5 text-[15.5px] leading-[1.8] tracking-wide sm:text-[17px] md:mt-4 md:text-[23.7px] 2xl:mt-6 2xl:text-[25.2px]">
-            I build products with{" "}
-            <span className="text-primary">design thinking</span> and a{" "}
-            <span className="text-primary">marketing-driven mindset</span>,
-            bridging the gap between{" "}
-            <span className="text-primary">code and commerce</span>.
-          </p>
+        <section className="relative flex h-[calc(100vh-5rem)] flex-col items-center justify-center px-5 md:h-[calc(100vh-8rem)] md:px-0">
+          <motion.div {...heroTextContainerMotionProps}>
+            <motion.div
+              {...(playHeroTextAnimation ? homeHeroTextMotionProps : {})}
+              className="text-[30px] font-light tracking-wider sm:text-[52px] md:text-[81px] md:leading-[1.2] 2xl:text-[86px]"
+            >
+              {heroHeadingLines.map((line, lineIndex) => (
+                <p key={`line-${lineIndex}`}>
+                  {line.map((segment, segmentIndex) => (
+                    <span
+                      key={`segment-${lineIndex}-${segmentIndex}`}
+                      className={segment.className}
+                    >
+                      {Array.from(segment.text).map((char, charIndex) =>
+                        char === " " ? (
+                          <span
+                            key={`char-${lineIndex}-${segmentIndex}-${charIndex}`}
+                            aria-hidden
+                          >
+                            {" "}
+                          </span>
+                        ) : playHeroTextAnimation ? (
+                          <motion.span
+                            key={`char-${lineIndex}-${segmentIndex}-${charIndex}`}
+                            custom={getHeroCharDelay(segment, charIndex)}
+                            variants={homeHeroTextLetterVariants}
+                            className="inline-block will-change-[filter,opacity]"
+                          >
+                            {char}
+                          </motion.span>
+                        ) : (
+                          <span
+                            key={`char-${lineIndex}-${segmentIndex}-${charIndex}`}
+                            className="inline-block"
+                          >
+                            {char}
+                          </span>
+                        ),
+                      )}
+                    </span>
+                  ))}
+                </p>
+              ))}
+            </motion.div>
+          </motion.div>
+          <motion.div {...heroTextContainerMotionProps}>
+            <motion.p
+              {...(playHeroTextAnimation ? homeSecHeroTextMotionProps : {})}
+              className="mt-5 text-[15.5px] leading-[1.8] tracking-wide sm:text-[17px] md:mt-4 md:text-[23.7px] 2xl:mt-6 2xl:text-[25.2px]"
+            >
+              {homeSecHeroTextSegments.map((segment, segmentIndex) => (
+                <span
+                  key={`sec-hero-segment-${segmentIndex}`}
+                  className={segment.className}
+                >
+                  {Array.from(segment.text).map((char, charIndex) =>
+                    char === " " ? (
+                      <span
+                        key={`sec-hero-char-${segmentIndex}-${charIndex}`}
+                        aria-hidden
+                      >
+                        {" "}
+                      </span>
+                    ) : playHeroTextAnimation ? (
+                      <motion.span
+                        key={`sec-hero-char-${segmentIndex}-${charIndex}`}
+                        custom={
+                          homeSecHeroCharDelayMap[
+                            (homeSecHeroSegmentStartIndices[segmentIndex] ??
+                              0) + charIndex
+                          ] ?? homeSecHeroStartOffset
+                        }
+                        variants={homeSecHeroTextLetterVariants}
+                        className="inline-block will-change-[filter,opacity]"
+                      >
+                        {char}
+                      </motion.span>
+                    ) : (
+                      <span
+                        key={`sec-hero-char-${segmentIndex}-${charIndex}`}
+                        className="inline-block"
+                      >
+                        {char}
+                      </span>
+                    ),
+                  )}
+                </span>
+              ))}
+            </motion.p>
+          </motion.div>
 
-          <button
-            type="button"
-            aria-label="Scroll to development section"
-            onClick={handleHeroScrollHintClick}
-            className="text-primary/50 absolute bottom-12 left-1/2 flex -translate-x-1/2 cursor-pointer flex-col items-center md:bottom-2"
-          >
-            {[0, 1, 2].map((index) => (
-              <motion.span
-                key={index}
-                className="block"
-                animate={{ y: [0, 9, 0], opacity: [0.25, 1, 0.25] }} // Animate up and down with fading effect. y higher creates a more pronounced movement.
-                transition={{
-                  duration: 2.8,
-                  ease: "easeInOut",
-                  repeat: Infinity,
-                  delay: index * 0.2, // higher delay creates a more staggered effect between the three arrows.
-                  repeatDelay: 0.2,
-                }}
-              >
-                <span className="block h-4 w-4 rotate-45 border-r-2 border-b-2" />
-              </motion.span>
-            ))}
-          </button>
+          {showHeroScrollHint ? (
+            <motion.button
+              type="button"
+              aria-label="Scroll to development section"
+              onClick={handleHeroScrollHintClick}
+              initial={scrollHintAlreadyShown ? false : { opacity: 0, y: 6 }}
+              animate={{ opacity: 1, y: 0 }}
+              transition={{ duration: 0.35, ease: "easeOut" }}
+              className="text-primary/50 absolute bottom-12 left-1/2 flex -translate-x-1/2 cursor-pointer flex-col items-center md:bottom-2"
+            >
+              {[0, 1, 2].map((index) => (
+                <motion.span
+                  key={index}
+                  className="block"
+                  animate={{ y: [0, 9, 0], opacity: [0.25, 1, 0.25] }} // Animate up and down with fading effect. y higher creates a more pronounced movement.
+                  transition={{
+                    duration: 2.8,
+                    ease: "easeInOut",
+                    repeat: Infinity,
+                    delay: index * 0.2, // higher delay creates a more staggered effect between the three arrows.
+                    repeatDelay: 0.2,
+                  }}
+                >
+                  <span className="block h-4 w-4 rotate-45 border-r-2 border-b-2" />
+                </motion.span>
+              ))}
+            </motion.button>
+          ) : null}
         </section>
 
         <motion.section
-          initial={{ opacity: 0, y: 15 }} // Initial state: hidden and slightly down
-          whileInView={{ opacity: 1, y: 0 }} // Animate to: visible and in place
-          transition={{ duration: 1, ease: "easeOut" }} // Animation settings
-          viewport={{ once: true, amount: 0.3 }} // Trigger animation when 2% in view, only once
+          {...homeCardSectionMotionProps}
           ref={devRef}
           id="dev"
           className="relative mt-20 sm:mt-2"
@@ -288,10 +544,7 @@ export default function Home() {
         </motion.section>
 
         <motion.section
-          initial={{ opacity: 0, y: 15 }} // Initial state: hidden and slightly down
-          whileInView={{ opacity: 1, y: 0 }} // Animate to: visible and in place
-          transition={{ duration: 1, ease: "easeOut" }} // Animation settings
-          viewport={{ once: true, amount: 0.3 }} // Trigger animation when 2% in view, only once
+          {...homeCardSectionMotionProps}
           ref={designRef}
           id="design"
           className="relative mt-10 sm:mt-0"
@@ -343,10 +596,7 @@ export default function Home() {
         </motion.section>
 
         <motion.section
-          initial={{ opacity: 0, y: 15 }} // Initial state: hidden and slightly down
-          whileInView={{ opacity: 1, y: 0 }} // Animate to: visible and in place
-          transition={{ duration: 1, ease: "easeOut" }} // Animation settings
-          viewport={{ once: true, amount: 0.3 }} // Trigger animation when 2% in view, only once
+          {...homeCardSectionMotionProps}
           ref={marketingRef}
           id="marketing"
           className="relative mt-10 mb-10 sm:mt-0"
@@ -362,7 +612,7 @@ export default function Home() {
               />
               <ProjectCard
                 title="SaaS Lead Gen Landing Page"
-                subtitle="Data & Financial Analysis / Market Research / Amazon PPC / SEO"
+                subtitle="Keyword Research / SEO Copywriting / Landing Page Design"
                 description="A conversion-focused SaaS webinar landing page optimized through keyword research and strategic persuasion elements."
                 imageSrc={SaaS}
                 href="/marketing/saas-lead-gen"
