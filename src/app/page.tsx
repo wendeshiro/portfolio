@@ -13,6 +13,12 @@ import {
   homeSecHeroTextLetterVariants,
   homeSecHeroTextMotionProps,
 } from "@/lib/homeSecHeroTextAnimations";
+import {
+  hasShownHomeScrollHint,
+  markHomeHeroTextPlayed,
+  markHomeScrollHintShown,
+  shouldPlayHomeHeroText,
+} from "@/lib/homeVisitState";
 import SafeSpace from "@/images/home/safespace.webp";
 import Planit from "@/images/home/planit.webp";
 import Can from "@/images/home/can.webp";
@@ -163,7 +169,10 @@ const homeSecHeroEndDelay = homeSecHeroMaxCharDelay + HOME_SEC_HERO_LETTER_DURAT
 
 export default function Home() {
   const lenis = useLenis();
-  const [showHeroScrollHint, setShowHeroScrollHint] = useState(false);
+  const [playHeroTextAnimation] = useState(shouldPlayHomeHeroText);
+  const [showHeroScrollHint, setShowHeroScrollHint] =
+    useState(hasShownHomeScrollHint);
+  const scrollHintAlreadyShown = hasShownHomeScrollHint();
   const devRef = useRef<HTMLElement>(null);
   const designRef = useRef<HTMLElement>(null);
   const marketingRef = useRef<HTMLElement>(null);
@@ -176,14 +185,23 @@ export default function Home() {
   }, []);
 
   useEffect(() => {
+    if (playHeroTextAnimation) {
+      markHomeHeroTextPlayed();
+    }
+  }, [playHeroTextAnimation]);
+
+  useEffect(() => {
+    if (hasShownHomeScrollHint()) return;
+
     const timeoutId = window.setTimeout(() => {
+      markHomeScrollHintShown();
       setShowHeroScrollHint(true);
-    }, homeSecHeroEndDelay * 1000);
+    }, playHeroTextAnimation ? homeSecHeroEndDelay * 1000 : 0);
 
     return () => {
       window.clearTimeout(timeoutId);
     };
-  }, []);
+  }, [playHeroTextAnimation]);
 
   const SECTION_COLOR_START = 0.5;
   const SECTION_COLOR_END = 0.2;
@@ -343,7 +361,7 @@ export default function Home() {
       <main className="relative mx-auto">
         <section className="relative flex h-[calc(100vh-5rem)] flex-col items-center justify-center px-6 sm:px-10 md:h-[calc(100vh-8rem)] md:px-0">
           <motion.div
-            {...homeHeroTextMotionProps}
+            {...(playHeroTextAnimation ? homeHeroTextMotionProps : {})}
             className="text-[30px] font-light tracking-wider sm:text-[52px] md:text-[81px] md:leading-[1.2] 2xl:text-[86px]"
           >
             {heroHeadingLines.map((line, lineIndex) => (
@@ -354,14 +372,23 @@ export default function Home() {
                     className={segment.className}
                   >
                     {Array.from(segment.text).map((char, charIndex) => (
-                      <motion.span
-                        key={`char-${lineIndex}-${segmentIndex}-${charIndex}`}
-                        custom={getHeroCharDelay(segment, charIndex)}
-                        variants={homeHeroTextLetterVariants}
-                        className="inline-block will-change-[filter,opacity]"
-                      >
-                        {char === " " ? "\u00A0" : char}
-                      </motion.span>
+                      playHeroTextAnimation ? (
+                        <motion.span
+                          key={`char-${lineIndex}-${segmentIndex}-${charIndex}`}
+                          custom={getHeroCharDelay(segment, charIndex)}
+                          variants={homeHeroTextLetterVariants}
+                          className="inline-block will-change-[filter,opacity]"
+                        >
+                          {char === " " ? "\u00A0" : char}
+                        </motion.span>
+                      ) : (
+                        <span
+                          key={`char-${lineIndex}-${segmentIndex}-${charIndex}`}
+                          className="inline-block"
+                        >
+                          {char === " " ? "\u00A0" : char}
+                        </span>
+                      )
                     ))}
                   </span>
                 ))}
@@ -369,7 +396,7 @@ export default function Home() {
             ))}
           </motion.div>
           <motion.p
-            {...homeSecHeroTextMotionProps}
+            {...(playHeroTextAnimation ? homeSecHeroTextMotionProps : {})}
             className="mt-5 text-[15.5px] leading-[1.8] tracking-wide sm:text-[17px] md:mt-4 md:text-[23.7px] 2xl:mt-6 2xl:text-[25.2px]"
           >
             {homeSecHeroTextSegments.map((segment, segmentIndex) => (
@@ -378,19 +405,28 @@ export default function Home() {
                 className={segment.className}
               >
                 {Array.from(segment.text).map((char, charIndex) => (
-                  <motion.span
-                    key={`sec-hero-char-${segmentIndex}-${charIndex}`}
-                    custom={
-                      homeSecHeroCharDelayMap[
-                        (homeSecHeroSegmentStartIndices[segmentIndex] ?? 0) +
-                          charIndex
-                      ] ?? homeSecHeroStartOffset
-                    }
-                    variants={homeSecHeroTextLetterVariants}
-                    className="inline-block will-change-[filter,opacity]"
-                  >
-                    {char === " " ? "\u00A0" : char}
-                  </motion.span>
+                  playHeroTextAnimation ? (
+                    <motion.span
+                      key={`sec-hero-char-${segmentIndex}-${charIndex}`}
+                      custom={
+                        homeSecHeroCharDelayMap[
+                          (homeSecHeroSegmentStartIndices[segmentIndex] ?? 0) +
+                            charIndex
+                        ] ?? homeSecHeroStartOffset
+                      }
+                      variants={homeSecHeroTextLetterVariants}
+                      className="inline-block will-change-[filter,opacity]"
+                    >
+                      {char === " " ? "\u00A0" : char}
+                    </motion.span>
+                  ) : (
+                    <span
+                      key={`sec-hero-char-${segmentIndex}-${charIndex}`}
+                      className="inline-block"
+                    >
+                      {char === " " ? "\u00A0" : char}
+                    </span>
+                  )
                 ))}
               </span>
             ))}
@@ -401,7 +437,7 @@ export default function Home() {
               type="button"
               aria-label="Scroll to development section"
               onClick={handleHeroScrollHintClick}
-              initial={{ opacity: 0, y: 6 }}
+              initial={scrollHintAlreadyShown ? false : { opacity: 0, y: 6 }}
               animate={{ opacity: 1, y: 0 }}
               transition={{ duration: 0.35, ease: "easeOut" }}
               className="text-primary/50 absolute bottom-12 left-1/2 flex -translate-x-1/2 cursor-pointer flex-col items-center md:bottom-2"
