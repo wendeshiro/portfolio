@@ -1,6 +1,7 @@
 "use client";
 
 import ProjectCard from "@/components/ProjectCard";
+import { homeSectionMotionProps } from "@/lib/homePageAnimations";
 import SafeSpace from "@/images/home/safespace.webp";
 import Planit from "@/images/home/planit.webp";
 import Can from "@/images/home/can.webp";
@@ -231,10 +232,7 @@ export default function Home() {
         </section>
 
         <motion.section
-          initial={{ opacity: 0, y: 15 }} // Initial state: hidden and slightly down
-          whileInView={{ opacity: 1, y: 0 }} // Animate to: visible and in place
-          transition={{ duration: 1, ease: "easeOut" }} // Animation settings
-          viewport={{ once: true, amount: 0.3 }} // Trigger animation when 2% in view, only once
+          {...homeSectionMotionProps}
           ref={devRef}
           id="dev"
           className="relative mt-20 sm:mt-2"
@@ -288,10 +286,7 @@ export default function Home() {
         </motion.section>
 
         <motion.section
-          initial={{ opacity: 0, y: 15 }} // Initial state: hidden and slightly down
-          whileInView={{ opacity: 1, y: 0 }} // Animate to: visible and in place
-          transition={{ duration: 1, ease: "easeOut" }} // Animation settings
-          viewport={{ once: true, amount: 0.3 }} // Trigger animation when 2% in view, only once
+          {...homeSectionMotionProps}
           ref={designRef}
           id="design"
           className="relative mt-10 sm:mt-0"
@@ -343,10 +338,7 @@ export default function Home() {
         </motion.section>
 
         <motion.section
-          initial={{ opacity: 0, y: 15 }} // Initial state: hidden and slightly down
-          whileInView={{ opacity: 1, y: 0 }} // Animate to: visible and in place
-          transition={{ duration: 1, ease: "easeOut" }} // Animation settings
-          viewport={{ once: true, amount: 0.3 }} // Trigger animation when 2% in view, only once
+          {...homeSectionMotionProps}
           ref={marketingRef}
           id="marketing"
           className="relative mt-10 mb-10 sm:mt-0"
