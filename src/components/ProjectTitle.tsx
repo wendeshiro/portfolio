@@ -22,7 +22,7 @@ export default function ProjectTitle({
     >
       <div className="relative w-fit">
         <span
-          className={`mb-2 inline-block rounded-full border border-gray-600 px-3 py-0.5 text-xs text-gray-800 xl:absolute xl:-top-3 ${yearPositionClass} xl:text-sm`}
+          className={`mb-2 inline-block rounded-full border border-gray-600 px-3 py-0.5 text-xs text-gray-800 xl:absolute xl:-top-3 ${yearPositionClass} select-none xl:text-sm`}
         >
           {year}
         </span>

@@ -93,7 +93,7 @@ export default function ScrollSpyNav({ sections }: ScrollSpyNavProps) {
       aria-hidden={!isVisible}
       // Fixed right-side nav with fade-in once Overview reaches mid-viewport.
       className={
-        "group fixed top-1/2 right-4 z-49 hidden -translate-y-1/2 duration-500 xl:flex " +
+        "group fixed top-1/2 right-4 z-49 hidden -translate-y-1/2 duration-500 select-none xl:flex " +
         (isVisible ? "opacity-100" : "pointer-events-none opacity-0")
       }
     >

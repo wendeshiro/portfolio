@@ -33,7 +33,7 @@ export default function ParallaxImage({
   return (
     <motion.div
       ref={containerRef}
-      className={`relative mt-6 ${mb} h-86 w-full overflow-hidden md:h-160 2xl:h-[85vh]`}
+      className={`relative mt-6 select-none ${mb} h-86 w-full overflow-hidden md:h-160 2xl:h-[85vh]`}
       style={{ willChange: "clip-path" }}
       initial={{ clipPath: "inset(0 0 100% 0)" }}
       animate={{ clipPath: "inset(0% 0 0 0)" }}

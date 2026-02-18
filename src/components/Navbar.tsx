@@ -59,7 +59,7 @@ export default function Navbar() {
       layoutScroll
       animate={shouldHideNav ? { y: -56, opacity: 0.08 } : { y: 0, opacity: 1 }}
       transition={{ duration: 0.28, ease: "easeOut" }}
-      className="bg-background/60 fixed top-0 right-0 left-0 z-50 backdrop-blur-sm"
+      className="bg-background/60 fixed top-0 right-0 left-0 z-50 backdrop-blur-sm select-none"
     >
       <div className="mx-auto flex h-14 max-w-5xl items-center justify-between px-5 md:justify-center">
         <div className="md:hidden">

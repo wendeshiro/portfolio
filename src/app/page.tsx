@@ -615,7 +615,7 @@ export default function Home() {
               </p>
               <a
                 href="/development"
-                className="border-primary text-primary hover:bg-primary/10 w-fit self-center rounded-2xl border px-5 py-2 text-sm transition-colors duration-300 sm:px-7 sm:py-2.5 sm:text-base"
+                className="border-primary text-primary hover:bg-primary/10 w-fit self-center rounded-2xl border px-5 py-2 text-sm transition-colors duration-300 select-none sm:px-7 sm:py-2.5 sm:text-base"
               >
                 All Development Projects →
               </a>
@@ -669,7 +669,7 @@ export default function Home() {
               </p>
               <a
                 href="/design"
-                className="border-secondary-dark text-secondary-dark hover:bg-secondary/15 w-fit self-center rounded-2xl border px-5 py-2 text-sm transition-colors duration-300 sm:px-7 sm:py-2.5 sm:text-base"
+                className="border-secondary-dark text-secondary-dark hover:bg-secondary/15 w-fit self-center rounded-2xl border px-5 py-2 text-sm transition-colors duration-300 select-none sm:px-7 sm:py-2.5 sm:text-base"
               >
                 All Design Work →
               </a>
@@ -721,7 +721,7 @@ export default function Home() {
               </p>
               <a
                 href="/marketing"
-                className="border-tertiary text-tertiary hover:bg-tertiary/10 w-fit self-center rounded-2xl border px-5 py-2 text-sm transition-colors duration-300 sm:px-7 sm:py-2.5 sm:text-base"
+                className="border-tertiary text-tertiary hover:bg-tertiary/10 w-fit self-center rounded-2xl border px-5 py-2 text-sm transition-colors duration-300 select-none sm:px-7 sm:py-2.5 sm:text-base"
               >
                 All Marketing Cases →
               </a>
