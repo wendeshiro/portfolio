@@ -7,7 +7,7 @@ import {
   homeCardSectionMotionProps,
   homeCardVariants,
   homeTitleMotionProps,
-} from "@/lib/homePageAnimations";
+} from "@/lib/CategoryPageAnimations";
 import { motion } from "framer-motion";
 
 export default function Design() {
