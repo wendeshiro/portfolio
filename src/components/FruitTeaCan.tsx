@@ -22,10 +22,14 @@ type GLTFResult = GLTF & {
 
 type FruitTeaCanProps = ThreeElements["group"] & {
   textureUrl: string;
+  onHoverChange?: (hovered: boolean) => void;
+  onDragChange?: (dragging: boolean) => void;
 };
 
 export default function FruitTeaCan({
   textureUrl,
+  onHoverChange,
+  onDragChange,
   ...props
 }: FruitTeaCanProps) {
   const { nodes, materials } = useGLTF(
@@ -44,7 +48,16 @@ export default function FruitTeaCan({
   }, [originalTexture]);
 
   return (
-    <group {...props} dispose={null}>
+    <group
+      {...props}
+      dispose={null}
+      onPointerEnter={() => onHoverChange?.(true)}
+      onPointerLeave={() => onHoverChange?.(false)}
+      onPointerDown={() => onDragChange?.(true)}
+      onPointerUp={() => onDragChange?.(false)}
+      onPointerCancel={() => onDragChange?.(false)}
+      onPointerMissed={() => onDragChange?.(false)}
+    >
       {/* can top */}
       <mesh geometry={nodes.Plane027.geometry} material={materials.silver} />
       <mesh geometry={nodes.Circle001.geometry} material={materials.silver} />

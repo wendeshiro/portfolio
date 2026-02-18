@@ -53,6 +53,8 @@ export default function CanDesign() {
   const [isMobile, setIsMobile] = useState<boolean>(false);
   const [canvasReady, setCanvasReady] = useState(false);
   const [assetsLoaded, setAssetsLoaded] = useState(false);
+  const [isCanHovered, setIsCanHovered] = useState(false);
+  const [isCanDragging, setIsCanDragging] = useState(false);
 
   // Show loader until Canvas is mounted AND first assets finish loading
   const showCanvasLoader = !canvasReady || !assetsLoaded;
@@ -92,6 +94,20 @@ export default function CanDesign() {
 
     window.addEventListener("resize", handleResize);
     return () => window.removeEventListener("resize", handleResize);
+  }, []);
+
+  useEffect(() => {
+    const resetDragging = () => setIsCanDragging(false);
+
+    window.addEventListener("pointerup", resetDragging);
+    window.addEventListener("pointercancel", resetDragging);
+    window.addEventListener("blur", resetDragging);
+
+    return () => {
+      window.removeEventListener("pointerup", resetDragging);
+      window.removeEventListener("pointercancel", resetDragging);
+      window.removeEventListener("blur", resetDragging);
+    };
   }, []);
 
   return (
@@ -171,7 +187,7 @@ export default function CanDesign() {
                 <button
                   key={flavor.id}
                   onClick={() => setCurrentTexture(flavor.texture)}
-                  className={`flex w-25 items-center justify-center rounded-2xl border px-3 py-2 transition-all duration-600 ease-out md:w-full md:justify-start md:border-2 md:px-5 ${
+                  className={`flex w-25 cursor-pointer items-center justify-center rounded-2xl border px-3 py-2 transition-all duration-600 ease-out md:w-full md:justify-start md:border-2 md:px-5 ${
                     currentTexture === flavor.texture
                       ? "scale-105 border-gray-600"
                       : "border-transparent hover:border-gray-300"
@@ -198,7 +214,7 @@ export default function CanDesign() {
           {/* 3D can section */}
           <div
             id="interactive-3d-can"
-            className="relative h-full w-[80vw] md:w-full"
+            className={`relative h-full w-[80vw] md:w-full ${isCanDragging ? "cursor-grabbing" : isCanHovered ? "cursor-pointer" : ""}`}
           >
             {canvasReady ? (
               <Canvas
@@ -236,7 +252,12 @@ export default function CanDesign() {
                      */}
                     {/* scale can size by scale prop */}
                     <Center rotation={[-0.1, 0.0, 0.4]}>
-                      <FruitTeaCan textureUrl={currentTexture} scale={1} />
+                      <FruitTeaCan
+                        textureUrl={currentTexture}
+                        scale={1}
+                        onHoverChange={setIsCanHovered}
+                        onDragChange={setIsCanDragging}
+                      />
                     </Center>
                   </Float>
                 </Suspense>
