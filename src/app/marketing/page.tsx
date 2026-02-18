@@ -6,7 +6,7 @@ export default function Marketing() {
   return (
     <main className="relative flex flex-col items-center pt-8 pb-16 md:pt-10 md:pb-30">
       <section className="mb-10 md:mb-18">
-        <p className="text-tertiary/20 text-6xl tracking-[-0.18em] uppercase select-none md:text-9xl">
+        <p className="text-tertiary/20 text-5xl tracking-[-0.18em] uppercase select-none md:text-9xl">
           Analyze<span className="mr-[0.25em] ml-[0.15em]">&</span>Ampl
           <span className="mr-[0.13em] ml-[0.13em]">i</span>fy
         </p>
