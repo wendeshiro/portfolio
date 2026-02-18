@@ -1,6 +1,9 @@
+"use client";
+
 import type { ReactNode } from "react";
 import Image, { type StaticImageData } from "next/image";
 import Link from "next/link";
+import { motion, type Variants } from "framer-motion";
 
 const SHARED_CLASSES = {
   contentWrapper: "px-4 pt-3 pb-4 sm:px-7 sm:pt-4 sm:pb-6 2xl:px-6 2xl:pb-7",
@@ -17,6 +20,8 @@ interface ProjectCardProps {
   imageSrc?: string | StaticImageData;
   imageAlt?: string;
   className?: string;
+  variants?: Variants;
+  custom?: number;
 }
 
 export default function ProjectCard({
@@ -27,7 +32,10 @@ export default function ProjectCard({
   imageAlt,
   href,
   className,
+  variants,
+  custom,
 }: ProjectCardProps) {
+  const useParentVariants = Boolean(variants);
   const containerClassName = [
     "overflow-hidden rounded-3xl bg-white shadow-sm transition-shadow hover:shadow-lg",
     className,
@@ -36,7 +44,18 @@ export default function ProjectCard({
     .join(" ");
 
   return (
-    <div className={containerClassName}>
+    <motion.div
+      variants={variants}
+      custom={custom}
+      initial={useParentVariants ? undefined : { opacity: 0, y: 50 }}
+      animate={useParentVariants ? undefined : { opacity: 1, y: 0 }}
+      transition={
+        useParentVariants
+          ? undefined
+          : { duration: 0.5, ease: "easeOut" }
+      }
+      className={containerClassName}
+    >
       <Link
         href={href}
         aria-label={typeof title === "string" ? title : "Project link"}
@@ -46,7 +65,10 @@ export default function ProjectCard({
           {imageSrc ? (
             <Image
               src={imageSrc}
-              alt={imageAlt ?? (typeof title === "string" ? title : "Project image")}
+              alt={
+                imageAlt ??
+                (typeof title === "string" ? title : "Project image")
+              }
               fill
               className="object-cover transition-transform duration-500 ease-out group-hover:scale-110"
             />
@@ -59,6 +81,6 @@ export default function ProjectCard({
           <p className={SHARED_CLASSES.description}>{description}</p>
         </div>
       </Link>
-    </div>
+    </motion.div>
   );
 }
