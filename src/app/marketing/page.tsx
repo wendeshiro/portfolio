@@ -27,6 +27,7 @@ export default function Marketing() {
         className="grid gap-8 px-5 md:max-w-screen-2xl md:grid-cols-2 md:gap-10 md:px-20"
       >
         <ProjectCard
+          isCategoryCard
           variants={categoryCardVariants}
           title="E-commerce Growth Marketing"
           subtitle="Data & Financial Analysis / Market Research / Amazon PPC / SEO"
@@ -35,6 +36,7 @@ export default function Marketing() {
           href="/marketing/ecommerce"
         />
         <ProjectCard
+          isCategoryCard
           variants={categoryCardVariants}
           title="SaaS Lead Gen Landing Page"
           subtitle="Keyword Research / SEO Copywriting / Landing Page Design"

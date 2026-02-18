@@ -7,9 +7,13 @@ import { motion, type Variants } from "framer-motion";
 
 const SHARED_CLASSES = {
   contentWrapper: "px-4 pt-3 pb-4 sm:px-7 sm:pt-4 sm:pb-6 2xl:px-6 2xl:pb-7",
-  title: "text-xl font-semibold text-black md:text-3xl",
+  titleBase: "text-xl font-semibold text-black",
+  titleDefault: "md:text-3xl",
+  titleCategory: "md:text-2xl",
   subtitle: "mt-1 truncate text-sm text-gray-700 md:text-base",
-  description: "mt-1.5 text-sm text-gray-800 md:text-lg",
+  descriptionBase: "mt-1.5 text-sm text-gray-800",
+  descriptionDefault: "md:text-lg",
+  descriptionCategory: "md:text-base",
 };
 
 interface ProjectCardProps {
@@ -20,6 +24,7 @@ interface ProjectCardProps {
   imageSrc?: string | StaticImageData;
   imageAlt?: string;
   className?: string;
+  isCategoryCard?: boolean;
   variants?: Variants;
   custom?: number;
 }
@@ -32,6 +37,7 @@ export default function ProjectCard({
   imageAlt,
   href,
   className,
+  isCategoryCard = false,
   variants,
   custom,
 }: ProjectCardProps) {
@@ -42,6 +48,16 @@ export default function ProjectCard({
   ]
     .filter(Boolean)
     .join(" ");
+  const titleClassName = [
+    SHARED_CLASSES.titleBase,
+    isCategoryCard ? SHARED_CLASSES.titleCategory : SHARED_CLASSES.titleDefault,
+  ].join(" ");
+  const descriptionClassName = [
+    SHARED_CLASSES.descriptionBase,
+    isCategoryCard
+      ? SHARED_CLASSES.descriptionCategory
+      : SHARED_CLASSES.descriptionDefault,
+  ].join(" ");
 
   return (
     <motion.div
@@ -76,9 +92,9 @@ export default function ProjectCard({
         </div>
 
         <div className={SHARED_CLASSES.contentWrapper}>
-          <p className={SHARED_CLASSES.title}>{title}</p>
+          <p className={titleClassName}>{title}</p>
           <p className={SHARED_CLASSES.subtitle}>{subtitle}</p>
-          <p className={SHARED_CLASSES.description}>{description}</p>
+          <p className={descriptionClassName}>{description}</p>
         </div>
       </Link>
     </motion.div>

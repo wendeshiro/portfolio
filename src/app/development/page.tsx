@@ -28,6 +28,7 @@ export default function Development() {
         className="grid gap-8 px-5 md:max-w-screen-2xl md:grid-cols-3 md:gap-10 md:px-20"
       >
         <ProjectCard
+          isCategoryCard
           variants={categoryCardVariants}
           title="SafeSpace"
           subtitle="React Native / TypeScript / AWS Lambda / LLM"
@@ -36,6 +37,7 @@ export default function Development() {
           href="/development/safespace"
         />
         <ProjectCard
+          isCategoryCard
           variants={categoryCardVariants}
           title="Plan-it"
           subtitle="React / JavaScript / External APIs"
@@ -44,6 +46,7 @@ export default function Development() {
           href="/development/plan-it"
         />
         <ProjectCard
+          isCategoryCard
           variants={categoryCardVariants}
           title="Portfolio Website"
           subtitle="Next.js / TypeScript / Framer Motion"

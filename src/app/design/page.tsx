@@ -27,6 +27,7 @@ export default function Design() {
         className="grid gap-8 px-5 md:max-w-screen-2xl md:grid-cols-3 md:gap-10 md:px-20"
       >
         <ProjectCard
+          isCategoryCard
           variants={categoryCardVariants}
           title="Orchard Brew Can Design"
           subtitle="Illustrator / Photoshop / Blender / React Three Fiber (Three.js)"
@@ -35,6 +36,7 @@ export default function Design() {
           href="/design/can-design"
         />
         <ProjectCard
+          isCategoryCard
           variants={categoryCardVariants}
           title="Power Bank Commercial"
           subtitle="After Effects / Video Editing / Motion Graphics / Filming / Storyboarding"
