@@ -7,7 +7,7 @@ import {
   homeCardSectionMotionProps,
   homeCardVariants,
   homeTitleMotionProps,
-} from "@/lib/CategoryPageAnimations";
+} from "@/lib/categoryPageAnimations";
 import { motion } from "framer-motion";
 
 export default function Marketing() {
