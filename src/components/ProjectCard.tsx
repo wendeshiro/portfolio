@@ -43,7 +43,7 @@ export default function ProjectCard({
 }: ProjectCardProps) {
   const useParentVariants = Boolean(variants);
   const containerClassName = [
-    "overflow-hidden rounded-3xl bg-white shadow-sm transition-shadow hover:shadow-lg",
+    "overflow-hidden rounded-3xl bg-white shadow-sm transition-shadow hover:shadow-lg select-none",
     className,
   ]
     .filter(Boolean)
@@ -66,9 +66,7 @@ export default function ProjectCard({
       initial={useParentVariants ? undefined : { opacity: 0, y: 50 }}
       animate={useParentVariants ? undefined : { opacity: 1, y: 0 }}
       transition={
-        useParentVariants
-          ? undefined
-          : { duration: 0.5, ease: "easeOut" }
+        useParentVariants ? undefined : { duration: 0.5, ease: "easeOut" }
       }
       className={containerClassName}
     >
