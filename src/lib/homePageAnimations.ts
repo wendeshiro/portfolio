@@ -12,7 +12,7 @@ export const homeCardSectionMotionProps = {
 export const homeHeroTextMotionProps = {
   initial: "hidden",
   whileInView: "visible",
-  viewport: { once: true, amount: 0.6 },
+  viewport: { once: true, amount: 0.2 },
 } as const;
 
 export const homeHeroTextLetterVariants: Variants = {

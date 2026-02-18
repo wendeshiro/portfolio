@@ -7,6 +7,7 @@ import {
   homeHeroTextLetterVariants,
   homeHeroTextMotionProps,
 } from "@/lib/homePageAnimations";
+import { categoryTitleMotionProps } from "@/lib/categoryPageAnimations";
 import {
   HOME_SEC_HERO_LETTER_DURATION,
   createHomeSecHeroCharDelayMap,
@@ -354,83 +355,90 @@ export default function Home() {
       return `rgb(${white.r}, ${white.g}, ${white.b})`;
     },
   );
+  const heroTextContainerMotionProps = playHeroTextAnimation
+    ? {}
+    : categoryTitleMotionProps;
 
   return (
     <>
       <motion.div style={{ backgroundColor }} className="fixed inset-0 -z-10" />
       <main className="relative mx-auto">
         <section className="relative flex h-[calc(100vh-5rem)] flex-col items-center justify-center px-6 sm:px-10 md:h-[calc(100vh-8rem)] md:px-0">
-          <motion.div
-            {...(playHeroTextAnimation ? homeHeroTextMotionProps : {})}
-            className="text-[30px] font-light tracking-wider sm:text-[52px] md:text-[81px] md:leading-[1.2] 2xl:text-[86px]"
-          >
-            {heroHeadingLines.map((line, lineIndex) => (
-              <p key={`line-${lineIndex}`}>
-                {line.map((segment, segmentIndex) => (
-                  <span
-                    key={`segment-${lineIndex}-${segmentIndex}`}
-                    className={segment.className}
-                  >
-                    {Array.from(segment.text).map((char, charIndex) => (
-                      playHeroTextAnimation ? (
-                        <motion.span
-                          key={`char-${lineIndex}-${segmentIndex}-${charIndex}`}
-                          custom={getHeroCharDelay(segment, charIndex)}
-                          variants={homeHeroTextLetterVariants}
-                          className="inline-block will-change-[filter,opacity]"
-                        >
-                          {char === " " ? "\u00A0" : char}
-                        </motion.span>
-                      ) : (
-                        <span
-                          key={`char-${lineIndex}-${segmentIndex}-${charIndex}`}
-                          className="inline-block"
-                        >
-                          {char === " " ? "\u00A0" : char}
-                        </span>
-                      )
-                    ))}
-                  </span>
-                ))}
-              </p>
-            ))}
-          </motion.div>
-          <motion.p
-            {...(playHeroTextAnimation ? homeSecHeroTextMotionProps : {})}
-            className="mt-5 text-[15.5px] leading-[1.8] tracking-wide sm:text-[17px] md:mt-4 md:text-[23.7px] 2xl:mt-6 2xl:text-[25.2px]"
-          >
-            {homeSecHeroTextSegments.map((segment, segmentIndex) => (
-              <span
-                key={`sec-hero-segment-${segmentIndex}`}
-                className={segment.className}
-              >
-                {Array.from(segment.text).map((char, charIndex) => (
-                  playHeroTextAnimation ? (
-                    <motion.span
-                      key={`sec-hero-char-${segmentIndex}-${charIndex}`}
-                      custom={
-                        homeSecHeroCharDelayMap[
-                          (homeSecHeroSegmentStartIndices[segmentIndex] ?? 0) +
-                            charIndex
-                        ] ?? homeSecHeroStartOffset
-                      }
-                      variants={homeSecHeroTextLetterVariants}
-                      className="inline-block will-change-[filter,opacity]"
-                    >
-                      {char === " " ? "\u00A0" : char}
-                    </motion.span>
-                  ) : (
+          <motion.div {...heroTextContainerMotionProps}>
+            <motion.div
+              {...(playHeroTextAnimation ? homeHeroTextMotionProps : {})}
+              className="text-[30px] font-light tracking-wider sm:text-[52px] md:text-[81px] md:leading-[1.2] 2xl:text-[86px]"
+            >
+              {heroHeadingLines.map((line, lineIndex) => (
+                <p key={`line-${lineIndex}`}>
+                  {line.map((segment, segmentIndex) => (
                     <span
-                      key={`sec-hero-char-${segmentIndex}-${charIndex}`}
-                      className="inline-block"
+                      key={`segment-${lineIndex}-${segmentIndex}`}
+                      className={segment.className}
                     >
-                      {char === " " ? "\u00A0" : char}
+                      {Array.from(segment.text).map((char, charIndex) => (
+                        playHeroTextAnimation ? (
+                          <motion.span
+                            key={`char-${lineIndex}-${segmentIndex}-${charIndex}`}
+                            custom={getHeroCharDelay(segment, charIndex)}
+                            variants={homeHeroTextLetterVariants}
+                            className="inline-block will-change-[filter,opacity]"
+                          >
+                            {char === " " ? "\u00A0" : char}
+                          </motion.span>
+                        ) : (
+                          <span
+                            key={`char-${lineIndex}-${segmentIndex}-${charIndex}`}
+                            className="inline-block"
+                          >
+                            {char === " " ? "\u00A0" : char}
+                          </span>
+                        )
+                      ))}
                     </span>
-                  )
-                ))}
-              </span>
-            ))}
-          </motion.p>
+                  ))}
+                </p>
+              ))}
+            </motion.div>
+          </motion.div>
+          <motion.div {...heroTextContainerMotionProps}>
+            <motion.p
+              {...(playHeroTextAnimation ? homeSecHeroTextMotionProps : {})}
+              className="mt-5 text-[15.5px] leading-[1.8] tracking-wide sm:text-[17px] md:mt-4 md:text-[23.7px] 2xl:mt-6 2xl:text-[25.2px]"
+            >
+              {homeSecHeroTextSegments.map((segment, segmentIndex) => (
+                <span
+                  key={`sec-hero-segment-${segmentIndex}`}
+                  className={segment.className}
+                >
+                  {Array.from(segment.text).map((char, charIndex) => (
+                    playHeroTextAnimation ? (
+                      <motion.span
+                        key={`sec-hero-char-${segmentIndex}-${charIndex}`}
+                        custom={
+                          homeSecHeroCharDelayMap[
+                            (homeSecHeroSegmentStartIndices[segmentIndex] ?? 0) +
+                              charIndex
+                          ] ?? homeSecHeroStartOffset
+                        }
+                        variants={homeSecHeroTextLetterVariants}
+                        className="inline-block will-change-[filter,opacity]"
+                      >
+                        {char === " " ? "\u00A0" : char}
+                      </motion.span>
+                    ) : (
+                      <span
+                        key={`sec-hero-char-${segmentIndex}-${charIndex}`}
+                        className="inline-block"
+                      >
+                        {char === " " ? "\u00A0" : char}
+                      </span>
+                    )
+                  ))}
+                </span>
+              ))}
+            </motion.p>
+          </motion.div>
 
           {showHeroScrollHint ? (
             <motion.button

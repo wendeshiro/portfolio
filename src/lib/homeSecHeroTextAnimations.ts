@@ -3,7 +3,7 @@ import type { Variants } from "framer-motion";
 export const homeSecHeroTextMotionProps = {
   initial: "hidden",
   whileInView: "visible",
-  viewport: { once: true, amount: 0.8 },
+  viewport: { once: true, amount: 0.2 },
 } as const;
 
 export const HOME_SEC_HERO_LETTER_DURATION = 1;
