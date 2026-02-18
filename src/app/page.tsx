@@ -166,13 +166,15 @@ const homeSecHeroCharDelayMap = createHomeSecHeroCharDelayMap(
   },
 );
 const homeSecHeroMaxCharDelay = Math.max(...homeSecHeroCharDelayMap);
-const homeSecHeroEndDelay = homeSecHeroMaxCharDelay + HOME_SEC_HERO_LETTER_DURATION;
+const homeSecHeroEndDelay =
+  homeSecHeroMaxCharDelay + HOME_SEC_HERO_LETTER_DURATION;
 
 export default function Home() {
   const lenis = useLenis();
   const [playHeroTextAnimation] = useState(shouldPlayHomeHeroText);
-  const [showHeroScrollHint, setShowHeroScrollHint] =
-    useState(hasShownHomeScrollHint);
+  const [showHeroScrollHint, setShowHeroScrollHint] = useState(
+    hasShownHomeScrollHint,
+  );
   const scrollHintAlreadyShown = hasShownHomeScrollHint();
   const devRef = useRef<HTMLElement>(null);
   const designRef = useRef<HTMLElement>(null);
@@ -194,10 +196,13 @@ export default function Home() {
   useEffect(() => {
     if (hasShownHomeScrollHint()) return;
 
-    const timeoutId = window.setTimeout(() => {
-      markHomeScrollHintShown();
-      setShowHeroScrollHint(true);
-    }, playHeroTextAnimation ? homeSecHeroEndDelay * 1000 : 0);
+    const timeoutId = window.setTimeout(
+      () => {
+        markHomeScrollHintShown();
+        setShowHeroScrollHint(true);
+      },
+      playHeroTextAnimation ? homeSecHeroEndDelay * 1000 : 0,
+    );
 
     return () => {
       window.clearTimeout(timeoutId);
@@ -363,7 +368,7 @@ export default function Home() {
     <>
       <motion.div style={{ backgroundColor }} className="fixed inset-0 -z-10" />
       <main className="relative mx-auto">
-        <section className="relative flex h-[calc(100vh-5rem)] flex-col items-center justify-center px-6 sm:px-10 md:h-[calc(100vh-8rem)] md:px-0">
+        <section className="relative flex h-[calc(100vh-5rem)] flex-col items-center justify-center px-6 md:h-[calc(100vh-8rem)] md:px-0">
           <motion.div {...heroTextContainerMotionProps}>
             <motion.div
               {...(playHeroTextAnimation ? homeHeroTextMotionProps : {})}
@@ -376,7 +381,7 @@ export default function Home() {
                       key={`segment-${lineIndex}-${segmentIndex}`}
                       className={segment.className}
                     >
-                      {Array.from(segment.text).map((char, charIndex) => (
+                      {Array.from(segment.text).map((char, charIndex) =>
                         playHeroTextAnimation ? (
                           <motion.span
                             key={`char-${lineIndex}-${segmentIndex}-${charIndex}`}
@@ -393,8 +398,8 @@ export default function Home() {
                           >
                             {char === " " ? "\u00A0" : char}
                           </span>
-                        )
-                      ))}
+                        ),
+                      )}
                     </span>
                   ))}
                 </p>
@@ -411,14 +416,14 @@ export default function Home() {
                   key={`sec-hero-segment-${segmentIndex}`}
                   className={segment.className}
                 >
-                  {Array.from(segment.text).map((char, charIndex) => (
+                  {Array.from(segment.text).map((char, charIndex) =>
                     playHeroTextAnimation ? (
                       <motion.span
                         key={`sec-hero-char-${segmentIndex}-${charIndex}`}
                         custom={
                           homeSecHeroCharDelayMap[
-                            (homeSecHeroSegmentStartIndices[segmentIndex] ?? 0) +
-                              charIndex
+                            (homeSecHeroSegmentStartIndices[segmentIndex] ??
+                              0) + charIndex
                           ] ?? homeSecHeroStartOffset
                         }
                         variants={homeSecHeroTextLetterVariants}
@@ -433,8 +438,8 @@ export default function Home() {
                       >
                         {char === " " ? "\u00A0" : char}
                       </span>
-                    )
-                  ))}
+                    ),
+                  )}
                 </span>
               ))}
             </motion.p>
