@@ -368,7 +368,7 @@ export default function Home() {
     <>
       <motion.div style={{ backgroundColor }} className="fixed inset-0 -z-10" />
       <main className="relative mx-auto">
-        <section className="relative flex h-[calc(100vh-5rem)] flex-col items-center justify-center px-6 md:h-[calc(100vh-8rem)] md:px-0">
+        <section className="relative flex h-[calc(100vh-5rem)] flex-col items-center justify-center px-5 md:h-[calc(100vh-8rem)] md:px-0">
           <motion.div {...heroTextContainerMotionProps}>
             <motion.div
               {...(playHeroTextAnimation ? homeHeroTextMotionProps : {})}
@@ -382,21 +382,28 @@ export default function Home() {
                       className={segment.className}
                     >
                       {Array.from(segment.text).map((char, charIndex) =>
-                        playHeroTextAnimation ? (
+                        char === " " ? (
+                          <span
+                            key={`char-${lineIndex}-${segmentIndex}-${charIndex}`}
+                            aria-hidden
+                          >
+                            {" "}
+                          </span>
+                        ) : playHeroTextAnimation ? (
                           <motion.span
                             key={`char-${lineIndex}-${segmentIndex}-${charIndex}`}
                             custom={getHeroCharDelay(segment, charIndex)}
                             variants={homeHeroTextLetterVariants}
                             className="inline-block will-change-[filter,opacity]"
                           >
-                            {char === " " ? "\u00A0" : char}
+                            {char}
                           </motion.span>
                         ) : (
                           <span
                             key={`char-${lineIndex}-${segmentIndex}-${charIndex}`}
                             className="inline-block"
                           >
-                            {char === " " ? "\u00A0" : char}
+                            {char}
                           </span>
                         ),
                       )}
@@ -417,7 +424,14 @@ export default function Home() {
                   className={segment.className}
                 >
                   {Array.from(segment.text).map((char, charIndex) =>
-                    playHeroTextAnimation ? (
+                    char === " " ? (
+                      <span
+                        key={`sec-hero-char-${segmentIndex}-${charIndex}`}
+                        aria-hidden
+                      >
+                        {" "}
+                      </span>
+                    ) : playHeroTextAnimation ? (
                       <motion.span
                         key={`sec-hero-char-${segmentIndex}-${charIndex}`}
                         custom={
@@ -429,14 +443,14 @@ export default function Home() {
                         variants={homeSecHeroTextLetterVariants}
                         className="inline-block will-change-[filter,opacity]"
                       >
-                        {char === " " ? "\u00A0" : char}
+                        {char}
                       </motion.span>
                     ) : (
                       <span
                         key={`sec-hero-char-${segmentIndex}-${charIndex}`}
                         className="inline-block"
                       >
-                        {char === " " ? "\u00A0" : char}
+                        {char}
                       </span>
                     ),
                   )}
