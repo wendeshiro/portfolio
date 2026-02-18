@@ -8,6 +8,7 @@ import {
   homeHeroTextMotionProps,
 } from "@/lib/homePageAnimations";
 import {
+  HOME_SEC_HERO_LETTER_DURATION,
   createHomeSecHeroCharDelayMap,
   homeSecHeroTextLetterVariants,
   homeSecHeroTextMotionProps,
@@ -17,7 +18,7 @@ import Planit from "@/images/home/planit.webp";
 import Can from "@/images/home/can.webp";
 import PowerBank from "@/images/home/power-bank.webp";
 import { motion, useScroll, useTransform } from "framer-motion";
-import { useCallback, useEffect, useRef } from "react";
+import { useCallback, useEffect, useRef, useState } from "react";
 import { useLenis } from "lenis/react";
 import ECommerce from "@/images/home/ecommerce.webp";
 import SaaS from "@/images/home/saas.webp";
@@ -157,9 +158,12 @@ const homeSecHeroCharDelayMap = createHomeSecHeroCharDelayMap(
     priorityIndices: homeSecHeroPriorityIndices,
   },
 );
+const homeSecHeroMaxCharDelay = Math.max(...homeSecHeroCharDelayMap);
+const homeSecHeroEndDelay = homeSecHeroMaxCharDelay + HOME_SEC_HERO_LETTER_DURATION;
 
 export default function Home() {
   const lenis = useLenis();
+  const [showHeroScrollHint, setShowHeroScrollHint] = useState(false);
   const devRef = useRef<HTMLElement>(null);
   const designRef = useRef<HTMLElement>(null);
   const marketingRef = useRef<HTMLElement>(null);
@@ -169,6 +173,16 @@ export default function Home() {
 
   useEffect(() => {
     mountTimeRef.current = Date.now();
+  }, []);
+
+  useEffect(() => {
+    const timeoutId = window.setTimeout(() => {
+      setShowHeroScrollHint(true);
+    }, homeSecHeroEndDelay * 1000);
+
+    return () => {
+      window.clearTimeout(timeoutId);
+    };
   }, []);
 
   const SECTION_COLOR_START = 0.5;
@@ -382,29 +396,34 @@ export default function Home() {
             ))}
           </motion.p>
 
-          <button
-            type="button"
-            aria-label="Scroll to development section"
-            onClick={handleHeroScrollHintClick}
-            className="text-primary/50 absolute bottom-12 left-1/2 flex -translate-x-1/2 cursor-pointer flex-col items-center md:bottom-2"
-          >
-            {[0, 1, 2].map((index) => (
-              <motion.span
-                key={index}
-                className="block"
-                animate={{ y: [0, 9, 0], opacity: [0.25, 1, 0.25] }} // Animate up and down with fading effect. y higher creates a more pronounced movement.
-                transition={{
-                  duration: 2.8,
-                  ease: "easeInOut",
-                  repeat: Infinity,
-                  delay: index * 0.2, // higher delay creates a more staggered effect between the three arrows.
-                  repeatDelay: 0.2,
-                }}
-              >
-                <span className="block h-4 w-4 rotate-45 border-r-2 border-b-2" />
-              </motion.span>
-            ))}
-          </button>
+          {showHeroScrollHint ? (
+            <motion.button
+              type="button"
+              aria-label="Scroll to development section"
+              onClick={handleHeroScrollHintClick}
+              initial={{ opacity: 0, y: 6 }}
+              animate={{ opacity: 1, y: 0 }}
+              transition={{ duration: 0.35, ease: "easeOut" }}
+              className="text-primary/50 absolute bottom-12 left-1/2 flex -translate-x-1/2 cursor-pointer flex-col items-center md:bottom-2"
+            >
+              {[0, 1, 2].map((index) => (
+                <motion.span
+                  key={index}
+                  className="block"
+                  animate={{ y: [0, 9, 0], opacity: [0.25, 1, 0.25] }} // Animate up and down with fading effect. y higher creates a more pronounced movement.
+                  transition={{
+                    duration: 2.8,
+                    ease: "easeInOut",
+                    repeat: Infinity,
+                    delay: index * 0.2, // higher delay creates a more staggered effect between the three arrows.
+                    repeatDelay: 0.2,
+                  }}
+                >
+                  <span className="block h-4 w-4 rotate-45 border-r-2 border-b-2" />
+                </motion.span>
+              ))}
+            </motion.button>
+          ) : null}
         </section>
 
         <motion.section

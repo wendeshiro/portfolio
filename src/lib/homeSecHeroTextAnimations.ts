@@ -6,13 +6,19 @@ export const homeSecHeroTextMotionProps = {
   viewport: { once: true, amount: 0.8 },
 } as const;
 
+export const HOME_SEC_HERO_LETTER_DURATION = 1;
+
 export const homeSecHeroTextLetterVariants: Variants = {
   hidden: { opacity: 0, filter: "blur(14px)", y: 18 },
   visible: (delay: number = 0) => ({
     opacity: [0, 0.7, 1],
     filter: ["blur(10px)", "blur(6px)", "blur(0px)"],
     y: [18, 8, 0],
-    transition: { duration: 1.3, ease: "easeOut", delay }, //duration for each letter's animation
+    transition: {
+      duration: HOME_SEC_HERO_LETTER_DURATION,
+      ease: "easeOut",
+      delay,
+    },
   }),
 };
 
