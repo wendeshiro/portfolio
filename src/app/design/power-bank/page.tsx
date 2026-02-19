@@ -22,7 +22,7 @@ export default function PowerBank() {
           description="A fast-paced promotional video for a multifunctional power bank."
         />
       </header>
-      <ParallaxImage src={HeroImg} alt="Plan-it Trip Planning Web App hero" />
+      <ParallaxImage src={HeroImg} alt="Power Bank Commercial hero" />
       <section className="mx-auto flex max-w-7xl flex-col px-5">
         <ProjectOverview
           primaryText={
@@ -40,7 +40,7 @@ export default function PowerBank() {
           secondaryText={
             <>
               <p>
-                *This is a conceptual project created for educational purposes.
+                *This is an academic project created for educational purposes.
                 There is no commercial affiliation with Anker.
               </p>
             </>

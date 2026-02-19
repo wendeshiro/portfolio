@@ -21,7 +21,7 @@ export default function ECommerce() {
           description="Professional experience in data-driven e-commerce marketing with a focus on analytics and growth."
         />
       </header>
-      <ParallaxImage src={HeroImg} alt="Plan-it Trip Planning Web App hero" />
+      <ParallaxImage src={HeroImg} alt="E-commerce Growth Marketing hero" />
       <section className="mx-auto flex max-w-7xl flex-col px-5">
         <ProjectOverview
           primaryText={
@@ -30,8 +30,8 @@ export default function ECommerce() {
               marketplaces, driving over USD $350K in average monthly revenue.
               Main responsibilities included{" "}
               <span className="text-primary">
-                data and financial, market research, marketing and advertising
-                strategy development, SEO strategy
+                data and financial analysis, market research, marketing and
+                advertising strategy development, SEO strategy
               </span>{" "}
               and Amazon PPC campaign management, as well as inventory and
               logistics planning.
