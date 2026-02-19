@@ -20,7 +20,10 @@ export default function SaaSLeadGen() {
           description="A conversion-focused SaaS webinar landing page optimized through keyword research and strategic persuasion elements."
         />
       </header>
-      <ParallaxImage src={HeroImg} alt="Plan-it Trip Planning Web App hero" />
+      <ParallaxImage
+        src={HeroImg}
+        alt="SaaS Lead Generation Landing Page hero"
+      />
       <section className="mx-auto flex max-w-7xl flex-col px-5">
         <ProjectOverview
           primaryText={
@@ -40,7 +43,7 @@ export default function SaaSLeadGen() {
           secondaryText={
             <>
               <p>
-                *This is a conceptual project created for educational purposes.
+                *This is an academic project created for educational purposes.
                 There is no commercial affiliation with Hootsuite.
               </p>
             </>

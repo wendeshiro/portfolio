@@ -162,7 +162,9 @@ export default function CanDesign() {
                 commitment to fresh, botanical-inspired ingredients for
                 health-conscious consumers.
               </p>
-              <p>*This is a concept work created for educational purposes.</p>
+              <p>
+                *This is an academic project created for educational purposes.
+              </p>
             </>
           }
           details={[

@@ -20,7 +20,7 @@ export default function PortfolioWebsite() {
           description="A responsive portfolio website built with Next.js and Tailwind CSS, focusing on clarity and scalable structure."
         />
       </header>
-      <ParallaxImage src={HeroImg} alt="Plan-it Trip Planning Web App hero" />
+      <ParallaxImage src={HeroImg} alt="Portfolio Website Design & Development hero" />
       <section className="mx-auto flex max-w-7xl flex-col px-5">
         <ProjectOverview
           primaryText={
@@ -50,7 +50,7 @@ export default function PortfolioWebsite() {
           ]}
           links={[
             {
-              label: "Github Repo",
+              label: "GitHub Repo",
               url: "https://github.com/wendeshiro/portfolio",
               icon: "github",
             },

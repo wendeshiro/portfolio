@@ -66,7 +66,7 @@ export default function PlanIt() {
                 preparation.
               </p>
               <p>
-                *This is a concept project created for educational purposes.
+                *This is an academic project created for educational purposes.
               </p>
             </>
           }

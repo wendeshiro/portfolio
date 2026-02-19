@@ -194,7 +194,7 @@ export default function SafeSpace() {
                 fragmented reports into actionable insights for management.
               </p>
               <p>
-                *This is a concept project created for educational purposes.
+                *This is an capstone project created for educational purposes.
               </p>
             </>
           }
@@ -906,7 +906,7 @@ export default function SafeSpace() {
                     },
                     {
                       src: "/images/development/safespace/nextjs.svg",
-                      alt: "Nextjs",
+                      alt: "Next.js",
                     },
                   ]}
                   heightMdUp={450}
