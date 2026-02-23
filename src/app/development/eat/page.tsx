@@ -36,6 +36,11 @@ export default function Eat() {
               effortlessly while maintaining a sense of control and flexibility.
             </p>
           }
+          secondaryText={
+            <p>
+              *This is an academic project created for educational purposes.
+            </p>
+          }
           details={[
             {
               label: "Deliverables",
