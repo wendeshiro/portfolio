@@ -300,7 +300,7 @@ export default function SafeSpace() {
           whileInView={{ opacity: 1, y: 0 }} // Animate to: visible and in place
           transition={{ duration: 1, ease: "easeOut" }} // Animation settings
           viewport={{ once: true, amount: 0.02 }} // Trigger animation when 2% in view, only once
-          className="bg-tertiary/8 relative mt-10 flex h-auto min-h-[70vh] items-center justify-center overflow-hidden rounded-2xl px-6 pt-5 pb-10 md:pt-8"
+          className="bg-tertiary/8 relative mt-10 flex h-175 items-center justify-center overflow-hidden rounded-2xl px-6 pt-5 pb-10 md:h-auto md:min-h-[70vh] md:pt-8"
         >
           <button
             type="button"
@@ -324,7 +324,7 @@ export default function SafeSpace() {
               className="flex flex-col items-center justify-center gap-4 md:flex-row md:gap-15 md:px-15"
             >
               <div className="bg-tertiary/25 overflow-hidden rounded-[30px] p-2.5 shadow-2xl md:p-3">
-                <div className="aspect-496/1080 max-w-50 overflow-hidden rounded-[20px] md:max-w-65 md:rounded-[18px] 2xl:max-w-70">
+                <div className="aspect-496/1080 w-50 overflow-hidden rounded-[20px] md:w-65 md:rounded-[18px] 2xl:w-70">
                   {activeFeature.media.type === "video" ? (
                     <video
                       autoPlay
@@ -333,7 +333,9 @@ export default function SafeSpace() {
                       playsInline
                       preload="metadata"
                       poster={activeFeature.media.poster}
-                      className="object-cover"
+                      width={496}
+                      height={1080}
+                      className="block h-full w-full object-cover"
                     >
                       <source src={activeFeature.media.src} type="video/mp4" />
                     </video>
@@ -343,7 +345,7 @@ export default function SafeSpace() {
                       alt={activeFeature.media.alt}
                       placeholder="blur"
                       unoptimized
-                      className="object-cover"
+                      className="h-full w-full object-cover"
                     />
                   )}
                 </div>
