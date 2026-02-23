@@ -4,6 +4,7 @@ import ProjectCard from "@/components/ProjectCard";
 import SafeSpace from "@/images/home/safespace.webp";
 import Planit from "@/images/home/planit.webp";
 import Portfolio from "@/images/home/portfolio.webp";
+import Eat from "@/images/home/eat.webp";
 import {
   categoryCardSectionMotionProps,
   categoryCardVariants,
@@ -53,6 +54,15 @@ export default function Development() {
           description="A responsive portfolio website built with Next.js and Tailwind CSS, focusing on clarity and scalable structure."
           imageSrc={Portfolio}
           href="/development/portfolio-website"
+        />
+        <ProjectCard
+          isCategoryCard
+          variants={categoryCardVariants}
+          title="What Should I Eat"
+          subtitle="Vanilla JavaScript / Dynamic Rendering / HTML / CSS"
+          description="A blind-box food discovery web app."
+          imageSrc={Eat}
+          href="/development/eat"
         />
       </motion.section>
     </main>

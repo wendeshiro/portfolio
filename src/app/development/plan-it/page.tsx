@@ -6,9 +6,9 @@ import SectionDivider from "@/components/SectionDivider";
 import ExternalLink from "@/components/ExternalLink";
 import Image from "next/image";
 import HeroImg from "@/images/development/plan-it/plan-it-hero.webp";
-import Snippet01 from "@/images/development/plan-it/snippet-01.png";
-import Snippet02 from "@/images/development/plan-it/snippet-02.png";
-import Snippet03 from "@/images/development/plan-it/snippet-03.png";
+import Snippet01 from "@/images/development/plan-it/snippet-01.webp";
+import Snippet02 from "@/images/development/plan-it/snippet-02.webp";
+import Snippet03 from "@/images/development/plan-it/snippet-03.webp";
 import Pdf from "@/images/development/plan-it/pdf.png";
 import DatePicker from "@/images/development/plan-it/date-picker.jpg";
 import Dropdown from "@/images/development/plan-it/dropdown.png";
@@ -83,7 +83,7 @@ export default function PlanIt() {
             {
               label: "Main Responsibilities",
               content:
-                "Website Development, Project Management, Sitemap Planning",
+                "Web Application Development, Project Management, Sitemap Planning",
             },
           ]}
           links={[
@@ -139,17 +139,20 @@ export default function PlanIt() {
               <div className="top-24 space-y-3 self-start text-base md:sticky md:w-1/2 md:text-lg">
                 <p>
                   Travel plans are stored in{" "}
-                  <span className="text-primary">localStorage</span> using
-                  .getItem() and .setItem() to persist data.
+                  <span className="text-primary font-semibold">
+                    localStorage
+                  </span>{" "}
+                  using .getItem() and .setItem() to persist data.
                 </p>
                 <p>
-                  The <span className="text-primary">useState</span> hook
-                  manages the component’s state and updates the display whenever
-                  the data changes.
+                  The{" "}
+                  <span className="text-primary font-semibold">useState</span>{" "}
+                  hook manages the component’s state and updates the display
+                  whenever the data changes.
                 </p>
                 <p>
                   Together, these technologies enable{" "}
-                  <span className="text-primary">
+                  <span className="text-primary font-semibold">
                     Create, Read, Update, and Delete (CRUD)
                   </span>{" "}
                   operations on the travel plans.
@@ -236,9 +239,10 @@ export default function PlanIt() {
                   updates.
                 </p>
                 <p>
-                  By using <span className="text-primary">useEffect</span>, the
-                  application updates weather and location information only when
-                  the location changes, avoiding unnecessary API requests.
+                  By using{" "}
+                  <span className="text-primary font-semibold">useEffect</span>,
+                  the application updates weather and location information only
+                  when the location changes, avoiding unnecessary API requests.
                 </p>
               </div>
             </motion.div>
