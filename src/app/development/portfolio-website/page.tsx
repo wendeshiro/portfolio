@@ -46,6 +46,10 @@ export default function PortfolioWebsite() {
                 "Next.js, React, TypeScript, Tailwind CSS, Framer Motion, React Three Fiber, Matter.js, Lenis, Git, GitHub, ESLint, Prettier",
             },
             {
+              label: "AI Tools",
+              content: "GitHub Copilot, OpenAI Codex, Context7 (MCP)",
+            },
+            {
               label: "Design Skills",
               content:
                 "UI/UX Design (Wireframing, Design System, Layout, Visual Hierarchy), Photoshop (Product Mockups)",
