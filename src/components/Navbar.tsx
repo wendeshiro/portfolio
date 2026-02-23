@@ -21,7 +21,7 @@ const navItems: NavItem[] = [
   { name: "DEVELOPMENT", path: "/development" },
   { name: "DESIGN", path: "/design" },
   { name: "MARKETING", path: "/marketing" },
-  // { name: "ABOUT", path: "/about" },
+  { name: "ABOUT", path: "/about" },
 ];
 
 export default function Navbar() {

@@ -20,7 +20,10 @@ export default function PortfolioWebsite() {
           description="A responsive portfolio website built with Next.js and Tailwind CSS, focusing on clarity and scalable structure."
         />
       </header>
-      <ParallaxImage src={HeroImg} alt="Portfolio Website Design & Development hero" />
+      <ParallaxImage
+        src={HeroImg}
+        alt="Portfolio Website Design & Development hero"
+      />
       <section className="mx-auto flex max-w-7xl flex-col px-5">
         <ProjectOverview
           primaryText={
@@ -40,7 +43,7 @@ export default function PortfolioWebsite() {
             {
               label: "Development Skills",
               content:
-                "Next.js, React, TypeScript, Tailwind CSS, Framer Motion, React Three Fiber, Matter.js, Lenis, Git, GitHub",
+                "Next.js, React, TypeScript, Tailwind CSS, Framer Motion, React Three Fiber, Matter.js, Lenis, Git, GitHub, ESLint, Prettier",
             },
             {
               label: "Design Skills",
