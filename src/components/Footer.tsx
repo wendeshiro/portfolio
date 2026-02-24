@@ -18,7 +18,7 @@ export default function Footer() {
         <span>wendellwdl05@gmail.com</span>
       </div>
 
-      <div className="hidden items-center gap-3 md:flex">
+      <div className="hidden gap-3 md:flex">
         <a
           href="https://www.linkedin.com/in/wende05"
           target="_blank"
@@ -30,7 +30,7 @@ export default function Footer() {
             xmlns="http://www.w3.org/2000/svg"
             width="24"
             height="24"
-            viewBox="0 0 25 22"
+            viewBox="0 0 24 24"
           >
             <path
               fill="currentColor"
@@ -48,9 +48,9 @@ export default function Footer() {
         >
           <svg
             xmlns="http://www.w3.org/2000/svg"
-            width="21"
-            height="21"
-            viewBox="0 0 25 24"
+            width="22"
+            height="22"
+            viewBox="0 0 24 24"
           >
             <path
               fill="currentColor"
