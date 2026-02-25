@@ -484,12 +484,12 @@ export default function SafeSpace() {
                 experienced by women and gender-diverse tradespeople, a
                 <span className="whitespace-nowrap"> mixed-methods</span> study
                 was conducted using a{" "}
-                <span className="text-primary">
+                <span className="text-primary font-medium">
                   Google Forms survey and{" "}
                   <span className="whitespace-nowrap">in-depth</span> interviews
                 </span>
                 , which captured both{" "}
-                <span className="text-primary">
+                <span className="text-primary font-medium">
                   quantitative and qualitative
                 </span>{" "}
                 patterns of workplace stress, reporting behaviors, and mobile
@@ -824,8 +824,10 @@ export default function SafeSpace() {
                   Clear naming conventions and a well-structured project setup
                   were defined early in development to ensure clarity,
                   consistency, and maintainability.{" "}
-                  <span className="text-primary">Git and GitHub</span> were used
-                  for version control and team collaboration.
+                  <span className="text-primary font-medium">
+                    Git and GitHub
+                  </span>{" "}
+                  were used for version control and team collaboration.
                 </p>
               </div>
               <div className="overflow-hidden rounded-xl md:w-1/2">
@@ -850,21 +852,26 @@ export default function SafeSpace() {
                 <div className="mt-2 mb-5 space-y-3 text-base leading-relaxed md:text-lg">
                   <p>
                     The mobile app leveraged{" "}
-                    <span className="text-primary">React Native and Expo</span>{" "}
+                    <span className="text-primary font-medium">
+                      React Native and Expo
+                    </span>{" "}
                     to build a unified codebase for both iOS and Android
                     environments, with{" "}
-                    <span className="text-primary">TypeScript</span> enhancing
-                    type safety and robustness.{" "}
-                    <span className="text-primary">AWS Lambda</span> handled
-                    AI-powered report generation in a serverless environment,
-                    centralizing prompt logic and protecting API credentials.{" "}
-                    <span className="text-primary">OpenAI and IBM watsonx</span>{" "}
+                    <span className="text-primary font-medium">TypeScript</span>{" "}
+                    enhancing type safety and robustness.{" "}
+                    <span className="text-primary font-medium">AWS Lambda</span>{" "}
+                    handled AI-powered report generation in a serverless
+                    environment, centralizing prompt logic and protecting API
+                    credentials.{" "}
+                    <span className="text-primary font-medium">
+                      OpenAI and IBM watsonx
+                    </span>{" "}
                     powered transcription, report generation, and interactive
                     chat features to improve automation and user experience.
                   </p>
                   <p>
                     A lightweight web supplement was built using{" "}
-                    <span className="text-primary">
+                    <span className="text-primary font-medium">
                       React, Next.js, and JavaScript
                     </span>
                     .
