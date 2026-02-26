@@ -32,6 +32,7 @@ import Naming from "@/images/development/safespace/naming.webp";
 import GravityIcons from "@/components/GravityIcons";
 import Mkt from "@/images/development/safespace/mkt.webp";
 import BackButton from "@/components/BackButton";
+import Architecture from "@/images/development/safespace/architecture.webp";
 
 export default function SafeSpace() {
   const [activeFeatureIndex, setActiveFeatureIndex] = useState(0);
@@ -432,35 +433,64 @@ export default function SafeSpace() {
             viewport={{ once: true, amount: 0.02 }} // Trigger animation when 2% in view, only once
             className="mb-5 md:mb-8"
           >
-            <BarredHeading text="Tech Stack Selection" />
-            <div className="flex flex-col md:flex-row md:gap-13">
+            <BarredHeading
+              text="System Architecture & Tech Stack"
+              className="mb-3 md:mb-6"
+            />
+            <PhotoView>
+              <Image
+                src={Architecture}
+                alt="System Architecture"
+                placeholder="blur"
+                className="cursor-pointer rounded-2xl shadow-lg md:w-[70vw]"
+              ></Image>
+            </PhotoView>
+            <div className="flex flex-col md:mt-8 md:flex-row md:gap-13">
               <div className="md:w-1/2">
-                <div className="mt-2 mb-5 space-y-3 text-base leading-relaxed md:text-lg">
+                <div className="mt-2 mb-5 space-y-3 text-base leading-relaxed md:text-base">
                   <p>
-                    The mobile app leveraged{" "}
+                    The{" "}
+                    <span className="text-primary font-medium">mobile app</span>{" "}
+                    was built using{" "}
                     <span className="text-primary font-medium">
                       React Native and Expo
                     </span>{" "}
-                    to build a unified codebase for both iOS and Android
-                    environments, with{" "}
+                    to maintain a unified codebase across iOS and Android,
+                    reducing development time and maintenance overhead compared
+                    to separate native implementations. Expo simplified
+                    development with built-in support for device APIs such as
+                    microphone, GPS, and local storage, while{" "}
                     <span className="text-primary font-medium">TypeScript</span>{" "}
-                    enhancing type safety and robustness.{" "}
+                    improved type safety and code reliability.
+                  </p>
+                  <p>
                     <span className="text-primary font-medium">AWS Lambda</span>{" "}
-                    handled AI-powered report generation in a serverless
-                    environment, centralizing prompt logic and protecting API
-                    credentials.{" "}
+                    implemented a serverless backend for AI-powered report
+                    generation, enabling scalable processing while centralizing
+                    prompt logic and protecting API credentials.
+                  </p>
+                  <p>
                     <span className="text-primary font-medium">
                       OpenAI and IBM watsonx
                     </span>{" "}
-                    powered transcription, report generation, and interactive
-                    chat features to improve automation and user experience.
+                    were integrated to support speech-to-text transcription,
+                    conversational AI, and structured report generation. OpenAI
+                    handled transcription in the mobile app and report
+                    generation through AWS Lambda, while watsonx powered
+                    AI-guided conversational workflows that generated structured
+                    reports.
                   </p>
                   <p>
-                    A lightweight web supplement was built using{" "}
+                    A lightweight{" "}
                     <span className="text-primary font-medium">
-                      React, Next.js, and JavaScript
-                    </span>
-                    .
+                      web supplement
+                    </span>{" "}
+                    was built using{" "}
+                    <span className="text-primary font-medium">
+                      React and Next.js
+                    </span>{" "}
+                    to extend core functionality to web browsers, complementing
+                    the mobile-focused React Native and Expo stack.
                   </p>
                 </div>
               </div>
@@ -645,7 +675,7 @@ export default function SafeSpace() {
           </motion.section>
         </motion.section>
         <SectionDivider />
-        
+
         <motion.section
           initial={{ opacity: 0, y: 50 }} // Initial state: hidden and slightly down
           whileInView={{ opacity: 1, y: 0 }} // Animate to: visible and in place
