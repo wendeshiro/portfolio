@@ -551,7 +551,7 @@ export default function SafeSpace() {
                       alt: "Next.js",
                     },
                   ]}
-                  heightMdUp={450}
+                  heightMdUp={500}
                   heightBelowMd={350}
                   iconSizeMdUp={80}
                   iconSizeBelowMd={55}
