@@ -135,9 +135,9 @@ export default function SafeSpace() {
       <ScrollSpyNav
         sections={[
           { id: "overview", label: "Overview" },
+          { id: "development-process", label: "Development Process" },
           { id: "discovery-phase", label: "Discovery Phase" },
           { id: "design-process", label: "Design Process" },
-          { id: "development-process", label: "Development Process" },
           { id: "marketing-collateral", label: "Marketing Collateral" },
         ]}
       />
@@ -390,9 +390,262 @@ export default function SafeSpace() {
             ))}
           </div>
         </motion.section>
-
         <SectionDivider />
 
+        <motion.section
+          initial={{ opacity: 0, y: 50 }} // Initial state: hidden and slightly down
+          whileInView={{ opacity: 1, y: 0 }} // Animate to: visible and in place
+          transition={{ duration: 1, ease: "easeOut" }} // Animation settings
+          viewport={{ once: true, amount: 0.02 }} // Trigger animation when 2% in view, only once
+          id="development-process"
+        >
+          <h2 className="mb-3 font-serif text-2xl font-medium md:mb-6 md:text-4xl md:font-normal">
+            Development Process
+          </h2>
+          <section className="mb-5 md:mb-10">
+            <div className="flex flex-col md:flex-row md:gap-13">
+              <div className="md:w-1/2">
+                <BarredHeading text="Naming Conventions & Project Structure" />
+                <p className="mt-2 mb-5 text-base leading-relaxed md:text-lg">
+                  Clear naming conventions and a well-structured project setup
+                  were defined early in development to ensure clarity,
+                  consistency, and maintainability.{" "}
+                  <span className="text-primary font-medium">
+                    Git and GitHub
+                  </span>{" "}
+                  were used for version control and team collaboration.
+                </p>
+              </div>
+              <div className="overflow-hidden rounded-xl md:w-1/2">
+                <Image
+                  src={Naming}
+                  alt="Naming Conventions and Project Structure"
+                  placeholder="blur"
+                />
+              </div>
+            </div>
+          </section>
+          <motion.section
+            initial={{ opacity: 0, y: 50 }} // Initial state: hidden and slightly down
+            whileInView={{ opacity: 1, y: 0 }} // Animate to: visible and in place
+            transition={{ duration: 1, ease: "easeOut" }} // Animation settings
+            viewport={{ once: true, amount: 0.02 }} // Trigger animation when 2% in view, only once
+            className="mb-5 md:mb-8"
+          >
+            <BarredHeading text="Tech Stack Selection" />
+            <div className="flex flex-col md:flex-row md:gap-13">
+              <div className="md:w-1/2">
+                <div className="mt-2 mb-5 space-y-3 text-base leading-relaxed md:text-lg">
+                  <p>
+                    The mobile app leveraged{" "}
+                    <span className="text-primary font-medium">
+                      React Native and Expo
+                    </span>{" "}
+                    to build a unified codebase for both iOS and Android
+                    environments, with{" "}
+                    <span className="text-primary font-medium">TypeScript</span>{" "}
+                    enhancing type safety and robustness.{" "}
+                    <span className="text-primary font-medium">AWS Lambda</span>{" "}
+                    handled AI-powered report generation in a serverless
+                    environment, centralizing prompt logic and protecting API
+                    credentials.{" "}
+                    <span className="text-primary font-medium">
+                      OpenAI and IBM watsonx
+                    </span>{" "}
+                    powered transcription, report generation, and interactive
+                    chat features to improve automation and user experience.
+                  </p>
+                  <p>
+                    A lightweight web supplement was built using{" "}
+                    <span className="text-primary font-medium">
+                      React, Next.js, and JavaScript
+                    </span>
+                    .
+                  </p>
+                </div>
+              </div>
+              <div className="border-tertiary/20 bg-tertiary/5 rounded-xl border md:mt-3 md:w-1/2">
+                <GravityIcons
+                  icons={[
+                    {
+                      src: "/images/development/safespace/react-native.svg",
+                      alt: "React Native",
+                    },
+                    {
+                      src: "/images/development/safespace/typescript.svg",
+                      alt: "TypeScript",
+                    },
+                    {
+                      src: "/images/development/safespace/expo.svg",
+                      alt: "Expo",
+                    },
+                    {
+                      src: "/images/development/safespace/aws.svg",
+                      alt: "AWS",
+                    },
+                    {
+                      src: "/images/development/safespace/lambda.svg",
+                      alt: "AWS Lambda",
+                    },
+                    {
+                      src: "/images/development/safespace/openai.svg",
+                      alt: "OpenAI",
+                    },
+                    {
+                      src: "/images/development/safespace/ibm.svg",
+                      alt: "IBM watsonx",
+                    },
+                    {
+                      src: "/images/development/safespace/js.svg",
+                      alt: "JavaScript",
+                    },
+                    {
+                      src: "/images/development/safespace/nextjs.svg",
+                      alt: "Next.js",
+                    },
+                  ]}
+                  heightMdUp={450}
+                  heightBelowMd={350}
+                  iconSizeMdUp={80}
+                  iconSizeBelowMd={55}
+                  className="rounded-xl"
+                />
+              </div>
+            </div>
+          </motion.section>
+          <motion.section
+            initial={{ opacity: 0, y: 50 }} // Initial state: hidden and slightly down
+            whileInView={{ opacity: 1, y: 0 }} // Animate to: visible and in place
+            transition={{ duration: 1, ease: "easeOut" }} // Animation settings
+            viewport={{ once: true, amount: 0.02 }} // Trigger animation when 2% in view, only once
+            className="mb-30 md:mb-40"
+          >
+            <BarredHeading text="AI Report Generation Pipeline" />
+            <div className="flex flex-col md:mt-6 md:flex-row md:gap-13">
+              <div className="md:w-auto">
+                <div className="bg-tertiary/8 relative mx-auto h-100 w-full max-w-90 rounded-2xl md:h-120 md:w-120 md:max-w-none">
+                  <div className="bg-tertiary/25 absolute top-8 left-1/2 -translate-x-1/2 overflow-hidden rounded-[30px] p-2.5 shadow-2xl md:p-3">
+                    <div className="aspect-496/1080 w-50 overflow-hidden rounded-[20px] md:w-60 md:rounded-[18px]">
+                      <video
+                        autoPlay
+                        loop
+                        muted
+                        playsInline
+                        preload="metadata"
+                        poster="/videos/safespace/recording-placeholder.webp"
+                        className="object-cover"
+                      >
+                        <source
+                          src="/videos/safespace/recording.mp4"
+                          type="video/mp4"
+                        />
+                      </video>
+                    </div>
+                  </div>
+                </div>
+              </div>
+              <div className="order-first md:order-0 md:w-2/3">
+                <p className="mt-2 mb-5 text-base leading-relaxed md:mt-0 md:text-lg">
+                  After recording, the client uploads audio to{" "}
+                  <ExternalLink href="https://developers.openai.com/api/docs/models/gpt-4o-mini-transcribe">
+                    OpenAI’s transcription API
+                  </ExternalLink>{" "}
+                  to generate text, which is then sent to an{" "}
+                  <span className="font-semibold">AWS Lambda</span> function
+                  where a centrally managed prompt processes the transcript to
+                  generate a structured report. During development, API keys
+                  were managed using{" "}
+                  <span className="font-semibold">
+                    environment variables (.env)
+                  </span>{" "}
+                  to avoid hardcoding sensitive credentials.
+                </p>
+              </div>
+            </div>
+          </motion.section>
+
+          <motion.section
+            initial={{ opacity: 0, y: 50 }} // Initial state: hidden and slightly down
+            whileInView={{ opacity: 1, y: 0 }} // Animate to: visible and in place
+            transition={{ duration: 1, ease: "easeOut" }} // Animation settings
+            viewport={{ once: true, amount: 0.02 }} // Trigger animation when 2% in view, only once
+            className="mb-30 md:mb-40"
+          >
+            <BarredHeading text="Guided AI Chatbot Workflow" />
+            <div className="flex flex-col md:mt-6 md:flex-row md:gap-13">
+              <div className="md:w-2/3">
+                <p className="mt-2 mb-5 text-base leading-relaxed md:mt-0 md:text-lg">
+                  The guided AI chatbot feature was implemented to collect
+                  incident details step by step through conversational prompts.
+                  The chatbot dynamically gathers user inputs and sends them to{" "}
+                  <ExternalLink href="https://www.ibm.com/products/watsonx">
+                    IBM watsonx
+                  </ExternalLink>{" "}
+                  for processing. Based on the responses, the model generates a
+                  structured incident report.
+                </p>
+              </div>
+              <div className="md:w-auto">
+                <div className="bg-tertiary/8 relative mx-auto h-100 w-full max-w-90 rounded-2xl md:h-120 md:w-120 md:max-w-none">
+                  <div className="bg-tertiary/25 absolute top-8 left-1/2 -translate-x-1/2 overflow-hidden rounded-[30px] p-2.5 shadow-2xl md:p-3">
+                    <div className="aspect-501/1080 w-50 overflow-hidden rounded-[20px] md:w-60 md:rounded-[18px]">
+                      <video
+                        autoPlay
+                        loop
+                        muted
+                        playsInline
+                        preload="metadata"
+                        poster="/videos/safespace/safi-app-placeholder.webp"
+                        className="object-cover"
+                      >
+                        <source
+                          src="/videos/safespace/safi-app.mp4"
+                          type="video/mp4"
+                        />
+                      </video>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </motion.section>
+
+          <motion.section
+            initial={{ opacity: 0, y: 50 }} // Initial state: hidden and slightly down
+            whileInView={{ opacity: 1, y: 0 }} // Animate to: visible and in place
+            transition={{ duration: 1, ease: "easeOut" }} // Animation settings
+            viewport={{ once: true, amount: 0.02 }} // Trigger animation when 2% in view, only once
+          >
+            <BarredHeading text="Web Supplement" />
+            <div className="mt-2 mb-5 space-y-2 text-base leading-relaxed md:w-2/3 md:text-lg">
+              <p>
+                A lightweight web supplement was developed to consolidate
+                fragmented incident reports into actionable insights for
+                management. Map visualization was implemented using React
+                Leaflet to display report locations.
+              </p>
+              <p className="text-sm text-gray-600 md:text-base">
+                *Due to time constraints, the interface was delivered as a
+                functional mockup with a limited feature scope.
+              </p>
+            </div>
+            <div className="bg-tertiary/8 flex h-auto items-center justify-center overflow-hidden rounded-2xl p-4 md:h-auto md:px-20 md:py-8">
+              <video
+                autoPlay
+                loop
+                muted
+                playsInline
+                preload="metadata"
+                poster="/videos/safespace/websup-placeholder.webp"
+                className="w-full rounded-xl shadow-xl md:max-w-270"
+              >
+                <source src="/videos/safespace/websup.mp4" type="video/mp4" />
+              </video>
+            </div>
+          </motion.section>
+        </motion.section>
+        <SectionDivider />
+        
         <motion.section
           initial={{ opacity: 0, y: 50 }} // Initial state: hidden and slightly down
           whileInView={{ opacity: 1, y: 0 }} // Animate to: visible and in place
@@ -803,263 +1056,8 @@ export default function SafeSpace() {
             </div>
           </motion.section>
         </motion.section>
-
         <SectionDivider />
 
-        <motion.section
-          initial={{ opacity: 0, y: 50 }} // Initial state: hidden and slightly down
-          whileInView={{ opacity: 1, y: 0 }} // Animate to: visible and in place
-          transition={{ duration: 1, ease: "easeOut" }} // Animation settings
-          viewport={{ once: true, amount: 0.02 }} // Trigger animation when 2% in view, only once
-          id="development-process"
-        >
-          <h2 className="mb-3 font-serif text-2xl font-medium md:mb-6 md:text-4xl md:font-normal">
-            Development Process
-          </h2>
-          <section className="mb-5 md:mb-10">
-            <div className="flex flex-col md:flex-row md:gap-13">
-              <div className="md:w-1/2">
-                <BarredHeading text="Naming Conventions & Project Structure" />
-                <p className="mt-2 mb-5 text-base leading-relaxed md:text-lg">
-                  Clear naming conventions and a well-structured project setup
-                  were defined early in development to ensure clarity,
-                  consistency, and maintainability.{" "}
-                  <span className="text-primary font-medium">
-                    Git and GitHub
-                  </span>{" "}
-                  were used for version control and team collaboration.
-                </p>
-              </div>
-              <div className="overflow-hidden rounded-xl md:w-1/2">
-                <Image
-                  src={Naming}
-                  alt="Naming Conventions and Project Structure"
-                  placeholder="blur"
-                />
-              </div>
-            </div>
-          </section>
-          <motion.section
-            initial={{ opacity: 0, y: 50 }} // Initial state: hidden and slightly down
-            whileInView={{ opacity: 1, y: 0 }} // Animate to: visible and in place
-            transition={{ duration: 1, ease: "easeOut" }} // Animation settings
-            viewport={{ once: true, amount: 0.02 }} // Trigger animation when 2% in view, only once
-            className="mb-5 md:mb-8"
-          >
-            <BarredHeading text="Tech Stack Selection" />
-            <div className="flex flex-col md:flex-row md:gap-13">
-              <div className="md:w-1/2">
-                <div className="mt-2 mb-5 space-y-3 text-base leading-relaxed md:text-lg">
-                  <p>
-                    The mobile app leveraged{" "}
-                    <span className="text-primary font-medium">
-                      React Native and Expo
-                    </span>{" "}
-                    to build a unified codebase for both iOS and Android
-                    environments, with{" "}
-                    <span className="text-primary font-medium">TypeScript</span>{" "}
-                    enhancing type safety and robustness.{" "}
-                    <span className="text-primary font-medium">AWS Lambda</span>{" "}
-                    handled AI-powered report generation in a serverless
-                    environment, centralizing prompt logic and protecting API
-                    credentials.{" "}
-                    <span className="text-primary font-medium">
-                      OpenAI and IBM watsonx
-                    </span>{" "}
-                    powered transcription, report generation, and interactive
-                    chat features to improve automation and user experience.
-                  </p>
-                  <p>
-                    A lightweight web supplement was built using{" "}
-                    <span className="text-primary font-medium">
-                      React, Next.js, and JavaScript
-                    </span>
-                    .
-                  </p>
-                </div>
-              </div>
-              <div className="border-tertiary/20 bg-tertiary/5 rounded-xl border md:mt-3 md:w-1/2">
-                <GravityIcons
-                  icons={[
-                    {
-                      src: "/images/development/safespace/react-native.svg",
-                      alt: "React Native",
-                    },
-                    {
-                      src: "/images/development/safespace/typescript.svg",
-                      alt: "TypeScript",
-                    },
-                    {
-                      src: "/images/development/safespace/expo.svg",
-                      alt: "Expo",
-                    },
-                    {
-                      src: "/images/development/safespace/aws.svg",
-                      alt: "AWS",
-                    },
-                    {
-                      src: "/images/development/safespace/lambda.svg",
-                      alt: "AWS Lambda",
-                    },
-                    {
-                      src: "/images/development/safespace/openai.svg",
-                      alt: "OpenAI",
-                    },
-                    {
-                      src: "/images/development/safespace/ibm.svg",
-                      alt: "IBM watsonx",
-                    },
-                    {
-                      src: "/images/development/safespace/js.svg",
-                      alt: "JavaScript",
-                    },
-                    {
-                      src: "/images/development/safespace/nextjs.svg",
-                      alt: "Next.js",
-                    },
-                  ]}
-                  heightMdUp={450}
-                  heightBelowMd={350}
-                  iconSizeMdUp={80}
-                  iconSizeBelowMd={55}
-                  className="rounded-xl"
-                />
-              </div>
-            </div>
-          </motion.section>
-          <motion.section
-            initial={{ opacity: 0, y: 50 }} // Initial state: hidden and slightly down
-            whileInView={{ opacity: 1, y: 0 }} // Animate to: visible and in place
-            transition={{ duration: 1, ease: "easeOut" }} // Animation settings
-            viewport={{ once: true, amount: 0.02 }} // Trigger animation when 2% in view, only once
-            className="mb-30 md:mb-40"
-          >
-            <BarredHeading text="AI Report Generation Pipeline" />
-            <div className="flex flex-col md:mt-6 md:flex-row md:gap-13">
-              <div className="md:w-auto">
-                <div className="bg-tertiary/8 relative mx-auto h-100 w-full max-w-90 rounded-2xl md:h-120 md:w-120 md:max-w-none">
-                  <div className="bg-tertiary/25 absolute top-8 left-1/2 -translate-x-1/2 overflow-hidden rounded-[30px] p-2.5 shadow-2xl md:p-3">
-                    <div className="aspect-496/1080 w-50 overflow-hidden rounded-[20px] md:w-60 md:rounded-[18px]">
-                      <video
-                        autoPlay
-                        loop
-                        muted
-                        playsInline
-                        preload="metadata"
-                        poster="/videos/safespace/recording-placeholder.webp"
-                        className="object-cover"
-                      >
-                        <source
-                          src="/videos/safespace/recording.mp4"
-                          type="video/mp4"
-                        />
-                      </video>
-                    </div>
-                  </div>
-                </div>
-              </div>
-              <div className="order-first md:order-0 md:w-2/3">
-                <p className="mt-2 mb-5 text-base leading-relaxed md:mt-0 md:text-lg">
-                  After recording, the client uploads audio to{" "}
-                  <ExternalLink href="https://developers.openai.com/api/docs/models/gpt-4o-mini-transcribe">
-                    OpenAI’s transcription API
-                  </ExternalLink>{" "}
-                  to generate text, which is then sent to an{" "}
-                  <span className="font-semibold">AWS Lambda</span> function
-                  where a centrally managed prompt processes the transcript to
-                  generate a structured report. During development, API keys
-                  were managed using{" "}
-                  <span className="font-semibold">
-                    environment variables (.env)
-                  </span>{" "}
-                  to avoid hardcoding sensitive credentials.
-                </p>
-              </div>
-            </div>
-          </motion.section>
-
-          <motion.section
-            initial={{ opacity: 0, y: 50 }} // Initial state: hidden and slightly down
-            whileInView={{ opacity: 1, y: 0 }} // Animate to: visible and in place
-            transition={{ duration: 1, ease: "easeOut" }} // Animation settings
-            viewport={{ once: true, amount: 0.02 }} // Trigger animation when 2% in view, only once
-            className="mb-30 md:mb-40"
-          >
-            <BarredHeading text="Guided AI Chatbot Workflow" />
-            <div className="flex flex-col md:mt-6 md:flex-row md:gap-13">
-              <div className="md:w-2/3">
-                <p className="mt-2 mb-5 text-base leading-relaxed md:mt-0 md:text-lg">
-                  The guided AI chatbot feature was implemented to collect
-                  incident details step by step through conversational prompts.
-                  The chatbot dynamically gathers user inputs and sends them to{" "}
-                  <ExternalLink href="https://www.ibm.com/products/watsonx">
-                    IBM watsonx
-                  </ExternalLink>{" "}
-                  for processing. Based on the responses, the model generates a
-                  structured incident report.
-                </p>
-              </div>
-              <div className="md:w-auto">
-                <div className="bg-tertiary/8 relative mx-auto h-100 w-full max-w-90 rounded-2xl md:h-120 md:w-120 md:max-w-none">
-                  <div className="bg-tertiary/25 absolute top-8 left-1/2 -translate-x-1/2 overflow-hidden rounded-[30px] p-2.5 shadow-2xl md:p-3">
-                    <div className="aspect-501/1080 w-50 overflow-hidden rounded-[20px] md:w-60 md:rounded-[18px]">
-                      <video
-                        autoPlay
-                        loop
-                        muted
-                        playsInline
-                        preload="metadata"
-                        poster="/videos/safespace/safi-app-placeholder.webp"
-                        className="object-cover"
-                      >
-                        <source
-                          src="/videos/safespace/safi-app.mp4"
-                          type="video/mp4"
-                        />
-                      </video>
-                    </div>
-                  </div>
-                </div>
-              </div>
-            </div>
-          </motion.section>
-
-          <motion.section
-            initial={{ opacity: 0, y: 50 }} // Initial state: hidden and slightly down
-            whileInView={{ opacity: 1, y: 0 }} // Animate to: visible and in place
-            transition={{ duration: 1, ease: "easeOut" }} // Animation settings
-            viewport={{ once: true, amount: 0.02 }} // Trigger animation when 2% in view, only once
-          >
-            <BarredHeading text="Web Supplement" />
-            <div className="mt-2 mb-5 space-y-2 text-base leading-relaxed md:w-2/3 md:text-lg">
-              <p>
-                A lightweight web supplement was developed to consolidate
-                fragmented incident reports into actionable insights for
-                management. Map visualization was implemented using React
-                Leaflet to display report locations.
-              </p>
-              <p className="text-sm text-gray-600 md:text-base">
-                *Due to time constraints, the interface was delivered as a
-                functional mockup with a limited feature scope.
-              </p>
-            </div>
-            <div className="bg-tertiary/8 flex h-auto items-center justify-center overflow-hidden rounded-2xl p-4 md:h-auto md:px-20 md:py-8">
-              <video
-                autoPlay
-                loop
-                muted
-                playsInline
-                preload="metadata"
-                poster="/videos/safespace/websup-placeholder.webp"
-                className="w-full rounded-xl shadow-xl md:max-w-270"
-              >
-                <source src="/videos/safespace/websup.mp4" type="video/mp4" />
-              </video>
-            </div>
-          </motion.section>
-        </motion.section>
-
-        <SectionDivider />
         <motion.section
           initial={{ opacity: 0, y: 50 }} // Initial state: hidden and slightly down
           whileInView={{ opacity: 1, y: 0 }} // Animate to: visible and in place

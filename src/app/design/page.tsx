@@ -45,6 +45,7 @@ export default function Design() {
           href="/design/power-bank"
         />
       </motion.section>
+      <section></section>
     </main>
   );
 }

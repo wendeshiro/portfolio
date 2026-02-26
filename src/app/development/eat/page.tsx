@@ -114,20 +114,20 @@ export default function Eat() {
             <ol className="space-y-3 text-base md:text-lg">
               <li>
                 1. Load dish data from dishes{" "}
-                <span className="text-primary font-semibold">.json</span>.
+                <span className="text-primary font-medium">.json</span>.
               </li>
               <li>
-                2. <span className="text-primary font-semibold">Filter</span>{" "}
+                2. <span className="text-primary font-medium">Filter</span>{" "}
                 candidate dishes by selected category or subCategory.
               </li>
               <li>
                 3. Generates a{" "}
-                <span className="text-primary font-semibold">random index</span>{" "}
+                <span className="text-primary font-medium">random index</span>{" "}
                 to display a dish when a blind box is clicked.
               </li>
               <li>
                 4. Pass the dish ID via{" "}
-                <span className="text-primary font-semibold">
+                <span className="text-primary font-medium">
                   URL query string
                 </span>{" "}
                 and render the matching dish on the details page based on the id
