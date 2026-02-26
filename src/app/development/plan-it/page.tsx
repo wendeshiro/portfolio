@@ -139,20 +139,17 @@ export default function PlanIt() {
               <div className="top-24 space-y-3 self-start text-base md:sticky md:w-1/2 md:text-lg">
                 <p>
                   Travel plans are stored in{" "}
-                  <span className="text-primary font-semibold">
-                    localStorage
-                  </span>{" "}
+                  <span className="text-primary font-medium">localStorage</span>{" "}
                   using .getItem() and .setItem() to persist data.
                 </p>
                 <p>
-                  The{" "}
-                  <span className="text-primary font-semibold">useState</span>{" "}
+                  The <span className="text-primary font-medium">useState</span>{" "}
                   hook manages the component’s state and updates the display
                   whenever the data changes.
                 </p>
                 <p>
                   Together, these technologies enable{" "}
-                  <span className="text-primary font-semibold">
+                  <span className="text-primary font-medium">
                     Create, Read, Update, and Delete (CRUD)
                   </span>{" "}
                   operations on the travel plans.
@@ -240,7 +237,7 @@ export default function PlanIt() {
                 </p>
                 <p>
                   By using{" "}
-                  <span className="text-primary font-semibold">useEffect</span>,
+                  <span className="text-primary font-medium">useEffect</span>,
                   the application updates weather and location information only
                   when the location changes, avoiding unnecessary API requests.
                 </p>
