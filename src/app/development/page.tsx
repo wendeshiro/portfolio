@@ -50,20 +50,20 @@ export default function Development() {
         <ProjectCard
           isCategoryCard
           variants={categoryCardVariants}
-          title="Portfolio Website"
-          subtitle="Next.js / TypeScript / Framer Motion"
-          description="A responsive portfolio website built with Next.js and Tailwind CSS, focusing on clarity and scalable structure."
-          imageSrc={Portfolio}
-          href="/development/portfolio-website"
-        />
-        <ProjectCard
-          isCategoryCard
-          variants={categoryCardVariants}
           title="What Should I Eat"
           subtitle="Vanilla JavaScript / Dynamic Rendering / HTML / CSS"
           description="A blind-box food discovery web app."
           imageSrc={Eat}
           href="/development/eat"
+        />
+        <ProjectCard
+          isCategoryCard
+          variants={categoryCardVariants}
+          title="Portfolio Website"
+          subtitle="Next.js / TypeScript / Framer Motion"
+          description="A responsive portfolio website built with Next.js and Tailwind CSS, focusing on clarity and scalable structure."
+          imageSrc={Portfolio}
+          href="/development/portfolio-website"
         />
         <ProjectCard
           isCategoryCard
