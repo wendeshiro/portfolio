@@ -37,6 +37,7 @@ import Architecture from "@/images/development/safespace/architecture.webp";
 export default function SafeSpace() {
   const [activeFeatureIndex, setActiveFeatureIndex] = useState(0);
   const [slideDirection, setSlideDirection] = useState<1 | -1>(1);
+  const [isTechStackExpanded, setIsTechStackExpanded] = useState(false);
   const activeSlideRef = useRef<HTMLDivElement | null>(null);
   const lastVideoRef = useRef<HTMLVideoElement | null>(null);
 
@@ -447,7 +448,12 @@ export default function SafeSpace() {
             </PhotoView>
             <div className="flex flex-col md:mt-8 md:flex-row md:gap-13">
               <div className="md:w-1/2">
-                <div className="mt-2 mb-5 space-y-3 text-base leading-relaxed md:text-base">
+                <div
+                  id="tech-stack-details"
+                  className={`mt-2 space-y-3 overflow-hidden text-base leading-relaxed transition-[max-height] duration-300 ease-out md:mb-5 md:max-h-none ${
+                    isTechStackExpanded ? "max-h-400" : "max-h-32.5"
+                  }`}
+                >
                   <p>
                     The{" "}
                     <span className="text-primary font-medium">mobile app</span>{" "}
@@ -493,6 +499,17 @@ export default function SafeSpace() {
                     the mobile-focused React Native and Expo stack.
                   </p>
                 </div>
+                <button
+                  type="button"
+                  onClick={() =>
+                    setIsTechStackExpanded((expanded) => !expanded)
+                  }
+                  aria-controls="tech-stack-details"
+                  aria-expanded={isTechStackExpanded}
+                  className="text-primary mt-2 mb-5 text-base font-medium md:hidden"
+                >
+                  {isTechStackExpanded ? "Show less" : "Show more"}
+                </button>
               </div>
               <div className="border-tertiary/20 bg-tertiary/5 rounded-xl border md:mt-3 md:w-1/2">
                 <GravityIcons
