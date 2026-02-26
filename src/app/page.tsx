@@ -48,7 +48,7 @@ const heroHeadingLines: HeroLineSegment[][] = [
     { text: "Hi, ", phase: 1 },
     { text: "I'm Wende, ", phase: 1, startOffset: 0.12 },
   ],
-  [{ text: "A frontend", phase: 2, startOffset: 0.2 }],
+  [{ text: "A software", phase: 2, startOffset: 0.2 }],
   [
     {
       text: "Developer",
@@ -100,17 +100,17 @@ function getHeroCharDelay(segment: HeroLineSegment, charIndex: number) {
 }
 
 const homeSecHeroTextSegments: HomeSecHeroTextSegment[] = [
-  { text: "I build products with " },
-  { text: "design thinking", className: "text-primary", priority: true },
-  { text: " and a " },
+  { text: "I build " },
+  { text: "thoughtful, scalable", className: "text-primary", priority: true },
+  { text: " digital solutions " },
   {
-    text: "marketing-driven mindset",
+    text: "that bridge",
+  },
+  {
+    text: " technology, design, and business needs.",
     className: "text-primary",
     priority: true,
   },
-  { text: ", bridging the gap between " },
-  { text: "code and commerce", className: "text-primary", priority: true },
-  { text: "." },
 ];
 
 const homeSecHeroSegmentStartIndices = homeSecHeroTextSegments.reduce<number[]>(
@@ -490,7 +490,7 @@ export default function Home() {
               >
                 <motion.p
                   {...(playHeroTextAnimation ? homeSecHeroTextMotionProps : {})}
-                  className="mt-5 w-full text-[15.5px] leading-[1.8] tracking-wide break-normal wrap-normal md:mt-4 md:text-[23.7px] 2xl:mt-6 2xl:text-[25.2px]"
+                  className="mt-5 w-full text-[15.5px] leading-[1.7] tracking-wider break-normal wrap-normal md:mt-4 md:text-2xl"
                 >
                   {homeSecHeroTextSegments.map((segment, segmentIndex) => (
                     <span
