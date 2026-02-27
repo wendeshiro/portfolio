@@ -104,7 +104,7 @@ export default function About() {
               </svg>
               <ExternalLink
                 href="https://www.linkedin.com/in/wende05"
-                fontWeight="medium"
+                fontWeight="normal"
               >
                 LinkedIn{" "}
               </ExternalLink>
@@ -124,7 +124,7 @@ export default function About() {
               </svg>
               <ExternalLink
                 href="https://github.com/wendeshiro"
-                fontWeight="medium"
+                fontWeight="normal"
               >
                 GitHub{" "}
               </ExternalLink>

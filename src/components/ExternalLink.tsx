@@ -6,7 +6,7 @@ type ExternalLinkProps = Omit<
 > & {
   href: string;
   children: ReactNode;
-  fontWeight?: "semibold" | "medium";
+  fontWeight?: "normal" | "medium" | "semibold";
   className?: string;
 };
 
@@ -17,7 +17,12 @@ export default function ExternalLink({
   className,
   ...rest
 }: ExternalLinkProps) {
-  const weightClass = fontWeight === "medium" ? "font-medium" : "font-semibold";
+  const weightClassByFontWeight = {
+    normal: "font-normal",
+    medium: "font-medium",
+    semibold: "font-semibold",
+  } as const;
+  const weightClass = weightClassByFontWeight[fontWeight];
   const linkClassName = [
     "hover:text-primary group transition-colors duration-300",
     className,
