@@ -61,7 +61,7 @@ export default function SkillBox({
         Skills & Tools
       </h2>
       <div className="mt-5 flex flex-col gap-5 md:mt-7 md:grid md:grid-cols-[100px_10px_1000px] md:gap-x-6">
-        <div className="flex flex-wrap gap-2 md:flex-col md:gap-2">
+        <div className="flex flex-wrap justify-center gap-2 md:flex-col md:justify-start">
           {categories.map((category) => {
             const isActive = category.key === activeCategory;
 
@@ -93,7 +93,7 @@ export default function SkillBox({
                 {category.key === activeCategory && (
                   <motion.span
                     layoutId="skillbox-active-bar"
-                    className="absolute h-11 w-1 rounded-full bg-primary"
+                    className="bg-primary absolute h-11 w-1 rounded-full"
                     transition={{ type: "spring", stiffness: 350, damping: 40 }}
                   />
                 )}

@@ -197,7 +197,6 @@ export default function About() {
                 "PostgreSQL",
                 "MySQL",
                 "Git / GitHub",
-                "WordPress",
               ]}
               designSkill={[
                 "Figma",
@@ -223,6 +222,7 @@ export default function About() {
                 "Agile Methodology",
                 "Microsoft Excel (Advanced Functions, Pivot Tables, Statistical Analysis)",
                 "PowerPoint",
+                "WordPress",
                 "Team Management",
                 "Mentoring",
               ]}
