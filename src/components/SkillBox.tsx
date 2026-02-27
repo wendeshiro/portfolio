@@ -1,6 +1,7 @@
 "use client";
 
 import { useMemo, useState } from "react";
+import { motion } from "framer-motion";
 
 type SkillBoxProps = {
   devSkill?: string[];
@@ -87,13 +88,15 @@ export default function SkillBox({
             {categories.map((category) => (
               <div
                 key={category.key}
-                className="flex h-11 items-center justify-center"
+                className="relative flex h-11 items-center justify-center"
               >
-                <span
-                  className={`w-1 rounded-full transition-colors ${
-                    category.key === activeCategory ? "bg-primary h-10" : "h-0"
-                  }`}
-                />
+                {category.key === activeCategory && (
+                  <motion.span
+                    layoutId="skillbox-active-bar"
+                    className="absolute h-11 w-1 rounded-full bg-primary"
+                    transition={{ type: "spring", stiffness: 350, damping: 40 }}
+                  />
+                )}
               </div>
             ))}
           </div>
