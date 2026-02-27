@@ -511,53 +511,51 @@ export default function SafeSpace() {
                   {isTechStackExpanded ? "Show less" : "Show more"}
                 </button>
               </div>
-              <div className="border-tertiary/20 bg-tertiary/5 rounded-xl border md:mt-3 md:w-1/2">
-                <GravityIcons
-                  icons={[
-                    {
-                      src: "/images/development/safespace/react-native.svg",
-                      alt: "React Native",
-                    },
-                    {
-                      src: "/images/development/safespace/typescript.svg",
-                      alt: "TypeScript",
-                    },
-                    {
-                      src: "/images/development/safespace/expo.svg",
-                      alt: "Expo",
-                    },
-                    {
-                      src: "/images/development/safespace/aws.svg",
-                      alt: "AWS",
-                    },
-                    {
-                      src: "/images/development/safespace/lambda.svg",
-                      alt: "AWS Lambda",
-                    },
-                    {
-                      src: "/images/development/safespace/openai.svg",
-                      alt: "OpenAI",
-                    },
-                    {
-                      src: "/images/development/safespace/ibm.svg",
-                      alt: "IBM watsonx",
-                    },
-                    {
-                      src: "/images/development/safespace/js.svg",
-                      alt: "JavaScript",
-                    },
-                    {
-                      src: "/images/development/safespace/nextjs.svg",
-                      alt: "Next.js",
-                    },
-                  ]}
-                  heightMdUp={500}
-                  heightBelowMd={350}
-                  iconSizeMdUp={80}
-                  iconSizeBelowMd={55}
-                  className="rounded-xl"
-                />
-              </div>
+              <GravityIcons
+                icons={[
+                  {
+                    src: "/images/development/safespace/react-native.svg",
+                    alt: "React Native",
+                  },
+                  {
+                    src: "/images/development/safespace/typescript.svg",
+                    alt: "TypeScript",
+                  },
+                  {
+                    src: "/images/development/safespace/expo.svg",
+                    alt: "Expo",
+                  },
+                  {
+                    src: "/images/development/safespace/aws.svg",
+                    alt: "AWS",
+                  },
+                  {
+                    src: "/images/development/safespace/lambda.svg",
+                    alt: "AWS Lambda",
+                  },
+                  {
+                    src: "/images/development/safespace/openai.svg",
+                    alt: "OpenAI",
+                  },
+                  {
+                    src: "/images/development/safespace/ibm.svg",
+                    alt: "IBM watsonx",
+                  },
+                  {
+                    src: "/images/development/safespace/js.svg",
+                    alt: "JavaScript",
+                  },
+                  {
+                    src: "/images/development/safespace/nextjs.svg",
+                    alt: "Next.js",
+                  },
+                ]}
+                heightMdUp={500}
+                heightBelowMd={350}
+                iconSizeMdUp={80}
+                iconSizeBelowMd={55}
+                className="border-tertiary/20 bg-tertiary/5 rounded-xl border md:mt-3 md:w-1/2"
+              />
             </div>
           </motion.section>
           <motion.section
