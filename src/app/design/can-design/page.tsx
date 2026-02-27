@@ -92,6 +92,18 @@ export default function CanDesign() {
                 "Illustrator, Photoshop, Blender, React Three Fiber (Three.js), Drei",
             },
           ]}
+          links={[
+            {
+              label: "Can Model",
+              url: "https://github.com/wendeshiro/portfolio/blob/main/src/components/FruitTeaCan.tsx",
+              icon: "github",
+            },
+            {
+              label: "Can Scene",
+              url: "https://github.com/wendeshiro/portfolio/blob/main/src/components/CanScene.tsx",
+              icon: "github",
+            },
+          ]}
         />
         <SectionDivider />
 

@@ -5,7 +5,7 @@ import SafeSpace from "@/images/home/safespace.webp";
 import Planit from "@/images/home/planit.webp";
 import Portfolio from "@/images/home/portfolio.webp";
 import Eat from "@/images/home/eat.webp";
-import Can from "@/images/home/can.webp";
+import CanDev from "@/images/home/can-dev.webp";
 import {
   categoryCardSectionMotionProps,
   categoryCardVariants,
@@ -71,7 +71,7 @@ export default function Development() {
           title="Orchard Brew Can Design"
           subtitle="React Three Fiber (Three.js) / Drei / Blender"
           description="A refreshing visual identity for a contemporary fruit tea collection with interactive 3D product displays."
-          imageSrc={Can}
+          imageSrc={CanDev}
           href="/design/can-design"
         />
       </motion.section>

@@ -7,9 +7,51 @@ import {
   categoryCardVariants,
   categoryTitleMotionProps,
 } from "@/lib/categoryPageAnimations";
-import { motion } from "framer-motion";
+import { AnimatePresence, motion } from "framer-motion";
+import { useEffect, useRef, useState } from "react";
 
 export default function About() {
+  const email = "wendellwdl05@gmail.com";
+  const [isCopied, setIsCopied] = useState(false);
+  const copiedTimeoutRef = useRef<ReturnType<typeof setTimeout> | null>(null);
+
+  const clearCopiedTimeout = () => {
+    if (!copiedTimeoutRef.current) {
+      return;
+    }
+    clearTimeout(copiedTimeoutRef.current);
+    copiedTimeoutRef.current = null;
+  };
+
+  const handleCopyEmail = async () => {
+    try {
+      await navigator.clipboard.writeText(email);
+    } catch {
+      // Fallback for environments where Clipboard API is unavailable.
+      const textArea = document.createElement("textarea");
+      textArea.value = email;
+      textArea.style.position = "fixed";
+      textArea.style.opacity = "0";
+      document.body.appendChild(textArea);
+      textArea.focus();
+      textArea.select();
+      document.execCommand("copy");
+      document.body.removeChild(textArea);
+    }
+
+    setIsCopied(true);
+    clearCopiedTimeout();
+    copiedTimeoutRef.current = setTimeout(() => {
+      setIsCopied(false);
+    }, 3000);
+  };
+
+  useEffect(() => {
+    return () => {
+      clearCopiedTimeout();
+    };
+  }, []);
+
   return (
     <main className="relative flex flex-col items-center pt-8 pb-20 md:pt-10 md:pb-30">
       <section className="mb-10 md:mb-18">
@@ -89,6 +131,45 @@ export default function About() {
             </div>
           </motion.div>
         </motion.section>
+
+        <motion.button
+          {...categoryCardSectionMotionProps}
+          type="button"
+          onClick={handleCopyEmail}
+          className="relative mt-7 cursor-pointer md:mt-10"
+        >
+          <motion.div
+            variants={categoryCardVariants}
+            className="flex items-center justify-center gap-1.5"
+          >
+            <motion.p className="text-lg md:text-xl">{email}</motion.p>
+            <motion.svg
+              xmlns="http://www.w3.org/2000/svg"
+              width={22}
+              height={22}
+              viewBox="0 0 24 24"
+              className="text-gray-700"
+            >
+              <path
+                fill="currentColor"
+                d="M9 18q-.825 0-1.412-.587T7 16V4q0-.825.588-1.412T9 2h9q.825 0 1.413.588T20 4v12q0 .825-.587 1.413T18 18zm-4 4q-.825 0-1.412-.587T3 20V6h2v14h11v2z"
+              ></path>
+            </motion.svg>
+            <AnimatePresence>
+              {isCopied ? (
+                <motion.span
+                  initial={{ opacity: 0 }}
+                  animate={{ opacity: 1 }}
+                  exit={{ opacity: 0 }}
+                  transition={{ duration: 0.3 }}
+                  className="pointer-events-none absolute top-full left-1/2 mt-2 w-max -translate-x-1/2 text-sm whitespace-nowrap text-gray-700 md:text-base"
+                >
+                  Copied to clipboard
+                </motion.span>
+              ) : null}
+            </AnimatePresence>
+          </motion.div>
+        </motion.button>
 
         <motion.section
           {...categoryCardSectionMotionProps}
