@@ -1,6 +1,7 @@
 "use client";
 
 import { useMemo, useState } from "react";
+import { AnimatePresence, motion } from "framer-motion";
 
 type SkillBoxProps = {
   devSkill?: string[];
@@ -87,35 +88,53 @@ export default function SkillBox({
             {categories.map((category) => (
               <div
                 key={category.key}
-                className="flex h-11 items-center justify-center"
+                className="relative flex h-11 items-center justify-center"
               >
-                <span
-                  className={`w-1 rounded-full transition-colors ${
-                    category.key === activeCategory ? "bg-primary h-10" : "h-0"
-                  }`}
-                />
+                {category.key === activeCategory && (
+                  <motion.span
+                    layoutId="skillbox-active-bar"
+                    className="absolute h-11 w-1 rounded-full bg-primary"
+                    transition={{ type: "spring", stiffness: 350, damping: 40 }}
+                  />
+                )}
               </div>
             ))}
           </div>
         </div>
 
         <div>
-          {activeSkills.length > 0 ? (
-            <div className="mt-1 flex flex-wrap gap-x-3 gap-y-4 md:gap-4">
-              {activeSkills.map((skill, index) => (
-                <span
-                  key={`${skill}-${index}`}
-                  className="rounded-full border border-black/35 bg-white/70 px-4 py-2 text-base leading-none md:py-3"
-                >
-                  {skill}
-                </span>
-              ))}
-            </div>
-          ) : (
-            <p className="text-xl text-black/60">
-              No skills added in this category yet.
-            </p>
-          )}
+          <AnimatePresence mode="wait" initial={false}>
+            {activeSkills.length > 0 ? (
+              <motion.div
+                key={activeCategory}
+                initial={{ opacity: 0, y: 8 }}
+                animate={{ opacity: 1, y: 0 }}
+                exit={{ opacity: 0, y: -6 }}
+                transition={{ duration: 0.22, ease: "easeOut" }}
+                className="mt-1 flex flex-wrap gap-x-3 gap-y-4 md:gap-4"
+              >
+                {activeSkills.map((skill, index) => (
+                  <span
+                    key={`${skill}-${index}`}
+                    className="rounded-full border border-black/35 bg-white/70 px-4 py-2 text-base leading-none md:py-3"
+                  >
+                    {skill}
+                  </span>
+                ))}
+              </motion.div>
+            ) : (
+              <motion.p
+                key={`${activeCategory}-empty`}
+                initial={{ opacity: 0, y: 8 }}
+                animate={{ opacity: 1, y: 0 }}
+                exit={{ opacity: 0, y: -6 }}
+                transition={{ duration: 0.22, ease: "easeOut" }}
+                className="text-xl text-black/60"
+              >
+                No skills added in this category yet.
+              </motion.p>
+            )}
+          </AnimatePresence>
         </div>
       </div>
     </div>
