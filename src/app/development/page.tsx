@@ -60,7 +60,7 @@ export default function Development() {
           isCategoryCard
           variants={categoryCardVariants}
           title="Portfolio Website"
-          subtitle="Next.js / TypeScript / Framer Motion"
+          subtitle="Next.js / TypeScript / Tailwind CSS / ESLint"
           description="A responsive portfolio website built with Next.js and Tailwind CSS, focusing on clarity and scalable structure."
           imageSrc={Portfolio}
           href="/development/portfolio-website"
