@@ -101,8 +101,8 @@ function getHeroCharDelay(segment: HeroLineSegment, charIndex: number) {
 
 const homeSecHeroTextSegments: HomeSecHeroTextSegment[] = [
   { text: "I build " },
-  { text: "thoughtful,", className: "text-primary" },
-  { text: " scalable", className: "text-primary" },
+  { text: "thoughtful,", className: "text-primary", priority: true },
+  { text: " scalable", className: "text-primary", priority: true },
   { text: " digital solutions " },
   {
     text: "that bridge",
@@ -111,11 +111,11 @@ const homeSecHeroTextSegments: HomeSecHeroTextSegment[] = [
     text: " technology,",
     className: "text-primary",
   },
-    {
+  {
     text: " design,",
     className: "text-primary",
   },
-    {
+  {
     text: " and business needs.",
     className: "text-primary",
   },
