@@ -53,7 +53,7 @@ export default function About() {
   }, []);
 
   return (
-    <main className="relative flex flex-col items-center pt-8 pb-20 md:pt-10 md:pb-30">
+    <main className="relative flex flex-col items-center pt-8 pb-20 md:pt-10">
       <section className="mb-10 md:mb-18">
         <motion.p
           {...categoryTitleMotionProps}
@@ -173,58 +173,61 @@ export default function About() {
 
         <motion.section
           {...categoryCardSectionMotionProps}
-          className="mt-14 w-full md:mt-20"
+          className="mt-14 md:mt-20 md:h-130 md:w-290"
         >
           <motion.div variants={categoryCardVariants}>
             <SkillBox
-              devSkill={[
-                "TypeScript",
-                "JavaScript",
-                "React",
-                "Next.js",
-                "React Native",
-                "Expo",
-                "HTML5",
-                "CSS3",
-                "Tailwind CSS",
-                "Framer Motion",
-                "React Three Fiber (R3F)",
-                "Node.js",
-                "Express.js",
-                "LLM API Integration",
-                "AWS Lambda",
-                "SQL",
-                "PostgreSQL",
-                "MySQL",
-                "Git / GitHub",
-                "WordPress",
+              devSkillGroups={[
+                {
+                  title: "Frontend",
+                  skills: [
+                    "TypeScript",
+                    "JavaScript",
+                    "React",
+                    "Next.js",
+                    "React Native",
+                    "Expo",
+                    "HTML5",
+                    "CSS3",
+                    "Tailwind CSS",
+                    "Framer Motion",
+                    "React Three Fiber (R3F)",
+                  ],
+                },
+                {
+                  title: "Backend & Databases",
+                  skills: [
+                    "Node.js",
+                    "Express.js (RESTful)",
+                    "AWS Lambda",
+                    "SQL",
+                    "PostgreSQL",
+                    "MySQL",
+                  ],
+                },
+                {
+                  title: "Development Practices",
+                  skills: ["Git / GitHub", "Agile Methodology (Scrum, Kanban)"],
+                },
               ]}
               designSkill={[
                 "Figma",
+                "UI/UX Design",
+                "User Research",
                 "Adobe Illustrator",
                 "Adobe Photoshop",
                 "Adobe InDesign",
                 "Adobe After Effects",
                 "Adobe Premiere Pro",
-                "UI/UX Design",
-                "Wireframing",
-                "Prototyping",
-                "User Research",
                 "Blender",
               ]}
               marketingSkill={[
                 "Data & Financial Analysis",
+                "Microsoft Excel (Advanced Functions, Pivot Tables, Statistical Analysis)",
                 "Market Research",
                 "SEO",
                 "Amazon PPC (Paid Media)",
                 "Google Analytics 4",
-              ]}
-              softSkill={[
-                "Agile Methodology",
-                "Microsoft Excel (Advanced Functions, Pivot Tables, Statistical Analysis)",
-                "PowerPoint",
-                "Team Management",
-                "Mentoring",
               ]}
               languageSkill={[
                 "English (Working Proficiency)",
