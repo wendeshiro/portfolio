@@ -61,17 +61,48 @@ export default function Navbar() {
       transition={{ duration: 0.28, ease: "easeOut" }}
       className="bg-background/60 fixed top-0 right-0 left-0 z-50 backdrop-blur-sm select-none"
     >
-      <div className="mx-auto flex h-14 max-w-5xl items-center justify-between px-5 md:justify-center">
+      <div className="mx-auto flex h-14 items-center justify-between px-5 md:justify-center md:px-8">
         <div className="md:hidden">
           <Link href="/">
             <Image src="/icon.svg" alt="logo" width={24} height={24} />
           </Link>
         </div>
         {/* Only visible above md size */}
-        <div className="hidden items-center gap-8 md:flex">
-          {navItems.map((item) => (
-            <NavItem key={item.path} item={item} pathname={pathname} />
-          ))}
+        <div className="hidden w-full items-center md:flex">
+          <Link href="/" className="shrink-0">
+            <Image
+              className="hidden brightness-70 grayscale transition duration-300 hover:brightness-100 hover:grayscale-0 md:block"
+              src="/icon.svg"
+              alt="logo"
+              width={22}
+              height={22}
+            />
+          </Link>
+          <div className="mx-auto flex items-center gap-8">
+            {navItems.map((item) => (
+              <NavItem key={item.path} item={item} pathname={pathname} />
+            ))}
+          </div>
+          <a
+            href="https://github.com/wendeshiro"
+            target="_blank"
+            rel="noopener noreferrer"
+            className="shrink-0 text-gray-600 transition-colors duration-300 hover:text-black"
+            aria-label="GitHub"
+          >
+            <svg
+              xmlns="http://www.w3.org/2000/svg"
+              width={24}
+              height={24}
+              viewBox="0 0 24 24"
+              className="text-current"
+            >
+              <path
+                fill="currentColor"
+                d="M10.303 16.652c-2.837-.344-4.835-2.385-4.835-5.028c0-1.074.387-2.235 1.031-3.008c-.279-.709-.236-2.214.086-2.837c.86-.107 2.02.344 2.708.967c.816-.258 1.676-.386 2.728-.386s1.913.128 2.686.365c.666-.602 1.848-1.053 2.708-.946c.3.581.344 2.085.064 2.815c.688.817 1.053 1.913 1.053 3.03c0 2.643-1.998 4.641-4.877 5.006c.73.473 1.224 1.504 1.224 2.686v2.235c0 .644.537 1.01 1.182.752c3.889-1.483 6.94-5.372 6.94-10.185c0-6.081-4.942-11.044-11.022-11.044c-6.081 0-10.98 4.963-10.98 11.044a10.84 10.84 0 0 0 7.112 10.206c.58.215 1.139-.172 1.139-.752v-1.719a2.8 2.8 0 0 1-1.032.215c-1.418 0-2.256-.773-2.857-2.213c-.237-.58-.495-.924-.989-.988c-.258-.022-.344-.129-.344-.258c0-.258.43-.451.86-.451c.623 0 1.16.386 1.719 1.181c.43.623.881.903 1.418.903s.881-.194 1.375-.688c.365-.365.645-.687.903-.902"
+              ></path>
+            </svg>
+          </a>
         </div>
 
         {/* Only visible below md size */}
@@ -195,7 +226,7 @@ function NavItem({
       href={item.path}
       className={`group relative font-medium tracking-widest transition-colors duration-300 ${
         mobile ? "block py-2 text-base" : "text-sm"
-      } ${isActive ? activeTextClass : "hover:text-foreground text-gray-600"}`}
+      } ${isActive ? activeTextClass : "hover:text-foreground text-gray-700"}`}
     >
       {item.name}
 
