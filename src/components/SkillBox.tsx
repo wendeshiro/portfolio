@@ -113,7 +113,7 @@ export default function SkillBox({
                   key={category.key}
                   type="button"
                   onClick={() => setActiveCategory(category.key)}
-                  className={`relative cursor-pointer rounded-full px-3 py-2 text-left text-lg transition-colors md:rounded-none md:px-0 md:pb-2.5 md:whitespace-nowrap ${
+                  className={`relative cursor-pointer rounded-full px-4 py-2 text-left text-lg transition-colors md:rounded-none md:px-0 md:pb-2.5 md:whitespace-nowrap ${
                     isActive
                       ? "text-primary bg-primary/10 md:bg-transparent"
                       : "text-black/60 hover:text-black"
