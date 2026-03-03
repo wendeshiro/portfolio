@@ -8,6 +8,9 @@ import HeroImg from "@/images/development/portfolio/portfolio-hero.webp";
 import { motion } from "framer-motion";
 import BackButton from "@/components/BackButton";
 import ComingSoon from "@/images/coming-soon.webp";
+import BarredHeading from "@/components/BarredHeading";
+import Naming from "@/images/development/portfolio/naming.webp";
+import Eslint from "@/images/development/portfolio/eslint.webp";
 
 export default function PortfolioWebsite() {
   return (
@@ -63,6 +66,79 @@ export default function PortfolioWebsite() {
             },
           ]}
         />
+        <SectionDivider />
+        <motion.section
+          initial={{ opacity: 0, y: 50 }} // Initial state: hidden and slightly down
+          whileInView={{ opacity: 1, y: 0 }} // Animate to: visible and in place
+          transition={{ duration: 1, ease: "easeOut" }} // Animation settings
+          viewport={{ once: true, amount: 0.02 }} // Trigger animation when 2% in view, only once
+          id="engineering-standards"
+        >
+          <h2 className="mb-3 font-serif text-2xl font-medium md:mb-6 md:text-4xl md:font-normal">
+            Engineering Standards
+          </h2>
+          <section className="mb-5 md:mb-10">
+            <div className="flex flex-col md:flex-row md:gap-13">
+              <div className="md:w-1/2">
+                <BarredHeading text="Naming Conventions & Project Structure" />
+                <p className="mt-2 mb-5 text-base leading-relaxed md:text-lg">
+                  Clear naming conventions and a well-structured project setup
+                  were established to ensure clarity, consistency, and
+                  maintainability.{" "}
+                  <span className="text-primary font-medium">
+                    Git and GitHub
+                  </span>{" "}
+                  were used for version control and structured development
+                  workflow.
+                </p>
+              </div>
+              <div className="overflow-hidden rounded-xl md:w-1/2">
+                <Image
+                  src={Naming}
+                  alt="Naming Conventions and Project Structure"
+                  placeholder="blur"
+                />
+              </div>
+            </div>
+          </section>
+          <motion.section
+            initial={{ opacity: 0, y: 50 }} // Initial state: hidden and slightly down
+            whileInView={{ opacity: 1, y: 0 }} // Animate to: visible and in place
+            transition={{ duration: 1, ease: "easeOut" }} // Animation settings
+            viewport={{ once: true, amount: 0.02 }} // Trigger animation when 2% in view, only once
+            className="mb-5 md:mb-8"
+          >
+            <div className="flex flex-col md:flex-row md:gap-13">
+              <div className="md:w-1/2">
+                <BarredHeading text="Code Quality Practices" />
+                <div className="mt-2 mb-5 space-y-3 text-base leading-relaxed md:text-lg">
+                  <p>
+                    <span className="text-primary font-medium">ESLint</span> is
+                    configured with strict rules to prevent common issues and
+                    enforce consistent coding standards.
+                  </p>
+                  <p>
+                    <span className="text-primary font-medium">Prettier</span>{" "}
+                    and{" "}
+                    <span className="text-primary font-medium">
+                      prettier-plugin-tailwindcss
+                    </span>{" "}
+                    are used to maintain consistent formatting and automatically
+                    organize Tailwind utility classes, improving overall
+                    readability and maintainability.
+                  </p>
+                </div>
+              </div>
+              <div className="overflow-hidden rounded-xl md:w-1/2">
+                <Image
+                  src={Eslint}
+                  alt="Code Quality Practices"
+                  placeholder="blur"
+                />
+              </div>
+            </div>
+          </motion.section>
+        </motion.section>
         <SectionDivider />
         <motion.section
           initial={{ opacity: 0, y: 50 }} // Initial state: hidden and slightly down
