@@ -74,6 +74,7 @@ export default function GravityIcons({
   const engineRef = useRef<Matter.Engine | null>(null);
   const bodiesRef = useRef<Matter.Body[]>([]);
   const rafRef = useRef<number>(0);
+  const widthRef = useRef<number>(0);
   const lastScrollYRef = useRef<number>(0);
   const lastScrollTimeRef = useRef<number>(0);
 
@@ -155,6 +156,7 @@ export default function GravityIcons({
     if (!container) return;
 
     const width = container.offsetWidth;
+    widthRef.current = width;
     const h = resolvedHeight;
 
     // Create engine with sleeping enabled so we can wake bodies on scroll
@@ -243,12 +245,15 @@ export default function GravityIcons({
         const margin = resolvedIconSize;
         if (
           body.position.x < -margin ||
-          body.position.x > width + margin ||
+          body.position.x > widthRef.current + margin ||
           body.position.y < -margin ||
           body.position.y > h + margin
         ) {
           Matter.Body.setPosition(body, {
-            x: Math.max(radius, Math.min(width - radius, body.position.x)),
+            x: Math.max(
+              radius,
+              Math.min(widthRef.current - radius, body.position.x),
+            ),
             y: Math.max(radius, Math.min(h - radius, h * 0.5)),
           });
           Matter.Body.setVelocity(body, { x: 0, y: 0 });
@@ -282,7 +287,8 @@ export default function GravityIcons({
     // Handle resize
     const handleResize = () => {
       const newWidth = container.offsetWidth;
-      if (newWidth === width) return;
+      if (newWidth === widthRef.current) return;
+      widthRef.current = newWidth;
 
       // Reposition walls
       Matter.Body.setPosition(floor, {
