@@ -79,14 +79,25 @@ export default function GravityIcons({
   const lastScrollTimeRef = useRef<number>(0);
 
   const [bodyStates, setBodyStates] = useState<BodyState[]>([]);
-  const isMdUp = useSyncExternalStore(
-    (onStoreChange) => {
-      const mediaQuery = window.matchMedia(`(min-width: ${mdBreakpoint}px)`);
-      mediaQuery.addEventListener("change", onStoreChange);
-      return () => mediaQuery.removeEventListener("change", onStoreChange);
+  const mdMediaQuery = `(min-width: ${mdBreakpoint}px)`;
+  const subscribeToMdBreakpoint = useCallback(
+    (onStoreChange: () => void) => {
+      const mediaQueryList = window.matchMedia(mdMediaQuery);
+      mediaQueryList.addEventListener("change", onStoreChange);
+      return () =>
+        mediaQueryList.removeEventListener("change", onStoreChange);
     },
-    () => window.matchMedia(`(min-width: ${mdBreakpoint}px)`).matches,
-    () => false,
+    [mdMediaQuery],
+  );
+  const getMdBreakpointSnapshot = useCallback(
+    () => window.matchMedia(mdMediaQuery).matches,
+    [mdMediaQuery],
+  );
+  const getMdBreakpointServerSnapshot = useCallback(() => false, []);
+  const isMdUp = useSyncExternalStore(
+    subscribeToMdBreakpoint,
+    getMdBreakpointSnapshot,
+    getMdBreakpointServerSnapshot,
   );
 
   const resolvedHeight = isMdUp
