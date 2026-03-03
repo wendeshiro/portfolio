@@ -39,13 +39,13 @@ const FLAVORS = [
 export default function CanScene({ shouldActivate }: CanSceneProps) {
   const [currentTexture, setCurrentTexture] = useState(FLAVORS[0].texture);
   const [isMobile, setIsMobile] = useState<boolean>(false);
-  const [fallbackReady, setFallbackReady] = useState(false);
-  const [assetsLoaded, setAssetsLoaded] = useState(false);
+  const [isFallbackReady, setIsFallbackReady] = useState(false);
+  const [isAssetsLoaded, setIsAssetsLoaded] = useState(false);
   const [isCanHovered, setIsCanHovered] = useState(false);
   const [isCanDragging, setIsCanDragging] = useState(false);
 
-  const canvasReady = shouldActivate || fallbackReady;
-  const showCanvasLoader = !canvasReady || !assetsLoaded;
+  const isCanvasReady = shouldActivate || isFallbackReady;
+  const showCanvasLoader = !isCanvasReady || !isAssetsLoaded;
 
   useEffect(() => {
     if (!shouldActivate) {
@@ -57,7 +57,7 @@ export default function CanScene({ shouldActivate }: CanSceneProps) {
     });
 
     const assetReadyTimer = window.setTimeout(() => {
-      setAssetsLoaded(true);
+      setIsAssetsLoaded(true);
     }, 800);
 
     return () => window.clearTimeout(assetReadyTimer);
@@ -71,9 +71,9 @@ export default function CanScene({ shouldActivate }: CanSceneProps) {
     let assetFallbackTimer: number | undefined;
 
     const fallbackTimer = window.setTimeout(() => {
-      setFallbackReady(true);
+      setIsFallbackReady(true);
       assetFallbackTimer = window.setTimeout(() => {
-        setAssetsLoaded(true);
+        setIsAssetsLoaded(true);
       }, 1000);
     }, 1800);
 
@@ -148,7 +148,7 @@ export default function CanScene({ shouldActivate }: CanSceneProps) {
         id="interactive-3d-can"
         className={`relative h-full w-[80vw] md:w-full ${isCanDragging ? "cursor-grabbing" : isCanHovered ? "cursor-pointer" : ""}`}
       >
-        {canvasReady ? (
+        {isCanvasReady ? (
           <Canvas camera={{ position: [2, 1, 2], fov: isMobile ? 3.5 : 2.5 }}>
             <Environment preset="city" />
             <ambientLight intensity={0.6} />

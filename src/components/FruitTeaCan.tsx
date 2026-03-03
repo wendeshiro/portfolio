@@ -40,11 +40,11 @@ export default function FruitTeaCan({
 
   // use useMemo to clone an independent texture
   const texture = useMemo(() => {
-    const t = originalTexture.clone();
-    t.flipY = false;
-    t.colorSpace = THREE.SRGBColorSpace;
-    t.needsUpdate = true;
-    return t;
+    const clonedTexture = originalTexture.clone();
+    clonedTexture.flipY = false;
+    clonedTexture.colorSpace = THREE.SRGBColorSpace;
+    clonedTexture.needsUpdate = true;
+    return clonedTexture;
   }, [originalTexture]);
 
   // dispose cloned texture on unmount or when textureUrl changes to prevent memory leaks
