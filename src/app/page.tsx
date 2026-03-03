@@ -81,12 +81,7 @@ const heroHeadingLines: HeroLineSegment[][] = [
   ],
 ];
 
-const HERO_PHASE_START_DELAY: Record<1 | 2 | 3 | 4, number> = {
-  1: 0,
-  2: 1,
-  3: 2,
-  4: 3,
-};
+const HERO_PHASE_START_DELAY = [0, 0, 1, 2, 3] as const;
 
 const HERO_LETTER_STAGGER = 0.04; // The delay between each letter's animation within the same segment.
 const SECONDARY_HERO_DELAY_AFTER_MAIN = 0;
@@ -183,11 +178,11 @@ function splitTextWithWhitespace(text: string) {
 
 export default function Home() {
   const lenis = useLenis();
-  const [playHeroTextAnimation] = useState(shouldPlayHomeHeroText);
-  const [showHeroScrollHint, setShowHeroScrollHint] = useState(
+  const [shouldPlayHeroTextAnimation] = useState(shouldPlayHomeHeroText);
+  const [isHeroScrollHintVisible, setIsHeroScrollHintVisible] = useState(
     hasShownHomeScrollHint,
   );
-  const scrollHintAlreadyShown = hasShownHomeScrollHint();
+  const hasScrollHintAlreadyShown = hasShownHomeScrollHint();
   const devRef = useRef<HTMLElement>(null);
   const designRef = useRef<HTMLElement>(null);
   const marketingRef = useRef<HTMLElement>(null);
@@ -200,10 +195,10 @@ export default function Home() {
   }, []);
 
   useEffect(() => {
-    if (playHeroTextAnimation) {
+    if (shouldPlayHeroTextAnimation) {
       markHomeHeroTextPlayed();
     }
-  }, [playHeroTextAnimation]);
+  }, [shouldPlayHeroTextAnimation]);
 
   useEffect(() => {
     if (hasShownHomeScrollHint()) return;
@@ -211,15 +206,15 @@ export default function Home() {
     const timeoutId = window.setTimeout(
       () => {
         markHomeScrollHintShown();
-        setShowHeroScrollHint(true);
+        setIsHeroScrollHintVisible(true);
       },
-      playHeroTextAnimation ? homeSecHeroEndDelay * 1000 : 0,
+      shouldPlayHeroTextAnimation ? homeSecHeroEndDelay * 1000 : 0,
     );
 
     return () => {
       window.clearTimeout(timeoutId);
     };
-  }, [playHeroTextAnimation]);
+  }, [shouldPlayHeroTextAnimation]);
 
   const SECTION_COLOR_START = 0.5;
   const SECTION_COLOR_END = 0.2;
@@ -321,9 +316,9 @@ export default function Home() {
     }
 
     if (best.ratio >= SECTION_SNAP_AMOUNT) {
-      const almostAligned =
+      const isAlmostAligned =
         Math.abs(best.top - Math.abs(SECTION_SNAP_OFFSET)) < 8;
-      if (lastSnappedRef.current === best.id || almostAligned) return;
+      if (lastSnappedRef.current === best.id || isAlmostAligned) return;
 
       lastSnappedRef.current = best.id;
       snapToSection(best.element);
@@ -372,7 +367,7 @@ export default function Home() {
       return `rgb(${white.r}, ${white.g}, ${white.b})`;
     },
   );
-  const heroTextContainerMotionProps = playHeroTextAnimation
+  const heroTextContainerMotionProps = shouldPlayHeroTextAnimation
     ? {}
     : categoryTitleMotionProps;
 
@@ -385,7 +380,9 @@ export default function Home() {
             <div className="w-auto max-w-350">
               <motion.div {...heroTextContainerMotionProps} className="w-full">
                 <motion.div
-                  {...(playHeroTextAnimation ? homeHeroTextMotionProps : {})}
+                  {...(shouldPlayHeroTextAnimation
+                    ? homeHeroTextMotionProps
+                    : {})}
                   className="w-full text-[clamp(30px,5.5vw,86px)] leading-normal font-light tracking-wider md:leading-[1.2]"
                 >
                   {heroHeadingLines.map((line, lineIndex) => (
@@ -430,7 +427,7 @@ export default function Home() {
                                     >
                                       {Array.from(token).map(
                                         (char, charIndex) =>
-                                          playHeroTextAnimation ? (
+                                          shouldPlayHeroTextAnimation ? (
                                             <motion.span
                                               key={`char-${lineIndex}-${segmentIndex}-${tokenIndex}-${charIndex}`}
                                               custom={getHeroCharDelay(
@@ -465,7 +462,7 @@ export default function Home() {
                                   >
                                     {" "}
                                   </span>
-                                ) : playHeroTextAnimation ? (
+                                ) : shouldPlayHeroTextAnimation ? (
                                   <motion.span
                                     key={`char-${lineIndex}-${segmentIndex}-${charIndex}`}
                                     custom={getHeroCharDelay(
@@ -497,7 +494,9 @@ export default function Home() {
                 className="w-full md:pl-[0.4em]"
               >
                 <motion.p
-                  {...(playHeroTextAnimation ? homeSecHeroTextMotionProps : {})}
+                  {...(shouldPlayHeroTextAnimation
+                    ? homeSecHeroTextMotionProps
+                    : {})}
                   className="mt-5 w-full text-[15.5px] leading-[1.7] tracking-wider break-normal wrap-normal md:mt-4 md:text-2xl"
                 >
                   {homeSecHeroTextSegments.map((segment, segmentIndex) => (
@@ -530,7 +529,7 @@ export default function Home() {
                                 className="inline-block"
                               >
                                 {Array.from(token).map((char, charIndex) =>
-                                  playHeroTextAnimation ? (
+                                  shouldPlayHeroTextAnimation ? (
                                     <motion.span
                                       key={`sec-hero-char-${segmentIndex}-${tokenIndex}-${charIndex}`}
                                       custom={
@@ -567,12 +566,12 @@ export default function Home() {
               </motion.div>
             </div>
           </section>
-          {showHeroScrollHint ? (
+          {isHeroScrollHintVisible ? (
             <motion.button
               type="button"
               aria-label="Scroll to development section"
               onClick={handleHeroScrollHintClick}
-              initial={scrollHintAlreadyShown ? false : { opacity: 0, y: 6 }}
+              initial={hasScrollHintAlreadyShown ? false : { opacity: 0, y: 6 }}
               animate={{ opacity: 1, y: 0 }}
               transition={{ duration: 0.35, ease: "easeOut" }}
               className="text-primary/50 absolute bottom-12 left-1/2 flex -translate-x-1/2 cursor-pointer flex-col items-center md:bottom-0"

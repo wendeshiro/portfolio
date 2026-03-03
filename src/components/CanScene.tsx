@@ -45,7 +45,7 @@ export default function CanScene({ shouldActivate }: CanSceneProps) {
   const [isCanDragging, setIsCanDragging] = useState(false);
 
   const isCanvasReady = shouldActivate || isFallbackReady;
-  const showCanvasLoader = !isCanvasReady || !isAssetsLoaded;
+  const isCanvasLoaderVisible = !isCanvasReady || !isAssetsLoaded;
 
   useEffect(() => {
     if (!shouldActivate) {
@@ -181,7 +181,7 @@ export default function CanScene({ shouldActivate }: CanSceneProps) {
           </Canvas>
         ) : null}
 
-        {showCanvasLoader && (
+        {isCanvasLoaderVisible && (
           <div className="absolute inset-0 z-20 flex items-center justify-center bg-white/70 backdrop-blur-[1px]">
             <p className="rounded-full border border-gray-200 bg-white/90 px-4 py-2 text-sm font-medium text-gray-700 shadow-sm select-none">
               Loading 3D Model...

@@ -6,6 +6,7 @@ import { useGLTF, useTexture } from "@react-three/drei";
 import { ThreeElements } from "@react-three/fiber";
 import { GLTF } from "three-stdlib";
 
+/* eslint-disable @typescript-eslint/naming-convention */
 type GLTFResult = GLTF & {
   nodes: {
     Plane027: THREE.Mesh;
@@ -19,6 +20,7 @@ type GLTFResult = GLTF & {
     ["silver.001"]: THREE.MeshStandardMaterial;
   };
 };
+/* eslint-enable @typescript-eslint/naming-convention */
 
 type FruitTeaCanProps = ThreeElements["group"] & {
   textureUrl: string;
