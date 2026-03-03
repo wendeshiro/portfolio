@@ -1,7 +1,7 @@
 "use client";
 
 import * as THREE from "three";
-import { useMemo } from "react";
+import { useEffect, useMemo } from "react";
 import { useGLTF, useTexture } from "@react-three/drei";
 import { ThreeElements } from "@react-three/fiber";
 import { GLTF } from "three-stdlib";
@@ -46,6 +46,13 @@ export default function FruitTeaCan({
     t.needsUpdate = true;
     return t;
   }, [originalTexture]);
+
+  // dispose cloned texture on unmount or when textureUrl changes to prevent memory leaks
+  useEffect(() => {
+    return () => {
+      texture.dispose();
+    };
+  }, [texture]);
 
   return (
     <group

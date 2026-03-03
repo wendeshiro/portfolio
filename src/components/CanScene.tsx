@@ -6,7 +6,6 @@ import {
   Center,
   Environment,
   Float,
-  Html,
   OrbitControls,
   useTexture,
 } from "@react-three/drei";
@@ -134,7 +133,7 @@ export default function CanScene({ shouldActivate }: CanSceneProps) {
               {/* Text */}
               <div>
                 <p
-                  className={`text-sm font-semibold transition-colors md:text-lg ${currentTexture === flavor.texture ? "text-black" : "text-gray-700"}`}
+                  className={`text-sm font-semibold transition-colors select-none md:text-lg ${currentTexture === flavor.texture ? "text-black" : "text-gray-700"}`}
                 >
                   {flavor.name}
                 </p>
@@ -160,13 +159,7 @@ export default function CanScene({ shouldActivate }: CanSceneProps) {
               intensity={7}
             />
 
-            <Suspense
-              fallback={
-                <Html center>
-                  <div>Loading 3D Model...</div>
-                </Html>
-              }
-            >
+            <Suspense fallback={null}>
               <Float
                 speed={0.7}
                 rotationIntensity={3}
@@ -190,9 +183,9 @@ export default function CanScene({ shouldActivate }: CanSceneProps) {
 
         {showCanvasLoader && (
           <div className="absolute inset-0 z-20 flex items-center justify-center bg-white/70 backdrop-blur-[1px]">
-            <div className="rounded-full border border-gray-200 bg-white/90 px-4 py-2 text-sm font-medium text-gray-700 shadow-sm">
+            <p className="rounded-full border border-gray-200 bg-white/90 px-4 py-2 text-sm font-medium text-gray-700 shadow-sm select-none">
               Loading 3D Model...
-            </div>
+            </p>
           </div>
         )}
       </div>
