@@ -18,10 +18,10 @@ import BackButton from "@/components/BackButton";
 import CanScene from "@/components/CanScene";
 
 export default function CanDesign() {
-  const [activateCanScene, setActivateCanScene] = useState(false);
+  const [shouldActivateCanScene, setShouldActivateCanScene] = useState(false);
 
   const handleHeroAnimationComplete = useCallback(() => {
-    setActivateCanScene(true);
+    setShouldActivateCanScene(true);
   }, []);
 
   return (
@@ -107,7 +107,7 @@ export default function CanDesign() {
         />
         <SectionDivider />
 
-        <CanScene shouldActivate={activateCanScene} />
+        <CanScene shouldActivate={shouldActivateCanScene} />
         <SectionDivider marginTop="md:mt-5" />
 
         <motion.section

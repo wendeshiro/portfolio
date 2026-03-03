@@ -1,11 +1,12 @@
 "use client";
 
 import * as THREE from "three";
-import { useMemo } from "react";
+import { useEffect, useMemo } from "react";
 import { useGLTF, useTexture } from "@react-three/drei";
 import { ThreeElements } from "@react-three/fiber";
 import { GLTF } from "three-stdlib";
 
+/* eslint-disable @typescript-eslint/naming-convention */
 type GLTFResult = GLTF & {
   nodes: {
     Plane027: THREE.Mesh;
@@ -19,6 +20,7 @@ type GLTFResult = GLTF & {
     ["silver.001"]: THREE.MeshStandardMaterial;
   };
 };
+/* eslint-enable @typescript-eslint/naming-convention */
 
 type FruitTeaCanProps = ThreeElements["group"] & {
   textureUrl: string;
@@ -40,12 +42,19 @@ export default function FruitTeaCan({
 
   // use useMemo to clone an independent texture
   const texture = useMemo(() => {
-    const t = originalTexture.clone();
-    t.flipY = false;
-    t.colorSpace = THREE.SRGBColorSpace;
-    t.needsUpdate = true;
-    return t;
+    const clonedTexture = originalTexture.clone();
+    clonedTexture.flipY = false;
+    clonedTexture.colorSpace = THREE.SRGBColorSpace;
+    clonedTexture.needsUpdate = true;
+    return clonedTexture;
   }, [originalTexture]);
+
+  // dispose cloned texture on unmount or when textureUrl changes to prevent memory leaks
+  useEffect(() => {
+    return () => {
+      texture.dispose();
+    };
+  }, [texture]);
 
   return (
     <group

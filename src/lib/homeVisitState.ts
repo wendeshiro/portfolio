@@ -1,18 +1,18 @@
-let homeHeroTextPlayed = false;
-let homeScrollHintShown = false;
+let hasHomeHeroTextPlayed = false;
+let hasHomeScrollHintShown = false;
 
 export function shouldPlayHomeHeroText() {
-  return !homeHeroTextPlayed;
+  return !hasHomeHeroTextPlayed;
 }
 
 export function markHomeHeroTextPlayed() {
-  homeHeroTextPlayed = true;
+  hasHomeHeroTextPlayed = true;
 }
 
 export function hasShownHomeScrollHint() {
-  return homeScrollHintShown;
+  return hasHomeScrollHintShown;
 }
 
 export function markHomeScrollHintShown() {
-  homeScrollHintShown = true;
+  hasHomeScrollHintShown = true;
 }

@@ -77,7 +77,7 @@ export default function About() {
             resonate with—a wanderer driven by exploration.
           </motion.p>
           <motion.p variants={categoryCardVariants}>
-            I see myself the same way—curious, independent, and constantly
+            I see myself the same way—curious, self-driven, and constantly
             exploring new ideas, technologies, and creative possibilities.
           </motion.p>
         </motion.section>
@@ -173,7 +173,7 @@ export default function About() {
 
         <motion.section
           {...categoryCardSectionMotionProps}
-          className="mt-14 md:mt-20 md:h-130 md:w-290"
+          className="mt-15 md:mt-22 md:h-130 md:w-290"
         >
           <motion.div variants={categoryCardVariants}>
             <SkillBox
@@ -213,6 +213,8 @@ export default function About() {
               designSkill={[
                 "Figma",
                 "UI/UX Design",
+                "Wireframing",
+                "Prototyping",
                 "User Research",
                 "Adobe Illustrator",
                 "Adobe Photoshop",
@@ -223,11 +225,11 @@ export default function About() {
               ]}
               marketingSkill={[
                 "Data & Financial Analysis",
-                "Microsoft Excel (Advanced Functions, Pivot Tables, Statistical Analysis)",
                 "Market Research",
                 "SEO",
-                "Amazon PPC (Paid Media)",
+                "CPC Optimization",
                 "Google Analytics 4",
+                "Microsoft Excel (Advanced Functions, Pivot Tables, Statistical Analysis)",
               ]}
               languageSkill={[
                 "English (Working Proficiency)",
