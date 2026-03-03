@@ -134,11 +134,11 @@ export default function GravityIcons({
 
     const handleScroll = () => {
       const now = performance.now();
-      const dt = now - lastScrollTimeRef.current;
-      if (dt < 1) return;
+      const elapsedMs = now - lastScrollTimeRef.current;
+      if (elapsedMs < 1) return;
 
-      const dy = window.scrollY - lastScrollYRef.current;
-      const velocity = (dy / dt) * 1000; // px/s
+      const scrollDeltaY = window.scrollY - lastScrollYRef.current;
+      const velocity = (scrollDeltaY / elapsedMs) * 1000; // px/s
 
       lastScrollYRef.current = window.scrollY;
       lastScrollTimeRef.current = now;
@@ -157,7 +157,7 @@ export default function GravityIcons({
 
     const width = container.offsetWidth;
     widthRef.current = width;
-    const h = resolvedHeight;
+    const containerHeight = resolvedHeight;
 
     // Create engine with sleeping enabled so we can wake bodies on scroll
     const engine = Matter.Engine.create({
@@ -167,7 +167,7 @@ export default function GravityIcons({
     engineRef.current = engine;
 
     // Wall thickness — thick enough to prevent tunneling at high velocities
-    const wallT = 200;
+    const wallThickness = 200;
     const wallOptions = {
       isStatic: true,
       restitution: 0.5,
@@ -178,30 +178,30 @@ export default function GravityIcons({
     // Create walls (floor, ceiling, left, right)
     const floor = Matter.Bodies.rectangle(
       width / 2,
-      h + wallT / 2,
-      width + wallT * 2,
-      wallT,
+      containerHeight + wallThickness / 2,
+      width + wallThickness * 2,
+      wallThickness,
       wallOptions,
     );
     const ceiling = Matter.Bodies.rectangle(
       width / 2,
-      -wallT / 2,
-      width + wallT * 2,
-      wallT,
+      -wallThickness / 2,
+      width + wallThickness * 2,
+      wallThickness,
       wallOptions,
     );
     const leftWall = Matter.Bodies.rectangle(
-      -wallT / 2,
-      h / 2,
-      wallT,
-      h + wallT * 2,
+      -wallThickness / 2,
+      containerHeight / 2,
+      wallThickness,
+      containerHeight + wallThickness * 2,
       wallOptions,
     );
     const rightWall = Matter.Bodies.rectangle(
-      width + wallT / 2,
-      h / 2,
-      wallT,
-      h + wallT * 2,
+      width + wallThickness / 2,
+      containerHeight / 2,
+      wallThickness,
+      containerHeight + wallThickness * 2,
       wallOptions,
     );
 
@@ -211,7 +211,7 @@ export default function GravityIcons({
     const radius = resolvedIconSize / 2;
     const bodies = icons.map((_, i) => {
       const x = radius + Math.random() * (width - resolvedIconSize);
-      const y = radius + Math.random() * (h * 0.4); // start in upper 40%
+      const y = radius + Math.random() * (containerHeight * 0.4); // start in upper 40%
 
       return Matter.Bodies.circle(x, y, radius, {
         restitution,
@@ -230,14 +230,16 @@ export default function GravityIcons({
     const MAX_SPEED = 15;
     Matter.Events.on(engine, "beforeUpdate", () => {
       for (const body of bodiesRef.current) {
-        const vx = body.velocity.x;
-        const vy = body.velocity.y;
-        const speed = Math.sqrt(vx * vx + vy * vy);
+        const velocityX = body.velocity.x;
+        const velocityY = body.velocity.y;
+        const speed = Math.sqrt(
+          velocityX * velocityX + velocityY * velocityY,
+        );
         if (speed > MAX_SPEED) {
           const scale = MAX_SPEED / speed;
           Matter.Body.setVelocity(body, {
-            x: vx * scale,
-            y: vy * scale,
+            x: velocityX * scale,
+            y: velocityY * scale,
           });
         }
 
@@ -247,14 +249,20 @@ export default function GravityIcons({
           body.position.x < -margin ||
           body.position.x > widthRef.current + margin ||
           body.position.y < -margin ||
-          body.position.y > h + margin
+          body.position.y > containerHeight + margin
         ) {
           Matter.Body.setPosition(body, {
             x: Math.max(
               radius,
               Math.min(widthRef.current - radius, body.position.x),
             ),
-            y: Math.max(radius, Math.min(h - radius, h * 0.5)),
+            y: Math.max(
+              radius,
+              Math.min(
+                containerHeight - radius,
+                containerHeight * 0.5,
+              ),
+            ),
           });
           Matter.Body.setVelocity(body, { x: 0, y: 0 });
         }
@@ -293,35 +301,35 @@ export default function GravityIcons({
       // Reposition walls
       Matter.Body.setPosition(floor, {
         x: newWidth / 2,
-        y: h + wallT / 2,
+        y: containerHeight + wallThickness / 2,
       });
       Matter.Body.setVertices(
         floor,
         Matter.Bodies.rectangle(
           newWidth / 2,
-          h + wallT / 2,
-          newWidth + wallT * 2,
-          wallT,
+          containerHeight + wallThickness / 2,
+          newWidth + wallThickness * 2,
+          wallThickness,
         ).vertices,
       );
 
       Matter.Body.setPosition(ceiling, {
         x: newWidth / 2,
-        y: -wallT / 2,
+        y: -wallThickness / 2,
       });
       Matter.Body.setVertices(
         ceiling,
         Matter.Bodies.rectangle(
           newWidth / 2,
-          -wallT / 2,
-          newWidth + wallT * 2,
-          wallT,
+          -wallThickness / 2,
+          newWidth + wallThickness * 2,
+          wallThickness,
         ).vertices,
       );
 
       Matter.Body.setPosition(rightWall, {
-        x: newWidth + wallT / 2,
-        y: h / 2,
+        x: newWidth + wallThickness / 2,
+        y: containerHeight / 2,
       });
     };
 
