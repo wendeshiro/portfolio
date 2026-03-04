@@ -16,6 +16,7 @@ import TypographyPoster03 from "@/images/design/gallery/typography-poster03.webp
 import WireframingPractice from "@/images/design/gallery/wireframing-practice.webp";
 import Can from "@/images/home/can.webp";
 import PowerBank from "@/images/home/power-bank.webp";
+import Shibainu from "@/images/home/shibainu.webp";
 import {
   categoryCardSectionMotionProps,
   categoryCardVariants,
@@ -157,6 +158,15 @@ export default function Design() {
           description="A fast-paced promotional video for a multifunctional power bank."
           imageSrc={PowerBank}
           href="/design/power-bank"
+        />
+        <ProjectCard
+          isCategoryCard
+          variants={categoryCardVariants}
+          title="Shiba Inu Motion Graphic Video"
+          subtitle="After Effects / Motion Graphics / Storyboarding"
+          description="A short animated introduction to the Shiba Inu."
+          imageSrc={Shibainu}
+          href="/design/shibainu"
         />
       </motion.section>
 
