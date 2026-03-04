@@ -383,7 +383,7 @@ export default function Home() {
                   {...(shouldPlayHeroTextAnimation
                     ? homeHeroTextMotionProps
                     : {})}
-                  className="w-full text-[clamp(30px,5.5vw,80px)] leading-normal font-light tracking-wider md:leading-[1.2]"
+                  className="w-full text-[clamp(30px,6vw,70px)] leading-normal font-light tracking-wider md:leading-[1.2]"
                 >
                   {heroHeadingLines.map((line, lineIndex) => (
                     <p
@@ -497,7 +497,7 @@ export default function Home() {
                   {...(shouldPlayHeroTextAnimation
                     ? homeSecHeroTextMotionProps
                     : {})}
-                  className="mt-5 w-full text-[15.5px] leading-[1.7] tracking-wider break-normal wrap-normal md:text-2xl"
+                  className="mt-5 w-full text-[15.5px] leading-[1.7] md:font-light tracking-wider break-normal wrap-normal md:text-2xl"
                 >
                   {homeSecHeroTextSegments.map((segment, segmentIndex) => (
                     <span
