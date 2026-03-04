@@ -1,6 +1,7 @@
 "use client";
 
 import ProjectCard from "@/components/ProjectCard";
+import BackToTop from "@/components/BackToTop";
 import {
   HOME_HERO_LETTER_DURATION,
   homeCardSectionMotionProps,
@@ -20,6 +21,10 @@ import {
   markHomeScrollHintShown,
   shouldPlayHomeHeroText,
 } from "@/lib/homeVisitState";
+import {
+  BACK_TO_TOP_SNAP_PAUSE_MS,
+  HOME_SNAP_PAUSE_EVENT,
+} from "@/lib/homeSnapControl";
 import SafeSpace from "@/images/home/safespace.webp";
 import Planit from "@/images/home/planit.webp";
 import Can from "@/images/home/can.webp";
@@ -187,6 +192,7 @@ export default function Home() {
   const designRef = useRef<HTMLElement>(null);
   const marketingRef = useRef<HTMLElement>(null);
   const snapLockRef = useRef(false);
+  const snapPausedUntilRef = useRef(0);
   const lastSnappedRef = useRef<"dev" | "design" | "marketing" | null>(null);
   const mountTimeRef = useRef(0);
 
@@ -215,6 +221,22 @@ export default function Home() {
       window.clearTimeout(timeoutId);
     };
   }, [shouldPlayHeroTextAnimation]);
+
+  useEffect(() => {
+    function handleSnapPause(event: Event) {
+      const pauseMs =
+        (event as CustomEvent<{ ms?: number }>).detail?.ms ??
+        BACK_TO_TOP_SNAP_PAUSE_MS;
+
+      snapPausedUntilRef.current = Date.now() + pauseMs;
+      lastSnappedRef.current = null;
+    }
+
+    window.addEventListener(HOME_SNAP_PAUSE_EVENT, handleSnapPause);
+    return () => {
+      window.removeEventListener(HOME_SNAP_PAUSE_EVENT, handleSnapPause);
+    };
+  }, []);
 
   const SECTION_COLOR_START = 0.5;
   const SECTION_COLOR_END = 0.2;
@@ -261,6 +283,7 @@ export default function Home() {
   useLenis(() => {
     // Grace period after mount to prevent snap from interfering with scroll restoration.
     if (Date.now() - mountTimeRef.current < 1500) return;
+    if (Date.now() < snapPausedUntilRef.current) return;
 
     if (window.innerWidth < MOBILE_SNAP_BREAKPOINT) {
       lastSnappedRef.current = null;
@@ -374,6 +397,7 @@ export default function Home() {
   return (
     <>
       <motion.div style={{ backgroundColor }} className="fixed inset-0 -z-10" />
+      <BackToTop />
       <main className="relative mx-auto">
         <section className="relative h-[calc(100vh-5rem)] md:h-[calc(100vh-7rem)]">
           <section className="relative flex h-[calc(100vh-5rem)] flex-col items-center justify-center px-5 select-none md:h-[calc(100vh-8rem)] md:px-10">

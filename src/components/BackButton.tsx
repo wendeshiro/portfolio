@@ -53,9 +53,21 @@ export default function BackButton({ className = "" }: BackButtonProps) {
       type="button"
       onClick={handleBack}
       aria-label="Go back" // +10px to align with the right edge of the content
-      className={`focus-visible:ring-primary/40 fixed top-20 left-[calc((100vw-min(100vw,80rem))/2+5px)] z-51 hidden -translate-x-full rounded-full border border-black/10 bg-white/55 px-3 py-2 text-sm font-medium tracking-[0.08em] text-black/80 shadow-[0_4px_14px_rgba(15,23,42,0.05)] backdrop-blur-lg transition-all select-none hover:cursor-pointer focus-visible:ring-2 focus-visible:ring-offset-2 focus-visible:ring-offset-[#fcfdfd] focus-visible:outline-none xl:inline-flex xl:transition-opacity xl:duration-500 xl:ease-out ${isVisible ? "xl:pointer-events-auto xl:opacity-100" : "xl:pointer-events-none xl:opacity-0"} ${className}`}
+      className={`focus-visible:ring-primary/40 fixed top-20 left-[calc((100vw-min(100vw,80rem))/2+5px)] z-51 hidden -translate-x-full items-center justify-center rounded-full border border-black/10 bg-white/55 px-3 py-2 text-sm font-medium tracking-[0.08em] text-black/80 shadow-[0_4px_14px_rgba(15,23,42,0.05)] backdrop-blur-lg transition-all select-none hover:cursor-pointer focus-visible:ring-2 focus-visible:ring-offset-2 focus-visible:ring-offset-[#fcfdfd] focus-visible:outline-none xl:inline-flex xl:transition-opacity xl:duration-500 xl:ease-out ${isVisible ? "xl:pointer-events-auto xl:opacity-100" : "xl:pointer-events-none xl:opacity-0"} ${className}`}
     >
-      ←
+      <svg
+        xmlns="http://www.w3.org/2000/svg"
+        width={18}
+        height={18}
+        viewBox="0 0 24 24"
+      >
+        <path
+          fill="currentColor"
+          d="M11.354 6.646a.5.5 0 0 1 0 .708L7.207 11.5H18a.5.5 0 0 1 0 1H7.207l4.147 4.146a.5.5 0 0 1-.708.708l-5-5a.5.5 0 0 1 0-.708l5-5a.5.5 0 0 1 .708 0"
+          strokeWidth={0.5}
+          stroke="currentColor"
+        ></path>
+      </svg>
     </button>
   );
 }
