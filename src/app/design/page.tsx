@@ -4,15 +4,10 @@ import { useCallback } from "react";
 import ProjectCard from "@/components/ProjectCard";
 import BrochureMockup from "@/images/design/gallery/brochure-mockup.webp";
 import EAdvertMockup from "@/images/design/gallery/e-advert-mockup.webp";
-import IllustratorTrace01 from "@/images/design/gallery/illustrator-trace01.webp";
-import IllustratorTrace02 from "@/images/design/gallery/illustrator-trace02.webp";
 import MenuMockup from "@/images/design/gallery/menu-mockup.webp";
 import MoviePoster from "@/images/design/gallery/movie-poster.webp";
 import OutfitAppMockup from "@/images/design/gallery/outfit-app-mockup.webp";
 import ShoppingApp from "@/images/design/gallery/shopping-app.webp";
-import TypographyPoster01 from "@/images/design/gallery/typography-poster01.webp";
-import TypographyPoster02 from "@/images/design/gallery/typography-poster02.webp";
-import TypographyPoster03 from "@/images/design/gallery/typography-poster03.webp";
 import WireframingPractice from "@/images/design/gallery/wireframing-practice.webp";
 import Can from "@/images/home/can.webp";
 import PowerBank from "@/images/home/power-bank.webp";
@@ -33,6 +28,7 @@ type GalleryImage = {
   src: StaticImageData;
   alt: string;
   title: string;
+  description: string;
   widthClass: string;
 };
 
@@ -41,73 +37,50 @@ const galleryImages: GalleryImage[] = [
     src: OutfitAppMockup,
     alt: "Outfit Recommendation App",
     title: "Outfit Recommendation App",
+    description: "Figma, UI/UX Design",
     widthClass: "md:w-[35rem]",
   },
   {
     src: ShoppingApp,
     alt: "Furniture Shopping App",
     title: "Furniture Shopping App",
+    description: "Figma, UI/UX Design",
     widthClass: "md:w-[44rem]",
   },
   {
     src: WireframingPractice,
     alt: "Wireframing Practice",
     title: "Wireframing Practice",
+    description: "Figma, UI/UX Design",
     widthClass: "md:w-[40rem]",
   },
   {
     src: BrochureMockup,
     alt: "Travel Itinerary Brochure",
     title: "Travel Itinerary Brochure",
+    description: "inDesign, Photoshop",
     widthClass: "md:w-[39rem]",
   },
   {
     src: EAdvertMockup,
     alt: "Tech Exhibition Digital Signage",
     title: "Tech Exhibition Digital Signage",
-    widthClass: "md:w-[51rem]",
-  },
-  {
-    src: IllustratorTrace01,
-    alt: "Adobe Illustrator Tracing Practice 01",
-    title: "Adobe Illustrator Tracing Practice 01",
-    widthClass: "md:w-[28rem]",
-  },
-  {
-    src: IllustratorTrace02,
-    alt: "Adobe Illustrator Tracing Practice 02",
-    title: "Adobe Illustrator Tracing Practice 02",
-    widthClass: "md:w-[35rem]",
-  },
-  {
-    src: MenuMockup,
-    alt: "Restaurant Menu",
-    title: "Restaurant Menu",
-    widthClass: "md:w-[44rem]",
+    description: "inDesign, Photoshop",
+    widthClass: "md:w-[39rem]",
   },
   {
     src: MoviePoster,
     alt: "Detective Movie Poster",
     title: "Detective Movie Poster",
+    description: "Photoshop, Adobe Illustrator",
+    widthClass: "md:w-[40rem]",
+  },
+  {
+    src: MenuMockup,
+    alt: "Restaurant Menu",
+    title: "Restaurant Menu",
+    description: "inDesign, Adobe Illustrator",
     widthClass: "md:w-[60rem]",
-  },
-  {
-    src: TypographyPoster01,
-    alt: "Typography poster 01",
-    title: "Typography Poster 01",
-    widthClass: "md:w-[25rem]",
-  },
-  {
-    src: TypographyPoster02,
-    alt: "Typography poster 02",
-    title: "Typography Poster 02",
-    widthClass: "md:w-[25rem]",
-  },
-  {
-    src: TypographyPoster03,
-    alt: "Typography poster 03",
-    title: "Typography Poster 03",
-    widthClass: "md:w-[25rem]",
   },
 ];
 
@@ -221,6 +194,9 @@ export default function Design() {
                     <div className="pointer-events-none absolute inset-x-0 bottom-0 translate-y-0 bg-black/45 px-4 py-3 opacity-100 transition-all duration-300 sm:translate-y-2 sm:opacity-0 sm:group-hover:translate-y-0 sm:group-hover:opacity-100">
                       <p className="text-sm font-medium tracking-wide text-white md:text-base">
                         {image.title}
+                      </p>
+                      <p className="text-xs text-gray-300 md:text-sm">
+                        {image.description}
                       </p>
                     </div>
                   </div>
