@@ -1,6 +1,6 @@
 "use client";
 
-import { useCallback } from "react";
+import { useCallback, useRef } from "react";
 import ProjectCard from "@/components/ProjectCard";
 import BrochureMockup from "@/images/design/gallery/brochure-mockup.webp";
 import EAdvertMockup from "@/images/design/gallery/e-advert-mockup.webp";
@@ -86,6 +86,8 @@ const galleryImages: GalleryImage[] = [
 
 export default function Design() {
   const lenis = useLenis();
+  const gallerySectionRef = useRef<HTMLElement>(null);
+  const GALLERY_SCROLL_OFFSET = -60; // Match navbar height so the gallery title remains visible after scroll.
 
   const handleVisibleChange = useCallback(
     (visible: boolean) => {
@@ -98,6 +100,15 @@ export default function Design() {
     },
     [lenis],
   );
+
+  const handleScrollHintClick = useCallback(() => {
+    if (!lenis || !gallerySectionRef.current) return;
+
+    lenis.scrollTo(gallerySectionRef.current, {
+      duration: 1,
+      offset: GALLERY_SCROLL_OFFSET,
+    });
+  }, [lenis, GALLERY_SCROLL_OFFSET]);
 
   return (
     <main className="relative flex flex-col items-center pt-8 pb-16 md:pt-10 md:pb-30">
@@ -143,7 +154,30 @@ export default function Design() {
         />
       </motion.section>
 
-      <section className="mt-10 mb-5 md:mt-22 md:mb-10">
+      <motion.button
+        type="button"
+        aria-label="Scroll to design gallery section"
+        onClick={handleScrollHintClick}
+        initial={{ opacity: 0, y: 6 }}
+        animate={{ opacity: 1, y: 0 }}
+        transition={{ duration: 0.35, ease: "easeOut" }}
+        className="text-secondary/80 mt-5 flex cursor-pointer flex-col items-center md:mt-2"
+      >
+        <motion.span
+          className="block"
+          animate={{ y: [0, 9, 0], opacity: [0.25, 1, 0.25] }}
+          transition={{
+            duration: 2.8,
+            ease: "easeInOut",
+            repeat: Infinity,
+            repeatDelay: 0.2,
+          }}
+        >
+          <span className="block h-5 w-5 rotate-45 border-r-2 border-b-2" />
+        </motion.span>
+      </motion.button>
+
+      <section ref={gallerySectionRef} className="mt-10 mb-5 md:mt-22 md:mb-10">
         <motion.p
           {...categoryTitleMotionProps}
           className="text-secondary/30 text-4xl tracking-[-0.15em] uppercase select-none md:text-7xl"
