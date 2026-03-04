@@ -376,14 +376,14 @@ export default function Home() {
       <motion.div style={{ backgroundColor }} className="fixed inset-0 -z-10" />
       <main className="relative mx-auto">
         <section className="relative h-[calc(100vh-5rem)] md:h-[calc(100vh-7rem)]">
-          <section className="relative flex h-[calc(100vh-5rem)] flex-col items-center justify-center px-5 select-none md:h-[calc(100vh-8rem)] md:px-5">
+          <section className="relative flex h-[calc(100vh-5rem)] flex-col items-center justify-center px-5 select-none md:h-[calc(100vh-8rem)] md:px-10">
             <div className="w-auto max-w-350">
               <motion.div {...heroTextContainerMotionProps} className="w-full">
                 <motion.div
                   {...(shouldPlayHeroTextAnimation
                     ? homeHeroTextMotionProps
                     : {})}
-                  className="w-full text-[clamp(30px,5.5vw,86px)] leading-normal font-light tracking-wider md:leading-[1.2]"
+                  className="w-full text-[clamp(30px,5.5vw,80px)] leading-normal font-light tracking-wider md:leading-[1.2]"
                 >
                   {heroHeadingLines.map((line, lineIndex) => (
                     <p
@@ -497,7 +497,7 @@ export default function Home() {
                   {...(shouldPlayHeroTextAnimation
                     ? homeSecHeroTextMotionProps
                     : {})}
-                  className="mt-5 w-full text-[15.5px] leading-[1.7] tracking-wider break-normal wrap-normal md:mt-4 md:text-2xl"
+                  className="mt-5 w-full text-[15.5px] leading-[1.7] tracking-wider break-normal wrap-normal md:text-2xl"
                 >
                   {homeSecHeroTextSegments.map((segment, segmentIndex) => (
                     <span
