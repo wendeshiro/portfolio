@@ -163,7 +163,7 @@ export default function Design() {
           isCategoryCard
           variants={categoryCardVariants}
           title="Shiba Inu Motion Graphic Video"
-          subtitle="After Effects / Motion Graphics / Storyboarding"
+          subtitle="After Effects / Motion Graphics / Illustrator"
           description="A short animated introduction to the Shiba Inu."
           imageSrc={Shibainu}
           href="/design/shibainu"
@@ -229,6 +229,11 @@ export default function Design() {
             </div>
           ))}
         </div>
+        <p className="mt-8 text-center text-sm text-gray-500 md:mt-15">
+          *All designs in this gallery were created for educational purposes
+          only. Any company names, logos, or brands shown are used for
+          demonstration purposes and have no commercial affiliation.
+        </p>
       </section>
     </main>
   );
