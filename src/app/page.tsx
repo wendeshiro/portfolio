@@ -1,6 +1,7 @@
 "use client";
 
 import ProjectCard from "@/components/ProjectCard";
+import BackToTop from "@/components/BackToTop";
 import {
   HOME_HERO_LETTER_DURATION,
   homeCardSectionMotionProps,
@@ -374,6 +375,7 @@ export default function Home() {
   return (
     <>
       <motion.div style={{ backgroundColor }} className="fixed inset-0 -z-10" />
+      <BackToTop />
       <main className="relative mx-auto">
         <section className="relative h-[calc(100vh-5rem)] md:h-[calc(100vh-7rem)]">
           <section className="relative flex h-[calc(100vh-5rem)] flex-col items-center justify-center px-5 select-none md:h-[calc(100vh-8rem)] md:px-10">

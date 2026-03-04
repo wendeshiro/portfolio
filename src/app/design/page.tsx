@@ -2,6 +2,7 @@
 
 import { useCallback, useRef } from "react";
 import ProjectCard from "@/components/ProjectCard";
+import BackToTop from "@/components/BackToTop";
 import BrochureMockup from "@/images/design/gallery/brochure-mockup.webp";
 import EAdvertMockup from "@/images/design/gallery/e-advert-mockup.webp";
 import MenuMockup from "@/images/design/gallery/menu-mockup.webp";
@@ -112,6 +113,7 @@ export default function Design() {
 
   return (
     <main className="relative flex flex-col items-center pt-8 pb-16 md:pt-10 md:pb-30">
+      <BackToTop />
       <section className="mb-10 md:mb-18">
         <motion.p
           {...categoryTitleMotionProps}
