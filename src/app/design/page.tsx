@@ -160,10 +160,10 @@ export default function Design() {
         />
       </motion.section>
 
-      <section className="mb-10 md:mt-22 md:mb-10">
+      <section className="mt-10 mb-5 md:mt-22 md:mb-10">
         <motion.p
           {...categoryTitleMotionProps}
-          className="text-secondary/30 text-6xl tracking-[-0.15em] uppercase select-none md:text-7xl"
+          className="text-secondary/30 text-4xl tracking-[-0.15em] uppercase select-none md:text-7xl"
         >
           Design
           <span className="mr-[0.13em] ml-[0.25em]">Gallery</span>
@@ -206,9 +206,9 @@ export default function Design() {
                       src={image.src}
                       alt={image.alt}
                       placeholder="blur"
-                      className="h-auto w-full transition-transform duration-400 group-hover:scale-[1.05]"
+                      className="h-auto w-full transition-transform duration-400 sm:group-hover:scale-[1.05]"
                     />
-                    <div className="pointer-events-none absolute inset-x-0 bottom-0 translate-y-2 bg-black/50 px-4 py-3 opacity-0 transition-all duration-300 group-hover:translate-y-0 group-hover:opacity-100">
+                    <div className="pointer-events-none absolute inset-x-0 bottom-0 translate-y-0 bg-black/45 px-4 py-3 opacity-100 transition-all duration-300 sm:translate-y-2 sm:opacity-0 sm:group-hover:translate-y-0 sm:group-hover:opacity-100">
                       <p className="text-sm font-medium tracking-wide text-white md:text-base">
                         {image.title}
                       </p>
