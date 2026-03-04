@@ -2,6 +2,8 @@
 
 import { useEffect, useState } from "react";
 import { useLenis } from "lenis/react";
+import { usePathname } from "next/navigation";
+import { requestHomeSnapPause } from "@/lib/homeSnapControl";
 
 type BackToTopProps = {
   className?: string;
@@ -11,6 +13,7 @@ const SHOW_AFTER_SCROLL_PERCENT = 0.2; // Show after scrolling 20% of the page.
 
 export default function BackToTop({ className = "" }: BackToTopProps) {
   const lenis = useLenis();
+  const pathname = usePathname();
   const [isVisible, setIsVisible] = useState(false);
 
   useEffect(() => {
@@ -38,6 +41,10 @@ export default function BackToTop({ className = "" }: BackToTopProps) {
   }, []);
 
   function handleBackToTop() {
+    if (pathname === "/") {
+      requestHomeSnapPause();
+    }
+
     if (lenis) {
       lenis.scrollTo(0, { duration: 1 });
       return;
