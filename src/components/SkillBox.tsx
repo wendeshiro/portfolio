@@ -99,11 +99,11 @@ export default function SkillBox({
 
   return (
     <div className={`w-full ${className ?? ""}`}>
-      <h2 className="text-center text-xl font-medium tracking-wide md:text-2xl">
+      <h2 className="text-center text-xl font-medium tracking-wide select-none md:text-2xl">
         Skills & Tools
       </h2>
       <div className="mt-5 flex flex-col gap-4 md:mt-7 md:gap-6">
-        <div className="w-full self-center md:border-b md:border-black/30">
+        <div className="w-full self-center select-none md:border-b md:border-black/30">
           <div className="flex flex-wrap justify-center gap-2 md:flex-nowrap md:justify-center md:gap-8">
             {categories.map((category) => {
               const isActive = category.key === activeCategory;
@@ -113,7 +113,7 @@ export default function SkillBox({
                   key={category.key}
                   type="button"
                   onClick={() => setActiveCategory(category.key)}
-                  className={`relative cursor-pointer rounded-full px-4 py-2 text-left text-lg transition-colors md:rounded-none md:px-0 md:pb-2.5 md:whitespace-nowrap ${
+                  className={`relative cursor-pointer rounded-full px-4 py-2 text-left text-lg transition-colors duration-300 md:rounded-none md:px-0 md:pb-2.5 md:whitespace-nowrap ${
                     isActive
                       ? "text-primary bg-primary/10 md:bg-transparent"
                       : "text-black/60 hover:text-black"
