@@ -112,9 +112,9 @@ export default function Design() {
   }, [lenis, GALLERY_SCROLL_OFFSET]);
 
   return (
-    <main className="relative flex flex-col items-center pt-8 pb-16 md:pt-10 md:pb-30">
+    <main className="relative flex flex-col items-center pt-8 pb-16 md:pt-8 md:pb-30">
       <BackToTop />
-      <section className="mb-10 md:mb-18">
+      <section className="mb-10 md:mb-12">
         <motion.p
           {...categoryTitleMotionProps}
           className="text-secondary/20 text-6xl tracking-[-0.18em] uppercase select-none md:text-9xl"
@@ -163,7 +163,7 @@ export default function Design() {
         initial={{ opacity: 0, y: 6 }}
         animate={{ opacity: 1, y: 0 }}
         transition={{ duration: 0.35, ease: "easeOut" }}
-        className="text-secondary/80 mt-5 flex cursor-pointer flex-col items-center md:mt-2"
+        className="text-secondary/80 mt-5 flex cursor-pointer flex-col items-center md:mt-3"
       >
         <motion.span
           className="block"
@@ -177,6 +177,18 @@ export default function Design() {
         >
           <span className="block h-5 w-5 rotate-45 border-r-2 border-b-2" />
         </motion.span>
+        <motion.p
+          className="text-secondary mt-4"
+          animate={{ opacity: [0.25, 1, 0.25] }}
+          transition={{
+            duration: 2.8,
+            ease: "easeInOut",
+            repeat: Infinity,
+            repeatDelay: 0.2,
+          }}
+        >
+          Explore Gallery
+        </motion.p>
       </motion.button>
 
       <section ref={gallerySectionRef} className="mt-10 mb-5 md:mt-22 md:mb-10">
