@@ -53,8 +53,8 @@ export default function About() {
   }, []);
 
   return (
-    <main className="relative flex flex-col items-center pt-8 pb-20 md:pt-10">
-      <section className="mb-10 md:mb-18">
+    <main className="relative flex flex-col items-center pt-8 pb-20 md:pt-8">
+      <section className="mb-10 md:mb-12">
         <motion.p
           {...categoryTitleMotionProps}
           className="text-primary/20 inline-flex gap-x-4 text-6xl tracking-[-0.18em] uppercase select-none md:gap-x-8 md:text-9xl"
@@ -192,6 +192,7 @@ export default function About() {
                     "Tailwind CSS",
                     "Framer Motion",
                     "React Three Fiber (R3F)",
+                    "WordPress",
                   ],
                 },
                 {

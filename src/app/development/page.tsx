@@ -15,8 +15,8 @@ import { motion } from "framer-motion";
 
 export default function Development() {
   return (
-    <main className="relative flex flex-col items-center pt-8 pb-16 md:pt-10 md:pb-30">
-      <section className="mb-10 md:mb-18">
+    <main className="relative flex flex-col items-center pt-8 pb-16 md:pt-8 md:pb-30">
+      <section className="mb-10 md:mb-12">
         <motion.p
           {...categoryTitleMotionProps}
           className="text-primary/20 text-6xl tracking-[-0.18em] uppercase select-none md:text-9xl"
