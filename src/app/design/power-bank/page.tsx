@@ -10,11 +10,22 @@ import BackButton from "@/components/BackButton";
 import Storyboard01 from "@/images/design/power-bank/storyboard-01.webp";
 import Storyboard02 from "@/images/design/power-bank/storyboard-02.webp";
 import PhotoView from "@/components/PhotoView";
+import ScrollSpyNav from "@/components/ScrollSpyNav";
 
 export default function PowerBank() {
   return (
     <main className="relative max-w-full py-16 md:py-36">
       <BackButton />
+      <ScrollSpyNav
+        sections={[
+          { id: "overview", label: "Overview" },
+          { id: "final-promotional-video", label: "Final Promotional Video" },
+          {
+            id: "storyboard",
+            label: "Storyboard",
+          },
+        ]}
+      />
       <header className="mx-auto flex max-w-7xl flex-col px-5">
         <ProjectTitle
           title="Power Bank Commercial"
@@ -60,6 +71,7 @@ export default function PowerBank() {
           transition={{ duration: 1, ease: "easeOut" }} // Animation settings
           viewport={{ once: true, amount: 0.02 }} // Trigger animation when 2% in view, only once
           className="relative"
+          id="final-promotional-video"
         >
           <div className="flex flex-col">
             <h2 className="mb-7 font-serif text-2xl font-medium md:text-4xl md:font-normal">
@@ -88,6 +100,7 @@ export default function PowerBank() {
           transition={{ duration: 1, ease: "easeOut" }} // Animation settings
           viewport={{ once: true, amount: 0.02 }} // Trigger animation when 2% in view, only once
           className="relative"
+          id="storyboard"
         >
           <div className="flex flex-col">
             <h2 className="mb-8 font-serif text-2xl font-medium md:text-4xl md:font-normal">
