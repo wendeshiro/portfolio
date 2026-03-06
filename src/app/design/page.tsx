@@ -59,14 +59,14 @@ const galleryImages: GalleryImage[] = [
     src: BrochureMockup,
     alt: "Travel Itinerary Brochure",
     title: "Travel Itinerary Brochure",
-    description: "inDesign, Photoshop",
+    description: "InDesign, Photoshop",
     widthClass: "md:w-[39rem]",
   },
   {
     src: EAdvertMockup,
     alt: "Tech Exhibition Digital Signage",
     title: "Tech Exhibition Digital Signage",
-    description: "inDesign, Photoshop",
+    description: "InDesign, Photoshop",
     widthClass: "md:w-[39rem]",
   },
   {
@@ -80,7 +80,7 @@ const galleryImages: GalleryImage[] = [
     src: MenuMockup,
     alt: "Restaurant Menu",
     title: "Restaurant Menu",
-    description: "inDesign, Adobe Illustrator",
+    description: "InDesign, Adobe Illustrator",
     widthClass: "md:w-[60rem]",
   },
 ];

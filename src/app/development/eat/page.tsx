@@ -134,7 +134,7 @@ export default function Eat() {
                 candidate dishes by selected category or subCategory.
               </li>
               <li>
-                3. Generates a{" "}
+                3. Generate a{" "}
                 <span className="text-primary font-medium">random index</span>{" "}
                 to display a dish when a blind box is clicked.
               </li>
