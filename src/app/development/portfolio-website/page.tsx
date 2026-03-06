@@ -44,16 +44,16 @@ export default function PortfolioWebsite() {
           }
           details={[
             {
-              label: "Development Skills",
+              label: "Development Skills and Tools",
               content:
-                "Next.js, React, TypeScript, Tailwind CSS, Framer Motion, React Three Fiber, Matter.js, Lenis, Git, GitHub, ESLint, Prettier",
+                "Next.js, React, TypeScript, Tailwind CSS, Framer Motion, React Three Fiber, Matter.js, Lenis, Git, GitHub, ESLint, Prettier, GitHub Actions (CI), Vercel",
             },
             {
               label: "AI Tools",
               content: "GitHub Copilot, OpenAI Codex, Context7 (MCP)",
             },
             {
-              label: "Design Skills",
+              label: "Design Skills and Tools",
               content:
                 "UI/UX Design (Wireframing, Design System, Layout, Visual Hierarchy), Photoshop (Product Mockups)",
             },
