@@ -211,6 +211,7 @@ export default function About() {
                   skills: [
                     "Git / GitHub",
                     "GitHub Actions (CI)",
+                    "ESLint",
                     "Agile Methodology (Scrum, Kanban)",
                   ],
                 },
