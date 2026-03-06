@@ -196,7 +196,7 @@ export default function SafeSpace() {
                 fragmented reports into actionable insights for management.
               </p>
               <p>
-                *This is an capstone project created for educational purposes.
+                *This is a capstone project created for educational purposes.
               </p>
             </>
           }
