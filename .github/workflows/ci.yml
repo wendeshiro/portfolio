@@ -34,8 +34,8 @@ jobs:
       - name: Check duplicate IDs by page
         run: npm run check:ids
 
-      - name: Typecheck (if present)
-        run: npm run typecheck --if-present
+      - name: Typecheck
+        run: npm run typecheck
 
       - name: Build
         run: npm run build
