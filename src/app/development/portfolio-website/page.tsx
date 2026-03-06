@@ -11,6 +11,8 @@ import ComingSoon from "@/images/coming-soon.webp";
 import BarredHeading from "@/components/BarredHeading";
 import Naming from "@/images/development/portfolio/naming.webp";
 import Eslint from "@/images/development/portfolio/eslint.webp";
+import Ci from "@/images/development/portfolio/ci.webp";
+import ExternalLink from "@/components/ExternalLink";
 
 export default function PortfolioWebsite() {
   return (
@@ -78,8 +80,8 @@ export default function PortfolioWebsite() {
             Engineering Standards
           </h2>
           <section className="mb-5 md:mb-10">
-            <div className="flex flex-col md:flex-row md:gap-13">
-              <div className="md:w-1/2">
+            <div className="flex flex-col md:relative md:flex-row md:gap-13">
+              <div className="md:sticky md:top-24 md:w-1/2 md:self-start">
                 <BarredHeading text="Naming Conventions & Project Structure" />
                 <p className="mt-2 mb-5 text-base leading-relaxed md:text-lg">
                   Clear naming conventions and a well-structured project setup
@@ -108,8 +110,8 @@ export default function PortfolioWebsite() {
             viewport={{ once: true, amount: 0.02 }} // Trigger animation when 2% in view, only once
             className="mb-5 md:mb-8"
           >
-            <div className="flex flex-col md:flex-row md:gap-13">
-              <div className="md:w-1/2">
+            <div className="flex flex-col md:relative md:flex-row md:gap-13">
+              <div className="md:sticky md:top-24 md:w-1/2 md:self-start">
                 <BarredHeading text="Code Quality Practices" />
                 <div className="mt-2 mb-5 space-y-3 text-base leading-relaxed md:text-lg">
                   <p>
@@ -133,6 +135,43 @@ export default function PortfolioWebsite() {
                 <Image
                   src={Eslint}
                   alt="Code Quality Practices"
+                  placeholder="blur"
+                />
+              </div>
+            </div>
+          </motion.section>
+          <motion.section
+            initial={{ opacity: 0, y: 50 }} // Initial state: hidden and slightly down
+            whileInView={{ opacity: 1, y: 0 }} // Animate to: visible and in place
+            transition={{ duration: 1, ease: "easeOut" }} // Animation settings
+            viewport={{ once: true, amount: 0.02 }} // Trigger animation when 2% in view, only once
+            className="mb-5 md:mb-8"
+          >
+            <div className="flex flex-col md:relative md:flex-row md:gap-13">
+              <div className="md:sticky md:top-24 md:w-1/2 md:self-start">
+                <BarredHeading text="Continuous Integration (CI)" />
+                <div className="mt-2 mb-5 space-y-3 text-base leading-relaxed md:text-lg">
+                  <p>
+                    Automated CI pipeline using{" "}
+                    <ExternalLink
+                      className="text-primary"
+                      fontWeight="medium"
+                      href="https://github.com/wendeshiro/portfolio/blob/main/.github/workflows/ci.yml"
+                    >
+                      GitHub Actions
+                    </ExternalLink>
+                    . On every push and pull request, it runs linting,{" "}
+                    <span className="text-primary font-medium">
+                      duplicate-ID checks
+                    </span>
+                    , type checking, and build verification.
+                  </p>
+                </div>
+              </div>
+              <div className="overflow-hidden rounded-xl md:w-1/2">
+                <Image
+                  src={Ci}
+                  alt="Continuous Integration"
                   placeholder="blur"
                 />
               </div>

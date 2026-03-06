@@ -79,6 +79,7 @@ function checkPageIds(pagePath) {
   // Collect id usage for this single page only.
   const idOccurrences = new Map();
 
+  // Find static id="..." patterns in JSX tags.
   for (const match of source.matchAll(STATIC_ID_ATTR_PATTERN)) {
     const idValue = match[1] ?? match[2] ?? match[3] ?? match[4];
     if (!idValue) {
@@ -95,6 +96,7 @@ function checkPageIds(pagePath) {
     });
   }
 
+  // Check fixed-id components.
   for (const { componentName, fixedId } of FIXED_ID_COMPONENTS) {
     const regex = new RegExp(`<${componentName}\\b`, "g");
     for (const match of source.matchAll(regex)) {
@@ -114,7 +116,9 @@ function checkPageIds(pagePath) {
     const details = occurrences
       .map((occurrence) => `line ${occurrence.line}: ${occurrence.reason}`)
       .join(" | ");
-    duplicateIdFailures.push(`id "${id}" appears ${occurrences.length} times -> ${details}`);
+    duplicateIdFailures.push(
+      `id "${id}" appears ${occurrences.length} times -> ${details}`,
+    );
   }
 
   if (duplicateIdFailures.length === 0) {
