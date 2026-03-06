@@ -16,12 +16,10 @@ const FIXED_ID_COMPONENTS = [
   },
 ];
 
-const ID_PATTERNS = [
-  /\bid\s*=\s*"([^"]+)"/g,
-  /\bid\s*=\s*'([^']+)'/g,
-  /\bid\s*=\s*\{\s*"([^"]+)"\s*\}/g,
-  /\bid\s*=\s*\{\s*'([^']+)'\s*\}/g,
-];
+// Only match id attributes inside opening JSX tags.
+// This avoids matching unrelated id="..." text outside tag context.
+const STATIC_ID_ATTR_PATTERN =
+  /<(?!\/)[^>]*\bid\s*=\s*(?:"([^"]+)"|'([^']+)'|\{\s*"([^"]+)"\s*\}|\{\s*'([^']+)'\s*\})/g;
 
 function collectPageFiles(dir) {
   const entries = readdirSync(dir, { withFileTypes: true });
@@ -42,14 +40,29 @@ function collectPageFiles(dir) {
   return pageFiles;
 }
 
-function lineFromIndex(content, index) {
-  let line = 1;
-  for (let i = 0; i < index; i += 1) {
+function createLineResolver(content) {
+  const lineStarts = [0];
+  for (let i = 0; i < content.length; i += 1) {
     if (content[i] === "\n") {
-      line += 1;
+      lineStarts.push(i + 1);
     }
   }
-  return line;
+
+  return (index) => {
+    let low = 0;
+    let high = lineStarts.length - 1;
+
+    while (low <= high) {
+      const mid = Math.floor((low + high) / 2);
+      if (lineStarts[mid] <= index) {
+        low = mid + 1;
+      } else {
+        high = mid - 1;
+      }
+    }
+
+    return high + 1;
+  };
 }
 
 function addOccurrence(map, id, occurrence) {
@@ -62,43 +75,36 @@ function addOccurrence(map, id, occurrence) {
 function checkPageIds(pagePath) {
   const source = readFileSync(pagePath, "utf8");
   const pageRelPath = path.relative(ROOT, pagePath);
+  const lineFromIndex = createLineResolver(source);
   // Collect id usage for this single page only.
   const idOccurrences = new Map();
-  const fixedComponentFailures = [];
 
-  for (const pattern of ID_PATTERNS) {
-    pattern.lastIndex = 0;
-    let match = pattern.exec(source);
-    while (match) {
-      const idValue = match[1];
-      const line = lineFromIndex(source, match.index);
-      addOccurrence(idOccurrences, idValue, {
-        line,
-        reason: `static id="${idValue}"`,
-      });
-      match = pattern.exec(source);
+  // Find static id="..." patterns in JSX tags.
+  for (const match of source.matchAll(STATIC_ID_ATTR_PATTERN)) {
+    const idValue = match[1] ?? match[2] ?? match[3] ?? match[4];
+    if (!idValue) {
+      continue;
     }
+
+    const attrOffset = match[0].search(/\bid\s*=/);
+    const baseIndex = match.index ?? 0;
+    const idAttrIndex = attrOffset >= 0 ? baseIndex + attrOffset : baseIndex;
+
+    addOccurrence(idOccurrences, idValue, {
+      line: lineFromIndex(idAttrIndex),
+      reason: `static id="${idValue}"`,
+    });
   }
 
+  // Check fixed-id components.
   for (const { componentName, fixedId } of FIXED_ID_COMPONENTS) {
     const regex = new RegExp(`<${componentName}\\b`, "g");
-    const lines = [];
-    let match = regex.exec(source);
-
-    while (match) {
-      const line = lineFromIndex(source, match.index);
-      lines.push(line);
+    for (const match of source.matchAll(regex)) {
+      const line = lineFromIndex(match.index ?? 0);
       addOccurrence(idOccurrences, fixedId, {
         line,
         reason: `<${componentName}> -> id="${fixedId}"`,
       });
-      match = regex.exec(source);
-    }
-
-    if (lines.length > 1) {
-      fixedComponentFailures.push(
-        `${componentName} rendered ${lines.length} times (lines: ${lines.join(", ")})`,
-      );
     }
   }
 
@@ -110,16 +116,17 @@ function checkPageIds(pagePath) {
     const details = occurrences
       .map((occurrence) => `line ${occurrence.line}: ${occurrence.reason}`)
       .join(" | ");
-    duplicateIdFailures.push(`id "${id}" appears ${occurrences.length} times -> ${details}`);
+    duplicateIdFailures.push(
+      `id "${id}" appears ${occurrences.length} times -> ${details}`,
+    );
   }
 
-  if (fixedComponentFailures.length === 0 && duplicateIdFailures.length === 0) {
+  if (duplicateIdFailures.length === 0) {
     return null;
   }
 
   return {
     pageRelPath,
-    fixedComponentFailures,
     duplicateIdFailures,
   };
 }
@@ -143,10 +150,6 @@ function main() {
   console.error(`check:ids failed in ${failures.length} page file(s):`);
   for (const failure of failures) {
     console.error(`\n- ${failure.pageRelPath}`);
-
-    for (const message of failure.fixedComponentFailures) {
-      console.error(`  [fixed-component] ${message}`);
-    }
 
     for (const message of failure.duplicateIdFailures) {
       console.error(`  [duplicate-id] ${message}`);
