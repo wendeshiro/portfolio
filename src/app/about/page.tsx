@@ -208,7 +208,11 @@ export default function About() {
                 },
                 {
                   title: "Development Practices",
-                  skills: ["Git / GitHub", "Agile Methodology (Scrum, Kanban)"],
+                  skills: [
+                    "Git / GitHub",
+                    "GitHub Actions (CI)",
+                    "Agile Methodology (Scrum, Kanban)",
+                  ],
                 },
               ]}
               designSkill={[
