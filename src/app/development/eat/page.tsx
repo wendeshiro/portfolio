@@ -26,6 +26,8 @@ export default function Eat() {
           },
         ]}
       />
+      {/* Temporary duplicate id for CI testing. Remove after test. */}
+      <div id="product-demo" className="hidden" aria-hidden="true" />
       <header className="mx-auto flex max-w-7xl flex-col px-5">
         <ProjectTitle
           title="What Should I Eat"
