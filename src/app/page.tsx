@@ -112,7 +112,7 @@ const homeSecHeroTextSegments: HomeSecHeroTextSegment[] = [
     className: "text-primary",
   },
   {
-    text: " design,",
+    text: " user experience,",
     className: "text-primary",
   },
   {
@@ -521,7 +521,7 @@ export default function Home() {
                   {...(shouldPlayHeroTextAnimation
                     ? homeSecHeroTextMotionProps
                     : {})}
-                  className="mt-5 w-full text-[15.5px] leading-[1.7] md:font-light tracking-wider break-normal wrap-normal md:text-2xl"
+                  className="mt-5 w-full text-[15.5px] leading-[1.7] tracking-wider break-normal wrap-normal md:text-2xl md:font-light"
                 >
                   {homeSecHeroTextSegments.map((segment, segmentIndex) => (
                     <span

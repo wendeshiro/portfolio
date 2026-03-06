@@ -9,7 +9,7 @@ type BackToTopProps = {
   className?: string;
 };
 
-const SHOW_AFTER_SCROLL_PERCENT = 0.2; // Show after scrolling 20% of the page.
+const SHOW_AFTER_SCROLL_PERCENT = 0.9; // Show after scrolling 90% of the page.
 
 export default function BackToTop({ className = "" }: BackToTopProps) {
   const lenis = useLenis();
@@ -18,15 +18,16 @@ export default function BackToTop({ className = "" }: BackToTopProps) {
 
   useEffect(() => {
     function updateVisibility() {
-      const scrollableHeight =
-        document.documentElement.scrollHeight - window.innerHeight;
+      const pageHeight = document.documentElement.scrollHeight;
+      const viewportHeight = window.innerHeight;
 
-      if (scrollableHeight <= 0) {
+      if (pageHeight <= 0) {
         setIsVisible(false);
         return;
       }
 
-      const progress = window.scrollY / scrollableHeight;
+      // Progress over full page height, not only scrollable distance.
+      const progress = (window.scrollY + viewportHeight) / pageHeight;
       setIsVisible(progress >= SHOW_AFTER_SCROLL_PERCENT);
     }
 
@@ -58,7 +59,7 @@ export default function BackToTop({ className = "" }: BackToTopProps) {
       type="button"
       onClick={handleBackToTop}
       aria-label="Back to top"
-      className={`focus-visible:ring-primary/40 fixed right-8 bottom-20 z-51 hidden items-center justify-center rounded-full border border-black/10 bg-white/55 px-2 py-2 text-sm font-medium tracking-[0.08em] text-black/80 shadow-[0_4px_14px_rgba(15,23,42,0.05)] backdrop-blur-lg transition-all select-none hover:cursor-pointer focus-visible:ring-2 focus-visible:ring-offset-2 focus-visible:ring-offset-[#fcfdfd] focus-visible:outline-none xl:inline-flex xl:transition-opacity xl:duration-500 xl:ease-out ${isVisible ? "xl:pointer-events-auto xl:opacity-100" : "xl:pointer-events-none xl:opacity-0"} ${className}`}
+      className={`focus-visible:ring-primary/40 fixed right-6 bottom-17 z-51 inline-flex items-center justify-center rounded-full border border-black/10 bg-white/55 px-2 py-2 text-sm font-medium tracking-[0.08em] text-black/80 shadow-[0_4px_14px_rgba(15,23,42,0.05)] backdrop-blur-lg transition-all duration-500 ease-out select-none hover:cursor-pointer focus-visible:ring-2 focus-visible:ring-offset-2 focus-visible:ring-offset-[#fcfdfd] focus-visible:outline-none sm:right-8 sm:bottom-20 ${isVisible ? "pointer-events-auto opacity-100" : "pointer-events-none opacity-0"} ${className}`}
     >
       <svg
         xmlns="http://www.w3.org/2000/svg"

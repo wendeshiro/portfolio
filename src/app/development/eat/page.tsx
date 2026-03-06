@@ -10,11 +10,22 @@ import Snippet02 from "@/images/development/eat/snippet-02.webp";
 import Snippet03 from "@/images/development/eat/snippet-03.webp";
 import { motion } from "framer-motion";
 import BackButton from "@/components/BackButton";
+import ScrollSpyNav from "@/components/ScrollSpyNav";
 
 export default function Eat() {
   return (
     <main className="relative max-w-full py-16 md:py-36">
       <BackButton />
+      <ScrollSpyNav
+        sections={[
+          { id: "overview", label: "Overview" },
+          { id: "product-demo", label: "Product Demo" },
+          {
+            id: "blind-box-implementation",
+            label: "Blind Box Implementation",
+          },
+        ]}
+      />
       <header className="mx-auto flex max-w-7xl flex-col px-5">
         <ProjectTitle
           title="What Should I Eat"
@@ -81,6 +92,7 @@ export default function Eat() {
           transition={{ duration: 1, ease: "easeOut" }} // Animation settings
           viewport={{ once: true, amount: 0.4 }} // Trigger animation when x% in view, only once
           className="relative"
+          id="product-demo"
         >
           <h2 className="mb-7 font-serif text-2xl font-medium md:text-4xl md:font-normal">
             Product Demo
@@ -106,6 +118,7 @@ export default function Eat() {
           transition={{ duration: 1, ease: "easeOut" }} // Animation settings
           viewport={{ once: true, amount: 0.02 }} // Trigger animation when 2% in view, only once
           className="relative flex flex-col gap-8 md:flex-row md:justify-between md:gap-10"
+          id="blind-box-implementation"
         >
           <div className="top-24 self-start md:sticky md:w-2/5">
             <h2 className="mb-6 font-serif text-2xl font-medium md:text-4xl md:font-normal">

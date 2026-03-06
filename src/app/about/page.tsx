@@ -87,7 +87,7 @@ export default function About() {
           className="mt-10 text-lg md:mt-18 md:text-xl"
         >
           <motion.div
-            className="flex items-center justify-center space-x-8 md:space-x-15"
+            className="flex items-center justify-center space-x-8 select-none md:space-x-15"
             variants={categoryCardVariants}
           >
             <div className="inline-flex items-center gap-2">
@@ -162,7 +162,7 @@ export default function About() {
                   animate={{ opacity: 1 }}
                   exit={{ opacity: 0 }}
                   transition={{ duration: 0.3 }}
-                  className="pointer-events-none absolute top-full left-1/2 mt-2 w-max -translate-x-1/2 text-sm whitespace-nowrap text-gray-700 md:text-base"
+                  className="pointer-events-none absolute top-full left-1/2 mt-2 w-max -translate-x-1/2 text-sm whitespace-nowrap text-gray-700 select-none md:text-base"
                 >
                   Copied to clipboard
                 </motion.span>

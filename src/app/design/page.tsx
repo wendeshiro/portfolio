@@ -178,7 +178,7 @@ export default function Design() {
           <span className="block h-5 w-5 rotate-45 border-r-2 border-b-2" />
         </motion.span>
         <motion.p
-          className="text-secondary mt-4"
+          className="text-secondary mt-4 select-none"
           animate={{ opacity: [0.25, 1, 0.25] }}
           transition={{
             duration: 2.8,

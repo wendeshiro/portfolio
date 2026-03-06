@@ -1,0 +1,44 @@
+name: CI
+
+# Run baseline quality checks on PRs to main, plus pushes to main and feat/* branches.
+# Includes lint, page-scoped ID checks, typecheck, build, and tests (if present).
+on:
+  pull_request:
+    branches: ["main"]
+  push:
+    branches: ["main", "feat/**"]
+
+jobs:
+  quality:
+    runs-on: ubuntu-latest
+    permissions:
+      contents: read
+
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v5
+
+      - name: Setup Node.js
+        uses: actions/setup-node@v4
+        with:
+          node-version: "20.x"
+          cache: "npm"
+
+      - name: Install dependencies
+        run: npm ci
+
+      - name: Lint
+        run: npm run lint
+
+      # Guardrail: fail when duplicate DOM ids exist within the same page.tsx route.
+      - name: Check duplicate IDs by page
+        run: npm run check:ids
+
+      - name: Typecheck (if present)
+        run: npm run typecheck --if-present
+
+      - name: Build
+        run: npm run build
+
+      - name: Test (if present)
+        run: npm run test --if-present
