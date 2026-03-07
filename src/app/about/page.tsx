@@ -199,11 +199,13 @@ export default function About() {
                   title: "Backend & Databases",
                   skills: [
                     "Node.js",
-                    "Express.js (RESTful)",
+                    "Express.js",
+                    "RESTful API",
                     "AWS Lambda",
                     "SQL",
                     "PostgreSQL",
                     "MySQL",
+                    "OpenAI API Integration",
                   ],
                 },
                 {
@@ -213,6 +215,17 @@ export default function About() {
                     "GitHub Actions (CI)",
                     "ESLint",
                     "Agile Methodology (Scrum, Kanban)",
+                  ],
+                },
+                {
+                  title: "AI Tools",
+                  skills: [
+                    "GitHub Copilot",
+                    "OpenAI Codex",
+                    "ChatGPT",
+                    "Gemini",
+                    "MPCs",
+                    "Cursor",
                   ],
                 },
               ]}
