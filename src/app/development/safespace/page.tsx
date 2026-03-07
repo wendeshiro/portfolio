@@ -418,7 +418,7 @@ export default function SafeSpace() {
                   were used for version control and team collaboration.
                 </p>
               </div>
-              <div className="overflow-hidden rounded-xl md:w-1/2">
+              <div className="overflow-hidden rounded-lg md:w-1/2">
                 <Image
                   src={Naming}
                   alt="Naming Conventions and Project Structure"
@@ -443,7 +443,7 @@ export default function SafeSpace() {
                 src={Architecture}
                 alt="System Architecture"
                 placeholder="blur"
-                className="cursor-pointer rounded-2xl shadow-lg md:w-[70vw]"
+                className="cursor-pointer rounded-lg shadow-lg md:w-[70vw]"
               ></Image>
             </PhotoView>
             <div className="flex flex-col md:mt-8 md:flex-row md:gap-13">
@@ -554,7 +554,7 @@ export default function SafeSpace() {
                 heightBelowMd={350}
                 iconSizeMdUp={80}
                 iconSizeBelowMd={55}
-                className="border-tertiary/20 bg-tertiary/5 rounded-xl border md:mt-3 md:w-1/2"
+                className="border-tertiary/20 bg-tertiary/5 rounded-lg border md:mt-3 md:w-1/2"
               />
             </div>
           </motion.section>
@@ -568,7 +568,7 @@ export default function SafeSpace() {
             <BarredHeading text="AI Report Generation Pipeline" />
             <div className="flex flex-col md:mt-6 md:flex-row md:gap-13">
               <div className="md:w-auto">
-                <div className="bg-tertiary/8 relative mx-auto h-100 w-full max-w-90 rounded-2xl md:h-120 md:w-120 md:max-w-none">
+                <div className="bg-tertiary/8 relative mx-auto h-100 w-full max-w-90 rounded-lg md:h-120 md:w-120 md:max-w-none">
                   <div className="bg-tertiary/25 absolute top-8 left-1/2 -translate-x-1/2 overflow-hidden rounded-[30px] p-2.5 shadow-2xl md:p-3">
                     <div className="aspect-496/1080 w-50 overflow-hidden rounded-[20px] md:w-60 md:rounded-[18px]">
                       <video
@@ -631,7 +631,7 @@ export default function SafeSpace() {
                 </p>
               </div>
               <div className="md:w-auto">
-                <div className="bg-tertiary/8 relative mx-auto h-100 w-full max-w-90 rounded-2xl md:h-120 md:w-120 md:max-w-none">
+                <div className="bg-tertiary/8 relative mx-auto h-100 w-full max-w-90 rounded-lg md:h-120 md:w-120 md:max-w-none">
                   <div className="bg-tertiary/25 absolute top-8 left-1/2 -translate-x-1/2 overflow-hidden rounded-[30px] p-2.5 shadow-2xl md:p-3">
                     <div className="aspect-501/1080 w-50 overflow-hidden rounded-[20px] md:w-60 md:rounded-[18px]">
                       <video
@@ -674,7 +674,7 @@ export default function SafeSpace() {
                 functional mockup with a limited feature scope.
               </p>
             </div>
-            <div className="bg-tertiary/8 flex h-auto items-center justify-center overflow-hidden rounded-2xl p-4 md:h-auto md:px-20 md:py-8">
+            <div className="bg-tertiary/8 flex h-auto items-center justify-center overflow-hidden rounded-lg p-4 md:h-auto md:px-20 md:py-8">
               <video
                 autoPlay
                 loop
@@ -682,7 +682,7 @@ export default function SafeSpace() {
                 playsInline
                 preload="metadata"
                 poster="/videos/safespace/websup-placeholder.webp"
-                className="w-full rounded-xl shadow-xl md:max-w-270"
+                className="w-full rounded-lg shadow-xl md:max-w-270"
               >
                 <source src="/videos/safespace/websup.mp4" type="video/mp4" />
               </video>
@@ -941,13 +941,13 @@ export default function SafeSpace() {
                 src={PersonaPri}
                 alt="Primary User Persona"
                 placeholder="blur"
-                className="h-[30vh] w-auto cursor-pointer rounded-2xl shadow-md md:h-[70vh]"
+                className="h-[30vh] w-auto cursor-pointer rounded-lg shadow-md md:h-[70vh]"
               />
               <Image
                 src={PersonaSec}
                 alt="Secondary User Persona"
                 placeholder="blur"
-                className="h-[30vh] w-auto cursor-pointer rounded-2xl shadow-md md:h-[70vh]"
+                className="h-[30vh] w-auto cursor-pointer rounded-lg shadow-md md:h-[70vh]"
               />
             </PhotoView>
           </motion.section>
@@ -979,14 +979,14 @@ export default function SafeSpace() {
                 alt="Sitemap"
                 title="Sitemap"
                 placeholder="blur"
-                className="cursor-pointer rounded-2xl shadow-lg md:w-[60vw]"
+                className="cursor-pointer rounded-lg shadow-lg md:w-[60vw]"
               />
               <Image
                 src={UserFlow}
                 alt="User Flow"
                 title="User Flow"
                 placeholder="blur"
-                className="cursor-pointer rounded-2xl shadow-lg md:w-[60vw]"
+                className="cursor-pointer rounded-lg shadow-lg md:w-[60vw]"
               />
             </PhotoView>
           </section>
@@ -1013,7 +1013,7 @@ export default function SafeSpace() {
                 src={DesignSystem}
                 alt="Design System"
                 placeholder="blur"
-                className="cursor-pointer rounded-2xl md:w-[70vw]"
+                className="cursor-pointer rounded-lg md:w-[70vw]"
               ></Image>
             </PhotoView>
             <motion.div
@@ -1029,7 +1029,7 @@ export default function SafeSpace() {
                 supportive and trustworthy presence.
               </p>
               <div className="flex flex-col items-center">
-                <div className="w-60 overflow-hidden rounded-2xl md:w-70">
+                <div className="w-60 overflow-hidden rounded-lg md:w-70">
                   <video
                     autoPlay
                     loop
@@ -1068,7 +1068,7 @@ export default function SafeSpace() {
                   alt="LoFi Wireframes"
                   title="Wireframes"
                   placeholder="blur"
-                  className="cursor-pointer rounded-2xl"
+                  className="cursor-pointer rounded-lg"
                 ></Image>
               </PhotoView>
               <PhotoView>
@@ -1077,14 +1077,14 @@ export default function SafeSpace() {
                   alt="HiFi Wireframes"
                   title="High-Fidelity Design"
                   placeholder="blur"
-                  className="cursor-pointer rounded-2xl"
+                  className="cursor-pointer rounded-lg"
                 ></Image>
               </PhotoView>
             </div>
             {/* Desktop: compare slider */}
             <div className="hidden md:block">
               <ReactCompareSlider
-                className="rounded-2xl"
+                className="rounded-lg"
                 itemOne={
                   <ReactCompareSliderImage
                     src={Lofi.src}
@@ -1118,7 +1118,7 @@ export default function SafeSpace() {
               src={Mkt}
               alt="Marketing Collateral"
               placeholder="blur"
-              className="cursor-pointer rounded-2xl"
+              className="cursor-pointer rounded-lg"
             ></Image>
           </PhotoView>
         </motion.section>

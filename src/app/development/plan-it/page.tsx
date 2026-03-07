@@ -112,7 +112,7 @@ export default function PlanIt() {
             <h2 className="mb-7 font-serif text-2xl font-medium md:text-4xl md:font-normal">
               State Management & Data Handling
             </h2>
-            <div className="bg-primary/10 flex h-auto items-center justify-center overflow-hidden rounded-xl p-4 md:h-auto md:px-20 md:py-8">
+            <div className="bg-primary/10 flex h-auto items-center justify-center overflow-hidden rounded-lg p-4 md:h-auto md:px-20 md:py-8">
               <video
                 controls
                 autoPlay
@@ -121,7 +121,7 @@ export default function PlanIt() {
                 playsInline
                 preload="metadata"
                 poster="/videos/plan-it/plan-it-demo-placeholder.webp"
-                className="w-full rounded-xl shadow-xl md:max-w-270"
+                className="w-full rounded-lg shadow-xl md:max-w-270"
               >
                 <source
                   src="/videos/plan-it/plan-it-demo.mp4"
@@ -156,7 +156,7 @@ export default function PlanIt() {
                 </p>
               </div>
               <div className="flex flex-col gap-8 md:w-1/2">
-                <div className="overflow-hidden rounded-xl shadow-2xl shadow-black/30">
+                <div className="overflow-hidden rounded-lg shadow-2xl shadow-black/30">
                   <Image
                     src={Snippet01}
                     alt="snippet01"
@@ -164,7 +164,7 @@ export default function PlanIt() {
                     unoptimized
                   />
                 </div>
-                <div className="overflow-hidden rounded-xl shadow-2xl shadow-black/30">
+                <div className="overflow-hidden rounded-lg shadow-2xl shadow-black/30">
                   <Image
                     src={Snippet02}
                     alt="snippet02"
@@ -197,7 +197,7 @@ export default function PlanIt() {
               className="flex flex-col gap-8 md:flex-row md:justify-between md:gap-16"
             >
               <div className="flex flex-col gap-8 md:w-1/2">
-                <div className="bg-primary/10 flex h-auto items-center justify-center overflow-hidden rounded-xl p-4 md:h-50 md:p-8">
+                <div className="bg-primary/10 flex h-auto items-center justify-center overflow-hidden rounded-lg p-4 md:h-50 md:p-8">
                   <video
                     autoPlay
                     loop
@@ -205,7 +205,7 @@ export default function PlanIt() {
                     playsInline
                     preload="metadata"
                     poster="/videos/plan-it/plan-it-api-placeholder.png"
-                    className="w-full rounded-xl shadow-xl"
+                    className="w-full rounded-lg shadow-xl"
                   >
                     <source
                       src="/videos/plan-it/plan-it-api.mp4"
@@ -213,7 +213,7 @@ export default function PlanIt() {
                     />
                   </video>
                 </div>
-                <div className="overflow-hidden rounded-xl shadow-2xl shadow-black/30">
+                <div className="overflow-hidden rounded-lg shadow-2xl shadow-black/30">
                   <Image
                     src={Snippet03}
                     alt="snippet03"
@@ -267,11 +267,11 @@ export default function PlanIt() {
                   jsPDF
                 </ExternalLink>
               </p>
-              <div className="bg-primary/10 flex h-53 w-full items-center justify-center overflow-hidden rounded-xl p-3 md:h-90 md:p-8">
+              <div className="bg-primary/10 flex h-53 w-full items-center justify-center overflow-hidden rounded-lg p-3 md:h-90 md:p-8">
                 <Image
                   src={Pdf}
                   alt="PDF export via jsPDF"
-                  className="h-auto w-auto rounded-xl shadow-xl"
+                  className="h-auto w-auto rounded-lg shadow-xl"
                   placeholder="blur"
                 />
               </div>
@@ -286,11 +286,11 @@ export default function PlanIt() {
                   react-date-range
                 </ExternalLink>
               </p>
-              <div className="bg-primary/10 flex h-90 w-full items-center justify-center overflow-hidden rounded-xl p-3 md:p-8">
+              <div className="bg-primary/10 flex h-90 w-full items-center justify-center overflow-hidden rounded-lg p-3 md:p-8">
                 <Image
                   src={DatePicker}
                   alt="date picker"
-                  className="h-auto w-auto rounded-xl shadow-xl"
+                  className="h-auto w-auto rounded-lg shadow-xl"
                   placeholder="blur"
                 />
               </div>
@@ -306,11 +306,11 @@ export default function PlanIt() {
                 </ExternalLink>{" "}
                 Dropdown
               </p>
-              <div className="bg-primary/10 flex h-80 w-full items-center justify-center overflow-hidden rounded-xl p-3 md:h-90 md:p-8">
+              <div className="bg-primary/10 flex h-80 w-full items-center justify-center overflow-hidden rounded-lg p-3 md:h-90 md:p-8">
                 <Image
                   src={Dropdown}
                   alt="customized bootstrap dropdown"
-                  className="h-auto w-auto rounded-xl shadow-xl"
+                  className="h-auto w-auto rounded-lg shadow-xl"
                   placeholder="blur"
                 />
               </div>

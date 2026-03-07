@@ -76,7 +76,7 @@ export default function SaaSLeadGen() {
           <Image
             src={ComingSoon}
             alt="Coming Soon"
-            className="w-full rounded-2xl"
+            className="w-full rounded-lg"
           />
         </motion.section>
       </section>

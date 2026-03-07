@@ -94,7 +94,7 @@ export default function PortfolioWebsite() {
                   workflow.
                 </p>
               </div>
-              <div className="overflow-hidden rounded-xl md:w-1/2">
+              <div className="overflow-hidden rounded-lg md:w-1/2">
                 <Image
                   src={Naming}
                   alt="Naming Conventions and Project Structure"
@@ -131,7 +131,7 @@ export default function PortfolioWebsite() {
                   </p>
                 </div>
               </div>
-              <div className="overflow-hidden rounded-xl md:w-1/2">
+              <div className="overflow-hidden rounded-lg md:w-1/2">
                 <Image
                   src={Eslint}
                   alt="Code Quality Practices"
@@ -168,7 +168,7 @@ export default function PortfolioWebsite() {
                   </p>
                 </div>
               </div>
-              <div className="overflow-hidden rounded-xl md:w-1/2">
+              <div className="overflow-hidden rounded-lg md:w-1/2">
                 <Image
                   src={Ci}
                   alt="Continuous Integration"
@@ -188,7 +188,7 @@ export default function PortfolioWebsite() {
           <Image
             src={ComingSoon}
             alt="Coming Soon"
-            className="w-full rounded-2xl"
+            className="w-full rounded-lg"
           />
         </motion.section>
       </section>
