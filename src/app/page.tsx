@@ -53,7 +53,7 @@ const heroHeadingLines: HeroLineSegment[][] = [
     { text: "Hi, ", phase: 1 },
     { text: "I'm Wende, ", phase: 1, startOffset: 0.12 },
   ],
-  [{ text: "A software", phase: 2, startOffset: 0.2 }],
+  [{ text: "Product-minded", phase: 2, startOffset: 0.2 }],
   [
     {
       text: "Developer",
