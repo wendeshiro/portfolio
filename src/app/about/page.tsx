@@ -53,7 +53,7 @@ export default function About() {
   }, []);
 
   return (
-    <main className="relative flex flex-col items-center pt-8 pb-20 md:pt-8">
+    <main className="relative flex flex-col items-center pt-8 pb-20 md:pt-8 md:pb-40">
       <section className="mb-10 md:mb-12">
         <motion.p
           {...categoryTitleMotionProps}
@@ -173,7 +173,7 @@ export default function About() {
 
         <motion.section
           {...categoryCardSectionMotionProps}
-          className="mt-15 md:mt-22 md:h-130 md:w-290"
+          className="mt-15 md:mt-22 md:h-130 md:max-w-290"
         >
           <motion.div variants={categoryCardVariants}>
             <SkillBox
