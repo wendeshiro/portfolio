@@ -97,7 +97,7 @@ export default function Eat() {
           <h2 className="mb-7 font-serif text-2xl font-medium md:text-4xl md:font-normal">
             Product Demo
           </h2>
-          <div className="flex h-auto items-center justify-center overflow-hidden rounded-xl bg-[#FFC709]/20 p-4 md:h-auto md:px-20 md:py-8">
+          <div className="flex h-auto items-center justify-center overflow-hidden rounded-lg bg-[#FFC709]/20 p-4 md:h-auto md:px-20 md:py-8">
             <video
               autoPlay
               loop
@@ -105,7 +105,7 @@ export default function Eat() {
               playsInline
               preload="metadata"
               poster="/videos/eat/eat-demo-placeholder.webp"
-              className="w-full rounded-xl shadow-xl md:max-w-270"
+              className="w-full rounded-lg shadow-xl md:max-w-270"
             >
               <source src="/videos/eat/eat-demo.mp4" type="video/mp4" />
             </video>
@@ -149,7 +149,7 @@ export default function Eat() {
             </ol>
           </div>
           <div className="flex flex-col gap-8 md:mt-17 md:w-3/5">
-            <div className="overflow-hidden rounded-xl shadow-2xl shadow-black/30">
+            <div className="overflow-hidden rounded-lg shadow-2xl shadow-black/30">
               <Image
                 src={Snippet01}
                 alt="snippet01"
@@ -157,7 +157,7 @@ export default function Eat() {
                 unoptimized
               />
             </div>
-            <div className="overflow-hidden rounded-xl shadow-2xl shadow-black/30">
+            <div className="overflow-hidden rounded-lg shadow-2xl shadow-black/30">
               <Image
                 src={Snippet02}
                 alt="snippet02"
@@ -165,7 +165,7 @@ export default function Eat() {
                 unoptimized
               />
             </div>
-            <div className="overflow-hidden rounded-xl shadow-2xl shadow-black/30">
+            <div className="overflow-hidden rounded-lg shadow-2xl shadow-black/30">
               <Image
                 src={Snippet03}
                 alt="snippet03"

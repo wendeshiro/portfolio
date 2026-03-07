@@ -6,13 +6,13 @@ import Link from "next/link";
 import { motion, type Variants } from "framer-motion";
 
 const SHARED_CLASSES = {
-  contentWrapper: "px-4 pt-3 pb-4 sm:px-7 sm:pt-4 sm:pb-6 2xl:px-6 2xl:pb-7",
+  contentWrapper: "px-4 pt-3 pb-4 sm:px-6 sm:pt-4 sm:pb-6",
   titleBase: "text-xl font-semibold text-black",
-  titleDefault: "md:text-3xl",
+  titleDefault: "md:text-2xl",
   titleCategory: "md:text-2xl",
-  subtitle: "mt-1 truncate text-sm text-gray-700 md:text-base",
-  descriptionBase: "mt-1.5 text-sm text-gray-800",
-  descriptionDefault: "md:text-lg",
+  subtitle: "mt-1.5 truncate text-sm text-gray-700 md:text-base",
+  descriptionBase: "mt-1.5 text-sm text-gray-900",
+  descriptionDefault: "md:text-base",
   descriptionCategory: "md:text-base",
 };
 
@@ -43,7 +43,7 @@ export default function ProjectCard({
 }: ProjectCardProps) {
   const isUsingParentVariants = Boolean(variants);
   const containerClassName = [
-    "overflow-hidden rounded-3xl bg-white shadow-sm transition-shadow hover:shadow-lg select-none",
+    "overflow-hidden rounded-lg bg-white shadow-sm transition-shadow hover:shadow-md select-none",
     className,
   ]
     .filter(Boolean)
@@ -75,7 +75,7 @@ export default function ProjectCard({
         aria-label={typeof title === "string" ? title : "Project link"}
         className="group block"
       >
-        <div className="relative aspect-2/1 w-full overflow-hidden rounded-3xl bg-gray-200">
+        <div className="relative aspect-2/1 w-full overflow-hidden rounded-lg bg-gray-200">
           {imageSrc ? (
             <Image
               src={imageSrc}

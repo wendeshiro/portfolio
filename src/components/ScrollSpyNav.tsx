@@ -98,7 +98,7 @@ export default function ScrollSpyNav({ sections }: ScrollSpyNavProps) {
       }
     >
       {/* Single list: bars always visible, labels reveal with hover box. */}
-      <div className="flex flex-col items-end gap-2 rounded-xl border border-transparent px-4 py-3 opacity-40 transition-all duration-500 group-hover:border-gray-200 group-hover:bg-white/80 group-hover:shadow-lg group-hover:backdrop-blur hover:opacity-100">
+      <div className="flex flex-col items-end gap-2 rounded-lg border border-transparent px-4 py-3 opacity-40 transition-all duration-500 group-hover:border-gray-200 group-hover:bg-white/80 group-hover:shadow-lg group-hover:backdrop-blur hover:opacity-100">
         {sections.map((section) => {
           const isActive = section.id === activeId;
           return (

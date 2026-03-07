@@ -119,7 +119,7 @@ export default function CanScene({ shouldActivate }: CanSceneProps) {
             <button
               key={flavor.id}
               onClick={() => setCurrentTexture(flavor.texture)}
-              className={`flex w-25 cursor-pointer items-center justify-center rounded-2xl border px-3 py-2 transition-all duration-600 ease-out md:w-full md:justify-start md:border-2 md:px-5 ${
+              className={`flex w-25 cursor-pointer items-center justify-center rounded-lg border px-3 py-2 transition-all duration-600 ease-out md:w-full md:justify-start md:border-2 md:px-5 ${
                 currentTexture === flavor.texture
                   ? "scale-105 border-gray-600"
                   : "border-transparent hover:border-gray-300"

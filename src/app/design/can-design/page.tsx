@@ -129,17 +129,17 @@ export default function CanDesign() {
               </p>
             </div>
             <div className="mt-6 flex flex-col gap-8 md:mt-18 md:w-3/5">
-              <div className="overflow-hidden rounded-xl shadow-2xl shadow-black/5">
+              <div className="overflow-hidden rounded-lg shadow-2xl shadow-black/5">
                 <Image src={LabelPeach} alt="peach label" placeholder="blur" />
               </div>
-              <div className="overflow-hidden rounded-xl shadow-2xl shadow-black/5">
+              <div className="overflow-hidden rounded-lg shadow-2xl shadow-black/5">
                 <Image
                   src={LabelOrange}
                   alt="orange label"
                   placeholder="blur"
                 />
               </div>
-              <div className="overflow-hidden rounded-xl shadow-2xl shadow-black/5">
+              <div className="overflow-hidden rounded-lg shadow-2xl shadow-black/5">
                 <Image src={LabelApple} alt="apple label" placeholder="blur" />
               </div>
             </div>
@@ -200,7 +200,7 @@ export default function CanDesign() {
             src={FinalMockupImg}
             alt="final mockup"
             placeholder="blur"
-            className="h-[80vh] w-auto rounded-xl object-cover shadow-2xl shadow-black/5 md:h-[90vh]"
+            className="h-[80vh] w-auto rounded-lg object-cover shadow-2xl shadow-black/5 md:h-[90vh]"
             unoptimized
           />
         </motion.section>

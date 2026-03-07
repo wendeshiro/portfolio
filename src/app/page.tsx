@@ -650,7 +650,7 @@ export default function Home() {
               </p>
               <a
                 href="/development"
-                className="border-primary text-primary hover:bg-primary/10 w-fit self-center rounded-2xl border px-5 py-2 text-sm transition-colors duration-300 select-none md:px-7 md:py-2.5 md:text-base"
+                className="border-primary text-primary hover:bg-primary/10 w-fit self-center rounded-lg border px-5 py-2 text-sm transition-colors duration-300 select-none md:px-7 md:py-2.5 md:text-base"
               >
                 All Development Projects →
               </a>
@@ -704,7 +704,7 @@ export default function Home() {
               </p>
               <a
                 href="/design"
-                className="border-secondary-dark text-secondary-dark hover:bg-secondary/15 w-fit self-center rounded-2xl border px-5 py-2 text-sm transition-colors duration-300 select-none md:px-7 md:py-2.5 md:text-base"
+                className="border-secondary-dark text-secondary-dark hover:bg-secondary/15 w-fit self-center rounded-lg border px-5 py-2 text-sm transition-colors duration-300 select-none md:px-7 md:py-2.5 md:text-base"
               >
                 All Design Work →
               </a>
@@ -756,7 +756,7 @@ export default function Home() {
               </p>
               <a
                 href="/marketing"
-                className="border-tertiary text-tertiary hover:bg-tertiary/10 w-fit self-center rounded-2xl border px-5 py-2 text-sm transition-colors duration-300 select-none md:px-7 md:py-2.5 md:text-base"
+                className="border-tertiary text-tertiary hover:bg-tertiary/10 w-fit self-center rounded-lg border px-5 py-2 text-sm transition-colors duration-300 select-none md:px-7 md:py-2.5 md:text-base"
               >
                 All Marketing Cases →
               </a>

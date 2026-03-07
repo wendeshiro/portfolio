@@ -77,13 +77,13 @@ export default function PowerBank() {
             <h2 className="mb-7 font-serif text-2xl font-medium md:text-4xl md:font-normal">
               Final Promotional Video
             </h2>
-            <div className="bg-primary/10 flex h-auto items-center justify-center overflow-hidden rounded-xl p-4 md:h-auto md:px-20 md:py-8">
+            <div className="bg-primary/10 flex h-auto items-center justify-center overflow-hidden rounded-lg p-4 md:h-auto md:px-20 md:py-8">
               <video
                 controls
                 playsInline
                 preload="auto"
                 poster="/videos/power-bank/power-bank-placeholder.webp"
-                className="w-full rounded-xl shadow-lg md:max-w-270"
+                className="w-full rounded-lg shadow-lg md:max-w-270"
               >
                 <source
                   src="/videos/power-bank/power-bank.mp4"
@@ -111,13 +111,13 @@ export default function PowerBank() {
                 src={Storyboard01}
                 alt="storyboard01"
                 placeholder="blur"
-                className="cursor-pointer rounded-2xl shadow-lg md:w-[70vw]"
+                className="cursor-pointer rounded-lg shadow-lg md:w-[70vw]"
               ></Image>
               <Image
                 src={Storyboard02}
                 alt="storyboard02"
                 placeholder="blur"
-                className="cursor-pointer rounded-2xl shadow-lg md:w-[70vw]"
+                className="cursor-pointer rounded-lg shadow-lg md:w-[70vw]"
               ></Image>
             </PhotoView>
           </div>
