@@ -51,7 +51,7 @@ export default function Development() {
           isCategoryCard
           variants={categoryCardVariants}
           title="Portfolio Website"
-          subtitle="TypeScript / Tailwind CSS / ESLint / GitHub Actions (CI)"
+          subtitle="Tailwind CSS / ESLint / GitHub Actions (CI)"
           description="A responsive portfolio website built with Next.js and Tailwind CSS, focusing on clarity and scalable structure."
           imageSrc={Portfolio}
           href="/development/portfolio-website"
@@ -69,7 +69,7 @@ export default function Development() {
           isCategoryCard
           variants={categoryCardVariants}
           title="Orchard Brew Can Design"
-          subtitle="React Three Fiber (Three.js) / Drei / Blender"
+          subtitle="React Three Fiber (Three.js) / Drei"
           description="A refreshing visual identity for a contemporary fruit tea collection with interactive 3D product displays."
           imageSrc={CanDev}
           href="/design/can-design"

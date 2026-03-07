@@ -1,15 +1,40 @@
+import { isValidElement } from "react";
 import type { ReactNode } from "react";
 import { motion } from "framer-motion";
 
 export interface ProjectDetail {
+  id?: string;
   label: ReactNode;
   content: ReactNode;
 }
 
 export interface ProjectLink {
+  id?: string;
   label: string;
   url: string;
   icon?: "globe" | "github" | "figma" | ReactNode;
+}
+
+function getReactNodeKeyPart(node: ReactNode): string | undefined {
+  if (
+    typeof node === "string" ||
+    typeof node === "number" ||
+    typeof node === "bigint"
+  ) {
+    return String(node);
+  }
+
+  if (isValidElement(node) && node.key != null) {
+    return String(node.key);
+  }
+
+  return undefined;
+}
+
+function buildUniqueKey(base: string, keyOccurrences: Map<string, number>) {
+  const repeatedCount = keyOccurrences.get(base) ?? 0;
+  keyOccurrences.set(base, repeatedCount + 1);
+  return repeatedCount === 0 ? base : `${base}::${repeatedCount}`;
 }
 
 interface ProjectOverviewProps {
@@ -35,6 +60,9 @@ export default function ProjectOverview({
     return null;
   }
 
+  const detailKeyOccurrences = new Map<string, number>();
+  const linkKeyOccurrences = new Map<string, number>();
+
   return (
     <motion.section
       initial={{ opacity: 0, y: 50 }} // Initial state: hidden and slightly down
@@ -57,16 +85,31 @@ export default function ProjectOverview({
         </div>
 
         <div className="flex flex-col gap-4 md:w-2/5">
-          {details.map((item, index) => (
-            <div key={index} className="text-base md:text-lg">
-              <div className="text-gray-600">{item.label}</div>
-              <div>{item.content}</div>
-            </div>
-          ))}
+          {details.map((item) => {
+            const labelKeyPart = getReactNodeKeyPart(item.label) ?? String(item.label);
+            const contentKeyPart =
+              getReactNodeKeyPart(item.content) ?? String(item.content);
+            const detailBaseKey =
+              item.id ?? `detail::${labelKeyPart}::${contentKeyPart}`;
+            const detailKey = buildUniqueKey(
+              detailBaseKey,
+              detailKeyOccurrences,
+            );
+
+            return (
+              <div key={detailKey} className="text-base md:text-lg">
+                <div className="text-gray-600">{item.label}</div>
+                <div>{item.content}</div>
+              </div>
+            );
+          })}
 
           {links.length > 0 && (
             <div className="mt-3 flex flex-wrap gap-x-4 gap-y-6 md:gap-y-4 text-sm md:gap-x-8 md:text-lg">
-              {links.map((link, index) => {
+              {links.map((link) => {
+                const linkBaseKey = link.id ?? `link::${link.url}::${link.label}`;
+                const linkKey = buildUniqueKey(linkBaseKey, linkKeyOccurrences);
+
                 const renderIcon = (
                   icon?: "globe" | "github" | "figma" | ReactNode,
                 ) => {
@@ -164,7 +207,7 @@ export default function ProjectOverview({
 
                 return (
                   <a
-                    key={index}
+                    key={linkKey}
                     href={link.url}
                     target="_blank"
                     rel="noopener noreferrer"

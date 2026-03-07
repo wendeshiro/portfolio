@@ -41,6 +41,18 @@ function getPhotoTitle(child: ReactNode): string | undefined {
     : undefined;
 }
 
+function getPhotoBaseKey(
+  child: ReactNode,
+  src: string,
+  title?: string,
+): string {
+  if (isValidElement(child) && child.key != null) {
+    return String(child.key);
+  }
+
+  return title ? `${src}::${title}` : src;
+}
+
 export default function PhotoView({ children, className }: PhotoViewProps) {
   const items = Children.toArray(children);
   const lenis = useLenis();
@@ -60,6 +72,8 @@ export default function PhotoView({ children, className }: PhotoViewProps) {
   if (items.length === 0) {
     return null;
   }
+
+  const keyOccurrences = new Map<string, number>();
 
   return (
     <PhotoProvider
@@ -90,7 +104,7 @@ export default function PhotoView({ children, className }: PhotoViewProps) {
       )}
     >
       <div className={className}>
-        {items.map((child, index) => {
+        {items.map((child) => {
           if (!isValidElement(child)) {
             return child;
           }
@@ -102,9 +116,15 @@ export default function PhotoView({ children, className }: PhotoViewProps) {
             return child;
           }
 
+          const baseKey = getPhotoBaseKey(child, src, title);
+          const repeatedCount = keyOccurrences.get(baseKey) ?? 0;
+          keyOccurrences.set(baseKey, repeatedCount + 1);
+          const itemKey =
+            repeatedCount === 0 ? baseKey : `${baseKey}::${repeatedCount}`;
+
           return (
             <div
-              key={`photo-view-${index}`}
+              key={itemKey}
               className="flex flex-col items-center"
             >
               {title ? (
