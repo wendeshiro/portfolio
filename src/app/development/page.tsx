@@ -19,10 +19,10 @@ export default function Development() {
       <section className="mb-10 md:mb-12">
         <motion.p
           {...categoryTitleMotionProps}
-          className="text-primary/20 text-6xl tracking-[-0.18em] uppercase select-none md:text-9xl"
+          className="text-primary/20 font-serif text-5xl tracking-[-0.18em] uppercase select-none md:text-8xl"
         >
           bu<span className="mr-[0.1em] ml-[0.1em]">i</span>ld
-          <span className="mr-[0.2em] ml-[0.2em]">&</span>Iterate
+          <span className="mr-[0.22em] ml-[0.18em]">&</span>Iterate
         </motion.p>
       </section>
       <motion.section

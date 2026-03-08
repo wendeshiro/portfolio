@@ -57,7 +57,7 @@ export default function About() {
       <section className="mb-10 md:mb-12">
         <motion.p
           {...categoryTitleMotionProps}
-          className="text-primary/20 inline-flex gap-x-4 text-6xl tracking-[-0.18em] uppercase select-none md:gap-x-8 md:text-9xl"
+          className="text-primary/20 inline-flex gap-x-4 font-serif text-5xl tracking-[-0.18em] uppercase select-none md:gap-x-6 md:text-8xl"
         >
           <span>About</span>
           <span>Me</span>
