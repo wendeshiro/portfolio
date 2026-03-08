@@ -117,7 +117,7 @@ export default function Design() {
       <section className="mb-10 md:mb-12">
         <motion.p
           {...categoryTitleMotionProps}
-          className="text-secondary/20 text-6xl tracking-[-0.18em] uppercase select-none md:text-9xl"
+          className="text-secondary/20 font-serif text-5xl tracking-[-0.18em] uppercase select-none md:text-8xl"
         >
           Craft<span className="mr-[0.2em] ml-[0.2em]">&</span>Ref
           <span className="mr-[0.13em] ml-[0.13em]">i</span>ne

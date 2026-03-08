@@ -16,9 +16,9 @@ export default function Marketing() {
       <section className="mb-10 md:mb-12">
         <motion.p
           {...categoryTitleMotionProps}
-          className="text-tertiary/20 text-5xl tracking-[-0.18em] uppercase select-none md:text-9xl"
+          className="text-tertiary/20 font-serif text-5xl tracking-[-0.22em] uppercase select-none sm:tracking-[-0.18em] md:text-8xl"
         >
-          Analyze<span className="mr-[0.25em] ml-[0.15em]">&</span>Ampl
+          Analyze<span className="mr-[0.21em] ml-[0.19em]">&</span>Ampl
           <span className="mr-[0.13em] ml-[0.13em]">i</span>fy
         </motion.p>
       </section>
