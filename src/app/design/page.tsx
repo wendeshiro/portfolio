@@ -194,7 +194,7 @@ export default function Design() {
       <section ref={gallerySectionRef} className="mt-10 mb-5 md:mt-22 md:mb-10">
         <motion.p
           {...categoryTitleMotionProps}
-          className="text-secondary/30 text-4xl tracking-[-0.15em] uppercase select-none md:text-7xl"
+          className="text-secondary/30 font-serif text-4xl tracking-[-0.15em] uppercase select-none md:text-6xl"
         >
           Design
           <span className="mr-[0.13em] ml-[0.25em]">Gallery</span>
