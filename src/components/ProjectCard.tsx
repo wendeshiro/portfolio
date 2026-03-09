@@ -6,7 +6,7 @@ import Link from "next/link";
 import { motion, type Variants } from "framer-motion";
 
 const SHARED_CLASSES = {
-  contentWrapper: "px-4 pt-3 pb-4 sm:px-6 sm:pt-4 sm:pb-6",
+  contentWrapper: "px-4 pt-3 pb-4 sm:px-6 sm:pt-3.5 sm:pb-5",
   titleBase: "text-xl font-semibold text-black",
   titleDefault: "md:text-2xl",
   titleCategory: "md:text-2xl",
