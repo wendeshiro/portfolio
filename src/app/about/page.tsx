@@ -200,7 +200,7 @@ export default function About() {
                   skills: [
                     "Node.js",
                     "Express.js",
-                    "RESTful API",
+                    "RESTful APIs",
                     "AWS Lambda",
                     "SQL",
                     "PostgreSQL",
