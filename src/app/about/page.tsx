@@ -224,7 +224,7 @@ export default function About() {
                     "OpenAI Codex",
                     "ChatGPT",
                     "Gemini",
-                    "MPCs",
+                    "MCPs",
                     "Cursor",
                   ],
                 },
