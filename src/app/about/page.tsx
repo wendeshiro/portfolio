@@ -253,7 +253,7 @@ export default function About() {
               languageSkill={[
                 "English (Working Proficiency)",
                 "Japanese (Working Proficiency, JLPT-N1 Certification)",
-                "Mandarin (Native)",
+                "Mandarin Chinese (Native)",
                 "French (Beginner)",
               ]}
               className="mx-auto"
