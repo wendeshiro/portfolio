@@ -15,6 +15,10 @@ type CanSceneProps = {
   shouldActivate: boolean;
 };
 
+type CanvasSuspenseFallbackProps = {
+  onLoadingChange: (isLoading: boolean) => void;
+};
+
 const FLAVORS = [
   {
     id: "peach",
@@ -36,16 +40,27 @@ const FLAVORS = [
   },
 ];
 
+function CanvasSuspenseFallback({
+  onLoadingChange,
+}: CanvasSuspenseFallbackProps) {
+  useEffect(() => {
+    onLoadingChange(true);
+    return () => onLoadingChange(false);
+  }, [onLoadingChange]);
+
+  return null;
+}
+
 export default function CanScene({ shouldActivate }: CanSceneProps) {
   const [currentTexture, setCurrentTexture] = useState(FLAVORS[0].texture);
   const [isMobile, setIsMobile] = useState<boolean>(false);
   const [isFallbackReady, setIsFallbackReady] = useState(false);
-  const [isAssetsLoaded, setIsAssetsLoaded] = useState(false);
+  const [isSceneLoading, setIsSceneLoading] = useState(false);
   const [isCanHovered, setIsCanHovered] = useState(false);
   const [isCanDragging, setIsCanDragging] = useState(false);
 
   const isCanvasReady = shouldActivate || isFallbackReady;
-  const isCanvasLoaderVisible = !isCanvasReady || !isAssetsLoaded;
+  const isCanvasLoaderVisible = !isCanvasReady || isSceneLoading;
 
   useEffect(() => {
     if (!shouldActivate) {
@@ -55,12 +70,6 @@ export default function CanScene({ shouldActivate }: CanSceneProps) {
     FLAVORS.forEach((flavor) => {
       useTexture.preload(flavor.texture);
     });
-
-    const assetReadyTimer = window.setTimeout(() => {
-      setIsAssetsLoaded(true);
-    }, 800);
-
-    return () => window.clearTimeout(assetReadyTimer);
   }, [shouldActivate]);
 
   useEffect(() => {
@@ -68,20 +77,12 @@ export default function CanScene({ shouldActivate }: CanSceneProps) {
       return;
     }
 
-    let assetFallbackTimer: number | undefined;
-
     const fallbackTimer = window.setTimeout(() => {
       setIsFallbackReady(true);
-      assetFallbackTimer = window.setTimeout(() => {
-        setIsAssetsLoaded(true);
-      }, 1000);
-    }, 1800);
+    }, 1500);
 
     return () => {
       window.clearTimeout(fallbackTimer);
-      if (assetFallbackTimer) {
-        window.clearTimeout(assetFallbackTimer);
-      }
     };
   }, [shouldActivate]);
 
@@ -159,7 +160,11 @@ export default function CanScene({ shouldActivate }: CanSceneProps) {
               intensity={7}
             />
 
-            <Suspense fallback={null}>
+            <Suspense
+              fallback={
+                <CanvasSuspenseFallback onLoadingChange={setIsSceneLoading} />
+              }
+            >
               <Float
                 speed={0.7}
                 rotationIntensity={3}
